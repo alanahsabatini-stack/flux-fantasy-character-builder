@@ -12,7 +12,39 @@
 <body>
     <h1>Flux Fantasy Character Builder</h1>
 
-    <p id="message">Character Creator under construction.</p>
+    <p>Build your character step by step.</p>
+
+    <section id="specialtySection">
+        <h2>Karma Specialty</h2>
+
+        <label for="specialtySelect">Choose your Specialty:</label>
+
+        <select id="specialtySelect">
+            <option value="">-- Select a Specialty --</option>
+            <option value="Escape Artist">Escape Artist</option>
+            <option value="Special Agent">Special Agent</option>
+            <option value="Ink Fighter">Ink Fighter</option>
+            <option value="Clockbot">Clockbot</option>
+        </select>
+
+        <div id="specialtyInfo">
+            <p>Select a Specialty to see its starting information.</p>
+        </div>
+    </section>
+
+    <section id="studySection">
+        <h2>Karma Study</h2>
+
+        <label for="studySelect">Choose your Study:</label>
+
+        <select id="studySelect" disabled>
+            <option value="">-- Select a Study --</option>
+        </select>
+
+        <div id="studyInfo">
+            <p>Select a Specialty first.</p>
+        </div>
+    </section>
 
     <script src="js/main.js"></script>
 </body>
