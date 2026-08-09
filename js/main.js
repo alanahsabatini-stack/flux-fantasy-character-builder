@@ -237,6 +237,8 @@ const available3 = document.getElementById("available3");
 
 const modifierButtons = document.querySelectorAll(".modifierButton");
 
+const resetTalentsButton = document.getElementById("resetTalents");
+
 // =========== Talent Modifier Buttons ============
 
 modifierButtons.forEach(function(button) {
@@ -317,6 +319,41 @@ function updateModifierButtons() {
         }
     });
 }
+
+// ============== Talent Reset ================
+
+function resetBaseTalents() {
+    character.baseTalents.aura = 0;
+    character.baseTalents.stamina = 0;
+    character.baseTalents.agility = 0;
+    character.baseTalents.willpower = 0;
+    character.baseTalents.function = 0;
+    character.baseTalents.technique = 0;
+
+    talentModifierPool[1] = 1;
+    talentModifierPool[2] = 3;
+    talentModifierPool[3] = 2;
+
+    modifierButtons.forEach(function(button) {
+        button.classList.remove("selected");
+        button.disabled = false;
+    });
+
+    document.getElementById("baseAura").textContent = 0;
+    document.getElementById("baseStamina").textContent = 0;
+    document.getElementById("baseAgility").textContent = 0;
+    document.getElementById("baseWillpower").textContent = 0;
+    document.getElementById("baseFunction").textContent = 0;
+    document.getElementById("baseTechnique").textContent = 0;
+    
+    updateModifierPoolDisplay();
+
+    console.log("Base Talents Reset");
+}
+
+resetTalentsButton.addEventListener("click", function() {
+    resetBaseTalents();
+});
 
 // =========== Specialty Functions ============
 
