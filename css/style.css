@@ -4,3 +4,27 @@ body {
     margin: 40px auto;
     padding: 0 20px;
 }
+
+/* =========================================== */
+/*           TALENT MODIFIER BUTTONS           */
+/* =========================================== */
+
+.modifierButton {
+    padding: 6px 12px;
+    margin: 3px;
+    border: 1px solid #aaa;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.modifierButton.selected {
+    background-color: #444;
+    color: white;
+    font-weight: bold;
+    box-shadow: 0 0 0 2px #222;
+}
+
+.modifierButton:disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+}

@@ -1,3 +1,11 @@
+// ========================================
+// PROJECT: Flux Fantasy Character Builder
+// TITLE: JavaScript Main
+// PROGRAMMER: Alanah Sabatini
+// DATE: 08/08/2026
+// LATEST REVISION: 08/09/2026
+// ========================================
+
 console.log("Flux Fantasy Character Builder loaded!")
 
 // ========================================
@@ -13,7 +21,7 @@ const character = {
     study: "",
     currentStudy: null,
     karmaPool: 0,
-    talents: {
+    baseTalents: {
         aura: 0,
         stamina: 0,
         agility: 0,
@@ -21,11 +29,20 @@ const character = {
         function: 0,
         technique: 0
     },
+    talents: {
+        aura: 0,
+        stamina: 0,
+        agility: 0,
+        willpower: 0,
+        function: 0,
+        technique: 0
+    },       
     traits: [
         "Dependable",
         "Observant",
         "Resilient"
     ]
+
 };
 
 // ========================================
@@ -180,8 +197,20 @@ const specialties = [
 ];
 
 // ========================================
+// TALENT MODIFIER POOL
+// ========================================
+
+const talentModifierPool = {
+    1: 1,
+    2: 3,
+    3: 2
+};
+
+// ========================================
 // SPECIALTY FUNCTIONS
 // ========================================
+
+// =========== DOM References ============
 
 const specialtySelect = document.getElementById("specialtySelect");
 const specialtyInfo = document.getElementById("specialtyInfo");
@@ -201,6 +230,95 @@ const talentAgility = document.getElementById("talentAgility");
 const talentWillpower = document.getElementById("talentWillpower");
 const talentFunction = document.getElementById("talentFunction");
 const talentTechnique = document.getElementById("talentTechnique");
+
+const available1 = document.getElementById("available1");
+const available2 = document.getElementById("available2");
+const available3 = document.getElementById("available3");
+
+const modifierButtons = document.querySelectorAll(".modifierButton");
+
+// =========== Talent Modifier Buttons ============
+
+modifierButtons.forEach(function(button) {
+    button.addEventListener("click",function() {
+        const talent = button.dataset.talent;
+        const modifier = Number(button.dataset.modifier);
+        const currentModifier = character.baseTalents[talent];
+
+        // Clicking the currently selected modifier removes it
+        if (currentModifier === modifier) {
+            character.baseTalents[talent] = 0;
+            talentModifierPool[modifier]++;
+        }
+
+        // Clicking a different modifier changes the assignment
+        else {
+            // Make sure the new modifier is still available
+            if (talentModifierPool[modifier] === 0) {
+                return;
+            }
+
+            // Return the old modifier to the pool
+            if (currentModifier !== 0) {
+                talentModifierPool[currentModifier]++;
+            }
+
+            //Assign the new modifier
+            character.baseTalents[talent] = modifier;
+            talentModifierPool[modifier]--;
+        }
+
+        // Update button highlighting
+        const talentButtons = document.querySelectorAll(
+            `.modifierButton[data-talent="${talent}"]`
+        );
+
+        talentButtons.forEach(function(talentButton) {
+            talentButton.classList.remove("selected");
+        });
+
+        if (character.baseTalents[talent] !== 0) {
+            button.classList.add("selected");
+        }
+
+        // Update the displayed base value
+        const displayName =
+            talent.charAt(0).toUpperCase() + talent.slice(1);
+
+        document.getElementById(`base${displayName}`).textContent =
+            character.baseTalents[talent];
+        
+        // Update modifier pool display
+        updateModifierPoolDisplay();
+
+        console.log(character.baseTalents);
+    });
+});
+
+function updateModifierPoolDisplay() {
+    available1.textContent = talentModifierPool[1];
+    available2.textContent = talentModifierPool[2];
+    available3.textContent = talentModifierPool[3];
+
+    updateModifierButtons();
+}
+
+function updateModifierButtons() {
+    modifierButtons.forEach(function(button) {
+        const modifier = Number(button.dataset.modifier);
+
+        if (
+            talentModifierPool[modifier] === 0 &&
+            !button.classList.contains("selected")
+        ) {
+            button.disabled = true;
+        } else {
+            button.disabled = false;
+        }
+    });
+}
+
+// =========== Specialty Functions ============
 
 function findSpecialty(name) {
     return specialties.find(function(specialty) {
@@ -222,13 +340,6 @@ specialtySelect.addEventListener("change", function() {
     character.currentStudy = null;
     summaryStudy.textContent = "Not Selected";
     studyEffect.textContent = "Study Effect: None";
-
-    talentAura.textContent = character.talents.aura;
-    talentStamina.textContent = character.talents.stamina;
-    talentAgility.textContent = character.talents.agility;
-    talentWillpower.textContent = character.talents.willpower;
-    talentFunction.textContent = character.talents.function;
-    talentTechnique.textContent = character.talents.technique;
     
     summarySpecialty.textContent = character.specialty;
     summaryKarma.textContent = character.karmaPool;
@@ -252,6 +363,8 @@ specialtySelect.addEventListener("change", function() {
     studySelect.disabled = false;
 });
 
+// =========== Study Functions ============
+
 studySelect.addEventListener("change", function() {
     if (character.currentStudy !== null) {
         removeStudyModifier(character.currentStudy);
@@ -273,13 +386,6 @@ studySelect.addEventListener("change", function() {
 
     summaryStudy.textContent = character.study;
 
-    talentAura.textContent = character.talents.aura;
-    talentStamina.textContent = character.talents.stamina;
-    talentAgility.textContent = character.talents.agility;
-    talentWillpower.textContent = character.talents.willpower;
-    talentFunction.textContent = character.talents.function;
-    talentTechnique.textContent = character.talents.technique;
-
     console.log(character);
 });
 
@@ -290,6 +396,8 @@ function applyStudyModifier(study) {
 function removeStudyModifier(study) {
     character.talents[study.stat] -= study.modifier;
 }
+
+// =========== Utility Functions ============
 
 function formatStatName(stat) {
     return stat.charAt(0).toUpperCase() + stat.slice(1);

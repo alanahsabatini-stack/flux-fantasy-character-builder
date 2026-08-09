@@ -1,5 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
+
+<!--========================================
+PROJECT: Flux Fantasy Character Builder
+TITLE: HTML Main
+PROGRAMMER: Alanah Sabatini
+DATE: 08/08/2026
+LATEST REVISION: 08/09/2026
+==========================================-->
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -13,6 +22,10 @@
     <h1>Flux Fantasy Character Builder</h1>
 
     <p>Build your character step by step.</p>
+
+<!-- ************************************************************* -->
+<!--                      SPECIALTY SECTION                        -->
+<!-- ************************************************************* -->
 
     <section id="specialtySection">
         <h2>Karma Specialty</h2>
@@ -32,6 +45,10 @@
         </div>
     </section>
 
+<!-- ************************************************************* -->
+<!--                         STUDY SECTION                         -->
+<!-- ************************************************************* -->
+
     <section id="studySection">
         <h2>Karma Study</h2>
 
@@ -48,6 +65,10 @@
         <p id="studyEffect">Study Effect: None</p>
     </section>
 
+<!-- ************************************************************* -->
+<!--                      CHARACTER SUMMARY                        -->
+<!-- ************************************************************* -->
+
     <section id="characterSummary">
         <h2>Character Summary</h2>
 
@@ -56,15 +77,67 @@
         <p>Study: <span id="summaryStudy">Not selected</span></p>
     </section>
 
+<!-- ************************************************************* -->
+<!--                        TALENT SECTION                         -->
+<!-- ************************************************************* -->
+
     <section id="talentSection">
         <h2>Talents</h2>
 
-        <p>Aura: <span id="talentAura">0</span></p>
-        <p>Stamina: <span id="talentStamina">0</span></p>
-        <p>Agility: <span id="talentAgility">0</span></p>
-        <p>Willpower: <span id="talentWillpower">0</span></p>
-        <p>Function: <span id="talentFunction">0</span></p>
-        <p>Technique: <span id="talentTechnique">0</span></p>
+        <div id="modifierPool">
+            <h3>Available Modifiers</h3>
+            <p>+1: <span id="available1">1</span></p>
+            <p>+2: <span id="available2">3</span></p>
+            <p>+3: <span id="available3">2</span></p>
+        </div>
+
+        <div class="talent">
+            <h3>Aura</h3>
+            <button class="modifierButton" data-talent="aura" data-modifier="1">+1</button>
+            <button class="modifierButton" data-talent="aura" data-modifier="2">+2</button>
+            <button class="modifierButton" data-talent="aura" data-modifier="3">+3</button>
+            <p>Base: <span id="baseAura">0</span></p>
+        </div>
+
+        <div class="talent">
+            <h3>Stamina</h3>
+            <button class="modifierButton" data-talent="stamina" data-modifier="1">+1</button>
+            <button class="modifierButton" data-talent="stamina" data-modifier="2">+2</button>
+            <button class="modifierButton" data-talent="stamina" data-modifier="3">+3</button>
+            <p>Base: <span id="baseStamina">0</span></p>
+        </div>
+        
+        <div class="talent">
+            <h3>Agility</h3>
+            <button class="modifierButton" data-talent="agility" data-modifier="1">+1</button>
+            <button class="modifierButton" data-talent="agility" data-modifier="2">+2</button>
+            <button class="modifierButton" data-talent="agility" data-modifier="3">+3</button>
+            <p>Base: <span id="baseAgility">0</span></p>
+        </div>
+
+        <div class="talent">
+            <h3>Willpower</h3>
+            <button class="modifierButton" data-talent="willpower" data-modifier="1">+1</button>
+            <button class="modifierButton" data-talent="willpower" data-modifier="2">+2</button>
+            <button class="modifierButton" data-talent="willpower" data-modifier="3">+3</button>
+            <p>Base: <span id="baseWillpower">0</span></p>
+        </div>
+
+        <div class="talent">
+            <h3>Function</h3>
+            <button class="modifierButton" data-talent="function" data-modifier="1">+1</button>
+            <button class="modifierButton" data-talent="function" data-modifier="2">+2</button>
+            <button class="modifierButton" data-talent="function" data-modifier="3">+3</button>
+            <p>Base: <span id="baseFunction">0</span></p>
+        </div>
+
+        <div class="talent">
+            <h3>Technique</h3>
+            <button class="modifierButton" data-talent="technique" data-modifier="1">+1</button>
+            <button class="modifierButton" data-talent="technique" data-modifier="2">+2</button>
+            <button class="modifierButton" data-talent="technique" data-modifier="3">+3</button>
+            <p>Base: <span id="baseTechnique">0</span></p>
+        </div>
     </section>
 
     <script src="js/main.js"></script>
