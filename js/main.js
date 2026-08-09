@@ -99,6 +99,10 @@ const specialtyInfo = document.getElementById("specialtyInfo");
 const studySelect = document.getElementById("studySelect");
 const studyInfo = document.getElementById("studyInfo");
 
+const summarySpecialty = document.getElementById("summarySpecialty");
+const summaryKarma = document.getElementById("summaryKarma");
+const summaryStudy = document.getElementById("summaryStudy");
+
 function findSpecialty(name) {
     return specialties.find(function(specialty) {
         return specialty.name === name;
@@ -110,6 +114,8 @@ specialtySelect.addEventListener("change", function() {
 
     character.specialty = selectedSpecialty.name;
     character.karmaPool = selectedSpecialty.startingKarma;
+    summarySpecialty.textContent = character.specialty;
+    summaryKarma.textContent = character.karmaPool;
 
     specialtyInfo.innerHTML = `
         <p>Specialty: ${selectedSpecialty.name}</p>
