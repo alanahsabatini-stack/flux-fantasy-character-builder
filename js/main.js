@@ -23,6 +23,8 @@ const character = {
     affiliation: "",
     affiliationName: "",
     affiliationDescription: "",
+    affiliationTrait: "",
+    affiliationFlaw: "",
     karmaPool: 0,
     baseTalents: {
         aura: 0,
@@ -368,7 +370,9 @@ specialtySelect.addEventListener("change", function() {
     affiliationInfo.innerHTML = "";
     character.affiliationName = "";
     character.affiliationDescription = "";
-    character.defense = "";
+    character.affiliationTrait = "";
+    character.affiliationFlaw = "";
+    character.defense = 0;
     affiliationName.value = "";
     affiliationDescription.value = "";
 
@@ -440,6 +444,8 @@ affiliationSelect.addEventListener("change", function() {
 
     character.affiliation = selectedAffiliation.name;
     character.defense = selectedAffiliation.defenseModifier;
+    character.affiliationTrait = selectedAffiliation.trait;
+    character.affiliationFlaw = selectedAffiliation.flaw;
 
     affiliationName.value = selectedAffiliation.name;
     affiliationDescription.value = selectedAffiliation.description;
