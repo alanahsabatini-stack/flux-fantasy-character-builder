@@ -20,6 +20,9 @@ const character = {
     specialty: "",
     study: "",
     currentStudy: null,
+    affiliation: "",
+    affiliationName: "",
+    affiliationDescription: "",
     karmaPool: 0,
     baseTalents: {
         aura: 0,
@@ -37,6 +40,9 @@ const character = {
         function: 0,
         technique: 0
     },       
+    hp: 10,
+    mov: 1,
+    defense: 0,
     traits: [
         "Dependable",
         "Observant",
@@ -197,6 +203,69 @@ const specialties = [
 ];
 
 // ========================================
+// AFFILIATIONS
+// ========================================
+
+const affiliations = [
+    {
+        name: "Academia",
+        associations: ["Escape Artist", "Special Agent", "Ink Fighter"],
+        defenseModifier: 1,
+        trait: "Student",
+        flaw: "Still Learning",
+        description: "It's rare to learn karmastry without a master. Whether you're in public school, a private academy like Wolfgang, or a government-run facility, there's always someone ready to teach."
+    },
+    {
+        name: "GEARS",
+        associations: ["Escape Artist", "Clockbot"],
+        defenseModifier: 2,
+        trait: "Social Butterfly",
+        flaw: "Elitist",
+        description: "The Great Escape Artist Society. It's not just about being a top-tier Escape Artist; it's about wielding significant influence and having a shot at the presidency of Fortuna. Membership is a golden ticket to power and prestige."
+    },
+    {
+        name: "The NKA",
+        associations: ["Escape Artist", "Special Agent", "Ink Fighter", "Clockbot"],
+        defenseModifier: 2,
+        trait: "Full Assault",
+        flaw: "Disliked",
+        description: "The National Karmastry Authority. These are the karma cops, the enforcers, and the watchdogs. The NKA regulates and monitors karmastry use, hunting down offenders and enforcing karmic laws. If you like seeing justice served, this is your crew."
+    },
+    {
+        name: "Ink Fighting Elite",
+        associations: ["Ink Fighter"],
+        defenseModifier: 3,
+        trait: "Get Back Up",
+        flaw: "Bruised",
+        description: "Top-tier fighters with the skills to back it up, these warriors dominate the flux destiny boxing rings and underground fight clubs. They’re the best of the best, showcased on TV and revered in the streets."
+    },
+    {
+        name: "Clockbot Union",
+        associations: ["Escape Artist", "Special Agent", "Ink Fighter", "Clockbot"],
+        defenseModifier: 3,
+        trait: "Bot Lover",
+        flaw: "Socially Awkward",
+        description: "Clockbots and their human allies form this union, standing together against mistreatment and sharing groundbreaking knowledge. They’ve carved out a respected place in Fortuna’s society, though the work can get pretty lonely."
+    },
+    {
+        name: "Foreign Visitor",
+        associations: ["Escape Artist", "Special Agent", "Ink Fighter", "Clockbot"],
+        defenseModifier: 2,
+        trait: "Diplomatic Immunity",
+        flaw: "Language Barrier",
+        description: "You’re not from Fortuna, but you’re here for the long haul. Maybe you’ve got special visa paperwork from Paragon or hail from the distant Hanto Union isles. Perhaps you’re an immigrant chasing a fresh start. Whatever the case, you’re ready to make your mark and carve out your own slice of the Fortunan Dream."
+    },
+    {
+        name: "Independent",
+        associations: ["Escape Artist", "Special Agent", "Ink Fighter", "Clockbot"],
+        defenseModifier: 1,
+        trait: "Tough Guy",
+        flaw: "Loner",
+        description: "You’re a lone wolf, self-taught, and you like it that way. You learned the hard way, on the streets or by yourself. Teaming up is a hassle, and you trust no one, not even other independents."
+    }
+];
+
+// ========================================
 // TALENT MODIFIER POOL
 // ========================================
 
@@ -207,10 +276,8 @@ const talentModifierPool = {
 };
 
 // ========================================
-// SPECIALTY FUNCTIONS
+// DOM REFERENCES
 // ========================================
-
-// =========== DOM References ============
 
 const specialtySelect = document.getElementById("specialtySelect");
 const specialtyInfo = document.getElementById("specialtyInfo");
@@ -223,6 +290,12 @@ const summaryKarma = document.getElementById("summaryKarma");
 const summaryStudy = document.getElementById("summaryStudy");
 
 const studyEffect = document.getElementById("studyEffect");
+
+const affiliationSelect = document.getElementById("affiliationSelect");
+const affiliationInfo = document.getElementById("affiliationInfo");
+const affiliationName = document.getElementById("affiliationName");
+const affiliationDescription = document.getElementById("affiliationDescription");
+const applyAffiliationButton = document.getElementById("applyAffiliationButton");
 
 const talentAura = document.getElementById("talentAura");
 const talentStamina = document.getElementById("talentStamina");
@@ -239,7 +312,162 @@ const modifierButtons = document.querySelectorAll(".modifierButton");
 
 const resetTalentsButton = document.getElementById("resetTalents");
 
-// =========== Talent Modifier Buttons ============
+// ========================================
+// SPECIALTY FUNCTIONS
+// ========================================
+
+function findSpecialty(name) {
+    return specialties.find(function(specialty) {
+        return specialty.name === name;
+    });
+}
+
+function populateAffiliations() {
+    affiliationSelect.innerHTML =
+        '<option value="">-- Select an Affiliation --</option>';
+
+    affiliations.forEach(function(affiliation) {
+        const option = document.createElement("option");
+
+        option.value = affiliation.name;
+        option.textContent = affiliation.name;
+
+        affiliationSelect.appendChild(option);
+    });
+}
+
+populateAffiliations();
+
+function updateAffiliationOptions() {
+    const selectedSpecialty = character.specialty;
+
+    affiliations.forEach(function(affiliation) {
+        const option = Array.from(affiliationSelect.options)
+            .find(function(option) {
+                return option.value === affiliation.name;
+            });
+
+        if (affiliation.associations.includes(selectedSpecialty)) {
+            option.disabled = false;
+        } else {
+            option.disabled = true;
+        }
+    });
+}
+
+specialtySelect.addEventListener("change", function() {
+    const selectedSpecialty = findSpecialty(specialtySelect.value);
+
+    character.specialty = selectedSpecialty.name;
+    character.karmaPool = selectedSpecialty.startingKarma;
+
+    character.study = "";
+    character.currentStudy = null;
+    character.affiliation = "";
+    affiliationSelect.value = "";
+    affiliationInfo.innerHTML = "";
+    character.affiliationName = "";
+    character.affiliationDescription = "";
+    character.defense = "";
+    affiliationName.value = "";
+    affiliationDescription.value = "";
+
+    calculateTalents();
+    calculateDerivedStats();
+    summaryStudy.textContent = "Not Selected";
+    studyEffect.textContent = "Study Effect: None";
+    
+    summarySpecialty.textContent = character.specialty;
+    summaryKarma.textContent = character.karmaPool;
+
+    specialtyInfo.innerHTML = `
+        <p>Specialty: ${selectedSpecialty.name}</p>
+        <p>Starting Karma: ${selectedSpecialty.startingKarma}</p>
+        <p>Med Kit: ${selectedSpecialty.medKitPercent}% of HP</p>
+    `;
+
+    studySelect.innerHTML = '<option value="">--Select a Study --</option>';
+    studySelect.value = "";
+
+    selectedSpecialty.studies.forEach(function(study) {
+        const option = document.createElement("option");
+        option.value = study.name;
+        option.textContent = study.name;
+        studySelect.appendChild(option);
+    });
+
+    studySelect.disabled = false;
+    affiliationSelect.disabled = false;
+    updateAffiliationOptions();
+});
+
+// ========================================
+// STUDY FUNCTIONS
+// ========================================
+
+studySelect.addEventListener("change", function() {
+    character.study = studySelect.value;
+
+    const selectedSpecialty = findSpecialty(character.specialty);
+
+    const selectedStudy = selectedSpecialty.studies.find(function(study) {
+        return study.name === character.study;
+    });
+
+    studyEffect.textContent = `Study Effect: +${selectedStudy.modifier} ${formatStatName(selectedStudy.stat)}`;
+
+    character.currentStudy = selectedStudy;
+    character.study = selectedStudy.name;
+
+    calculateTalents();
+    calculateDerivedStats();
+
+    summaryStudy.textContent = character.study;
+});
+
+// ========================================
+// AFFILIATION FUNCTIONS
+// ========================================
+
+function findAffiliation(name) {
+    return affiliations.find(function(affiliation) {
+        return affiliation.name === name;
+    });
+}
+
+affiliationSelect.addEventListener("change", function() {
+    const selectedAffiliation = findAffiliation(affiliationSelect.value);
+
+    character.affiliation = selectedAffiliation.name;
+    character.defense = selectedAffiliation.defenseModifier;
+
+    affiliationName.value = selectedAffiliation.name;
+    affiliationDescription.value = selectedAffiliation.description;
+
+    character.affiliationName = selectedAffiliation.name;
+    character.affiliationDescription = selectedAffiliation.description;
+
+    affiliationInfo.innerHTML = `
+        <p>Affiliation: ${selectedAffiliation.name}</p>
+        <p>${selectedAffiliation.description}</p>
+        <p>Defense Modifier: +${selectedAffiliation.defenseModifier}</p>
+        <p>Trait: ${selectedAffiliation.trait}</p>
+        <p>Flaw: ${selectedAffiliation.flaw}</p>
+    `;
+});
+
+applyAffiliationButton.addEventListener("click", function() {
+    character.affiliationName = affiliationName.value;
+    character.affiliationDescription = affiliationDescription.value;
+
+    console.log("Custom Affiliation Saved");
+    console.log(character.affiliationName);
+    console.log(character.affiliationDescription);
+});
+
+// ========================================
+// TALENT MODIFIER BUTTONS
+// ========================================
 
 modifierButtons.forEach(function(button) {
     button.addEventListener("click",function() {
@@ -272,6 +500,7 @@ modifierButtons.forEach(function(button) {
 
         // Calculate final Talent values
         calculateTalents();
+        calculateDerivedStats();
 
         // Update button highlighting
         const talentButtons = document.querySelectorAll(
@@ -295,8 +524,6 @@ modifierButtons.forEach(function(button) {
         
         // Update modifier pool display
         updateModifierPoolDisplay();
-
-        console.log(character.baseTalents);
     });
 });
 
@@ -332,6 +559,9 @@ function resetBaseTalents() {
     character.baseTalents.willpower = 0;
     character.baseTalents.function = 0;
     character.baseTalents.technique = 0;
+
+    calculateTalents();
+    calculateDerivedStats();
 
     talentModifierPool[1] = 1;
     talentModifierPool[2] = 3;
@@ -373,70 +603,16 @@ function calculateTalents() {
     }
 }
 
-// =========== Specialty Functions ============
+// ========== Derived Stat Calculations ==========
 
-function findSpecialty(name) {
-    return specialties.find(function(specialty) {
-        return specialty.name === name;
-    });
+function calculateDerivedStats() {
+    character.hp = 10 + character.talents.function;
+    character.mov = 1 + character.talents.agility;
 }
 
-specialtySelect.addEventListener("change", function() {
-    const selectedSpecialty = findSpecialty(specialtySelect.value);
-
-    character.specialty = selectedSpecialty.name;
-    character.karmaPool = selectedSpecialty.startingKarma;
-
-    character.study = "";
-    character.currentStudy = null;
-    calculateTalents();
-    summaryStudy.textContent = "Not Selected";
-    studyEffect.textContent = "Study Effect: None";
-    
-    summarySpecialty.textContent = character.specialty;
-    summaryKarma.textContent = character.karmaPool;
-
-    specialtyInfo.innerHTML = `
-        <p>Specialty: ${selectedSpecialty.name}</p>
-        <p>Starting Karma: ${selectedSpecialty.startingKarma}</p>
-        <p>Med Kit: ${selectedSpecialty.medKitPercent}% of HP</p>
-    `;
-
-    studySelect.innerHTML = '<option value="">--Select a Study --</option>';
-    studySelect.value = "";
-
-    selectedSpecialty.studies.forEach(function(study) {
-        const option = document.createElement("option");
-        option.value = study.name;
-        option.textContent = study.name;
-        studySelect.appendChild(option);
-    });
-
-    studySelect.disabled = false;
-});
-
-// =========== Study Functions ============
-
-studySelect.addEventListener("change", function() {
-    character.study = studySelect.value;
-
-    const selectedSpecialty = findSpecialty(character.specialty);
-
-    const selectedStudy = selectedSpecialty.studies.find(function(study) {
-        return study.name === character.study;
-    });
-
-    studyEffect.textContent = `Study Effect: +${selectedStudy.modifier} ${formatStatName(selectedStudy.stat)}`;
-
-    character.currentStudy = selectedStudy;
-    character.study = selectedStudy.name;
-
-    calculateTalents();
-
-    summaryStudy.textContent = character.study;
-});
-
-// =========== Utility Functions ============
+// ========================================
+// UTILITY FUNCTIONS
+// ========================================
 
 function formatStatName(stat) {
     return stat.charAt(0).toUpperCase() + stat.slice(1);
