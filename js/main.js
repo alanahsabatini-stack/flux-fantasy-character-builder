@@ -45,29 +45,169 @@ const character = {
     hp: 10,
     mov: 1,
     defense: 0,
-    traits: [
-        "Dependable",
-        "Observant",
-        "Resilient"
-    ]
-
+    traits: [],
+    flaws: []
 };
 
 // ========================================
-// TRAIT DEFINITIONS
+// TRAITS & FLAWS
 // ========================================
 
 const traitDefinitions = [
     {
         name: "Dependable",
+        definition: "Others trust and look up to you.",
         effect: "Combos cost 2 less KP."
     },
     {
+        name: "Good Looking",
+        definition: "Hey there, handsome!",
+        effect: "+2 to Aura rolls when the initial roll is lower than 10."
+    },
+    {
+        name: "Handy",
+        definition: "You're good at fixing things.",
+        effect: "Pass 3 Technique checks without rolling per Checkpoint."
+    },
+    {
+        name: "Determined",
+        definition: "You won't let anything stop you!",
+        effect: "Trade a Quick Action for another turn of Movement in combat."
+    },
+    {
+        name: "Calm",
+        definition: "You're cool under pressure.",
+        effect: "+1 Quick Action per turn in combat."
+    },
+    {
+        name: "Talented",
+        definition: "Wow, you're a natural at this!",
+        effect: "Add +1 Modifier to any one Talent under 3."
+    },
+    {
+        name: "Loyal",
+        definition: "You stick by those you care about.",
+        effect: "Ability to share the effects of Med Kits with another Player."
+    },
+    {
+        name: "Inspirational",
+        definition: "You lift others up when they need it most.",
+        effect: "Add your Modifier to another Player's Basic Action roll twice per Checkpoint."
+    },
+    {
+        name: "Honorable",
+        definition: "You always do the right thing.",
+        effect: "Common and Uncommon trading cards now have two uses per game instead of 1."
+    },
+    {
+        name: "Spunky",
+        definition: "You've got a lot of energy.",
+        effect: "Gain ⧗5 for every natural 20 roll."
+    },
+    {
+        name: "Protective",
+        definition: "Always standing up for others.",
+        effect: "+2 DEF when performing a Defense move in combat."
+    },
+    {
+        name: "Thrifty",
+        definition: "You're always finding a good deal.",
+        effect: "Gain an additional +⧗5 when finding merits."
+    },
+    {
         name: "Observant",
+        definition: "Great eye!",
         effect: "+2 to Function rolls when the initial roll is lower than 10."
+    },
+    {
+        name: "Adaptable",
+        definition: "It's a good thing you're flexible.",
+        effect: "When failing a Basic Action roll, reroll 2 times per Checkpoint."
+    },
+    {
+        name: "Resilient",
+        definition: "You're tough.",
+        effect: "+1 Destiny Rewrite per Checkpoint."
     }
 ];
 
+const flawDefinitions = [
+    {
+        name: "Hot Headed",
+        definition: "You get too worked up too quickly.",
+        effect: "Lose your first turn at the start of battle."
+    },
+    {
+        name: "Insecure",
+        definition: "Constantly second-guessing yourself.",
+        effect: "-2 to recovery rolls for karma recharging."
+    },
+    {
+        name: "Tongue Tied",
+        definition: "Oops, you said the wrong thing again.",
+        effect: "-1 to Aura rolls."
+    },
+    {
+        name: "Arrogant",
+        definition: "You think you're all that, huh?",
+        effect: "When rolling for Willpower, roll twice and take the lower result."
+    },
+    {
+        name: "Reckless",
+        definition: "Rushed into things and made a mess again.",
+        effect: "-2 damage done by your Basic Attack."
+    },
+    {
+        name: "Selfish",
+        definition: "MINE. MINE. MINE.",
+        effect: "When shopping, prices are +⧗10 for all items."
+    },
+    {
+        name: "Unmotivated",
+        definition: "You don't really care.",
+        effect: "-1 to all Agility rolls."
+    },
+    {
+        name: "Clumsy",
+        definition: "Where did I put that?",
+        effect: "Only carry up to 10 items at a time."
+    },
+    {
+        name: "Paranoid",
+        definition: "Someone is watching me!",
+        effect: "Basic Defense powers cost +5 KP more to perform."
+    },
+    {
+        name: "Cowardly",
+        definition: "You're not one to rush into battle.",
+        effect: "When in combat you'll always be last to take a turn."
+    },
+    {
+        name: "Secretive",
+        definition: "You don't trust anyone.",
+        effect: "Can't share items with others."
+    },
+    {
+        name: "Lovesick",
+        definition: "You fall in love with everyone you meet.",
+        effect: "When rolling for Aura, roll twice and take the lower result."
+    },
+    {
+        name: "Distracted",
+        definition: "Huh? What did you say?",
+        effect: "On rolls requiring multiple Players to succeed, subtract 2 from your roll result."
+    },
+    {
+        name: "Extravagant",
+        definition: "You have expensive taste.",
+        effect: "Items cost +⧗5 more than listed."
+    },
+    {
+        name: "Distant",
+        definition: "You keep others at a distance.",
+        effect: "Can only perform one Combo during combat."
+    }
+];
 
 // ========================================
 // KARMA SPECIALTIES
@@ -314,6 +454,9 @@ const modifierButtons = document.querySelectorAll(".modifierButton");
 
 const resetTalentsButton = document.getElementById("resetTalents");
 
+const traitSelect = document.getElementById("traitSelect");
+const flawSelect = document.getElementById("flawSelect");
+
 // ========================================
 // SPECIALTY FUNCTIONS
 // ========================================
@@ -375,6 +518,8 @@ specialtySelect.addEventListener("change", function() {
     character.defense = 0;
     affiliationName.value = "";
     affiliationDescription.value = "";
+    character.traits = [];
+    character.flaws = [];
 
     calculateTalents();
     calculateDerivedStats();
@@ -446,6 +591,8 @@ affiliationSelect.addEventListener("change", function() {
     character.defense = selectedAffiliation.defenseModifier;
     character.affiliationTrait = selectedAffiliation.trait;
     character.affiliationFlaw = selectedAffiliation.flaw;
+    character.traits = [selectedAffiliation.trait];
+    character.flaws = [selectedAffiliation.flaw];
 
     affiliationName.value = selectedAffiliation.name;
     affiliationDescription.value = selectedAffiliation.description;
@@ -615,6 +762,70 @@ function calculateDerivedStats() {
     character.hp = 10 + character.talents.function;
     character.mov = 1 + character.talents.agility;
 }
+
+// ========================================
+// TRAITS/FLAWS FUNCTIONS
+// ========================================
+
+function findTrait(name) {
+    return traitDefinitions.find(function(trait) {
+        return trait.name === name;
+    });
+}
+
+function findFlaw(name) {
+    return flawDefinitions.find(function(flaw) {
+        return flaw.name === name;
+    });
+}
+
+function addTrait(name) {
+    if (!character.traits.includes(name)) {
+        character.traits.push(name);
+    }
+}
+
+function addFlaw(name) {
+    if (!character.flaws.includes(name)) {
+        character.flaws.push(name);
+    }
+}
+
+function populateTraitFlawOptions() {
+    traitDefinitions.forEach(function(trait) {
+        const option = document.createElement("option");
+
+        option.value = trait.name;
+        option.textContent = trait.name;
+
+        traitSelect.appendChild(option);
+    });
+
+    flawDefinitions.forEach(function(flaw) {
+        const option = document.createElement("option");
+
+        option.value = flaw.name;
+        option.textContent = flaw.name;
+
+        flawSelect.appendChild(option);
+    });
+}
+
+populateTraitFlawOptions();
+
+traitSelect.addEventListener("change", function() {
+    if (traitSelect.value !== "") {
+        addTrait(traitSelect.value);
+        traitSelect.value = "";
+    }
+});
+
+flawSelect.addEventListener("change", function() {
+    if (flawSelect.value !== "") {
+        addFlaw(flawSelect.value);
+        flawSelect.value = "";
+    }
+});
 
 // ========================================
 // UTILITY FUNCTIONS
