@@ -270,6 +270,9 @@ modifierButtons.forEach(function(button) {
             talentModifierPool[modifier]--;
         }
 
+        // Calculate final Talent values
+        calculateTalents();
+
         // Update button highlighting
         const talentButtons = document.querySelectorAll(
             `.modifierButton[data-talent="${talent}"]`
@@ -355,6 +358,21 @@ resetTalentsButton.addEventListener("click", function() {
     resetBaseTalents();
 });
 
+// =========== Talent Calculations ============
+
+function calculateTalents() {
+    character.talents.aura = character.baseTalents.aura;
+    character.talents.stamina = character.baseTalents.stamina;
+    character.talents.agility = character.baseTalents.agility;
+    character.talents.willpower = character.baseTalents.willpower;
+    character.talents.function = character.baseTalents.function;
+    character.talents.technique = character.baseTalents.technique;
+
+    if (character.currentStudy !== null) {
+        character.talents[character.currentStudy.stat] += character.currentStudy.modifier;
+    }
+}
+
 // =========== Specialty Functions ============
 
 function findSpecialty(name) {
@@ -369,12 +387,9 @@ specialtySelect.addEventListener("change", function() {
     character.specialty = selectedSpecialty.name;
     character.karmaPool = selectedSpecialty.startingKarma;
 
-    if (character.currentStudy !== null) {
-        removeStudyModifier(character.currentStudy);
-    }
-
     character.study = "";
     character.currentStudy = null;
+    calculateTalents();
     summaryStudy.textContent = "Not Selected";
     studyEffect.textContent = "Study Effect: None";
     
@@ -403,10 +418,6 @@ specialtySelect.addEventListener("change", function() {
 // =========== Study Functions ============
 
 studySelect.addEventListener("change", function() {
-    if (character.currentStudy !== null) {
-        removeStudyModifier(character.currentStudy);
-    }
-
     character.study = studySelect.value;
 
     const selectedSpecialty = findSpecialty(character.specialty);
@@ -415,24 +426,15 @@ studySelect.addEventListener("change", function() {
         return study.name === character.study;
     });
 
-    applyStudyModifier(selectedStudy);
-
     studyEffect.textContent = `Study Effect: +${selectedStudy.modifier} ${formatStatName(selectedStudy.stat)}`;
 
     character.currentStudy = selectedStudy;
+    character.study = selectedStudy.name;
+
+    calculateTalents();
 
     summaryStudy.textContent = character.study;
-
-    console.log(character);
 });
-
-function applyStudyModifier(study) {
-    character.talents[study.stat] += study.modifier;
-}
-
-function removeStudyModifier(study) {
-    character.talents[study.stat] -= study.modifier;
-}
 
 // =========== Utility Functions ============
 
