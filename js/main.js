@@ -531,6 +531,7 @@ const traitCount = document.getElementById("traitCount");
 const flawCount = document.getElementById("flawCount");
 
 const traitFlawAffiliationNote = document.getElementById("traitFlawAffiliationNote");
+const traitFlawBalanceStatus = document.getElementById("traitFlawBalanceStatus");
 
 // ========================================
 // SPECIALTY FUNCTIONS
@@ -926,6 +927,10 @@ function updateTraitFlawDisplay() {
         checkbox.type = "checkbox";
         checkbox.checked = isTraitSelected(trait.name);
 
+        if (character.traits.length >= 5 && !checkbox.checked) {
+            checkbox.disabled = true;
+        }
+
         checkbox.addEventListener("change", function() {
             if (checkbox.checked) {
                 addTrait(trait.name);
@@ -968,6 +973,10 @@ function updateTraitFlawDisplay() {
         const checkbox = document.createElement("input");
         checkbox.type = "checkbox";
         checkbox.checked = isFlawSelected(flaw.name);
+
+        if (character.flaws.length >= 5 && !checkbox.checked) {
+            checkbox.disabled = true;
+        }
 
         checkbox.addEventListener("change", function() {
             if (checkbox.checked) {
@@ -1012,6 +1021,14 @@ function updateTraitFlawDisplay() {
     } else {
         traitFlawAffiliationNote.textContent = "";
     }
+
+    if (traitsAndFlawsAreBalanced()) {
+        traitFlawBalanceStatus.textContent =
+            "Traits and Flaws are balanced.";
+    } else {
+        traitFlawBalanceStatus.textContent =
+            "Trait and Flaw counts must match before the character can be finalized."
+    }
 }
 
 function traitsAndFlawsAreBalanced() {
@@ -1047,6 +1064,8 @@ function isAffiliationFlaw(name) {
         return affiliation.flaw === name;
     });
 }
+
+updateTraitFlawDisplay();
 
 // ========================================
 // UTILITY FUNCTIONS
