@@ -1068,6 +1068,36 @@ function isAffiliationFlaw(name) {
 updateTraitFlawDisplay();
 
 // ========================================
+// FINALIZE FUNCTIONS
+// ========================================
+
+function canFinalizeCharacter() {
+    return (
+        traitsAndFlawsAreBalanced() &&
+        character.traits.length <= 5 &&
+        character.flaws.length <= 5
+    );
+}
+
+function getFinalizationErrors() {
+    const errors = [];
+
+    if (!traitsAndFlawsAreBalanced()) {
+        errors.push("Trait and Flaw counts must match.");
+    }
+
+    if (character.traits.length > 5) {
+        errors.push("You cannot have more than 5 Traits.");
+    }
+
+    if (character.flaws.length > 5) {
+        errors.push("You cannot have more than 5 Flaws.");
+    }
+
+    return errors;
+}
+
+// ========================================
 // UTILITY FUNCTIONS
 // ========================================
 
