@@ -28,3 +28,71 @@ body {
     opacity: 0.4;
     cursor: not-allowed;
 }
+
+/* =========================================== */
+/*               TRAITS & FLAWS                */
+/* =========================================== */
+
+#traitFlawSelection {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    margin-top: 20px;
+}
+
+#traitColumn,
+#flawColumn {
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+#traitColumn h3,
+#flawColumn h3 {
+    margin: 0;
+    padding: 12px 15px;
+    border-bottom: 1px solid #ccc;
+    text-align: center;
+}
+
+.traitFlawRow {
+    display: flex;
+    gap: 10px;
+    padding: 12px 15px;
+    border-bottom: 1px solid #ddd;
+}
+
+.traitFlawRow:last-child {
+    border-bottom: none;
+}
+
+.traitFlawRow input [type="checkbox"] {
+    flex-shrink: 0;
+    margin-top: 4px;
+}
+
+.traitFlawRow label {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    cursor: pointer;
+}
+
+.traitFlawRow strong {
+    font-size: 1rem;
+}
+
+.traitFlawRow span {
+    font-size: 0.9rem;
+}
+
+#traitFlawStatus {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 12px;
+}
+
+#traitFlawAffiliationNote {
+    margin-top: 5px;
+    text-align: center;
+}
