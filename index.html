@@ -162,16 +162,24 @@ LATEST REVISION: 08/09/2026
         <h2>Traits & Flaws</h2>
 
         <div id="traitFlawSelection">
-            <label for="traitSelect">Add a Trait:</label>
-            <select id="traitSelect">
-                <option value="">-- Select a Trait --</option>
-            </select>
 
-            <label for="flawSelect">Add a Flaw</label>
-            <select id="flawSelect">
-                <option value="">-- Select a Flaw --</option>
-            </select>
+            <div id="traitColumn">
+                <h3>Traits</h3>
+                <div id="traitList"></div>
+            </div>
+
+            <div id="flawColumn">
+                <h3>Flaws</h3>
+                <div id="flawList"></div>
+            </div>
         </div>
+
+        <div id="traitFlawStatus">
+            <span id="traitCount">Traits: 0 / 5</span>
+            <span id="flawCount">Flaws: 0 / 5</span>
+        </div>
+        <div id="traitFlawAffiliationNote"></div>
+
     </section>
 
 <!-- ************************************************************* -->

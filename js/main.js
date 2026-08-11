@@ -128,6 +128,41 @@ const traitDefinitions = [
         name: "Resilient",
         definition: "You're tough.",
         effect: "+1 Destiny Rewrite per Checkpoint."
+    },
+    {
+        name: "Student",
+        definition: "",
+        effect: "For any Technique or Willpower roll, roll 2 dice and take the better of the two rolls."
+    },
+    {
+        name: "Social Butterfly",
+        definition: "",
+        effect: "Combos take 5 less KP."
+    },
+    {
+        name: "Full Assault",
+        definition: "",
+        effect: "Ability to attack 3 times per combat without raising the danger or Payback Level."
+    },
+    {
+        name: "Get Back Up",
+        definition: "",
+        effect: "When below 25% HP, add +3 to all rolls."
+    },
+    {
+        name: "Bot Lover",
+        definition: "",
+        effect: "+3 Aura when communicating with bots."
+    },
+    {
+        name: "Diplomatic Immunity",
+        definition: "",
+        effect: "+4 Damage on all attacks when fighting against Special Agents."
+    },
+    {
+        name: "Tough Guy",
+        definition: "",
+        effect: "All attacks +3 damage."
     }
 ];
 
@@ -206,6 +241,41 @@ const flawDefinitions = [
         name: "Distant",
         definition: "You keep others at a distance.",
         effect: "Can only perform one Combo during combat."
+    },
+    {
+        name: "Still Learning",
+        definition: "",
+        effect: "All karma attacks cost 3 more KP."
+    },
+    {
+        name: "Elitist",
+        definition: "",
+        effect: "Can't perform Combos with Special Agents or Ink Fighter Elites."
+    },
+    {
+        name: "Disliked",
+        definition: "",
+        effect: "-2 to Aura rolls."
+    },
+    {
+        name: "Bruised",
+        definition: "",
+        effect: "-1 to Function rolls."
+    },
+    {
+        name: "Socially Awkward",
+        definition: "",
+        effect: "-3 Aura when speaking with humans."
+    },
+    {
+        name: "Language Barrier",
+        definition: "",
+        effect: "-1 to Technique rolls."
+    },
+    {
+        name: "Loner",
+        definition: "",
+        effect: "Can't perform Combos."
     }
 ];
 
@@ -454,8 +524,13 @@ const modifierButtons = document.querySelectorAll(".modifierButton");
 
 const resetTalentsButton = document.getElementById("resetTalents");
 
-const traitSelect = document.getElementById("traitSelect");
-const flawSelect = document.getElementById("flawSelect");
+const traitList = document.getElementById("traitList");
+const flawList = document.getElementById("flawList");
+
+const traitCount = document.getElementById("traitCount");
+const flawCount = document.getElementById("flawCount");
+
+const traitFlawAffiliationNote = document.getElementById("traitFlawAffiliationNote");
 
 // ========================================
 // SPECIALTY FUNCTIONS
@@ -520,6 +595,8 @@ specialtySelect.addEventListener("change", function() {
     affiliationDescription.value = "";
     character.traits = [];
     character.flaws = [];
+
+    updateTraitFlawDisplay();
 
     calculateTalents();
     calculateDerivedStats();
@@ -593,6 +670,8 @@ affiliationSelect.addEventListener("change", function() {
     character.affiliationFlaw = selectedAffiliation.flaw;
     character.traits = [selectedAffiliation.trait];
     character.flaws = [selectedAffiliation.flaw];
+
+    updateTraitFlawDisplay();
 
     affiliationName.value = selectedAffiliation.name;
     affiliationDescription.value = selectedAffiliation.description;
@@ -780,52 +859,194 @@ function findFlaw(name) {
 }
 
 function addTrait(name) {
-    if (!character.traits.includes(name)) {
-        character.traits.push(name);
+    if (character.traits.includes(name)) {
+        return false;
     }
+
+    if (character.traits.length >= 5) {
+        return false;
+    }
+
+    character.traits.push(name);
+    updateTraitFlawDisplay();
+    return true;
 }
 
 function addFlaw(name) {
-    if (!character.flaws.includes(name)) {
-        character.flaws.push(name);
+    if (character.flaws.includes(name)) {
+        return false;
     }
+
+    if (character.flaws.length >= 5) {
+        return false;
+    }
+
+    character.flaws.push(name);
+    updateTraitFlawDisplay();
+    return true;
 }
 
-function populateTraitFlawOptions() {
+function removeTrait(name) {
+    const index = character.traits.indexOf(name);
+
+    if (index !== -1) {
+        character.traits.splice(index, 1);
+        updateTraitFlawDisplay();
+        return true;
+    }
+
+    return false;
+}
+
+function removeFlaw(name) {
+    const index = character.flaws.indexOf(name);
+
+    if (index !== -1) {
+        character.flaws.splice(index, 1);
+        updateTraitFlawDisplay();
+        return true;
+    }
+
+    return false;
+}
+
+function updateTraitFlawDisplay() {
+    traitList.innerHTML = "";
+    flawList.innerHTML = "";
+
     traitDefinitions.forEach(function(trait) {
-        const option = document.createElement("option");
+        if (isAffiliationTrait(trait.name)) {
+            return;
+        }
 
-        option.value = trait.name;
-        option.textContent = trait.name;
+        const row = document.createElement("div");
+        row.classList.add("traitFlawRow");
 
-        traitSelect.appendChild(option);
+        const checkbox = document.createElement("input");
+        checkbox.type = "checkbox";
+        checkbox.checked = isTraitSelected(trait.name);
+
+        checkbox.addEventListener("change", function() {
+            if (checkbox.checked) {
+                addTrait(trait.name);
+            } else {
+                removeTrait(trait.name);
+            }
+
+            updateTraitFlawDisplay();
+        });
+
+        const label = document.createElement("label");
+
+        const name = document.createElement("strong");
+        name.textContent = trait.name;
+
+        const definition = document.createElement("span");
+        definition.textContent = trait.definition;
+
+        const effect = document.createElement("span");
+        effect.textContent = trait.effect;
+
+        label.appendChild(name);
+        label.appendChild(definition);
+        label.appendChild(effect);
+
+        row.appendChild(checkbox);
+        row.appendChild(label);
+
+        traitList.appendChild(row);
     });
 
     flawDefinitions.forEach(function(flaw) {
-        const option = document.createElement("option");
+        if (isAffiliationFlaw(flaw.name)) {
+            return;
+        }
 
-        option.value = flaw.name;
-        option.textContent = flaw.name;
+        const row = document.createElement("div");
+        row.classList.add("traitFlawRow");
 
-        flawSelect.appendChild(option);
+        const checkbox = document.createElement("input");
+        checkbox.type = "checkbox";
+        checkbox.checked = isFlawSelected(flaw.name);
+
+        checkbox.addEventListener("change", function() {
+            if (checkbox.checked) {
+                addFlaw(flaw.name);
+            } else {
+                removeFlaw(flaw.name);
+            }
+
+            updateTraitFlawDisplay();
+        });
+
+        const label = document.createElement("label");
+
+        const name = document.createElement("strong");
+        name.textContent = flaw.name;
+
+        const definition = document.createElement("span");
+        definition.textContent = flaw.definition;
+
+        const effect = document.createElement("span");
+        effect.textContent = flaw.effect;
+
+        label.appendChild(name);
+        label.appendChild(definition);
+        label.appendChild(effect);
+
+        row.appendChild(checkbox);
+        row.appendChild(label);
+
+        flawList.appendChild(row);
+    });
+
+    traitCount.textContent =
+        `Traits: ${character.traits.length} / 5`;
+
+    flawCount.textContent =
+        `Flaws: ${character.flaws.length} / 5`;
+
+    if (character.affiliationTrait && character.affiliationFlaw) {
+        traitFlawAffiliationNote.innerHTML =
+            "<em>Includes Affiliation trait and flaw</em>";
+    } else {
+        traitFlawAffiliationNote.textContent = "";
+    }
+}
+
+function traitsAndFlawsAreBalanced() {
+    return character.traits.length === character.flaws.length;
+}
+
+function getTraitFlawStatus() {
+    return {
+        traits: character.traits.length,
+        flaws: character.flaws.length,
+        traitSlotsRemaining: 5 - character.traits.length,
+        flawSlotsRemaining: 5 - character.flaws.length,
+        balanced: traitsAndFlawsAreBalanced()
+    };
+}
+
+function isTraitSelected(name) {
+    return character.traits.includes(name);
+}
+
+function isFlawSelected(name) {
+    return character.flaws.includes(name);
+}
+
+function isAffiliationTrait(name) {
+    return affiliations.some(function(affiliation) {
+        return affiliation.trait === name;
     });
 }
 
-populateTraitFlawOptions();
-
-traitSelect.addEventListener("change", function() {
-    if (traitSelect.value !== "") {
-        addTrait(traitSelect.value);
-        traitSelect.value = "";
-    }
-});
-
-flawSelect.addEventListener("change", function() {
-    if (flawSelect.value !== "") {
-        addFlaw(flawSelect.value);
-        flawSelect.value = "";
-    }
-});
+function isAffiliationFlaw(name) {
+    return affiliations.some(function(affiliation) {
+        return affiliation.flaw === name;
+    });
+}
 
 // ========================================
 // UTILITY FUNCTIONS
