@@ -45,6 +45,12 @@ const character = {
     hp: 10,
     mov: 1,
     defense: 0,
+    startingItems: {
+        karmaMedKits: 2,
+        merits: 20,
+        fishbowls: 1,
+        specialtyItems: []
+    },
     traits: [],
     flaws: []
 };
@@ -524,6 +530,12 @@ const modifierButtons = document.querySelectorAll(".modifierButton");
 
 const resetTalentsButton = document.getElementById("resetTalents");
 
+const startingItems = document.getElementById("startingItems");
+const startingMedKits = document.getElementById("startingMedKits");
+const startingMerits = document.getElementById("startingMerits");
+const startingFishbowl = document.getElementById("startingFishbowl");
+const specialtyItemDisplay = document.getElementById("specialtyItemDisplay");
+
 const traitList = document.getElementById("traitList");
 const flawList = document.getElementById("flawList");
 
@@ -581,6 +593,9 @@ specialtySelect.addEventListener("change", function() {
 
     character.specialty = selectedSpecialty.name;
     character.karmaPool = selectedSpecialty.startingKarma;
+
+    calculateStartingItems();
+    updateStartingItemsDisplay();
 
     character.study = "";
     character.currentStudy = null;
@@ -844,6 +859,96 @@ function calculateDerivedStats() {
 }
 
 // ========================================
+// STARTING ITEMS FUNCTIONS
+// ========================================
+
+function calculateStartingItems() {
+    character.startingItems.karmaMedKits = 2;
+    character.startingItems.merits = 20;
+    character.startingItems.fishbowls = 1;
+    character.startingItems.specialtyItems = [];
+
+    if (character.specialty === "Ink Fighter") {
+        character.startingItems.specialtyItems.push("3 Ink Syringes");
+    }
+
+    else if (character.specialty === "Escape Artist") {
+        // Escape Artist choice handled by UI
+    }
+
+    else if (character.specialty === "Clockbot") {
+        character.startingItems.specialtyItems.push("1 Large Integrated Torus");
+    }
+
+    else if (character.specialty === "Special Agent") {
+        character.startingItems.specialtyItems.push("1 Security Badge");
+    }
+}
+
+function updateStartingItemsDisplay() {
+    specialtyItemDisplay.innerHTML = "";
+
+    if (character.specialty === "Ink Fighter") {
+        specialtyItemDisplay.textContent = "3 Ink Syringes";
+    }
+
+    else if (character.specialty === "Escape Artist") {
+        const largeOption = document.createElement("label");
+
+        const largeRadio = document.createElement("input");
+        largeRadio.type = "radio";
+        largeRadio.name = "escapeArtistTorus";
+        largeRadio.value = "1 Large Torus";
+
+        largeRadio.addEventListener("change", function() {
+            if (largeRadio.checked) {
+                setEscapeArtistTorusChoice(largeRadio.value);
+            }
+        });
+
+        const largeText = document.createTextNode(" 1 Large Torus");
+
+        largeOption.appendChild(largeRadio);
+        largeOption.appendChild(largeText);
+
+        const smallOption = document.createElement("label");
+
+        const smallRadio = document.createElement("input");
+        smallRadio.type = "radio";
+        smallRadio.name = "escapeArtistTorus";
+        smallRadio.value = "2 Small Toruses";
+
+        smallRadio.addEventListener("change", function() {
+            if (smallRadio.checked) {
+                setEscapeArtistTorusChoice(smallRadio.value);
+            }
+        });
+
+        const smallText = document.createTextNode(" 2 Small Toruses");
+
+        smallOption.appendChild(smallRadio);
+        smallOption.appendChild(smallText);
+
+        specialtyItemDisplay.appendChild(largeOption);
+        specialtyItemDisplay.appendChild(smallOption);
+    }
+
+    else if (character.specialty === "Clockbot") {
+        specialtyItemDisplay.textContent =
+            "1 Large Integrated Torus";
+    }
+
+    else if (character.specialty === "Special Agent") {
+        specialtyItemDisplay.textContent =
+            "1 Security Badge";
+    }
+}
+
+function setEscapeArtistTorusChoice(choice) {
+    character.startingItems.specialtyItems = [choice];
+}
+
+// ========================================
 // TRAITS/FLAWS FUNCTIONS
 // ========================================
 
@@ -1075,13 +1180,24 @@ function canFinalizeCharacter() {
     return (
         traitsAndFlawsAreBalanced() &&
         character.traits.length <= 5 &&
-        character.flaws.length <= 5
+        character.flaws.length <= 5 &&
+        (
+            character.specialty !== "Escape Artist" ||
+            character.startingItems.specialtyItems.length > 0
+        )
     );
 }
 
 function getFinalizationErrors() {
     const errors = [];
 
+    if (
+        character.specialty === "Escape Artist" &&
+        character.startingItems.specialtyItems.length === 0
+    ) {
+        errors.push("Escape Artists much choose a starting torus.")
+    }
+    
     if (!traitsAndFlawsAreBalanced()) {
         errors.push("Trait and Flaw counts must match.");
     }
