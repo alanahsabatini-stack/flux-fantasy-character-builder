@@ -56,7 +56,180 @@ const character = {
         specialtyItems: []
     },
     traits: [],
-    flaws: []
+    flaws: [],
+    powers: {
+        basicTier1: {
+            attack: {
+                name: "",
+                description: "",
+                kpCost: 0,
+                damage: null,
+                range: "",
+                effect: ""
+            },
+            defense: {
+                name: "",
+                description: "",
+                kpCost: 0,
+                damage: null,
+                range: "",
+                effect: ""
+            },
+            combo: {
+                name: "",
+                description: "",
+                kpCost: 0,
+                damage: null,
+                range: "",
+                effect: ""
+            },
+            signature: {
+                name: "",
+                description: "",
+                kpCost: 0,
+                damage: null,
+                range: "",
+                effect: ""
+            },
+            locomotion: {
+                name: "",
+                description: "",
+                kpCost: 0,
+                damage: null,
+                range: "",
+                effect: ""
+            }
+        },
+
+        basicTier2: {
+            attack: {
+                name: "",
+                description: "",
+                kpCost: 0,
+                damage: null,
+                range: "",
+                effect: ""
+            },
+            defense: {
+                name: "",
+                description: "",
+                kpCost: 0,
+                damage: null,
+                range: "",
+                effect: ""
+            },
+            combo: {
+                name: "",
+                description: "",
+                kpCost: 0,
+                damage: null,
+                range: "",
+                effect: ""
+            },
+            signature: {
+                name: "",
+                description: "",
+                kpCost: 0,
+                damage: null,
+                range: "",
+                effect: ""
+            },
+            locomotion: {
+                name: "",
+                description: "",
+                kpCost: 0,
+                damage: null,
+                range: "",
+                effect: ""
+            }
+        },
+
+        advancedTier1: {
+            attack: {
+                name: "",
+                description: "",
+                kpCost: 0,
+                damage: null,
+                range: "",
+                effect: ""
+            },
+            defense: {
+                name: "",
+                description: "",
+                kpCost: 0,
+                damage: null,
+                range: "",
+                effect: ""
+            },
+            combo: {
+                name: "",
+                description: "",
+                kpCost: 0,
+                damage: null,
+                range: "",
+                effect: ""
+            },
+            signature: {
+                name: "",
+                description: "",
+                kpCost: 0,
+                damage: null,
+                range: "",
+                effect: ""
+            },
+            locomotion: {
+                name: "",
+                description: "",
+                kpCost: 0,
+                damage: null,
+                range: "",
+                effect: ""
+            }
+        },
+
+        advancedTier2: {
+            attack: {
+                name: "",
+                description: "",
+                kpCost: 0,
+                damage: null,
+                range: "",
+                effect: ""
+            },
+            defense: {
+                name: "",
+                description: "",
+                kpCost: 0,
+                damage: null,
+                range: "",
+                effect: ""
+            },
+            combo: {
+                name: "",
+                description: "",
+                kpCost: 0,
+                damage: null,
+                range: "",
+                effect: ""
+            },
+            signature: {
+                name: "",
+                description: "",
+                kpCost: 0,
+                damage: null,
+                range: "",
+                effect: ""
+            },
+            locomotion: {
+                name: "",
+                description: "",
+                kpCost: 0,
+                damage: null,
+                range: "",
+                effect: ""
+            }
+        }
+    }
 };
 
 // ========================================
