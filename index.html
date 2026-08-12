@@ -6,7 +6,7 @@ PROJECT: Flux Fantasy Character Builder
 TITLE: HTML Main
 PROGRAMMER: Alanah Sabatini
 DATE: 08/08/2026
-LATEST REVISION: 08/09/2026
+LATEST REVISION: 08/12/2026
 ==========================================-->
 
 <head>
@@ -28,6 +28,11 @@ LATEST REVISION: 08/09/2026
 <!-- ************************************************************* -->
 
     <section id="identitySection">
+        <div>
+            <label for="playerName">Player Name</label>
+            <input type="text" id="playerName">
+        </div>
+        
         <h2>Identity</h2>
 
         <div>
@@ -63,6 +68,11 @@ LATEST REVISION: 08/09/2026
         <div>
             <label for="characterLevel">Level</label>
             <input type="number" id="characterLevel" min="1" value="1">
+        </div>
+
+        <div>
+            <label for="characterBackground">Background</label>
+            <textarea id="characterBackground"></textarea>
         </div>
     </section>
 

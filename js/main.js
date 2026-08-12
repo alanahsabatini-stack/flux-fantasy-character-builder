@@ -3,7 +3,7 @@
 // TITLE: JavaScript Main
 // PROGRAMMER: Alanah Sabatini
 // DATE: 08/08/2026
-// LATEST REVISION: 08/09/2026
+// LATEST REVISION: 08/12/2026
 // ========================================
 
 console.log("Flux Fantasy Character Builder loaded!")
@@ -20,6 +20,7 @@ const character = {
     height: "",
     weight: "",
     level: 1,
+    background: "",
     specialty: "",
     study: "",
     currentStudy: null,
@@ -497,8 +498,879 @@ const talentModifierPool = {
 };
 
 // ========================================
+// KARMA POWER DEFINITIONS
+// ========================================
+
+const studyPowerDefinitions = [
+    {
+        study: "Creative Karmastry",
+
+        basicTier1: {
+            attack: {
+                kpCost: 5,
+                damage: 4,
+                range: "0-2",
+                effect: "-"
+            },
+            defense: {
+                kpCost: 5,
+                damage: null,
+                range: "-",
+                effect: "+3 to DEF on next turn."
+            },
+            combo: {
+                kpCost: 7,
+                damage: 5,
+                range: "1",
+                effect: "-"
+            },
+            signature: {
+                kpCost: 10,
+                damage: 6,
+                range: "1-2",
+                effect: "-"
+            },
+            locomotion: {
+                kpCost: 3,
+                damage: null,
+                range: "-",
+                effect: "+1 MOV"
+            }
+        },
+
+        basicTier2: {
+            attack: {
+                kpCost: 10,
+                damage: 8,
+                range: "0-2",
+                effect: "-"
+            },
+            defense: {
+                kpCost: 10,
+                damage: null,
+                range: "-",
+                effect: "+4 to DEF on next turn."
+            },
+            combo: {
+                kpCost: 14,
+                damage: 10,
+                range: "1",
+                effect: "-"
+            },
+            signature: {
+                kpCost: 20,
+                damage: 12,
+                range: "1-2",
+                effect: "-"
+            },
+            locomotion: {
+                kpCost: 5,
+                damage: null,
+                range: "-",
+                effect: "+2 MOV"
+            }
+        },
+
+        advancedTier1: {
+            attack: {
+                kpCost: 15,
+                damage: 14,
+                range: "0-3",
+                effect: "Add +2 to Quick Action rolls. This ability can stack. Resets when you are attacked."
+            },
+            defense: {
+                kpCost: 15,
+                damage: null,
+                range: "-",
+                effect: "+5 to DEF on next turn."
+            },
+            combo: {
+                kpCost: 19,
+                damage: 16,
+                range: "1-2",
+                effect: "Add +2 to Quick Action rolls. This ability can stack. Resets when you are attacked."
+            },
+            signature: {
+                kpCost: 25,
+                damage: 18,
+                range: "0-2",
+                effect: "Add +2 to Quick Action rolls. This ability can stack. Resets when you are attacked."
+            },
+            locomotion: {
+                kpCost: 7,
+                damage: null,
+                range: "-",
+                effect: "+3 MOV"
+            }
+        },
+
+        advancedTier2: {
+            attack: {
+                kpCost: 30,
+                damage: 28,
+                range: "0-3",
+                effect: "Add +5 to Quick Action rolls. This ability can stack. Resets when you are attacked."
+            },
+            defense: {
+                kpCost: 30,
+                damage: null,
+                range: "-",
+                effect: "+6 to DEF on next turn."
+            },
+            combo: {
+                kpCost: 38,
+                damage: 32,
+                range: "1-2",
+                effect: "Add +5 to Quick Action rolls. This ability can stack. Resets when you are attacked."
+            },
+            signature: {
+                kpCost: 50,
+                damage: 36,
+                range: "0-2",
+                effect: "Add +5 to Quick Action rolls. This ability can stack. Resets when you are attacked."
+            },
+            locomotion: {
+                kpCost: 9,
+                damage: null,
+                range: "-",
+                effect: "+4 MOV"
+            }
+        }
+    },
+    {
+        study: "Clockwork Karmastry",
+
+        basicTier1: {
+            attack: {
+                kpCost: 5,
+                damage: 4,
+                range: "1-2",
+                effect: "-"
+            },
+            defense: {
+                kpCost: 5,
+                damage: null,
+                range: "-",
+                effect: "+1 to DEF on next turn."
+            },
+            combo: {
+                kpCost: 7,
+                damage: 5,
+                range: "2",
+                effect: "-"
+            },
+            signature: {
+                kpCost: 10,
+                damage: 7,
+                range: "0-1",
+                effect: "-"
+            },
+            locomotion: {
+                kpCost: 3,
+                damage: null,
+                range: "-",
+                effect: "+1 MOV"
+            }
+        },
+
+        basicTier2: {
+            attack: {
+                kpCost: 10,
+                damage: 8,
+                range: "1-2",
+                effect: "-"
+            },
+            defense: {
+                kpCost: 10,
+                damage: null,
+                range: "-",
+                effect: "+2 to DEF on next turn."
+            },
+            combo: {
+                kpCost: 14,
+                damage: 10,
+                range: "2",
+                effect: "-"
+            },
+            signature: {
+                kpCost: 20,
+                damage: 14,
+                range: "0-1",
+                effect: "-"
+            },
+            locomotion: {
+                kpCost: 5,
+                damage: null,
+                range: "-",
+                effect: "+2 MOV"
+            }
+        },
+
+        advancedTier1: {
+            attack: {
+                kpCost: 15,
+                damage: 14,
+                range: "1-3",
+                effect: "After each attack, increase its range by +1. Resets after being hit."
+            },
+            defense: {
+                kpCost: 15,
+                damage: null,
+                range: "-",
+                effect: "+3 to DEF on next turn."
+            },
+            combo: {
+                kpCost: 19,
+                damage: 16,
+                range: "1-2",
+                effect: "After each attack, increase its range by +1. Resets after being hit."
+            },
+            signature: {
+                kpCost: 25,
+                damage: 20,
+                range: "0-1",
+                effect: "After each attack, increase its range by +1. Resets after being hit."
+            },
+            locomotion: {
+                kpCost: 7,
+                damage: null,
+                range: "-",
+                effect: "+3 MOV"
+            }
+        },
+
+        advancedTier2: {
+            attack: {
+                kpCost: 30,
+                damage: 28,
+                range: "1-3",
+                effect: "After each attack, increase its range by +2. Resets after being hit."
+            },
+            defense: {
+                kpCost: 30,
+                damage: null,
+                range: "-",
+                effect: "+4 to DEF on next turn."
+            },
+            combo: {
+                kpCost: 38,
+                damage: 32,
+                range: "1-2",
+                effect: "After each attack, increase its range by +2. Resets after being hit."
+            },
+            signature: {
+                kpCost: 50,
+                damage: 40,
+                range: "0-1",
+                effect: "After each attack, increase its range by +2. Resets after being hit."
+            },
+            locomotion: {
+                kpCost: 9,
+                damage: null,
+                range: "-",
+                effect: "+4 MOV"
+            }
+        }
+    },
+    {
+        study: "Bio Karmastry",
+
+        basicTier1: {
+            attack: {
+                kpCost: 5,
+                damage: 3,
+                range: "1-3",
+                effect: "-"
+            },
+            defense: {
+                kpCost: 5,
+                damage: null,
+                range: "-",
+                effect: "+4 to DEF on next turn."
+            },
+            combo: {
+                kpCost: 7,
+                damage: 4,
+                range: "1-2",
+                effect: "-"
+            },
+            signature: {
+                kpCost: 10,
+                damage: 5,
+                range: "0-3",
+                effect: "-"
+            },
+            locomotion: {
+                kpCost: 3,
+                damage: null,
+                range: "-",
+                effect: "+1 MOV"
+            }
+        },
+
+        basicTier2: {
+            attack: {
+                kpCost: 10,
+                damage: 6,
+                range: "1-3",
+                effect: "Each attack restores +2 HP (up to cap)."
+            },
+            defense: {
+                kpCost: 10,
+                damage: null,
+                range: "-",
+                effect: "+5 to DEF on next turn."
+            },
+            combo: {
+                kpCost: 14,
+                damage: 8,
+                range: "1-2",
+                effect: "-"
+            },
+            signature: {
+                kpCost: 20,
+                damage: 10,
+                range: "0-3",
+                effect: "Each attack restores +2 HP (up to cap)."
+            },
+            locomotion: {
+                kpCost: 5,
+                damage: null,
+                range: "-",
+                effect: "+2 MOV"
+            }
+        },
+
+        advancedTier1: {
+            attack: {
+                kpCost: 15,
+                damage: 12,
+                range: "1-4",
+                effect: "Each attack heals you or a teammate for +5 HP (up to cap)."
+            },
+            defense: {
+                kpCost: 15,
+                damage: null,
+                range: "-",
+                effect: "+6 to DEF on next turn."
+            },
+            combo: {
+                kpCost: 19,
+                damage: 14,
+                range: "1-3",
+                effect: "Each attack heals you or a teammate for +5 HP (up to cap)."
+            },
+            signature: {
+                kpCost: 25,
+                damage: 16,
+                range: "0-4",
+                effect: "Each attack heals you or a teammate for +5 HP (up to cap)."
+            },
+            locomotion: {
+                kpCost: 7,
+                damage: null,
+                range: "-",
+                effect: "+3 MOV"
+            }
+        },
+
+        advancedTier2: {
+            attack: {
+                kpCost: 30,
+                damage: 24,
+                range: "1-4",
+                effect: "Each attack heals you or a teammate for +8 HP (up to cap)."
+            },
+            defense: {
+                kpCost: 30,
+                damage: null,
+                range: "-",
+                effect: "+7 to DEF on next turn."
+            },
+            combo: {
+                kpCost: 38,
+                damage: 32,
+                range: "1-3",
+                effect: "Each attack heals you or a teammate for +8 HP (up to cap)."
+            },
+            signature: {
+                kpCost: 50,
+                damage: 38,
+                range: "0-4",
+                effect: "Each attack heals you or a teammate for +8 HP (up to cap)."
+            },
+            locomotion: {
+                kpCost: 9,
+                damage: null,
+                range: "-",
+                effect: "+4 MOV"
+            }
+        }
+    },
+    {
+        study: "Machine Karmastry",
+
+        basicTier1: {
+            attack: {
+                kpCost: 5,
+                damage: 3,
+                range: "3-4",
+                effect: "-"
+            },
+            defense: {
+                kpCost: 5,
+                damage: null,
+                range: "-",
+                effect: "+3 to DEF on next turn."
+            },
+            combo: {
+                kpCost: 7,
+                damage: 3,
+                range: "2-4",
+                effect: "-"
+            },
+            signature: {
+                kpCost: 10,
+                damage: 4,
+                range: "0-4",
+                effect: "-"
+            },
+            locomotion: {
+                kpCost: 3,
+                damage: null,
+                range: "-",
+                effect: "+1 MOV"
+            }
+        },
+
+        basicTier2: {
+            attack: {
+                kpCost: 10,
+                damage: 6,
+                range: "3-4",
+                effect: "-"
+            },
+            defense: {
+                kpCost: 10,
+                damage: null,
+                range: "-",
+                effect: "+4 to DEF on next turn."
+            },
+            combo: {
+                kpCost: 14,
+                damage: 6,
+                range: "2-4",
+                effect: "-"
+            },
+            signature: {
+                kpCost: 20,
+                damage: 8,
+                range: "0-4",
+                effect: "-"
+            },
+            locomotion: {
+                kpCost: 5,
+                damage: null,
+                range: "-",
+                effect: "+2 MOV"
+            }
+        },
+
+        advancedTier1: {
+            attack: {
+                kpCost: 15,
+                damage: 12,
+                range: "2-4",
+                effect: "After each attack, transfer 10 PBP to a nearby Clockbot or 5 to any nearby machine if none are present."
+            },
+            defense: {
+                kpCost: 15,
+                damage: null,
+                range: "-",
+                effect: "+5 to DEF on next turn."
+            },
+            combo: {
+                kpCost: 19,
+                damage: 12,
+                range: "1-4",
+                effect: "After each attack, transfer 10 PBP to a nearby Clockbot or 5 to any nearby machine if none are present."
+            },
+            signature: {
+                kpCost: 25,
+                damage: 16,
+                range: "0-5",
+                effect: "After each attack, transfer 10 PBP to a nearby Clockbot or 5 to any nearby machine if none are present."
+            },
+            locomotion: {
+                kpCost: 7,
+                damage: null,
+                range: "-",
+                effect: "+3 MOV"
+            }
+        },
+
+        advancedTier2: {
+            attack: {
+                kpCost: 30,
+                damage: 24,
+                range: "2-4",
+                effect: "After each attack, transfer 20 PBP to a nearby Clockbot or 10 to any nearby machine if none are present."
+            },
+            defense: {
+                kpCost: 30,
+                damage: null,
+                range: "-",
+                effect: "+6 to DEF on next turn."
+            },
+            combo: {
+                kpCost: 38,
+                damage: 24,
+                range: "1-4",
+                effect: "After each attack, transfer 20 PBP to a nearby Clockbot or 10 to any nearby machine if none are present."
+            },
+            signature: {
+                kpCost: 50,
+                damage: 32,
+                range: "0-5",
+                effect: "After each attack, transfer 20 PBP to a nearby Clockbot or 10 to any nearby machine if none are present."
+            },
+            locomotion: {
+                kpCost: 9,
+                damage: null,
+                range: "-",
+                effect: "+4 MOV"
+            }
+        }
+    },
+    {
+        study: "Quantum Karmastry",
+
+        basicTier1: {
+            attack: {
+                kpCost: 5,
+                damage: 5,
+                range: "1",
+                effect: "-"
+            },
+            defense: {
+                kpCost: 5,
+                damage: null,
+                range: "-",
+                effect: "+1 to DEF on next turn."
+            },
+            combo: {
+                kpCost: 7,
+                damage: 5,
+                range: "2",
+                effect: "-"
+            },
+            signature: {
+                kpCost: 10,
+                damage: 7,
+                range: "0",
+                effect: "-"
+            },
+            locomotion: {
+                kpCost: 3,
+                damage: null,
+                range: "-",
+                effect: "+1 MOV"
+            }
+        },
+
+        basicTier2: {
+            attack: {
+                kpCost: 10,
+                damage: 10,
+                range: "1",
+                effect: "-"
+            },
+            defense: {
+                kpCost: 10,
+                damage: null,
+                range: "-",
+                effect: "+2 to DEF on next turn."
+            },
+            combo: {
+                kpCost: 14,
+                damage: 10,
+                range: "2",
+                effect: "-"
+            },
+            signature: {
+                kpCost: 20,
+                damage: 14,
+                range: "0",
+                effect: "-"
+            },
+            locomotion: {
+                kpCost: 5,
+                damage: null,
+                range: "-",
+                effect: "+2 MOV"
+            }
+        },
+
+        advancedTier1: {
+            attack: {
+                kpCost: 15,
+                damage: 16,
+                range: "1-2",
+                effect: "After each attack, teleport to a square next to an ally."
+            },
+            defense: {
+                kpCost: 15,
+                damage: null,
+                range: "-",
+                effect: "+3 to DEF on next turn."
+            },
+            combo: {
+                kpCost: 19,
+                damage: 16,
+                range: "1-2",
+                effect: "After each attack, teleport to a square next to an ally."
+            },
+            signature: {
+                kpCost: 25,
+                damage: 20,
+                range: "0-1",
+                effect: "After each attack, teleport to a square next to an ally."
+            },
+            locomotion: {
+                kpCost: 7,
+                damage: null,
+                range: "-",
+                effect: "+3 MOV"
+            }
+        },
+
+        advancedTier2: {
+            attack: {
+                kpCost: 30,
+                damage: 32,
+                range: "1-2",
+                effect: "After each attack, teleport to a square next to an ally or enemy."
+            },
+            defense: {
+                kpCost: 30,
+                damage: null,
+                range: "-",
+                effect: "+4 to DEF on next turn."
+            },
+            combo: {
+                kpCost: 38,
+                damage: 32,
+                range: "1-2",
+                effect: "After each attack, teleport to a square next to an ally or enemy."
+            },
+            signature: {
+                kpCost: 50,
+                damage: 40,
+                range: "0-1",
+                effect: "After each attack, teleport to a square next to an ally or enemy."
+            },
+            locomotion: {
+                kpCost: 9,
+                damage: null,
+                range: "-",
+                effect: "+4 MOV"
+            }
+        }
+    }     
+];
+
+// ========================================
+// NON-KARMA ATTACK DEFINITIONS
+// ========================================
+
+const nonKarmaAttackDefinitions = [
+    {
+        specialty: "Escape Artist",
+
+        basic: [
+            {
+                exampleName: "Punch",
+                damage: 3,
+                range: "1",
+                effect: "-"
+            },
+            {
+                exampleName: "Running Kick",
+                damage: 2,
+                range: "2",
+                effect: "-"
+            },
+            {
+                exampleName: "Bite",
+                damage: 4,
+                range: "0",
+                effect: "-"
+            }
+        ],
+
+        advanced: [
+            {
+                exampleName: "Torus Smash",
+                damage: 7,
+                range: "0-4",
+                effect: "+5 KP restored"
+            },
+            {
+                exampleName: "Backhand",
+                damage: 9,
+                range: "1-2",
+                effect: "+5 KP restored"
+            },
+            {
+                exampleName: "Stomp",
+                damage: 10,
+                range: "0-1",
+                effect: "+5 KP restored"
+            }
+        ]
+    },
+    {
+        specialty: "Ink Fighter",
+
+        basic: [
+            {
+                exampleName: "Chop",
+                damage: 5,
+                range: "1",
+                effect: "-"
+            },
+            {
+                exampleName: "Round House",
+                damage: 4,
+                range: "3",
+                effect: "-"
+            },
+            {
+                exampleName: "Uppercut",
+                damage: 6,
+                range: "0",
+                effect: "-"
+            }
+        ],
+
+        advanced: [
+            {
+                exampleName: "Arm Slice",
+                damage: 12,
+                range: "1-2",
+                effect: "-"
+            },
+            {
+                exampleName: "Jab",
+                damage: 14,
+                range: "1-3",
+                effect: "-"
+            },
+            {
+                exampleName: "Grapple",
+                damage: 15,
+                range: "0",
+                effect: "-"
+            }
+        ]
+    },
+    {
+        specialty: "Special Agent",
+
+        basic: [
+            {
+                exampleName: "Baton",
+                damage: 4,
+                range: "1-2",
+                effect: "-"
+            },
+            {
+                exampleName: "Net Trap",
+                damage: 5,
+                range: "0-1",
+                effect: "-"
+            },
+            {
+                exampleName: "Taser",
+                damage: 6,
+                range: "0",
+                effect: "-"
+            }
+        ],
+
+        advanced: [
+            {
+                exampleName: "Mini Grenade",
+                damage: 8,
+                range: "0-2",
+                effect: "Reduces the Perception Threshold of enemy target by 2."
+            },
+            {
+                exampleName: "Self Defense",
+                damage: 10,
+                range: "0-1",
+                effect: "Reduces the Perception Threshold of enemy target by 2."
+            },
+            {
+                exampleName: "Poison Dart",
+                damage: 12,
+                range: "1-3",
+                effect: "Reduces the Perception Threshold of enemy target by 2."
+            }
+        ]
+    },
+    {
+        specialty: "Clockbot",
+
+        basic: [
+            {
+                exampleName: "Pound",
+                damage: 3,
+                range: "1-2",
+                effect: "-"
+            },
+            {
+                exampleName: "Metal Fist",
+                damage: 4,
+                range: "0-1",
+                effect: "-"
+            },
+            {
+                exampleName: "Shoulder Check",
+                damage: 5,
+                range: "0",
+                effect: "-"
+            }
+        ],
+
+        advanced: [
+            {
+                exampleName: "ZAP!",
+                damage: 11,
+                range: "0-2",
+                effect: "+2 damage to humans"
+            },
+            {
+                exampleName: "Sharp Metal",
+                damage: 10,
+                range: "0-3",
+                effect: "+2 damage to humans"
+            },
+            {
+                exampleName: "Body Slam",
+                damage: 12,
+                range: "0-1",
+                effect: "+2 damage to humans"
+            }
+        ]
+    } 
+]
+
+// ========================================
 // DOM REFERENCES
 // ========================================
+
+const playerName = document.getElementById("playerName");
 
 const characterName = document.getElementById("characterName");
 const characterAlias = document.getElementById("characterAlias");
@@ -507,6 +1379,7 @@ const characterGender = document.getElementById("characterGender");
 const characterHeight = document.getElementById("characterHeight");
 const characterWeight = document.getElementById("characterWeight");
 const characterLevel = document.getElementById("characterLevel");
+const characterBackground = document.getElementById("characterBackground");
 
 const specialtySelect = document.getElementById("specialtySelect");
 const specialtyInfo = document.getElementById("specialtyInfo");
@@ -586,6 +1459,10 @@ characterWeight.addEventListener("input", function() {
 
 characterLevel.addEventListener("input", function() {
     character.level = Number(characterLevel.value);
+});
+
+characterBackground.addEventListener("input", function() {
+    character.background = characterBackground.value;
 });
 
 // ========================================
