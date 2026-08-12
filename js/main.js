@@ -15,8 +15,11 @@ console.log("Flux Fantasy Character Builder loaded!")
 const character = {
     name: "",
     alias: "",
-    age: 0,
+    age: "",
     gender: "",
+    height: "",
+    weight: "",
+    level: 1,
     specialty: "",
     study: "",
     currentStudy: null,
@@ -497,6 +500,14 @@ const talentModifierPool = {
 // DOM REFERENCES
 // ========================================
 
+const characterName = document.getElementById("characterName");
+const characterAlias = document.getElementById("characterAlias");
+const characterAge = document.getElementById("characterAge");
+const characterGender = document.getElementById("characterGender");
+const characterHeight = document.getElementById("characterHeight");
+const characterWeight = document.getElementById("characterWeight");
+const characterLevel = document.getElementById("characterLevel");
+
 const specialtySelect = document.getElementById("specialtySelect");
 const specialtyInfo = document.getElementById("specialtyInfo");
 
@@ -544,6 +555,38 @@ const flawCount = document.getElementById("flawCount");
 
 const traitFlawAffiliationNote = document.getElementById("traitFlawAffiliationNote");
 const traitFlawBalanceStatus = document.getElementById("traitFlawBalanceStatus");
+
+// ========================================
+// IDENTITY FUNCTIONS
+// ========================================
+
+characterName.addEventListener("input", function() {
+    character.name = characterName.value;
+});
+
+characterAlias.addEventListener("input", function() {
+    character.alias = characterAlias.value;
+});
+
+characterAge.addEventListener("input", function() {
+    character.age = characterAge.value;
+});
+
+characterGender.addEventListener("input", function() {
+    character.gender = characterGender.value;
+});
+
+characterHeight.addEventListener("input", function() {
+    character.height = characterHeight.value;
+});
+
+characterWeight.addEventListener("input", function() {
+    character.weight = characterWeight.value;
+});
+
+characterLevel.addEventListener("input", function() {
+    character.level = Number(characterLevel.value);
+});
 
 // ========================================
 // SPECIALTY FUNCTIONS
@@ -1177,25 +1220,33 @@ updateTraitFlawDisplay();
 // ========================================
 
 function canFinalizeCharacter() {
-    return (
-        traitsAndFlawsAreBalanced() &&
-        character.traits.length <= 5 &&
-        character.flaws.length <= 5 &&
-        (
-            character.specialty !== "Escape Artist" ||
-            character.startingItems.specialtyItems.length > 0
-        )
-    );
+    return getFinalizationErrors().length === 0;
 }
 
 function getFinalizationErrors() {
     const errors = [];
 
+    if (character.name.trim() === "") {
+        errors.push("Character Name is required.");
+    }
+
+    if (character.age.trim() === "") {
+        errors.push("Character Age is required.");
+    }
+
+    if (character.gender.trim() === "") {
+        errors.push("Character Gender is required.");
+    }
+
     if (
         character.specialty === "Escape Artist" &&
         character.startingItems.specialtyItems.length === 0
     ) {
-        errors.push("Escape Artists much choose a starting torus.")
+        errors.push("Escape Artists much choose a starting torus.");
+    }
+
+    if (character.affiliation.trim() === "") {
+        errors.push("Must select an Affiliation.");
     }
     
     if (!traitsAndFlawsAreBalanced()) {
