@@ -675,7 +675,7 @@ const talentModifierPool = {
 // ========================================
 
 const studyPowerDefinitions = [
-    {
+    {   // Escape Artist: Creative
         study: "Creative Karmastry",
 
         basicTier1: {
@@ -810,7 +810,7 @@ const studyPowerDefinitions = [
             }
         }
     },
-    {
+    {   // Escape Artist: Clockwork
         study: "Clockwork Karmastry",
 
         basicTier1: {
@@ -945,7 +945,7 @@ const studyPowerDefinitions = [
             }
         }
     },
-    {
+    {   // Escape Artist: Bio
         study: "Bio Karmastry",
 
         basicTier1: {
@@ -1080,7 +1080,7 @@ const studyPowerDefinitions = [
             }
         }
     },
-    {
+    {   // Escape Artist: Machine
         study: "Machine Karmastry",
 
         basicTier1: {
@@ -1215,7 +1215,7 @@ const studyPowerDefinitions = [
             }
         }
     },
-    {
+    {   // Escape Artist: Quantum
         study: "Quantum Karmastry",
 
         basicTier1: {
@@ -1349,7 +1349,1227 @@ const studyPowerDefinitions = [
                 effect: "+4 MOV"
             }
         }
-    }     
+    },
+    {   // Ink Fighter: Melee
+        study: "Melee",
+
+        basicTier1: {
+            attack: {
+                kpCost: 5,
+                damage: 4,
+                range: "0-1",
+                effect: "-"
+            },
+            defense: {
+                kpCost: 5,
+                damage: null,
+                range: "-",
+                effect: "+2 to DEF on next turn."
+            },
+            combo: {
+                kpCost: 7,
+                damage: 5,
+                range: "3",
+                effect: "-"
+            },
+            signature: {
+                kpCost: 10,
+                damage: 6,
+                range: "2-3",
+                effect: "-"
+            },
+            locomotion: {
+                kpCost: 3,
+                damage: null,
+                range: "-",
+                effect: "+1 MOV"
+            }
+        },
+
+        basicTier2: {
+            attack: {
+                kpCost: 7,
+                damage: 8,
+                range: "0-2",
+                effect: "-"
+            },
+            defense: {
+                kpCost: 7,
+                damage: null,
+                range: "-",
+                effect: "+3 to DEF on next turn."
+            },
+            combo: {
+                kpCost: 9,
+                damage: 9,
+                range: "2-3",
+                effect: "-"
+            },
+            signature: {
+                kpCost: 13,
+                damage: 10,
+                range: "1-3",
+                effect: "-"
+            },
+            locomotion: {
+                kpCost: 5,
+                damage: null,
+                range: "-",
+                effect: "+2 MOV"
+            }
+        },
+
+        advancedTier1: {
+            attack: {
+                kpCost: 10,
+                damage: 13,
+                range: "0-3",
+                effect: "Keep your weapon summoned for 1 turn, and attack without using KP."
+            },
+            defense: {
+                kpCost: 10,
+                damage: null,
+                range: "-",
+                effect: "+4 to DEF on next turn."
+            },
+            combo: {
+                kpCost: 12,
+                damage: 14,
+                range: "0-3",
+                effect: "Keep your weapon summoned for 1 turn, and attack without using KP."
+            },
+            signature: {
+                kpCost: 16,
+                damage: 15,
+                range: "1-4",
+                effect: "Keep your weapon summoned for 1 turn, and attack without using KP."
+            },
+            locomotion: {
+                kpCost: 7,
+                damage: null,
+                range: "-",
+                effect: "+3 MOV"
+            }
+        },
+
+        advancedTier2: {
+            attack: {
+                kpCost: 15,
+                damage: 19,
+                range: "0-4",
+                effect: "Keep your weapon summoned for 2 turns, and attack without using KP."
+            },
+            defense: {
+                kpCost: 15,
+                damage: null,
+                range: "-",
+                effect: "+5 to DEF on next turn."
+            },
+            combo: {
+                kpCost: 17,
+                damage: 20,
+                range: "0-4",
+                effect: "Keep your weapon summoned for 2 turns, and attack without using KP."
+            },
+            signature: {
+                kpCost: 21,
+                damage: 21,
+                range: "1-5",
+                effect: "Keep your weapon summoned for 2 turns, and attack without using KP."
+            },
+            locomotion: {
+                kpCost: 9,
+                damage: null,
+                range: "-",
+                effect: "+4 MOV"
+            }
+        }
+    },
+    {   // Ink Fighter: Projectile
+        study: "Projectile",
+
+        basicTier1: {
+            attack: {
+                kpCost: 5,
+                damage: 3,
+                range: "3-4",
+                effect: "-"
+            },
+            defense: {
+                kpCost: 5,
+                damage: null,
+                range: "-",
+                effect: "+3 to DEF on next turn."
+            },
+            combo: {
+                kpCost: 7,
+                damage: 4,
+                range: "4",
+                effect: "-"
+            },
+            signature: {
+                kpCost: 10,
+                damage: 6,
+                range: "1-5",
+                effect: "-"
+            },
+            locomotion: {
+                kpCost: 3,
+                damage: null,
+                range: "-",
+                effect: "+1 MOV"
+            }
+        },
+
+        basicTier2: {
+            attack: {
+                kpCost: 7,
+                damage: 7,
+                range: "3-5",
+                effect: "-"
+            },
+            defense: {
+                kpCost: 7,
+                damage: null,
+                range: "-",
+                effect: "+4 to DEF on next turn."
+            },
+            combo: {
+                kpCost: 9,
+                damage: 8,
+                range: "3-4",
+                effect: "-"
+            },
+            signature: {
+                kpCost: 13,
+                damage: 10,
+                range: "1-6",
+                effect: "-"
+            },
+            locomotion: {
+                kpCost: 5,
+                damage: null,
+                range: "-",
+                effect: "+2 MOV"
+            }
+        },
+
+        advancedTier1: {
+            attack: {
+                kpCost: 10,
+                damage: 12,
+                range: "2-5",
+                effect: "Your attack also hits a second enemy for 1/2 damage."
+            },
+            defense: {
+                kpCost: 10,
+                damage: null,
+                range: "-",
+                effect: "+5 to DEF on next turn."
+            },
+            combo: {
+                kpCost: 12,
+                damage: 13,
+                range: "3-5",
+                effect: "Your attack also hits a second enemy for 1/2 damage."
+            },
+            signature: {
+                kpCost: 16,
+                damage: 15,
+                range: "1-7",
+                effect: "Your attack also hits a second enemy for 1/2 damage."
+            },
+            locomotion: {
+                kpCost: 7,
+                damage: null,
+                range: "-",
+                effect: "+3 MOV"
+            }
+        },
+
+        advancedTier2: {
+            attack: {
+                kpCost: 15,
+                damage: 18,
+                range: "2-6",
+                effect: "Your attack also hits two enemies for 1/2 damage."
+            },
+            defense: {
+                kpCost: 15,
+                damage: null,
+                range: "-",
+                effect: "+6 to DEF on next turn."
+            },
+            combo: {
+                kpCost: 17,
+                damage: 19,
+                range: "3-6",
+                effect: "Your attack also hits two enemies for 1/2 damage."
+            },
+            signature: {
+                kpCost: 21,
+                damage: 21,
+                range: "1-8",
+                effect: "Your attack also hits two enemies for 1/2 damage."
+            },
+            locomotion: {
+                kpCost: 9,
+                damage: null,
+                range: "-",
+                effect: "+4 MOV"
+            }
+        }
+    },
+    {   // Ink Fighter: Animal
+        study: "Animal",
+
+        basicTier1: {
+            attack: {
+                kpCost: 5,
+                damage: 4,
+                range: "2-4",
+                effect: "-"
+            },
+            defense: {
+                kpCost: 5,
+                damage: null,
+                range: "-",
+                effect: "+3 to DEF on next turn."
+            },
+            combo: {
+                kpCost: 7,
+                damage: 4,
+                range: "4",
+                effect: "-"
+            },
+            signature: {
+                kpCost: 10,
+                damage: 5,
+                range: "1-5",
+                effect: "-"
+            },
+            locomotion: {
+                kpCost: 3,
+                damage: null,
+                range: "-",
+                effect: "+1 MOV"
+            }
+        },
+
+        basicTier2: {
+            attack: {
+                kpCost: 7,
+                damage: 8,
+                range: "1-4",
+                effect: "-"
+            },
+            defense: {
+                kpCost: 7,
+                damage: null,
+                range: "-",
+                effect: "+4 to DEF on next turn."
+            },
+            combo: {
+                kpCost: 9,
+                damage: 8,
+                range: "3-4",
+                effect: "-"
+            },
+            signature: {
+                kpCost: 13,
+                damage: 9,
+                range: "1-6",
+                effect: "-"
+            },
+            locomotion: {
+                kpCost: 5,
+                damage: null,
+                range: "-",
+                effect: "+2 MOV"
+            }
+        },
+
+        advancedTier1: {
+            attack: {
+                kpCost: 10,
+                damage: 13,
+                range: "0-4",
+                effect: "Keep your Power summoned for 1 turn, and attack without using KP."
+            },
+            defense: {
+                kpCost: 10,
+                damage: null,
+                range: "-",
+                effect: "+5 DEF on next turn."
+            },
+            combo: {
+                kpCost: 12,
+                damage: 13,
+                range: "3-5",
+                effect: "Keep your Power summoned for 1 turn, and attack without using KP."
+            },
+            signature: {
+                kpCost: 16,
+                damage: 14,
+                range: "0-6",
+                effect: "Keep your Power summoned for 1 turn, and attack without using KP."
+            },
+            locomotion: {
+                kpCost: 7,
+                damage: null,
+                range: "-",
+                effect: "+3 MOV"
+            }
+        },
+
+        advancedTier2: {
+            attack: {
+                kpCost: 15,
+                damage: 19,
+                range: "0-5",
+                effect: "Keep your power summoned for 2 turns, and attack without using KP."
+            },
+            defense: {
+                kpCost: 15,
+                damage: null,
+                range: "-",
+                effect: "+6 to DEF on next turn."
+            },
+            combo: {
+                kpCost: 17,
+                damage: 19,
+                range: "2-5",
+                effect: "Keep your power summoned for 2 turns, and attack without using KP."
+            },
+            signature: {
+                kpCost: 21,
+                damage: 20,
+                range: "0-7",
+                effect: "Keep your power summoned for 2 turns, and attack without using KP."
+            },
+            locomotion: {
+                kpCost: 9,
+                damage: null,
+                range: "-",
+                effect: "+4 MOV"
+            }
+        }
+    },
+    {   // Ink Fighter: Body
+        study: "Body",
+
+        basicTier1: {
+            attack: {
+                kpCost: 5,
+                damage: 4,
+                range: "0-2",
+                effect: "-"
+            },
+            defense: {
+                kpCost: 5,
+                damage: null,
+                range: "-",
+                effect: "+4 to DEF on next turn."
+            },
+            combo: {
+                kpCost: 7,
+                damage: 4,
+                range: "0-3",
+                effect: "-"
+            },
+            signature: {
+                kpCost: 10,
+                damage: 6,
+                range: "1-2",
+                effect: "-"
+            },
+            locomotion: {
+                kpCost: 3,
+                damage: null,
+                range: "-",
+                effect: "+1 MOV"
+            }
+        },
+
+        basicTier2: {
+            attack: {
+                kpCost: 5,
+                damage: 8,
+                range: "0-3",
+                effect: "Each attack heals +3 HP (up to cap)."
+            },
+            defense: {
+                kpCost: 5,
+                damage: null,
+                range: "-",
+                effect: "+5 to DEF on next turn."
+            },
+            combo: {
+                kpCost: 7,
+                damage: 8,
+                range: "0-4",
+                effect: "Each attack heals +3 HP (up to cap)."
+            },
+            signature: {
+                kpCost: 10,
+                damage: 10,
+                range: "1-3",
+                effect: "Each attack heals +3 HP (up to cap)."
+            },
+            locomotion: {
+                kpCost: 5,
+                damage: null,
+                range: "-",
+                effect: "+2 MOV"
+            }
+        },
+
+        advancedTier1: {
+            attack: {
+                kpCost: 10,
+                damage: 13,
+                range: "0-4",
+                effect: "Add +2 to your HP. This ability can stack. Resets after the battle."
+            },
+            defense: {
+                kpCost: 10,
+                damage: null,
+                range: "-",
+                effect: "+6 to DEF on next turn."
+            },
+            combo: {
+                kpCost: 12,
+                damage: 13,
+                range: "3-5",
+                effect: "Add +2 to your HP. This ability can stack. Resets after the battle."
+            },
+            signature: {
+                kpCost: 16,
+                damage: 15,
+                range: "0-6",
+                effect: "Add +2 to your HP. This ability can stack. Resets after the battle."
+            },
+            locomotion: {
+                kpCost: 7,
+                damage: null,
+                range: "-",
+                effect: "+3 MOV"
+            }
+        },
+
+        advancedTier2: {
+            attack: {
+                kpCost: 15,
+                damage: 19,
+                range: "0-5",
+                effect: "Add +4 to your HP. This ability can stack. Resets after the battle."
+            },
+            defense: {
+                kpCost: 15,
+                damage: null,
+                range: "-",
+                effect: "+7 to DEF on next turn."
+            },
+            combo: {
+                kpCost: 17,
+                damage: 19,
+                range: "2-5",
+                effect: "Add +4 to your HP. This ability can stack. Resets after the battle."
+            },
+            signature: {
+                kpCost: 21,
+                damage: 21,
+                range: "0-7",
+                effect: "Add +4 to your HP. This ability can stack. Resets after the battle."
+            },
+            locomotion: {
+                kpCost: 9,
+                damage: null,
+                range: "-",
+                effect: "+4 MOV"
+            }
+        }
+    },
+    {   // Ink Fighter: Elemental
+        study: "Elemental",
+
+        basicTier1: {
+            attack: {
+                kpCost: 5,
+                damage: 5,
+                range: "0-1",
+                effect: "-"
+            },
+            defense: {
+                kpCost: 5,
+                damage: null,
+                range: "-",
+                effect: "+1 to DEF on next turn."
+            },
+            combo: {
+                kpCost: 7,
+                damage: 5,
+                range: "0-2",
+                effect: "-"
+            },
+            signature: {
+                kpCost: 10,
+                damage: 6,
+                range: "1-4",
+                effect: "-"
+            },
+            locomotion: {
+                kpCost: 3,
+                damage: null,
+                range: "-",
+                effect: "+1 MOV"
+            }
+        },
+
+        basicTier2: {
+            attack: {
+                kpCost: 7,
+                damage: 9,
+                range: "0-2",
+                effect: "-"
+            },
+            defense: {
+                kpCost: 7,
+                damage: null,
+                range: "-",
+                effect: "+2 to DEF on next turn."
+            },
+            combo: {
+                kpCost: 9,
+                damage: 9,
+                range: "0-3",
+                effect: "-"
+            },
+            signature: {
+                kpCost: 13,
+                damage: 10,
+                range: "1-5",
+                effect: "-"
+            },
+            locomotion: {
+                kpCost: 5,
+                damage: null,
+                range: "-",
+                effect: "+2 MOV"
+            }
+        },
+
+        advancedTier1: {
+            attack: {
+                kpCost: 10,
+                damage: 15,
+                range: "0-3",
+                effect: "Gain +2 KP per attack (up to cap). Stacks but resets when hit."
+            },
+            defense: {
+                kpCost: 10,
+                damage: null,
+                range: "-",
+                effect: "+3 to DEF on next turn."
+            },
+            combo: {
+                kpCost: 12,
+                damage: 15,
+                range: "0-4",
+                effect: "Gain +2 KP per attack (up to cap). Stacks but resets when hit."
+            },
+            signature: {
+                kpCost: 16,
+                damage: 16,
+                range: "1-6",
+                effect: "Gain +2 KP per attack (up to cap). Stacks but resets when hit."
+            },
+            locomotion: {
+                kpCost: 7,
+                damage: null,
+                range: "-",
+                effect: "+3 MOV"
+            }
+        },
+
+        advancedTier2: {
+            attack: {
+                kpCost: 15,
+                damage: 15,
+                range: "0-4",
+                effect: "Gain +4 KP per attack (up to cap). Stacks but resets when hit."
+            },
+            defense: {
+                kpCost: 15,
+                damage: null,
+                range: "-",
+                effect: "+4 to DEF on next turn."
+            },
+            combo: {
+                kpCost: 17,
+                damage: 15,
+                range: "0-5",
+                effect: "Gain +4 KP per attack (up to cap). Stacks but resets when hit."
+            },
+            signature: {
+                kpCost: 21,
+                damage: 16,
+                range: "0-6",
+                effect: "Gain +4 KP per attack (up to cap). Stacks but resets when hit."
+            },
+            locomotion: {
+                kpCost: 9,
+                damage: null,
+                range: "-",
+                effect: "+4 MOV"
+            }
+        }
+    },
+    {   // Special Agent: Scout
+        study: "Scout",
+
+        basicTier1: {
+            attack: {
+                kpCost: 5,
+                damage: 4,
+                range: "2-3",
+                effect: "-"
+            },
+            defense: {
+                kpCost: 5,
+                damage: null,
+                range: "-",
+                effect: "+2 to DEF on next turn."
+            },
+            combo: {
+                kpCost: 7,
+                damage: 5,
+                range: "1-2",
+                effect: "-"
+            },
+            signature: {
+                kpCost: 10,
+                damage: 4,
+                range: "0-5",
+                effect: "-"
+            },
+            locomotion: {
+                kpCost: 3,
+                damage: null,
+                range: "-",
+                effect: "+1 MOV"
+            }
+        },
+
+        basicTier2: {
+            attack: {
+                kpCost: 8,
+                damage: 7,
+                range: "1-3",
+                effect: "-"
+            },
+            defense: {
+                kpCost: 8,
+                damage: null,
+                range: "-",
+                effect: "+3 to DEF on next turn."
+            },
+            combo: {
+                kpCost: 10,
+                damage: 8,
+                range: "1-3",
+                effect: "-"
+            },
+            signature: {
+                kpCost: 14,
+                damage: 7,
+                range: "0-6",
+                effect: "-"
+            },
+            locomotion: {
+                kpCost: 5,
+                damage: null,
+                range: "-",
+                effect: "+2 MOV"
+            }
+        },
+
+        advancedTier1: {
+            attack: {
+                kpCost: 12,
+                damage: 11,
+                range: "0-3",
+                effect: "+1 damage to all attacks per attack made. Stacks each time and resets after battle."
+            },
+            defense: {
+                kpCost: 12,
+                damage: null,
+                range: "-",
+                effect: "+4 to DEF on next turn."
+            },
+            combo: {
+                kpCost: 14,
+                damage: 12,
+                range: "1-4",
+                effect: "+1 damage to all attacks per attack made. Stacks each time and resets after battle."
+            },
+            signature: {
+                kpCost: 18,
+                damage: 11,
+                range: "0-7",
+                effect: "+1 damage to all attacks per attack made. Stacks each time and resets after battle."
+            },
+            locomotion: {
+                kpCost: 7,
+                damage: null,
+                range: "-",
+                effect: "+3 MOV"
+            }
+        },
+
+        advancedTier2: {
+            attack: {
+                kpCost: 17,
+                damage: 16,
+                range: "0-4",
+                effect: "+2 damage to all attacks per attack made. Stacks each time and resets after battle."
+            },
+            defense: {
+                kpCost: 17,
+                damage: null,
+                range: "-",
+                effect: "+5 to DEF on next turn."
+            },
+            combo: {
+                kpCost: 19,
+                damage: 17,
+                range: "1-5",
+                effect: "+2 damage to all attacks per attack made. Stacks each time and resets after battle."
+            },
+            signature: {
+                kpCost: 22,
+                damage: 16,
+                range: "0-8",
+                effect: "+2 damage to all attacks per attack made. Stacks each time and resets after battle."
+            },
+            locomotion: {
+                kpCost: 9,
+                damage: null,
+                range: "-",
+                effect: "+4 MOV"
+            }
+        }
+    },
+    {   // Special Agent: Disrupter
+        study: "Disrupter",
+
+        basicTier1: {
+            attack: {
+                kpCost: 5,
+                damage: 5,
+                range: "1-2",
+                effect: "-"
+            },
+            defense: {
+                kpCost: 5,
+                damage: null,
+                range: "-",
+                effect: "+2 to DEF on next turn."
+            },
+            combo: {
+                kpCost: 7,
+                damage: 5,
+                range: "1-4",
+                effect: "-"
+            },
+            signature: {
+                kpCost: 10,
+                damage: 6,
+                range: "0-2",
+                effect: "-"
+            },
+            locomotion: {
+                kpCost: 3,
+                damage: null,
+                range: "-",
+                effect: "+2 MOV"
+            }
+        },
+
+        basicTier2: {
+            attack: {
+                kpCost: 8,
+                damage: 8,
+                range: "1-3",
+                effect: "-"
+            },
+            defense: {
+                kpCost: 8,
+                damage: null,
+                range: "-",
+                effect: "+3 to DEF on next turn."
+            },
+            combo: {
+                kpCost: 10,
+                damage: 8,
+                range: "0-4",
+                effect: "-"
+            },
+            signature: {
+                kpCost: 14,
+                damage: 9,
+                range: "0-3",
+                effect: "-"
+            },
+            locomotion: {
+                kpCost: 5,
+                damage: null,
+                range: "-",
+                effect: "+2 MOV"
+            }
+        },
+
+        advancedTier1: {
+            attack: {
+                kpCost: 12,
+                damage: 12,
+                range: "1-4",
+                effect: "+1 damage to all attacks per attack made. Stacks each time and resets after battle."
+            },
+            defense: {
+                kpCost: 12,
+                damage: null,
+                range: "-",
+                effect: "+4 to DEF on next turn."
+            },
+            combo: {
+                kpCost: 14,
+                damage: 12,
+                range: "0-5",
+                effect: "+1 damage to all attacks per attack made. Stacks each time and resets after battle."
+            },
+            signature: {
+                kpCost: 18,
+                damage: 11,
+                range: "0-4",
+                effect: "+1 damage to all attacks per attack made. Stacks each time and resets after battle."
+            },
+            locomotion: {
+                kpCost: 7,
+                damage: null,
+                range: "-",
+                effect: "+3 MOV"
+            }
+        },
+
+        advancedTier2: {
+            attack: {
+                kpCost: 17,
+                damage: 17,
+                range: "1-5",
+                effect: "+2 damage to all attacks per attack made. Stacks each time and resets after battle."
+            },
+            defense: {
+                kpCost: 17,
+                damage: null,
+                range: "-",
+                effect: "+5 to DEF on next turn."
+            },
+            combo: {
+                kpCost: 19,
+                damage: 17,
+                range: "0-6",
+                effect: "+2 damage to all attacks per attack made. Stacks each time and resets after battle."
+            },
+            signature: {
+                kpCost: 22,
+                damage: 16,
+                range: "0-5",
+                effect: "+2 damage to all attacks per attack made. Stacks each time and resets after battle."
+            },
+            locomotion: {
+                kpCost: 9,
+                damage: null,
+                range: "-",
+                effect: "+4 MOV"
+            }
+        }
+    },
+    {   // Special Agent: Bodyguard
+        study: "Bodyguard",
+
+        basicTier1: {
+            attack: {
+                kpCost: 5,
+                damage: 4,
+                range: "0-1",
+                eddect: "-"
+            },
+            defense: {
+                kpCost: 5,
+                damage: null,
+                range: "-",
+                effect: "+4 to DEF on next turn."
+            },
+            combo: {
+                kpCost: 7,
+                damage: 4,
+                range: "1-3",
+                effect: "-"
+            },
+            signature: {
+                kpCost: 10,
+                damage: 7,
+                range: "0-4",
+                effect: "-"
+            },
+            locomotion: {
+                kpCost: 3,
+                damage: null,
+                range: "-",
+                effect: "+1 MOV"
+            }
+        },
+
+        basicTier2: {
+            attack: {
+                kpCost: 8,
+                damage: 7,
+                range: "0-2",
+                effect: "-"
+            },
+            defense: {
+                kpCost: 8,
+                damage: null,
+                range: "-",
+                effect: "+5 to DEF on next turn."
+            },
+            combo: {
+                kpCost: 10,
+                damage: 7,
+                range: "1-4",
+                effect: "-"
+            },
+            signature: {
+                kpCost: 14,
+                damage: 10,
+                range: "0-5",
+                effect: "-"
+            },
+            locomotion: {
+                kpCost: 5,
+                damage: null,
+                range: "-",
+                effect: "+2 MOV"
+            }
+        },
+
+        advancedTier1: {
+            attack: {
+                kpCost: 12,
+                damage: 11,
+                range: "0-3",
+                effect: "+1 damage to all attacks per attack made. Stacks each time and resets after battle."
+            },
+            defense: {
+                kpCost: 12,
+                damage: null,
+                range: "-",
+                effect: "+6 to DEF on next turn."
+            },
+            combo: {
+                kpCost: 14,
+                damage: 11,
+                range: "0-4",
+                effect: "+1 damage to all attacks per attack made. Stacks each time and resets after battle."
+            },
+            signature: {
+                kpCost: 18,
+                damage: 14,
+                range: "0-6",
+                effect: "+1 damage to all attacks per attack made. Stacks each time and resets after battle."
+            },
+            locomotion: {
+                kpCost: 7,
+                damage: null,
+                range: "-",
+                effect: "+3 MOV"
+            }
+        },
+
+        advancedTier2: {
+            attack: {
+                kpCost: 17,
+                damage: 16,
+                range: "0-4",
+                effect: "+2 damage to all attacks per attack made. Stacks each time and resets after battle."
+            },
+            defense: {
+                kpCost: 17,
+                damage: null,
+                range: "-",
+                effect: "+7 to DEF on next turn."
+            },
+            combo: {
+                kpCost: 19,
+                damage: 16,
+                range: "0-5",
+                effect: "+2 damage to all attacks per attack made. Stacks each time and resets after battle."
+            },
+            signature: {
+                kpCost: 22,
+                damage: 19,
+                range: "0-7",
+                effect: "+2 damage to all attacks per attack made. Stacks each time and resets after battle."
+            },
+            locomotion: {
+                kpCost: 9,
+                damage: null,
+                range: "-",
+                effect: "+4 MOV"
+            }
+        }
+    },
+    {   // Special Agent: Operative
+        study: "Operative",
+
+        basicTier1: {
+            attack: {
+                kpCost: 5,
+                damage: 3,
+                range: "0-5",
+                effect: "-"
+            },
+            defense: {
+                kpCost: 5,
+                damage: null,
+                range: "-",
+                effect: "+2 to DEF on next turn."
+            },
+            combo: {
+                kpCost: 7,
+                damage: 5,
+                range: "1-2",
+                effect: "-"
+            },
+            signature: {
+                kpCost: 10,
+                damage: 6,
+                range: "4-5",
+                effect: "-"
+            },
+            locomotion: {
+                kpCost: 3,
+                damage: null,
+                range: "-",
+                effect: "+1 MOV"
+            }
+        },
+
+        basicTier2: {
+            attack: {
+                kpCost: 8,
+                damage: 8,
+                range: "0-6",
+                effect: "-"
+            },
+            defense: {
+                kpCost: 8,
+                damage: null,
+                range: "-",
+                effect: "+3 to DEF on next turn."
+            },
+            combo: {
+                kpCost: 10,
+                damage: 8,
+                range: "1-3",
+                effect: "-"
+            },
+            signature: {
+                kpCost: 14,
+                damage: 9,
+                range: "3-5",
+                effect: "-"
+            },
+            locomotion: {
+                kpCost: 5,
+                damage: null,
+                range: "-",
+                effect: "+2 MOV"
+            }
+        },
+
+        advancedTier1: {
+            attack: {
+                kpCost: 12,
+                damage: 12,
+                range: "0-7",
+                effect: "+1 damage to all attacks per attack made. Stacks each time and resets after battle."
+            },
+            defense: {
+                kpCost: 12,
+                damage: null,
+                range: "-",
+                effect: "+4 to DEF on next turn.",
+            },
+            combo: {
+                kpCost: 14,
+                damage: 12,
+                range: "1-4",
+                effect: "+1 damage to all attacks per attack made. Stacks each time and resets after battle."
+            },
+            signature: {
+                kpCost: 18,
+                damage: 13,
+                range: "3-6",
+                effect: "+1 damage to all attacks per attack made. Stacks each time and resets after battle."
+            },
+            locomotion: {
+                kpCost: 7,
+                damage: null,
+                range: "-",
+                effect: "+3 MOV"
+            }
+        },
+
+        advancedTier2: {
+            attack: {
+                kpCost: 17,
+                damage: 17,
+                range: "0-8",
+                effect: "+2 damage to all attacks per attack made. Stacks each time and resets after battle."
+            },
+            defense: {
+                kpCost: 17,
+                damage: null,
+                range: "-",
+                effect: "+5 to DEF on next turn."
+            },
+            combo: {
+                kpCost: 19,
+                damage: 17,
+                range: "1-5",
+                effect: "+2 damage to all attacks per attack made. Stacks each time and resets after battle."
+            },
+            signature: {
+                kpCost: 22,
+                damage: 18,
+                range: "2-6",
+                effect: "+2 damage to all attacks per attack made. Stacks each time and resets after battle."
+            },
+            locomotion: {
+                kpCost: 9,
+                damage: null,
+                range: "-",
+                effect: "+4 MOV"
+            }
+        }
+    },
+    {   // Special Agent: Tinker
+        study: "Tinker",
+
+        
+    }
 ];
 
 // ========================================
