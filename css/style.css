@@ -6,6 +6,27 @@ body {
 }
 
 /* =========================================== */
+/*                 INFO PANELS                 */
+/* =========================================== */
+
+.infoContent {
+    display: none;
+}
+
+.infoPanel.open .infoContent {
+    display: block;
+}
+
+.infoCaret {
+    display: inline-block;
+    transition: transform 0.2s ease;
+}
+
+.infoPanel.open .infoCaret {
+    transform: rotate(90deg);
+}
+
+/* =========================================== */
 /*           TALENT MODIFIER BUTTONS           */
 /* =========================================== */
 

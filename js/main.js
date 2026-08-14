@@ -6,7 +6,7 @@
 // LATEST REVISION: 08/12/2026
 // ========================================
 
-console.log("Flux Fantasy Character Builder loaded!")
+console.log("Flux Fantasy Character Builder loaded!");
 
 // ========================================
 // CHARACTER DATA
@@ -231,6 +231,82 @@ const character = {
         }
     }
 };
+
+// ========================================
+// DOM REFERENCES
+// ========================================
+
+const playerName = document.getElementById("playerName");
+
+const characterName = document.getElementById("characterName");
+const characterAlias = document.getElementById("characterAlias");
+const characterAge = document.getElementById("characterAge");
+const characterGender = document.getElementById("characterGender");
+const characterHeight = document.getElementById("characterHeight");
+const characterWeight = document.getElementById("characterWeight");
+const characterLevel = document.getElementById("characterLevel");
+const characterBackground = document.getElementById("characterBackground");
+
+const specialtySelect = document.getElementById("specialtySelect");
+const specialtyInfo = document.getElementById("specialtyInfo");
+
+const studySelect = document.getElementById("studySelect");
+const studyInfo = document.getElementById("studyInfo");
+
+const summarySpecialty = document.getElementById("summarySpecialty");
+const summaryKarma = document.getElementById("summaryKarma");
+const summaryStudy = document.getElementById("summaryStudy");
+
+const studyEffect = document.getElementById("studyEffect");
+
+const affiliationSelect = document.getElementById("affiliationSelect");
+const affiliationInfo = document.getElementById("affiliationInfo");
+const affiliationName = document.getElementById("affiliationName");
+const affiliationDescription = document.getElementById("affiliationDescription");
+const applyAffiliationButton = document.getElementById("applyAffiliationButton");
+
+const talentAura = document.getElementById("talentAura");
+const talentStamina = document.getElementById("talentStamina");
+const talentAgility = document.getElementById("talentAgility");
+const talentWillpower = document.getElementById("talentWillpower");
+const talentFunction = document.getElementById("talentFunction");
+const talentTechnique = document.getElementById("talentTechnique");
+
+const available1 = document.getElementById("available1");
+const available2 = document.getElementById("available2");
+const available3 = document.getElementById("available3");
+
+const modifierButtons = document.querySelectorAll(".modifierButton");
+
+const resetTalentsButton = document.getElementById("resetTalents");
+
+const startingItems = document.getElementById("startingItems");
+const startingMedKits = document.getElementById("startingMedKits");
+const startingMerits = document.getElementById("startingMerits");
+const startingFishbowl = document.getElementById("startingFishbowl");
+const specialtyItemDisplay = document.getElementById("specialtyItemDisplay");
+
+const traitList = document.getElementById("traitList");
+const flawList = document.getElementById("flawList");
+
+const traitCount = document.getElementById("traitCount");
+const flawCount = document.getElementById("flawCount");
+
+const traitFlawAffiliationNote = document.getElementById("traitFlawAffiliationNote");
+const traitFlawBalanceStatus = document.getElementById("traitFlawBalanceStatus");
+
+// ========================================
+// INFO PANEL FUNCTIONS
+// ========================================
+
+const infoToggles = document.querySelectorAll(".infoToggle");
+
+infoToggles.forEach(function(toggle) {
+    toggle.addEventListener("click", function() {
+        const panel = toggle.parentElement;
+        panel.classList.toggle("open");
+    });
+});
 
 // ========================================
 // TRAITS & FLAWS
@@ -3563,69 +3639,6 @@ const nonKarmaAttackDefinitions = [
         ]
     } 
 ]
-
-// ========================================
-// DOM REFERENCES
-// ========================================
-
-const playerName = document.getElementById("playerName");
-
-const characterName = document.getElementById("characterName");
-const characterAlias = document.getElementById("characterAlias");
-const characterAge = document.getElementById("characterAge");
-const characterGender = document.getElementById("characterGender");
-const characterHeight = document.getElementById("characterHeight");
-const characterWeight = document.getElementById("characterWeight");
-const characterLevel = document.getElementById("characterLevel");
-const characterBackground = document.getElementById("characterBackground");
-
-const specialtySelect = document.getElementById("specialtySelect");
-const specialtyInfo = document.getElementById("specialtyInfo");
-
-const studySelect = document.getElementById("studySelect");
-const studyInfo = document.getElementById("studyInfo");
-
-const summarySpecialty = document.getElementById("summarySpecialty");
-const summaryKarma = document.getElementById("summaryKarma");
-const summaryStudy = document.getElementById("summaryStudy");
-
-const studyEffect = document.getElementById("studyEffect");
-
-const affiliationSelect = document.getElementById("affiliationSelect");
-const affiliationInfo = document.getElementById("affiliationInfo");
-const affiliationName = document.getElementById("affiliationName");
-const affiliationDescription = document.getElementById("affiliationDescription");
-const applyAffiliationButton = document.getElementById("applyAffiliationButton");
-
-const talentAura = document.getElementById("talentAura");
-const talentStamina = document.getElementById("talentStamina");
-const talentAgility = document.getElementById("talentAgility");
-const talentWillpower = document.getElementById("talentWillpower");
-const talentFunction = document.getElementById("talentFunction");
-const talentTechnique = document.getElementById("talentTechnique");
-
-const available1 = document.getElementById("available1");
-const available2 = document.getElementById("available2");
-const available3 = document.getElementById("available3");
-
-const modifierButtons = document.querySelectorAll(".modifierButton");
-
-const resetTalentsButton = document.getElementById("resetTalents");
-
-const startingItems = document.getElementById("startingItems");
-const startingMedKits = document.getElementById("startingMedKits");
-const startingMerits = document.getElementById("startingMerits");
-const startingFishbowl = document.getElementById("startingFishbowl");
-const specialtyItemDisplay = document.getElementById("specialtyItemDisplay");
-
-const traitList = document.getElementById("traitList");
-const flawList = document.getElementById("flawList");
-
-const traitCount = document.getElementById("traitCount");
-const flawCount = document.getElementById("flawCount");
-
-const traitFlawAffiliationNote = document.getElementById("traitFlawAffiliationNote");
-const traitFlawBalanceStatus = document.getElementById("traitFlawBalanceStatus");
 
 // ========================================
 // IDENTITY FUNCTIONS
