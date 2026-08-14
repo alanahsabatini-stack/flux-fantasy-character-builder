@@ -545,31 +545,38 @@ const flawDefinitions = [
 const specialties = [
     {
         name: "Escape Artist",
+        summary: "Escape Artists are known for their ability to manipulate the universe's forces with karmastry to create stunning, immediate effects.",
         startingKarma: 25,
         medKitPercent: 25,
+        advantage: "can replenish 10 KP when completely depleted in battle.",
         studies: [
             {
                 name: "Creative Karmastry",
+                summary: "Creative Karmastry Escape Artists are the dreamers and visionaries, turning their imaginative ideas into reality within the real world and especially inside flux destinies.",
                 stat: "technique",
                 modifier: 1
             },
             {
                 name: "Clockwork Karmastry",
+                summary: "Clockwork Karmastry Escape Artists are engineers with a deep understanding of matter, energy, and mechanics. Their creations are meticulously designed, ensuring that every mechanism operates with precision.",
                 stat: "agility",
                 modifier: 1
             },
             {
                 name: "Bio Karmastry",
+                summary: "Bio Karmastry Escape Artists focus on natural and biological processes and elements. Their skills extend to both real and imagined life forms, making them the caretakers and creators of life.",
                 stat: "function",
                 modifier: 1
             },
             {
                 name: "Machine Karmastry",
+                summary: "Machine Karmastry Escape Artists are the tech specialists, using karmastry to design, power, and control advanced machinery. Their expertise lies in creating and maintaining complex machines.",
                 stat: "stamina",
                 modifier: 1
             },
             {
                 name: "Quantum Karmastry",
+                summary: "Quantum Karmastry Escape Artists push the boundaries and bend the rules of reality. Their powers are as unpredictable as they are powerful, making Quantum Karmastry a thrilling but dangerous path.",
                 stat: "willpower",
                 modifier: 1
             }
@@ -577,31 +584,38 @@ const specialties = [
     },
     {
         name: "Special Agent",
+        summary: "Special Agents are the guardians of karmic law. Their high-tech gear and secretive methods make them formidable opponents.",
         startingKarma: 20,
         medKitPercent: 100,
+        advantage: "receive 10% of current Merit balance as a government-approved bonus and an extra Med Kit after each Checkpoint.",
         studies: [
             {
                 name: "Scout",
+                summary: "Scouts are the silent hunters of the Special Agents, experts in surveillance and recon. They slip through shadows, tracking enemy movements and gathering intel without ever being noticed.",
                 stat: "agility",
                 modifier: 1
             },
             {    
                 name: "Disrupter",
+                summary: "Disrupters are the wrecking balls of the Special Agents, armed with the most devastating karma-tech weapons. Built for destruction, they tear through enemy defenses and throw everything into chaos.",
                 stat: "willpower",
                 modifier: 1
             },
             {
                 name: "Bodyguard",
+                summary: "Always on the front lines, Bodyguards shield their team from harm, acting as both protector and battering ram. Using karma-powered exoskeletons or reinforced bracers, they enhance their strength and durability, making them powerhouses in close combat.",
                 stat: "stamina",
                 modifier: 1
             },
             {
                 name: "Operative",
+                summary: "Operative Special Agents are sharp, tactical, and always in control. Masters of planning and coordination, many hold top leadership roles.",
                 stat: "aura",
                 modifier: 1
             },
             {
                 name: "Tinker",
+                summary: "Tinkers are the tech wizards of the Special Agents, masters of karma-powered gadgets and improvisation. Whether hacking into secure systems, cracking open locked doors, or tweaking gear mid-mission, they turn problems into opportunities.",
                 stat: "technique",
                 modifier: 1
             }
@@ -609,31 +623,38 @@ const specialties = [
     },
     {
         name: "Ink Fighter",
+        summary: "Ink Fighters are martial artists who wield karma-infused tattoos called sigils to gain extraordinary combat abilities. Sigils must be recharged with karma as they fade with use.",
         startingKarma: 20,
         medKitPercent: 50,
+        advantage: "can trade Movement for an extra Action in combat.",
         studies: [
             {
                 name: "Melee",
+                summary: "Melee is a common form of Ink fighting used mostly by older Ink Fighters. These fighters have sigils of swords, bats, spears, war hammers, and knives.",
                 stat: "aura",
                 modifier: 1
             },
             {
                 name: "Projectile",
+                summary: "Masters of ranged combat, Projectile Ink Fighters take combat to a whole new level with sigils that launch cannons, guns, rockets, throwing knives, lasers, and grenades.",
                 stat: "technique",
                 modifier: 1
             },
             {
                 name: "Animal",
+                summary: "Animal Ink Fighters summon creatures or transform parts of their bodies into animal forms. These sigils can be volatile, sometimes turning on their owners. This new and dangerous Study has gained popularity among younger Ink Fighters.",
                 stat: "agility",
                 modifier: 1
             },
             {
                 name: "Body",
+                summary: "Body-enhancing sigils are the oldest and most revered form of Ink Fighting. Using these sigils, fighters enhance their physical abilities, gaining incredible strength, martial arts skills, longer teeth, or tougher skin.",
                 stat: "function",
                 modifier: 1
             },
             {
                 name: "Elemental",
+                summary: "Elemental Ink Fighters wield the forces of nature through their sigils, such as lightning bolts, fire blasts, or torrents of water. This is the most dangerous Study, demanding a high amount of karma and often being short-lived but devastatingly powerful.",
                 stat: "willpower",
                 modifier: 1
             }
@@ -641,31 +662,38 @@ const specialties = [
     },
     {
         name: "Clockbot",
+        summary: "Clockbots are highly advanced robots powered by karmastry instead of electricity, allowing them to interact directly with destiny itself. Originally built for military use, they are now a core part of everyday life and handle everything from public service and medical assistance to industrial work.",
         startingKarma: 20,
         medKitPercent: 25,
+        advantage: "can absorb 50% of payback and karma-based weapon attacks without taking damage, halving all potential damage.",
         studies: [
             {
                 name: "D-Type (Decoy)",
+                summary: "D-Type Clockbots are the battlefield shields, built to draw enemy fire, absorb damage, and serve as frontline protectors against payback.",
                 stat: "stamina",
                 modifier: 1
             },
             {
                 name: "K-Type (Karmastry-Assist)",
+                summary: "K-Type Clockbots are the ultimate support units, built to back up Escape Artists in their most complex karmastry feats. More than just assistants, these Clockbots help manage raging payback, stabilize flux destinies, and keep the flow of karma running smoothly.",
                 stat: "willpower",
                 modifier: 1
             },
             {
                 name: "M-Type (Medical)",
+                summary: "Equipped with advanced medical tools and karma-infused healing abilities, M-Types provide emergency treatment, stabilize injuries, and restore HP when it matters most.",
                 stat: "function",
                 modifier: 1
             },
             {
                 name: "H-Type (Heavy)",
+                summary: "H-Type Clockbots are heavily armored and incredibly strong. They are designed to withstand and deliver heavy damage, making them formidable opponents in any battle scenario.",
                 stat: "agility",
                 modifier: 1
             },
             {
                 name: "X-Type (Experimental)",
+                summary: "X-Type Clockbots are built in secrecy by military research labs. These rare machines are capable of performing Quantum Karmastry, making them some of the most unpredictable and powerful Clockbots ever created.",
                 stat: "technique",
                 modifier: 1
             }
