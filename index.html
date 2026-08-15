@@ -255,37 +255,6 @@ LATEST REVISION: 08/12/2026
 </section>
 
 <!-- ************************************************************* -->
-<!--                     TRAITS/FLAWS SECTION                      -->
-<!-- ************************************************************* -->
-
-    <section id="traitsFlaws">
-        <h2>Traits & Flaws</h2>
-
-        <div id="traitFlawSelection">
-
-            <div id="traitColumn">
-                <h3>Traits</h3>
-                <div id="traitList"></div>
-            </div>
-
-            <div id="flawColumn">
-                <h3>Flaws</h3>
-                <div id="flawList"></div>
-            </div>
-        </div>
-
-        <div id="traitFlawStatus">
-            <span id="traitCount">Traits: 0 / 5</span>
-            <span id="flawCount">Flaws: 0 / 5</span>
-        </div>
-        
-        <div id="traitFlawAffiliationNote"></div>
-
-        <div id="traitFlawBalanceStatus"></div>
-
-    </section>
-
-<!-- ************************************************************* -->
 <!--                       POWERS SECTION                          -->
 <!-- ************************************************************* -->
 
@@ -294,9 +263,52 @@ LATEST REVISION: 08/12/2026
 
     <!-- NON-KARMA ATTACKS -->
 
-    <h3>Non-Karma Attacks</h3>
+    <h3>Basic Non-Karma Attacks</h3>
 
-    <table id="nonKarmaAttackTable">
+    <table id="basicNonKarmaAttackTable">
+        <thead>
+            <tr>
+                <th>Attack Name</th>
+                <th>Damage</th>
+                <th>Range</th>
+                <th>Effect</th>
+            </tr>
+        </thead>
+
+        <tbody> 
+            <tr>
+                <td>
+                    <input type="text" id="basicNonKarmaAttack1Name">
+                </td>
+                <td id="basicNonKarmaAttack1Damage">-</td>
+                <td id="basicNonKarmaAttack1Range">-</td>
+                <td id="basicNonKarmaAttack1Effect">-</td>
+            </tr>
+
+            <tr>
+                <td>
+                    <input type="text" id="basicNonKarmaAttack2Name">
+                </td>
+                <td id="basicNonKarmaAttack2Damage">-</td>
+                <td id="basicNonKarmaAttack2Range">-</td>
+                <td id="basicNonKarmaAttack2Effect">-</td>
+            </tr>
+
+            <tr>
+                <td>
+                    <input type="text" id="basicNonKarmaAttack3Name">
+                </td>
+                <td id="basicNonKarmaAttack3Damage">-</td>
+                <td id="basicNonKarmaAttack3Range">-</td>
+                <td id="basicNonKarmaAttack3Effect">-</td>
+            </tr>
+        </tbody>
+    </table>
+
+
+    <h3>Advanced Non-Karma Attacks</h3>
+
+    <table id="advancedNonKarmaAttackTable">
         <thead>
             <tr>
                 <th>Attack Name</th>
@@ -309,29 +321,29 @@ LATEST REVISION: 08/12/2026
         <tbody>
             <tr>
                 <td>
-                    <input type="text" id="nonKarmaAttack1Name">
+                    <input type="text" id="advancedNonKarmaAttack1Name">
                 </td>
-                <td id="nonKarmaAttack1Damage">-</td>
-                <td id="nonKarmaAttack1Range">-</td>
-                <td id="nonKarmaAttack1Effect">-</td>
+                <td id="advancedNonKarmaAttack1Damage">-</td>
+                <td id="advancedNonKarmaAttack1Range">-</td>
+                <td id="advancedNonKarmaAttack1Effect">-</td>
             </tr>
 
             <tr>
                 <td>
-                    <input type="text" id="nonKarmaAttack2Name">
+                    <input type="text" id="advancedNonKarmaAttack2Name">
                 </td>
-                <td id="nonKarmaAttack2Damage">-</td>
-                <td id="nonKarmaAttack2Range">-</td>
-                <td id="nonKarmaAttack2Effect">-</td>
+                <td id="advancedNonKarmaAttack2Damage">-</td>
+                <td id="advancedNonKarmaAttack2Range">-</td>
+                <td id="advancedNonKarmaAttack2Effect">-</td>
             </tr>
 
             <tr>
                 <td>
-                    <input type="text" id="nonKarmaAttack3Name">
+                    <input type="text" id="advancedNonKarmaAttack3Name">
                 </td>
-                <td id="nonKarmaAttack3Damage">-</td>
-                <td id="nonKarmaAttack3Range">-</td>
-                <td id="nonKarmaAttack3Effect">-</td>
+                <td id="advancedNonKarmaAttack3Damage">-</td>
+                <td id="advancedNonKarmaAttack3Range">-</td>
+                <td id="advancedNonKarmaAttack3Effect">-</td>
             </tr>
         </tbody>
     </table>
@@ -625,6 +637,37 @@ LATEST REVISION: 08/12/2026
         </section>
     </div>
 </section>
+
+<!-- ************************************************************* -->
+<!--                     TRAITS/FLAWS SECTION                      -->
+<!-- ************************************************************* -->
+
+    <section id="traitsFlaws">
+        <h2>Traits & Flaws</h2>
+
+        <div id="traitFlawSelection">
+
+            <div id="traitColumn">
+                <h3>Traits</h3>
+                <div id="traitList"></div>
+            </div>
+
+            <div id="flawColumn">
+                <h3>Flaws</h3>
+                <div id="flawList"></div>
+            </div>
+        </div>
+
+        <div id="traitFlawStatus">
+            <span id="traitCount">Traits: 0 / 5</span>
+            <span id="flawCount">Flaws: 0 / 5</span>
+        </div>
+        
+        <div id="traitFlawAffiliationNote"></div>
+
+        <div id="traitFlawBalanceStatus"></div>
+
+    </section>
 
 <!-- ************************************************************* -->
 <!--                      CHARACTER SUMMARY                        -->

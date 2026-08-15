@@ -55,8 +55,49 @@ const character = {
         fishbowls: 1,
         specialtyItems: []
     },
-    traits: [],
-    flaws: [],
+    nonKarmaAttacks: {
+        basic: [
+            {
+                name: "",
+                damage: 0,
+                range: "",
+                effect: ""
+            },
+            {
+                name: "",
+                damage: 0,
+                range: "",
+                effect: ""
+            },
+            {
+                name: "",
+                damage: 0,
+                range: "",
+                effect: ""
+            }
+        ],
+
+        advanced: [
+            {
+                name: "",
+                damage: 0,
+                range: "",
+                effect: ""
+            },
+            {
+                name: "",
+                damage: 0,
+                range: "",
+                effect: ""
+            },
+            {
+                name: "",
+                damage: 0,
+                range: "",
+                effect: ""
+            }
+        ]
+    },
     powers: {
         basicTier1: {
             attack: {
@@ -229,7 +270,9 @@ const character = {
                 effect: ""
             }
         }
-    }
+    },
+    traits: [],
+    flaws: []
 };
 
 // ========================================
@@ -3770,10 +3813,15 @@ specialtySelect.addEventListener("change", function() {
     affiliationDescription.value = "";
     character.traits = [];
     character.flaws = [];
+
+    resetNonKarmaAttacks();
+    populateNonKarmaAttacks();
+    displayAllNonKarmaAttacks();
+
     resetPowers();
+    displayAllPowers();
 
     updateTraitFlawDisplay();
-    displayAllPowers();
 
     calculateTalents();
     calculateDerivedStats();
@@ -4115,6 +4163,316 @@ function setEscapeArtistTorusChoice(choice) {
 }
 
 // ========================================
+// POWER FUNCTIONS
+// ========================================
+
+function getPowerElement(tier, powerType, field) {
+    const formattedPowerType =
+        powerType.charAt(0).toUpperCase() + powerType.slice(1);
+
+    return document.getElementById(
+        `${tier}${formattedPowerType}${field}`
+    );
+}
+
+function displayPower(tier, powerType, power) {
+    getPowerElement(tier, powerType, "Name").value = power.name;
+    getPowerElement(tier, powerType, "Description").value = power.description;
+    getPowerElement(tier, powerType, "KP").textContent = power.kpCost;
+    getPowerElement(tier, powerType, "Damage").textContent = power.damage ?? "-";
+    getPowerElement(tier, powerType, "Range").textContent = power.range;
+    getPowerElement(tier, powerType, "Effect").textContent = power.effect;
+}
+
+function findStudyPowerDefinition(studyName) {
+    return studyPowerDefinitions.find(function(study) {
+        return study.study === studyName;
+    });
+}
+
+function populatePowerDefinitions() {
+    const selectedStudy = findStudyPowerDefinition(character.study);
+
+    if (!selectedStudy) {
+        return;
+    }
+
+    const tiers = [
+        "basicTier1",
+        "basicTier2",
+        "advancedTier1",
+        "advancedTier2"
+    ];
+
+    const powerTypes = [
+        "attack",
+        "defense",
+        "combo",
+        "signature",
+        "locomotion"
+    ];
+
+    for (const tier of tiers) {
+        for (const powerType of powerTypes) {
+            const definition = selectedStudy[tier][powerType];
+            const characterPower = character.powers[tier][powerType];
+
+            characterPower.kpCost = definition.kpCost;
+            characterPower.damage = definition.damage;
+            characterPower.range = definition.range;
+            characterPower.effect = definition.effect;
+        }
+    }
+}
+
+function displayAllPowers() {
+    const tiers = [
+        "basicTier1",
+        "basicTier2",
+        "advancedTier1",
+        "advancedTier2"
+    ];
+
+    const powerTypes = [
+        "attack",
+        "defense",
+        "combo",
+        "signature",
+        "locomotion"
+    ];
+
+    for (const tier of tiers) {
+        for (const powerType of powerTypes) {
+            const power = character.powers[tier][powerType];
+
+            displayPower(tier, powerType, power);
+        }
+    }
+}
+
+function setupPowerInput(tier, powerType) {
+    const nameInput = getPowerElement(tier, powerType, "Name");
+    const descriptionInput = getPowerElement(tier, powerType, "Description");
+
+    nameInput.addEventListener("input", function() {
+        character.powers[tier][powerType].name = nameInput.value;
+    });
+
+    descriptionInput.addEventListener("input", function() {
+        character.powers[tier][powerType].description = descriptionInput.value;
+    });
+}
+
+setupPowerInput("basicTier1", "attack");
+setupPowerInput("basicTier1", "defense");
+setupPowerInput("basicTier1", "combo");
+setupPowerInput("basicTier1", "signature");
+setupPowerInput("basicTier1", "locomotion");
+
+setupPowerInput("basicTier2", "attack");
+setupPowerInput("basicTier2", "defense");
+setupPowerInput("basicTier2", "combo");
+setupPowerInput("basicTier2", "signature");
+setupPowerInput("basicTier2", "locomotion");
+
+setupPowerInput("advancedTier1", "attack");
+setupPowerInput("advancedTier1", "defense");
+setupPowerInput("advancedTier1", "combo");
+setupPowerInput("advancedTier1", "signature");
+setupPowerInput("advancedTier1", "locomotion");
+
+setupPowerInput("advancedTier2", "attack");
+setupPowerInput("advancedTier2", "defense");
+setupPowerInput("advancedTier2", "combo");
+setupPowerInput("advancedTier2", "signature");
+setupPowerInput("advancedTier2", "locomotion");
+
+function resetPowers() {
+    const tiers = [
+        "basicTier1",
+        "basicTier2",
+        "advancedTier1",
+        "advancedTier2"
+    ];
+
+    const powerTypes = [
+        "attack",
+        "defense",
+        "combo",
+        "signature",
+        "locomotion"
+    ];
+
+    for (const tier of tiers) {
+        for (const powerType of powerTypes) {
+            character.powers[tier][powerType].name = "";
+            character.powers[tier][powerType].description = "";
+            character.powers[tier][powerType].kpCost = null;
+            character.powers[tier][powerType].damage = null;
+            character.powers[tier][powerType].range = "-";
+            character.powers[tier][powerType].effect = "-";
+        }
+    }
+}
+
+// NON-KARMA ATTACK FUNCTIONS ============
+
+function setupNonKarmaAttackInput(type, number) {
+    const nameInput = getNonKarmaAttackElement(type, number, "Name");
+
+    nameInput.addEventListener("input", function() {
+        character.nonKarmaAttacks[type][number - 1].name = nameInput.value;
+    });
+}
+
+setupNonKarmaAttackInput("basic", 1);
+setupNonKarmaAttackInput("basic", 2);
+setupNonKarmaAttackInput("basic", 3);
+
+setupNonKarmaAttackInput("advanced", 1);
+setupNonKarmaAttackInput("advanced", 2);
+setupNonKarmaAttackInput("advanced", 3);
+
+function populateNonKarmaAttacks() {
+    const selectedSpecialty = nonKarmaAttackDefinitions.find(function(specialty) {
+        return specialty.specialty === character.specialty;
+    });
+
+    if (!selectedSpecialty) {
+        return;
+    }
+
+    for (let i = 0; i < 3; i++) {
+        character.nonKarmaAttacks.basic[i].damage = selectedSpecialty.basic[i].damage;
+        character.nonKarmaAttacks.basic[i].range = selectedSpecialty.basic[i].range;
+        character.nonKarmaAttacks.basic[i].effect = selectedSpecialty.basic[i].effect;
+
+        character.nonKarmaAttacks.advanced[i].damage = selectedSpecialty.advanced[i].damage;
+        character.nonKarmaAttacks.advanced[i].range = selectedSpecialty.advanced[i].range;
+        character.nonKarmaAttacks.advanced[i].effect = selectedSpecialty.advanced[i].effect;
+    }
+}
+
+function getNonKarmaAttackElement(type, number, field) {
+    return document.getElementById(
+        `${type}NonKarmaAttack${number}${field}`
+    );
+}
+
+function displayNonKarmaAttack(type, number, attack) {
+    getNonKarmaAttackElement(type, number, "Name").value = attack.name;
+    getNonKarmaAttackElement(type, number, "Damage").textContent = attack.damage;
+    getNonKarmaAttackElement(type, number, "Range").textContent = attack.range;
+    getNonKarmaAttackElement(type, number, "Effect").textContent = attack.effect;
+}
+
+function displayAllNonKarmaAttacks() {
+    for (let i = 0; i < 3; i++) {
+        displayNonKarmaAttack(
+            "basic",
+            i + 1,
+            character.nonKarmaAttacks.basic[i]
+        );
+
+        displayNonKarmaAttack(
+            "advanced",
+            i + 1,
+            character.nonKarmaAttacks.advanced[i]
+        );
+    }
+}
+
+function resetNonKarmaAttacks() {
+    for (let i = 0; i < 3; i++) {
+        character.nonKarmaAttacks.basic[i].name = "";
+        character.nonKarmaAttacks.advanced[i].name = "";
+    }
+}
+
+function basicKarmaPowersAreComplete() {
+    const basicTier1 = character.powers.basicTier1;
+
+    return (
+        basicTier1.attack.name.trim() !== "" &&
+        basicTier1.attack.description.trim() !== "" &&
+        basicTier1.defense.name.trim() !== "" &&
+        basicTier1.defense.description.trim() !== "" &&
+        basicTier1.combo.name.trim() !== "" &&
+        basicTier1.combo.description.trim() !== "" &&
+        basicTier1.signature.name.trim() !== "" &&
+        basicTier1.signature.description.trim() !== "" &&
+        basicTier1.locomotion.name.trim() !== "" &&
+        basicTier1.locomotion.description.trim() !== ""
+    );
+}
+
+function basicNonKarmaAttacksAreComplete() {
+    return (
+        character.nonKarmaAttacks.basic[0].name.trim() !== "" &&
+        character.nonKarmaAttacks.basic[1].name.trim() !== "" &&
+        character.nonKarmaAttacks.basic[2].name.trim() !== ""
+    );
+}
+
+// ========================================
+// FINALIZE FUNCTIONS
+// ========================================
+
+function canFinalizeCharacter() {
+    return getFinalizationErrors().length === 0;
+}
+
+function getFinalizationErrors() {
+    const errors = [];
+
+    if (character.name.trim() === "") {
+        errors.push("Character Name is required.");
+    }
+
+    if (character.age.trim() === "") {
+        errors.push("Character Age is required.");
+    }
+
+    if (character.gender.trim() === "") {
+        errors.push("Character Gender is required.");
+    }
+
+    if (
+        character.specialty === "Escape Artist" &&
+        character.startingItems.specialtyItems.length === 0
+    ) {
+        errors.push("Escape Artists much choose a starting torus.");
+    }
+
+    if (character.affiliation.trim() === "") {
+        errors.push("Must select an Affiliation.");
+    }
+
+    if (!basicKarmaPowersAreComplete()) {
+        errors.push("All Basic Tier 1 Karma Powers must have a name and description.");
+    }
+
+    if (!basicNonKarmaAttacksAreComplete()) {
+        errors.push("All Basic Non-Karma Attacks must have a name.");
+    }
+    
+    if (!traitsAndFlawsAreBalanced()) {
+        errors.push("Trait and Flaw counts must match.");
+    }
+
+    if (character.traits.length > 5) {
+        errors.push("You cannot have more than 5 Traits.");
+    }
+
+    if (character.flaws.length > 5) {
+        errors.push("You cannot have more than 5 Flaws.");
+    }
+
+    return errors;
+}
+
+
+// ========================================
 // TRAITS/FLAWS FUNCTIONS
 // ========================================
 
@@ -4337,209 +4695,6 @@ function isAffiliationFlaw(name) {
 }
 
 updateTraitFlawDisplay();
-
-
-// ========================================
-// POWER FUNCTIONS
-// ========================================
-
-function getPowerElement(tier, powerType, field) {
-    const formattedPowerType =
-        powerType.charAt(0).toUpperCase() + powerType.slice(1);
-
-    return document.getElementById(
-        `${tier}${formattedPowerType}${field}`
-    );
-}
-
-function displayPower(tier, powerType, power) {
-    getPowerElement(tier, powerType, "Name").value = power.name;
-    getPowerElement(tier, powerType, "Description").value = power.description;
-    getPowerElement(tier, powerType, "KP").textContent = power.kpCost;
-    getPowerElement(tier, powerType, "Damage").textContent = power.damage ?? "-";
-    getPowerElement(tier, powerType, "Range").textContent = power.range;
-    getPowerElement(tier, powerType, "Effect").textContent = power.effect;
-}
-
-function findStudyPowerDefinition(studyName) {
-    return studyPowerDefinitions.find(function(study) {
-        return study.study === studyName;
-    });
-}
-
-function populatePowerDefinitions() {
-    const selectedStudy = findStudyPowerDefinition(character.study);
-
-    if (!selectedStudy) {
-        return;
-    }
-
-    const tiers = [
-        "basicTier1",
-        "basicTier2",
-        "advancedTier1",
-        "advancedTier2"
-    ];
-
-    const powerTypes = [
-        "attack",
-        "defense",
-        "combo",
-        "signature",
-        "locomotion"
-    ];
-
-    for (const tier of tiers) {
-        for (const powerType of powerTypes) {
-            const definition = selectedStudy[tier][powerType];
-            const characterPower = character.powers[tier][powerType];
-
-            characterPower.kpCost = definition.kpCost;
-            characterPower.damage = definition.damage;
-            characterPower.range = definition.range;
-            characterPower.effect = definition.effect;
-        }
-    }
-}
-
-function displayAllPowers() {
-    const tiers = [
-        "basicTier1",
-        "basicTier2",
-        "advancedTier1",
-        "advancedTier2"
-    ];
-
-    const powerTypes = [
-        "attack",
-        "defense",
-        "combo",
-        "signature",
-        "locomotion"
-    ];
-
-    for (const tier of tiers) {
-        for (const powerType of powerTypes) {
-            const power = character.powers[tier][powerType];
-
-            displayPower(tier, powerType, power);
-        }
-    }
-}
-
-function setupPowerInput(tier, powerType) {
-    const nameInput = getPowerElement(tier, powerType, "Name");
-    const descriptionInput = getPowerElement(tier, powerType, "Description");
-
-    nameInput.addEventListener("input", function() {
-        character.powers[tier][powerType].name = nameInput.value;
-    });
-
-    descriptionInput.addEventListener("input", function() {
-        character.powers[tier][powerType].description = descriptionInput.value;
-    });
-}
-
-setupPowerInput("basicTier1", "attack");
-setupPowerInput("basicTier1", "defense");
-setupPowerInput("basicTier1", "combo");
-setupPowerInput("basicTier1", "signature");
-setupPowerInput("basicTier1", "locomotion");
-
-setupPowerInput("basicTier2", "attack");
-setupPowerInput("basicTier2", "defense");
-setupPowerInput("basicTier2", "combo");
-setupPowerInput("basicTier2", "signature");
-setupPowerInput("basicTier2", "locomotion");
-
-setupPowerInput("advancedTier1", "attack");
-setupPowerInput("advancedTier1", "defense");
-setupPowerInput("advancedTier1", "combo");
-setupPowerInput("advancedTier1", "signature");
-setupPowerInput("advancedTier1", "locomotion");
-
-setupPowerInput("advancedTier2", "attack");
-setupPowerInput("advancedTier2", "defense");
-setupPowerInput("advancedTier2", "combo");
-setupPowerInput("advancedTier2", "signature");
-setupPowerInput("advancedTier2", "locomotion");
-
-function resetPowers() {
-    const tiers = [
-        "basicTier1",
-        "basicTier2",
-        "advancedTier1",
-        "advancedTier2"
-    ];
-
-    const powerTypes = [
-        "attack",
-        "defense",
-        "combo",
-        "signature",
-        "locomotion"
-    ];
-
-    for (const tier of tiers) {
-        for (const powerType of powerTypes) {
-            character.powers[tier][powerType].name = "";
-            character.powers[tier][powerType].description = "";
-            character.powers[tier][powerType].kpCost = null;
-            character.powers[tier][powerType].damage = null;
-            character.powers[tier][powerType].range = "-";
-            character.powers[tier][powerType].effect = "-";
-        }
-    }
-}
-
-// ========================================
-// FINALIZE FUNCTIONS
-// ========================================
-
-function canFinalizeCharacter() {
-    return getFinalizationErrors().length === 0;
-}
-
-function getFinalizationErrors() {
-    const errors = [];
-
-    if (character.name.trim() === "") {
-        errors.push("Character Name is required.");
-    }
-
-    if (character.age.trim() === "") {
-        errors.push("Character Age is required.");
-    }
-
-    if (character.gender.trim() === "") {
-        errors.push("Character Gender is required.");
-    }
-
-    if (
-        character.specialty === "Escape Artist" &&
-        character.startingItems.specialtyItems.length === 0
-    ) {
-        errors.push("Escape Artists much choose a starting torus.");
-    }
-
-    if (character.affiliation.trim() === "") {
-        errors.push("Must select an Affiliation.");
-    }
-    
-    if (!traitsAndFlawsAreBalanced()) {
-        errors.push("Trait and Flaw counts must match.");
-    }
-
-    if (character.traits.length > 5) {
-        errors.push("You cannot have more than 5 Traits.");
-    }
-
-    if (character.flaws.length > 5) {
-        errors.push("You cannot have more than 5 Flaws.");
-    }
-
-    return errors;
-}
 
 // ========================================
 // UTILITY FUNCTIONS
