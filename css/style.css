@@ -56,6 +56,36 @@ h6 {
 }
 
 /* =========================================== */
+/*                   HEADER                    */
+/* =========================================== */
+
+#pageHeader {
+    display: flex;
+    align-items: center;
+    gap: 25px;
+    margin-bottom: 15px;
+}
+
+#headerText {
+    flex: 1;
+}
+
+#headerText h1 {
+    color: white;
+    margin: 10px 0;
+}
+
+#headerText p {
+    font-size: 0.8rem;
+    color: var(--text-secondary);
+}
+
+#siteLogo {
+    width: 200px;
+    height: auto;
+}
+
+/* =========================================== */
 /*                   SIDEBAR                   */
 /* =========================================== */
 
