@@ -307,6 +307,8 @@ const summaryDefenseName = document.getElementById("summaryDefenseName");
 const summaryComboName = document.getElementById("summaryComboName");
 const summarySignatureName = document.getElementById("summarySignatureName");
 const summaryLocomotionName = document.getElementById("summaryLocomotionName");
+const summaryTraits = document.getElementById("summaryTraits");
+const summaryFlaws = document.getElementById("summaryFlaws");
 
 const specialtySelect = document.getElementById("specialtySelect");
 const specialtyInfo = document.getElementById("specialtyInfo");
@@ -4072,6 +4074,15 @@ resetTalentsButton.addEventListener("click", function() {
 
 // =========== Talent Calculations ============
 
+function updateTalentSummary() {
+    summaryAura.textContent = character.talents.aura;
+    summaryStamina.textContent = character.talents.stamina;
+    summaryAgility.textContent = character.talents.agility;
+    summaryWillpower.textContent = character.talents.willpower;
+    summaryFunction.textContent = character.talents.function;
+    summaryTechnique.textContent = character.talents.technique;
+}
+
 function calculateTalents() {
     character.talents.aura = character.baseTalents.aura;
     character.talents.stamina = character.baseTalents.stamina;
@@ -4083,6 +4094,8 @@ function calculateTalents() {
     if (character.currentStudy !== null) {
         character.talents[character.currentStudy.stat] += character.currentStudy.modifier;
     }
+
+    updateTalentSummary();
 }
 
 // ========== Derived Stat Calculations ==========
@@ -4276,6 +4289,28 @@ function setupPowerInput(tier, powerType) {
 
     nameInput.addEventListener("input", function() {
         character.powers[tier][powerType].name = nameInput.value;
+
+        if (tier === "basicTier1") {
+            if (powerType === "attack") {
+                summaryAttackName.textContent = nameInput.value || "-";
+            }
+
+            if (powerType === "defense") {
+                summaryDefenseName.textContent = nameInput.value || "-";
+            }
+
+            if (powerType === "combo") {
+                summaryComboName.textContent = nameInput.value || "-";
+            }
+
+            if (powerType === "signature") {
+                summarySignatureName.textContent = nameInput.value || "-";
+            }
+
+            if (powerType === "locomotion") {
+                summaryLocomotionName.textContent = nameInput.value || "-";
+            }
+        }
     });
 
     descriptionInput.addEventListener("input", function() {
@@ -4560,7 +4595,14 @@ function removeFlaw(name) {
     return false;
 }
 
+function updateTraitFlawSummary() {
+    summaryTraits.textContent = character.traits.join(", ");
+    summaryFlaws.textContent = character.flaws.join(", ");
+}
+
 function updateTraitFlawDisplay() {
+    updateTraitFlawSummary();
+
     traitList.innerHTML = "";
     flawList.innerHTML = "";
 

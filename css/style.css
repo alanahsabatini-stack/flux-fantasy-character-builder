@@ -95,6 +95,12 @@ h6 {
     justify-content: space-between;
 }
 
+#summaryTraits,
+#summaryFlaws {
+    font-size: 0.8rem;
+    color: var(--text-primary);
+}
+
 /* =========================================== */
 /*                 INFO PANELS                 */
 /* =========================================== */
