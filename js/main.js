@@ -3,7 +3,7 @@
 // TITLE: JavaScript Main
 // PROGRAMMER: Alanah Sabatini
 // DATE: 08/08/2026
-// LATEST REVISION: 08/15/2026
+// LATEST REVISION: 08/17/2026
 // ========================================
 
 console.log("Flux Fantasy Character Builder loaded!");
@@ -4605,8 +4605,20 @@ function removeFlaw(name) {
 }
 
 function updateTraitFlawSummary() {
-    summaryTraits.textContent = character.traits.join(", ");
-    summaryFlaws.textContent = character.flaws.join(", ");
+    summaryTraits.innerHTML = "";
+    summaryFlaws.innerHTML = "";
+
+    character.traits.forEach(function(trait) {
+        const listItem = document.createElement("li");
+        listItem.textContent = trait;
+        summaryTraits.appendChild(listItem);
+    });
+
+    character.flaws.forEach(function(flaw) {
+        const listItem = document.createElement("li");
+        listItem.textContent = flaw;
+        summaryFlaws.appendChild(listItem);
+    });
 }
 
 function updateTraitFlawDisplay() {

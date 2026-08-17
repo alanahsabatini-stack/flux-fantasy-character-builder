@@ -31,7 +31,7 @@ body {
 
 #pageLayout {
     display: grid;
-    grid-template-columns: 3fr 1fr;
+    grid-template-columns: minmax(0, 2fr) minmax(0, 1fr);
     gap: 30px;
 }
 
@@ -60,6 +60,7 @@ h6 {
 /* =========================================== */
 
 #sidebar {
+    min-width: 0;
     background-color: var(--sidebar-background);
     border: 1px solid var(--brand-purple);
     border-radius: 8px;
@@ -84,6 +85,28 @@ h6 {
     color: var(--text-secondary);
 }
 
+#summaryBasics {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    column-gap: 15px;
+}
+
+#summaryBasics p {
+    display: flex;
+    flex-direction: column;
+    margin: 4px 0;
+}
+
+#summaryBasics .summaryLabel {
+    font-size: 0.7rem;
+    margin-bottom: 1px;
+}
+
+#summaryBasics p > span:not(.summaryLabel) {
+    color: var(--text-primary);
+    white-space: nowrap;
+}
+
 #summaryStats {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -100,17 +123,45 @@ h6 {
     display: grid;
     grid-template-columns: 1fr 1fr;
     column-gap: 20px;
+    row-gap: 0;
 }
 
 #summaryTalents p {
     display: flex;
     justify-content: space-between;
+    margin: 2px 0;
+}
+
+#summaryTraitsFlaws {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    column-gap: 15px;
+}
+
+#summaryTraitsFlaws h5 {
+    margin: 8px 0 2px;
+}
+
+#summaryTraitsFlaws ul {
+    margin: 0;
+    padding-left: 18px;
+}
+
+#summaryTraitsFlaws li {
+    font-size: 0.8rem;
+    margin: 2px 0;
 }
 
 #summaryTraits,
 #summaryFlaws {
+    margin: 0;
+    padding-left: 16px;
     font-size: 0.8rem;
-    color: var(--text-primary);
+}
+
+#summaryTraits li,
+#summaryFlaws li {
+    margin: 2px 0;
 }
 
 /* =========================================== */

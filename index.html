@@ -6,7 +6,7 @@ PROJECT: Flux Fantasy Character Builder
 TITLE: HTML Main
 PROGRAMMER: Alanah Sabatini
 DATE: 08/08/2026
-LATEST REVISION: 08/16/2026
+LATEST REVISION: 08/17/2026
 ==========================================-->
 
 <head>
@@ -686,13 +686,39 @@ LATEST REVISION: 08/16/2026
     <section id="characterSummary">
         <h3>Character Summary</h3>
 
-        <p><span class="summaryLabel">Name:</span> <span id="summaryName">Not entered</span></p>
-        <p><span class="summaryLabel">Alias:</span> <span id="summaryAlias">Not entered</span></p>
-        <p><span class="summaryLabel">Level:</span> <span id="summaryLevel">1</span></p>
+        <div id="summaryBasics">
 
-        <p><span class="summaryLabel">Specialty:</span> <span id="summarySpecialty">Not selected</span></p>
-        <p><span class="summaryLabel">Study:</span> <span id="summaryStudy">Not selected</span></p>
-        <p><span class="summaryLabel">Affiliation:</span> <span id="summaryAffiliation">Not selected</span></p>
+            <div>
+                <p>
+                    <span class="summaryLabel">Name:</span> 
+                    <span id="summaryName">Not entered</span>
+                </p>
+                <p>
+                    <span class="summaryLabel">Alias:</span> 
+                    <span id="summaryAlias">Not entered</span>
+                </p>
+                <p>
+                    <span class="summaryLabel">Level:</span> 
+                    <span id="summaryLevel">1</span>
+                </p>
+            </div>
+
+            <div>
+                <p>
+                    <span class="summaryLabel">Specialty:</span> 
+                    <span id="summarySpecialty">Not selected</span>
+                </p>
+                <p>
+                    <span class="summaryLabel">Study:</span> 
+                    <span id="summaryStudy">Not selected</span>
+                </p>
+                <p>
+                    <span class="summaryLabel">Affiliation:</span> 
+                    <span id="summaryAffiliation">Not selected</span>
+                </p>
+            </div>
+
+</div>
 
         <div id="summaryStats">
             <p><span class="summaryLabel">KP:</span> <span id="summaryKarma">0</span></p>
@@ -718,11 +744,19 @@ LATEST REVISION: 08/16/2026
         <p><span class="summaryLabel">Signature:</span> <span id="summarySignatureName">-</span></p>
         <p><span class="summaryLabel">Locomotion:</span> <span id="summaryLocomotionName">-</span></p>
 
-        <h5>Traits</h5>
-        <div id="summaryTraits"></div>
+        <div id="summaryTraitsFlaws">
 
-        <h5>Flaws</h5>
-        <div id="summaryFlaws"></div>
+            <div>
+                <h5>Traits</h5>
+                <ul id="summaryTraits"></ul>
+            </div>
+
+            <div>
+                <h5>Flaws</h5>
+                <ul id="summaryFlaws"></ul>
+            </div>
+
+        </div>
 
     </section>
 </aside>
