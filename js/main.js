@@ -3,7 +3,7 @@
 // TITLE: JavaScript Main
 // PROGRAMMER: Alanah Sabatini
 // DATE: 08/08/2026
-// LATEST REVISION: 08/12/2026
+// LATEST REVISION: 08/15/2026
 // ========================================
 
 console.log("Flux Fantasy Character Builder loaded!");
@@ -290,15 +290,29 @@ const characterWeight = document.getElementById("characterWeight");
 const characterLevel = document.getElementById("characterLevel");
 const characterBackground = document.getElementById("characterBackground");
 
+const summaryName = document.getElementById("summaryName");
+const summaryAlias = document.getElementById("summaryAlias");
+const summaryLevel = document.getElementById("summaryLevel");
+const summarySpecialty = document.getElementById("summarySpecialty");
+const summaryAffiliation = document.getElementById("summaryAffiliation");
+const summaryStudy = document.getElementById("summaryStudy");
+const summaryAura = document.getElementById("summaryAura");
+const summaryStamina = document.getElementById("summaryStamina");
+const summaryAgility = document.getElementById("summaryAgility");
+const summaryWillpower = document.getElementById("summaryWillpower");
+const summaryFunction = document.getElementById("summaryFunction");
+const summaryTechnique = document.getElementById("summaryTechnique");
+const summaryAttackName = document.getElementById("summaryAttackName");
+const summaryDefenseName = document.getElementById("summaryDefenseName");
+const summaryComboName = document.getElementById("summaryComboName");
+const summarySignatureName = document.getElementById("summarySignatureName");
+const summaryLocomotionName = document.getElementById("summaryLocomotionName");
+
 const specialtySelect = document.getElementById("specialtySelect");
 const specialtyInfo = document.getElementById("specialtyInfo");
 
 const studySelect = document.getElementById("studySelect");
 const studyInfo = document.getElementById("studyInfo");
-
-const summarySpecialty = document.getElementById("summarySpecialty");
-const summaryKarma = document.getElementById("summaryKarma");
-const summaryStudy = document.getElementById("summaryStudy");
 
 const studyEffect = document.getElementById("studyEffect");
 
@@ -3717,10 +3731,12 @@ const nonKarmaAttackDefinitions = [
 
 characterName.addEventListener("input", function() {
     character.name = characterName.value;
+    summaryName.textContent = character.name;
 });
 
 characterAlias.addEventListener("input", function() {
     character.alias = characterAlias.value;
+    summaryAlias.textContent = character.alias;
 });
 
 characterAge.addEventListener("input", function() {
@@ -3741,6 +3757,7 @@ characterWeight.addEventListener("input", function() {
 
 characterLevel.addEventListener("input", function() {
     character.level = Number(characterLevel.value);
+    summaryLevel.textContent = character.level;
 });
 
 characterBackground.addEventListener("input", function() {
@@ -3826,10 +3843,10 @@ specialtySelect.addEventListener("change", function() {
     calculateTalents();
     calculateDerivedStats();
     summaryStudy.textContent = "Not Selected";
+    summaryAffiliation.textContent = "Not Selected";
     studyEffect.textContent = "Study Effect: None";
     
     summarySpecialty.textContent = character.specialty;
-    summaryKarma.textContent = character.karmaPool;
 
     specialtyInfo.innerHTML = `
         <p>Specialty: ${selectedSpecialty.name}</p>
@@ -3909,6 +3926,8 @@ affiliationSelect.addEventListener("change", function() {
     character.affiliationName = selectedAffiliation.name;
     character.affiliationDescription = selectedAffiliation.description;
 
+    summaryAffiliation.textContent = character.affiliationName;
+
     affiliationInfo.innerHTML = `
         <p>Affiliation: ${selectedAffiliation.name}</p>
         <p>${selectedAffiliation.description}</p>
@@ -3921,6 +3940,7 @@ affiliationSelect.addEventListener("change", function() {
 applyAffiliationButton.addEventListener("click", function() {
     character.affiliationName = affiliationName.value;
     character.affiliationDescription = affiliationDescription.value;
+    summaryAffiliation.textContent = character.affiliationName;
 
     console.log("Custom Affiliation Saved");
     console.log(character.affiliationName);

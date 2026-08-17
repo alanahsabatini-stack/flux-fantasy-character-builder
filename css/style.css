@@ -1,8 +1,98 @@
+/* =========================================== */
+/*                 PAGE STYLES                 */
+/* =========================================== */
+
+:root {
+    /* "Dark Mode" Styling */
+    --page-background: #111318;
+    --surface: #1A1D24;
+    --sidebar-background: #1A1625;
+    --border: #343944;
+    --text-primary: #E8EAF0;
+    --text-secondary: #AEB3C0;
+    --input-background: #222630;
+
+    /* Flux Destiny Brand Colors */
+    --brand-dark-blue: #240F65;
+    --brand-blue: #1919F5;
+    --brand-purple: #451CC0;
+    --brand-magenta: #EA346A;
+    --brand-gold: #F8D44B;
+}
+
 body {
-    font-family: sans-serif;
+    font-family: "Oxanium", sans-serif;
     max-width: 900px;
     margin: 40px auto;
     padding: 0 20px;
+    background-color: var(--page-background);
+    color: var(--text-primary);
+}
+
+#pageLayout {
+    display: grid;
+    grid-template-columns: 3fr 1fr;
+    gap: 30px;
+}
+
+input,
+textarea,
+select {
+    background-color: var(--input-background);
+    color: var(--text-primary);
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    font-family: "Oxanium", sans-serif;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-family: "Orbitron", sans-serif;
+    color: var(--brand-gold);
+}
+
+/* =========================================== */
+/*                   SIDEBAR                   */
+/* =========================================== */
+
+#sidebar {
+    background-color: var(--sidebar-background);
+    border: 1px solid var(--brand-purple);
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 0 15px rgba(69, 28, 192, 0.25);
+
+    position: sticky;
+    top: 20px;
+    align-self: start;
+}
+
+#sidebar h5 {
+    margin: 8px 0;
+}
+
+#sidebar p {
+    margin: 6px 0;
+    font-size: 0.8rem;
+}
+
+.summaryLabel {
+    color: var(--text-secondary);
+}
+
+#summaryTalents {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    column-gap: 20px;
+}
+
+#summaryTalents p {
+    display: flex;
+    justify-content: space-between;
 }
 
 /* =========================================== */

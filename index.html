@@ -6,7 +6,7 @@ PROJECT: Flux Fantasy Character Builder
 TITLE: HTML Main
 PROGRAMMER: Alanah Sabatini
 DATE: 08/08/2026
-LATEST REVISION: 08/12/2026
+LATEST REVISION: 08/16/2026
 ==========================================-->
 
 <head>
@@ -15,11 +15,15 @@ LATEST REVISION: 08/12/2026
 
     <title>Flux Fantasy Character Builder</title>
 
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700&family=Oxanium:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/style.css">
 </head>
 
 <body>
     <h1>Flux Fantasy Character Builder</h1>
+
+    <div id="pageLayout">
+        <main id="mainContent">
 
 <!-- ************************************************************* -->
 <!--                      IDENTITY SECTION                         -->
@@ -673,13 +677,46 @@ LATEST REVISION: 08/12/2026
 <!--                      CHARACTER SUMMARY                        -->
 <!-- ************************************************************* -->
 
-    <section id="characterSummary">
-        <h2>Character Summary</h2>
+</main>
 
-        <p>Specialty: <span id="summarySpecialty">Not selected</span></p>
-        <p>Study: <span id="summaryStudy">Not selected</span></p>
-        <p>Karma Pool: <span id="summaryKarma">0</span></p>
+<aside id="sidebar">
+    
+    <section id="characterSummary">
+        <h3>Character Summary</h3>
+
+        <p><span class="summaryLabel">Name:</span> <span id="summaryName">Not entered</span></p>
+        <p><span class="summaryLabel">Alias:</span> <span id="summaryAlias">Not entered</span></p>
+        <p><span class="summaryLabel">Level:</span> <span id="summaryLevel">1</span></p>
+
+        <p><span class="summaryLabel">Specialty:</span> <span id="summarySpecialty">Not selected</span></p>
+        <p><span class="summaryLabel">Study:</span> <span id="summaryStudy">Not selected</span></p>
+        <p><span class="summaryLabel">Affiliation:</span> <span id="summaryAffiliation">Not selected</span></p>
+
+        <h5>Talents</h5>
+
+        <div id="summaryTalents">
+            <p><span class="summaryLabel">Aura:</span> <span id="summaryAura">0</span></p>
+            <p><span class="summaryLabel">Stamina:</span> <span id="summaryStamina">0</span></p>
+            <p><span class="summaryLabel">Agility:</span> <span id="summaryAgility">0</span></p>
+            <p><span class="summaryLabel">Willpower:</span> <span id="summaryWillpower">0</span></p>
+            <p><span class="summaryLabel">Function:</span> <span id="summaryFunction">0</span></p>
+            <p><span class="summaryLabel">Technique:</span> <span id="summaryTechnique">0</span></p>
+        </div>
+        
+        <h5>Power Kit</h5>
+        <p><span class="summaryLabel">Attack:</span> <span id="summaryAttackName">-</span></p>
+        <p><span class="summaryLabel">Defense:</span> <span id="summaryDefenseName">-</span></p>
+        <p><span class="summaryLabel">Combo:</span> <span id="summaryComboName">-</span></p>
+        <p><span class="summaryLabel">Signature:</span> <span id="summarySignatureName">-</span></p>
+        <p><span class="summaryLabel">Locomotion:</span> <span id="summaryLocomotionName">-</span></p>
+
+        <h5>Traits</h5>
+
+        <h5>Flaws</h5>
+
     </section>
+</aside>
+</div>
 
     <script src="js/main.js"></script>
 </body>
