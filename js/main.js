@@ -294,8 +294,11 @@ const summaryName = document.getElementById("summaryName");
 const summaryAlias = document.getElementById("summaryAlias");
 const summaryLevel = document.getElementById("summaryLevel");
 const summarySpecialty = document.getElementById("summarySpecialty");
-const summaryAffiliation = document.getElementById("summaryAffiliation");
 const summaryStudy = document.getElementById("summaryStudy");
+const summaryAffiliation = document.getElementById("summaryAffiliation");
+const summaryKarma = document.getElementById("summaryKarma");
+const summaryMov = document.getElementById("summaryMov");
+const summaryDefense = document.getElementById("summaryDefense");
 const summaryAura = document.getElementById("summaryAura");
 const summaryStamina = document.getElementById("summaryStamina");
 const summaryAgility = document.getElementById("summaryAgility");
@@ -3814,6 +3817,7 @@ specialtySelect.addEventListener("change", function() {
 
     character.specialty = selectedSpecialty.name;
     character.karmaPool = selectedSpecialty.startingKarma;
+    summaryKarma.textContent = character.karmaPool;
 
     calculateStartingItems();
     updateStartingItemsDisplay();
@@ -3828,6 +3832,7 @@ specialtySelect.addEventListener("change", function() {
     character.affiliationTrait = "";
     character.affiliationFlaw = "";
     character.defense = 0;
+    summaryDefense.textContent = character.defense;
     affiliationName.value = "";
     affiliationDescription.value = "";
     character.traits = [];
@@ -3915,6 +3920,7 @@ affiliationSelect.addEventListener("change", function() {
 
     character.affiliation = selectedAffiliation.name;
     character.defense = selectedAffiliation.defenseModifier;
+    summaryDefense.textContent = character.defense;
     character.affiliationTrait = selectedAffiliation.trait;
     character.affiliationFlaw = selectedAffiliation.flaw;
     character.traits = [selectedAffiliation.trait];
@@ -4103,6 +4109,9 @@ function calculateTalents() {
 function calculateDerivedStats() {
     character.hp = 10 + character.talents.function;
     character.mov = 1 + character.talents.agility;
+
+    summaryMov.textContent = character.mov;
+    summaryDefense.textContent = character.defense;
 }
 
 // ========================================

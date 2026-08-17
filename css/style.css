@@ -84,6 +84,18 @@ h6 {
     color: var(--text-secondary);
 }
 
+#summaryStats {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+    margin: 10px 0;
+}
+
+#summaryStats p {
+    margin: 0;
+    text-align: center;
+}
+
 #summaryTalents {
     display: grid;
     grid-template-columns: 1fr 1fr;
