@@ -115,6 +115,71 @@ h6 {
 }
 
 /* =========================================== */
+/*              IDENTITY SECTION               */
+/* =========================================== */
+
+#playerName {
+    width: 50%;
+    margin-bottom: 20px;
+    margin-left: 5px;
+}
+
+#playerName label {
+    color: var(--text-secondary);
+    font-size: 0.8rem;
+}
+
+#identitySection {
+    background-color: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 2px;
+    padding: 10px;
+}
+
+#identitySection h2 {
+    margin-top: 0;
+    margin-bottom: 20px;
+}
+
+#identityFields {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    gap: 12px 15px;
+}
+
+#identityFields > div {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    grid-column: span 3;
+}
+
+#identityFields label,
+#identitySection > div:first-child label {
+    color: var(--text-secondary);
+    font-size: 0.8rem;
+}
+
+#identitySmallField {
+    grid-column: span 1;
+}
+
+.identitySmallField {
+    grid-column: span 2 !important;
+}
+
+#identityFields > #backgroundField {
+    grid-column: 1 / -1;
+}
+
+#characterBackground {
+    width: 100%;
+    min-height: 90px;
+    resize: vertical;
+    box-sizing: border-box;
+}
+
+/* =========================================== */
 /*                   SIDEBAR                   */
 /* =========================================== */
 
@@ -224,7 +289,7 @@ h6 {
 }
 
 /* =========================================== */
-/*                 INFO PANELS                 */
+/*                HIDDEN PANELS                */
 /* =========================================== */
 
 .infoContent {

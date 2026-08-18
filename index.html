@@ -51,80 +51,66 @@ LATEST REVISION: 08/17/2026
 <!--                      IDENTITY SECTION                         -->
 <!-- ************************************************************* -->
 
+    <div>
+        <label for="playerName">Player Name</label>
+        <input type="text" id="playerName">
+    </div>
+
     <section id="identitySection">
-        <div>
-            <label for="playerName">Player Name</label>
-            <input type="text" id="playerName">
-        </div>
         
         <h2>Identity</h2>
+        
+        <div id="identityFields">
+            <div>
+                <label for="characterName">Character Name</label>
+                <input type="text" id="characterName">
+            </div>
 
-        <div>
-            <label for="characterName">Character Name</label>
-            <input type="text" id="characterName">
-        </div>
+            <div>
+                <label for="characterAlias">Alias</label>
+                <input type="text" id="characterAlias">
+            </div>
 
-        <div>
-            <label for="characterAlias">Alias</label>
-            <input type="text" id="characterAlias">
-        </div>
+            <div>
+                <label for="characterAge">Age</label>
+                <input type="text" id="characterAge">
+            </div>
 
-        <div>
-            <label for="characterAge">Age</label>
-            <input type="text" id="characterAge">
-        </div>
+            <div>
+                <label for="characterGender">Gender</label>
+                <input type="text" id="characterGender">
+            </div>
 
-        <div>
-            <label for="characterGender">Gender</label>
-            <input type="text" id="characterGender">
-        </div>
+            <div class="identitySmallField">
+                <label for="characterHeight">Height</label>
+                <input type="text" id="characterHeight">
+            </div>
 
-        <div>
-            <label for="characterHeight">Height</label>
-            <input type="text" id="characterHeight">
-        </div>
+            <div class="identitySmallField">
+                <label for="characterWeight">Weight</label>
+                <input type="text" id="characterWeight">
+            </div>
 
-        <div>
-            <label for="characterWeight">Weight</label>
-            <input type="text" id="characterWeight">
-        </div>
+            <div class="identitySmallField">
+                <label for="characterLevel">Level</label>
+                <input type="number" id="characterLevel" min="1" value="1">
+            </div>
 
-        <div>
-            <label for="characterLevel">Level</label>
-            <input type="number" id="characterLevel" min="1" value="1">
-        </div>
-
-        <div>
-            <label for="characterBackground">Background</label>
-            <textarea id="characterBackground"></textarea>
+            <div id="backgroundField">
+                <label for="characterBackground">Background</label>
+                <textarea id="characterBackground"></textarea>
+            </div>
         </div>
     </section>
 
 <!-- ************************************************************* -->
-<!--                      SPECIALTY SECTION                        -->
+<!--                      KARMASTRY SECTION                        -->
 <!-- ************************************************************* -->
 
-    <section id="specialtySection">
-        <h2>Karma Specialty</h2>
+    <section id="karmastrySection">
+        <h2>Karmastry</h2>
 
-        <div class="infoPanel">
-            <button type="button" class="infoToggle">
-                <span class="infoCaret">▶</span>
-                What is a Specialty?
-            </button>
-
-            <div class="infoContent">
-                <p>
-                    Your Karma Specialty is the backbone of all your decisions
-                    in the game and shapes how your character will behave. It
-                    determines their skills, influences their personality, and
-                    affects their stats, such as Med Kit effectiveness and 
-                    their Karma Pool.
-                </p>
-            </div>
-        </div>
-
-        <label for="specialtySelect">Choose your Specialty:</label>
+        <h4>Karma Specialty</h4>
 
         <select id="specialtySelect">
             <option value="">-- Select a Specialty --</option>
@@ -134,35 +120,9 @@ LATEST REVISION: 08/17/2026
             <option value="Clockbot">Clockbot</option>
         </select>
 
-        <div id="specialtyInfo">
-            <p>Select a Specialty to see its starting information.</p>
-        </div>
-    </section>
+        <div id="specialtyInfo"></div>
 
-<!-- ************************************************************* -->
-<!--                         STUDY SECTION                         -->
-<!-- ************************************************************* -->
-
-    <section id="studySection">
-        <h2>Karma Study</h2>
-
-        <div class="infoPanel">
-            <button type="button" class="infoToggle">
-                <span class="infoCaret">▶</span>
-                What is a Study?
-            </button>
-
-            <div class="infoContent">
-                <p>
-                    The Study is the heart of character creation in Flux Fantasy.
-                    After you pick a Specialty, you dive into a specific Study
-                    that defines your Powers and abilities. Each Study has unique
-                    advantages and helps shape your character's journey.
-                </p>
-            </div>
-        </div>
-
-        <label for="studySelect">Choose your Study:</label>
+        <h4>Karma Study</h4>
 
         <select id="studySelect" disabled>
             <option value="">-- Select a Study --</option>
@@ -173,16 +133,9 @@ LATEST REVISION: 08/17/2026
         </div>
 
         <p id="studyEffect">Study Effect: None</p>
-    </section>
 
-<!-- ************************************************************* -->
-<!--                     AFFILIATION SECTION                       -->
-<!-- ************************************************************* -->
+        <h4>Affiliation</h4>
 
-    <section id="affiliationSection">
-        <h2>Affiliation</h2>
-
-        <label for="affiliationSelect">Affiliation:</label>
         <select id="affiliationSelect" disabled>
             <option value="">-- Select an Affiliation --</option>
         </select>
