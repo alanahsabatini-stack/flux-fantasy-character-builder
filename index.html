@@ -108,48 +108,128 @@ LATEST REVISION: 08/17/2026
 <!-- ************************************************************* -->
 
     <section id="karmastrySection">
+
         <h2>Karmastry</h2>
 
-        <h4>Karma Specialty</h4>
+    <!-- ==================== SPECIALTY ==================== -->
 
-        <select id="specialtySelect">
-            <option value="">-- Select a Specialty --</option>
-            <option value="Escape Artist">Escape Artist</option>
-            <option value="Special Agent">Special Agent</option>
-            <option value="Ink Fighter">Ink Fighter</option>
-            <option value="Clockbot">Clockbot</option>
-        </select>
+        <div class="karmastryChoice" id="specialtyChoice">
 
-        <div id="specialtyInfo"></div>
+            <h3>Karma Specialty</h3>
 
-        <h4>Karma Study</h4>
+            <div class="karmastryField">
+                <label for="specialtySelect">Choose your Specialty:</label>
 
-        <select id="studySelect" disabled>
-            <option value="">-- Select a Study --</option>
-        </select>
+                <select id="specialtySelect">
+                    <option value="">-- Select a Specialty --</option>
+                    <option value="Escape Artist">Escape Artist</option>
+                    <option value="Special Agent">Special Agent</option>
+                    <option value="Ink Fighter">Ink Fighter</option>
+                    <option value="Clockbot">Clockbot</option>
+                </select>
+            </div>
 
-        <div id="studyInfo">
-            <p>Select a Specialty first.</p>
+            <div id="specialtyInfo" class="karmastryInfo">
+                <p>Select a Specialty for more information.</p>
+            </div>
+
         </div>
 
-        <p id="studyEffect">Study Effect: None</p>
 
-        <h4>Affiliation</h4>
+    <!-- ====================== STUDY ====================== -->
 
-        <select id="affiliationSelect" disabled>
-            <option value="">-- Select an Affiliation --</option>
-        </select>
+        <div class="karmastryChoice" id="studyChoice">
 
-        <div id="affiliationInfo"></div>
+            <h3>Karma Study</h3>
 
-        <div id="customAffiliation">
-            <label for="affiliationName">Custom Affiliation Name:</label>
-            <input type="text" id="affiliationName">
+            <div class="karmastryField">
+                <label for="studySelect">Choose your Study:</label>
 
-            <label for="affiliationDescription">Custom Affiliation Description:</label>
-            <textarea id="affiliationDescription"></textarea>
-            <button id="applyAffiliationButton">Apply Custom Affiliation</button>
+                <select id="studySelect" disabled>
+                    <option value="">-- Select a Study --</option>
+                </select>
+            </div>
+
+            <div class="karmastryInfo">
+                <p id="studyEffect"></p>
+                <p id="studyInfo">Select a Study for more information.</p>
+            </div>
+
         </div>
+
+
+    <!-- ==================== AFFILIATION ==================== -->
+
+        <div class="karmastryChoice" id="affiliationChoice">
+
+            <h3>Affiliation</h3>
+
+            <div class="karmastryField">
+                <label for="affiliationSelect">Choose your Affiliation:</label>
+
+                <select id="affiliationSelect" disabled>
+                    <option value="">-- Select an Affiliation --</option>
+                </select>
+            </div>
+
+            <div id="affiliationInfo" class="karmastryInfo">
+                <p>Select an Affiliation for more information.</p>
+            </div>
+
+            <!-- Custom Affiliation Trigger -->
+
+            <button
+                type="button"
+                id="customAffiliationButton"
+                aria-expanded="false"
+                aria-controls="customAffiliation"
+            >
+                Create Custom Affiliation
+            </button>
+
+        </div>
+
+
+    <!-- ================= CUSTOM AFFILIATION ================= -->
+
+        <div id="customAffiliation" class="customAffiliationPanel">
+
+            <div class="customAffiliationHeader">
+                <h3>Custom Affiliation</h3>
+
+                <button
+                    type="button"
+                    id="closeCustomAffiliationButton"
+                    aria-label="Close Custom Affiliation panel"
+                >
+                    ×
+                </button>
+            </div>
+
+            <p class="customAffiliationNote">
+                Create a custom Affiliation using one of the existing Affiliations
+                as your mechanical baseline.
+            </p>
+
+            <div class="karmastryField">
+                <label for="affiliationName">Custom Affiliation Name:</label>
+                <input type="text" id="affiliationName">
+            </div>
+
+            <div class="karmastryField">
+                <label for="affiliationDescription">
+                    Custom Affiliation Description:
+                </label>
+
+                <textarea id="affiliationDescription"></textarea>
+            </div>
+
+            <button type="button" id="applyAffiliationButton">
+                Apply Custom Affiliation
+            </button>
+
+        </div>
+
     </section>
 
 <!-- ************************************************************* -->

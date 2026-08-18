@@ -328,6 +328,9 @@ const affiliationInfo = document.getElementById("affiliationInfo");
 const affiliationName = document.getElementById("affiliationName");
 const affiliationDescription = document.getElementById("affiliationDescription");
 const applyAffiliationButton = document.getElementById("applyAffiliationButton");
+const customAffiliation = document.getElementById("customAffiliation");
+const customAffiliationButton = document.getElementById("customAffiliationButton");
+const closeCustomAffiliationButton = document.getElementById("closeCustomAffiliationButton");
 
 const talentAura = document.getElementById("talentAura");
 const talentStamina = document.getElementById("talentStamina");
@@ -3828,7 +3831,7 @@ specialtySelect.addEventListener("change", function() {
     character.currentStudy = null;
     character.affiliation = "";
     affiliationSelect.value = "";
-    affiliationInfo.innerHTML = "";
+    affiliationInfo.textContent = "Select an Affiliation for more information.";
     character.affiliationName = "";
     character.affiliationDescription = "";
     character.affiliationTrait = "";
@@ -3839,6 +3842,13 @@ specialtySelect.addEventListener("change", function() {
     affiliationDescription.value = "";
     character.traits = [];
     character.flaws = [];
+
+    studyInfo.innerHTML = `
+        <p>Select a Study for more information.</p>
+    `;
+
+    customAffiliation.classList.remove("open");
+    customAffiliationButton.setAttribute("aria-expanded", "false");
 
     resetNonKarmaAttacks();
     populateNonKarmaAttacks();
@@ -3853,7 +3863,7 @@ specialtySelect.addEventListener("change", function() {
     calculateDerivedStats();
     summaryStudy.textContent = "Not Selected";
     summaryAffiliation.textContent = "Not Selected";
-    studyEffect.textContent = "Study Effect: None";
+    studyEffect.textContent = "";
     
     summarySpecialty.textContent = character.specialty;
 
@@ -3861,6 +3871,7 @@ specialtySelect.addEventListener("change", function() {
         <p>Specialty: ${selectedSpecialty.name}</p>
         <p>Starting Karma: ${selectedSpecialty.startingKarma}</p>
         <p>Med Kit: ${selectedSpecialty.medKitPercent}% of HP</p>
+        <p>${selectedSpecialty.summary}</p>
     `;
 
     studySelect.innerHTML = '<option value="">--Select a Study --</option>';
@@ -3891,7 +3902,12 @@ studySelect.addEventListener("change", function() {
         return study.name === character.study;
     });
 
-    studyEffect.textContent = `Study Effect: +${selectedStudy.modifier} ${formatStatName(selectedStudy.stat)}`;
+    studyInfo.innerHTML = `
+        <p>${selectedStudy.summary}</p>
+    `;
+
+    studyEffect.textContent = 
+        `Study Effect: +${selectedStudy.modifier} ${formatStatName(selectedStudy.stat)}`;
 
     character.currentStudy = selectedStudy;
     character.study = selectedStudy.name;
@@ -3917,8 +3933,24 @@ function findAffiliation(name) {
     });
 }
 
+customAffiliationButton.addEventListener("click", function() {
+    affiliationName.value = "";
+    affiliationDescription.value = "";
+
+    customAffiliation.classList.add("open");
+    customAffiliationButton.setAttribute("aria-expanded", "true");
+});
+
+closeCustomAffiliationButton.addEventListener("click", function() {
+    customAffiliation.classList.remove("open");
+    customAffiliationButton.setAttribute("aria-expanded", "false");
+});
+
 affiliationSelect.addEventListener("change", function() {
     const selectedAffiliation = findAffiliation(affiliationSelect.value);
+
+    customAffiliation.classList.remove("open");
+    customAffiliationButton.setAttribute("aria-expanded", "false");
 
     character.affiliation = selectedAffiliation.name;
     character.defense = selectedAffiliation.defenseModifier;
@@ -3939,22 +3971,28 @@ affiliationSelect.addEventListener("change", function() {
     summaryAffiliation.textContent = character.affiliationName;
 
     affiliationInfo.innerHTML = `
-        <p>Affiliation: ${selectedAffiliation.name}</p>
-        <p>${selectedAffiliation.description}</p>
         <p>Defense Modifier: +${selectedAffiliation.defenseModifier}</p>
         <p>Trait: ${selectedAffiliation.trait}</p>
         <p>Flaw: ${selectedAffiliation.flaw}</p>
+        <p>${selectedAffiliation.description}</p>
     `;
 });
 
 applyAffiliationButton.addEventListener("click", function() {
-    character.affiliationName = affiliationName.value;
-    character.affiliationDescription = affiliationDescription.value;
+    const customName = affiliationName.value.trim();
+    const customDescription = affiliationDescription.value.trim();
+
+    if (customName === "") {
+        return;
+    }
+
+    character.affiliationName = customName;
+    character.affiliationDescription = customDescription;
+
     summaryAffiliation.textContent = character.affiliationName;
 
-    console.log("Custom Affiliation Saved");
-    console.log(character.affiliationName);
-    console.log(character.affiliationDescription);
+    customAffiliation.classList.remove("open");
+    customAffiliationButton.setAttribute("aria-expanded", "false");
 });
 
 // ========================================

@@ -180,6 +180,146 @@ h6 {
 }
 
 /* =========================================== */
+/*              KARMASTRY SECTION              */
+/* =========================================== */
+
+#karmastrySection {
+    padding: 20px;
+    margin: 20px 0;
+    border: 1px solid var(--border);
+    background-color: var(--surface);
+}
+
+#karmastrySection > h2 {
+    margin-top: 0;
+    margin-bottom: 20px;
+}
+
+.karmastryChoice {
+    margin-bottom: 20px;
+}
+
+.karmastryChoice:last-of-type {
+    margin-bottom: 0;
+}
+
+.karmastryChoice h3 {
+    margin: 0 0 8px;
+    color: var(--text-primary);
+    font-size: 1rem;
+}
+
+.karmastryField {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.karmastryField label {
+    color: var(--text-secondary);
+    font-size: 0.8rem;
+}
+
+.karmastryInfo {
+    margin-top: 10px;
+    padding: 10px 12px;
+    background-color: var(--page-background);
+    border-left: 2px solid var(--brand-purple);
+    font-size: 0.8rem;
+    color: var(--text-secondary);
+}
+
+.karmastryInfo p {
+    margin: 6px 0;
+}
+
+#studyEffect {
+    margin: 8px 0 0;
+    font-size: 0.8rem;
+    color: var(--text-secondary);
+}
+
+#customAffiliationButton {
+    display: block;
+    margin-top: 10px;
+    margin-left: auto;
+}
+
+.customAffiliationPanel {
+    max-height: 0;
+    overflow: hidden;
+    opacity: 0;
+    margin-top: 0;
+    padding-top: 0;
+    padding-bottom: 0;
+    border: 0;
+    background-color: var(--page-background);
+    transition:
+        max-height 0.3s ease,
+        opacity 0.2s ease,
+        margin-top 0.3s ease,
+        padding 0.3s ease;
+}
+
+.customAffiliationPanel.open {
+    max-height: 500px;
+    opacity: 1;
+    margin-top: 15px;
+    padding: 15px;
+    border: 1px solid var(--brand-dark-blue);
+    border-radius: 6px;
+}
+
+.customAffiliationHeader {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 12px;
+}
+
+.customAffiliationHeader h3 {
+    margin: 0;
+    font-size: 1rem;
+    color: var(--text-primary);
+}
+
+#closeCustomAffiliationButton {
+    padding: 0;
+    border: none;
+    background: transparent;
+    color: var(--text-secondary);
+    font-size: 1.3rem;
+    line-height: 1;
+    cursor: pointer;
+}
+
+#closeCustomAffiliationButton:hover {
+    color: var(--brand-magenta);
+}
+
+.customAffiliationNote {
+    margin: 0 0 15px;
+    color: var(--text-secondary);
+    font-size: 0.75rem;
+    line-height: 1.4;
+}
+
+.customAffiliationPanel .karmastryField {
+    margin-bottom: 12px;
+}
+
+.customAffiliationPanel textarea {
+    min-height: 80px;
+    resize: vertical;
+}
+
+#applyAffiliationButton {
+    display: block;
+    margin-top: 10px;
+    margin-left: auto;
+}
+
+/* =========================================== */
 /*                   SIDEBAR                   */
 /* =========================================== */
 
