@@ -319,6 +319,25 @@ h6 {
     margin-left: auto;
 }
 
+.customAffiliationActions {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 10px;
+    margin-top: 10px;
+}
+
+#customAffiliationConfirmation {
+    color: #4ade80;
+    font-size: 0.8rem;
+    opacity: 0;
+    transition: opacity 0.33s ease;
+}
+
+#customAffiliationConfirmation.visible {
+    opacity: 1;
+}
+
 /* =========================================== */
 /*                   SIDEBAR                   */
 /* =========================================== */

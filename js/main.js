@@ -331,6 +331,9 @@ const applyAffiliationButton = document.getElementById("applyAffiliationButton")
 const customAffiliation = document.getElementById("customAffiliation");
 const customAffiliationButton = document.getElementById("customAffiliationButton");
 const closeCustomAffiliationButton = document.getElementById("closeCustomAffiliationButton");
+const customAffiliationConfirmation = document.getElementById(
+    "customAffiliationConfirmation"
+);
 
 const talentAura = document.getElementById("talentAura");
 const talentStamina = document.getElementById("talentStamina");
@@ -3849,6 +3852,7 @@ specialtySelect.addEventListener("change", function() {
 
     customAffiliation.classList.remove("open");
     customAffiliationButton.setAttribute("aria-expanded", "false");
+    customAffiliationButton.disabled = false;
 
     resetNonKarmaAttacks();
     populateNonKarmaAttacks();
@@ -3939,11 +3943,13 @@ customAffiliationButton.addEventListener("click", function() {
 
     customAffiliation.classList.add("open");
     customAffiliationButton.setAttribute("aria-expanded", "true");
+    customAffiliationButton.disabled = true;
 });
 
 closeCustomAffiliationButton.addEventListener("click", function() {
     customAffiliation.classList.remove("open");
     customAffiliationButton.setAttribute("aria-expanded", "false");
+    customAffiliationButton.disabled = false;
 });
 
 affiliationSelect.addEventListener("change", function() {
@@ -3951,6 +3957,7 @@ affiliationSelect.addEventListener("change", function() {
 
     customAffiliation.classList.remove("open");
     customAffiliationButton.setAttribute("aria-expanded", "false");
+    customAffiliationButton.disabled = false;
 
     character.affiliation = selectedAffiliation.name;
     character.defense = selectedAffiliation.defenseModifier;
@@ -3991,8 +3998,12 @@ applyAffiliationButton.addEventListener("click", function() {
 
     summaryAffiliation.textContent = character.affiliationName;
 
-    customAffiliation.classList.remove("open");
-    customAffiliationButton.setAttribute("aria-expanded", "false");
+    customAffiliationConfirmation.textContent = "✓ Applied!";
+    customAffiliationConfirmation.classList.add("visible");
+
+    setTimeout(function() {
+        customAffiliationConfirmation.classList.remove("visible");
+    }, 2000);
 });
 
 // ========================================
