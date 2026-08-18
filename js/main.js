@@ -313,6 +313,8 @@ const summaryLocomotionName = document.getElementById("summaryLocomotionName");
 const summaryTraits = document.getElementById("summaryTraits");
 const summaryFlaws = document.getElementById("summaryFlaws");
 
+const infoBoxContent = document.getElementById("infoBoxContent");
+
 const specialtySelect = document.getElementById("specialtySelect");
 const specialtyInfo = document.getElementById("specialtyInfo");
 

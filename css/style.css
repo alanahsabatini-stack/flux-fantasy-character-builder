@@ -184,24 +184,32 @@ h6 {
 /* =========================================== */
 
 #sidebar {
-    min-width: 0;
-    background-color: var(--sidebar-background);
-    border: 1px solid var(--brand-purple);
-    border-radius: 8px;
-    padding: 20px;
-    box-shadow: 0 0 15px rgba(69, 28, 192, 0.25);
-
     position: sticky;
     top: 20px;
     align-self: start;
 }
 
-#sidebar h5 {
-    margin: 8px 0;
+#characterSummary {
+    min-width: 0;
+    background-color: var(--sidebar-background);
+    border: 1px solid var(--brand-purple);
+    border-radius: 8px;
+    padding: 10px 20px;
+    box-shadow: 0 0 15px rgba(69, 28, 192, 0.25);
 }
 
-#sidebar p {
-    margin: 6px 0;
+#characterSummary h3 {
+    margin-top: 0;
+    margin-bottom: 15px;
+}
+
+#characterSummary h5 {
+    color: var(--text-primary);
+    margin: 5px 0;
+}
+
+#characterSummary p {
+    margin: 2px 0;
     font-size: 0.8rem;
 }
 
@@ -263,7 +271,7 @@ h6 {
 }
 
 #summaryTraitsFlaws h5 {
-    margin: 8px 0 2px;
+    margin: 5px 0 2px;
 }
 
 #summaryTraitsFlaws ul {
@@ -286,6 +294,31 @@ h6 {
 #summaryTraits li,
 #summaryFlaws li {
     margin: 2px 0;
+}
+
+/* =========================================== */
+/*                  INFO BOX                   */
+/* =========================================== */
+
+#infoBox {
+    margin-top: 20px;
+    padding: 15px;
+    background-color: var(--surface);
+    border: 1px solid var(--brand-dark-blue);
+    border-radius: 5px;
+}
+
+#infoBox h5 {
+    margin: 0 0 10px;
+}
+
+#infoBoxContent {
+    font-size: 0.7rem;
+    color: var(--text-primary)
+}
+
+#infoBoxContent p {
+    margin: 5px 0;
 }
 
 /* =========================================== */
