@@ -339,6 +339,232 @@ h6 {
 }
 
 /* =========================================== */
+/*               TALENT SECTION                */
+/* =========================================== */
+
+#talentSection {
+    padding: 20px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    border: 1px solid var(--border);
+    background-color: var(--surface);
+}
+
+#talentSection > h2 {
+    margin-top: 0;
+    margin-bottom: 20px;
+}
+
+#talentControls {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+#modifierPool {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+#modifierPool h3 {
+    margin: 0;
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+}
+
+#modifierPool .modifierLabel {
+    margin: 0;
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+}
+
+#modifierPool p span[id^="available"] {
+    margin-left: 2px;
+    font-size: 0.85rem;
+    font-weight: bold;
+    color: var(--brand-gold);
+}
+
+#resetTalents {
+    padding: 6px 12px;
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    background-color: var(--page-background);
+    color: var(--text-primary);
+    font-family: inherit;
+    font-size: 0.75rem;
+    cursor: pointer;
+}
+
+#resetTalents:hover {
+    border-color: var(--brand-purple);
+}
+
+#talentGrid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 15px;
+}
+
+.talent {
+    padding: 12px;
+    border: 1px solid var(--border);
+    background-color: var(--page-background);
+    border-radius: 6px;
+}
+
+.talent h4 {
+    margin: 0 0 10px;
+    color: var(--brand-gold);
+    font-size: 0.95rem;
+}
+
+.talent p {
+    margin: 8px 0 0;
+    font-size: 0.7rem;
+    color: var(--text-secondary);
+}
+
+.modifierButtons {
+    display: flex;
+    gap: 12px;
+    justify-content: center;
+}
+
+.modifierButtons button {
+    min-width: 30px;
+    padding: 3px 4px;
+    font-size: 0.8rem;
+}
+
+.modifierButton.selected {
+    background-color: var(--brand-purple);
+    border: 1px solid var(--border);
+    border-radius: 3px;
+    color: white;
+    font-weight: bold;
+    box-shadow: 0 0 0 2px;
+}
+
+.modifierButton:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+/* =========================================== */
+/*               POWERS SECTION                */
+/* =========================================== */
+
+#powersSection {
+    padding: 20px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    border: 1px solid var(--border);
+    background-color: var(--surface);
+}
+
+#powersSection > h2 {
+    margin-top: 0;
+    margin-bottom: 20px;
+}
+
+#nonKarmaSection {
+    display: grid;
+    grid-template-columns: 2fr 3fr;
+    gap: 20px;
+}
+
+.nonKarmaAttackTableGroup h3 {
+    margin: 0 2px 8px;
+    color: var(--text-primary);
+    font-size: 0.8rem;
+}
+
+#basicNonKarmaAttackTable,
+#advancedNonKarmaAttackTable {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: var(--page-background);
+    border: 1px solid var(--border);
+    font-size: 0.75rem;
+    table-layout: fixed;
+}
+
+#basicNonKarmaAttackTable th,
+#advancedNonKarmaAttackTable th {
+    padding: 6px 8px;
+    color: var(--text-secondary);
+    background-color: var(--surface);
+    font-size: 0.7rem;
+    font-weight: 200;
+    text-align: left;
+    border-bottom: 1px solid var(--border);
+}
+
+#basicNonKarmaAttackTable td,
+#advancedNonKarmaAttackTable td {
+    padding: 6px 8px;
+    color: var(--text-primary);
+    border-bottom: 1px solid var(--border);
+}
+
+#basicNonKarmaAttackTable tbody tr:last-child td,
+#advancedNonKarmaAttackTable tbody tr:last-child td {
+    border-bottom: none;
+}
+
+#basicNonKarmaAttackTable th:nth-child(1),
+#basicNonKarmaAttackTable td:nth-child(1) {
+    width: 60%;
+}
+
+#basicNonKarmaAttackTable th:nth-child(2),
+#basicNonKarmaAttackTable td:nth-child(2) {
+    width: 10%;
+}
+
+#basicNonKarmaAttackTable th:nth-child(3),
+#basicNonKarmaAttackTable td:nth-child(3) {
+    width: 20%;
+    min-width: 40px;
+}
+
+#basicNonKarmaAttackTable th:nth-child(4),
+#basicNonKarmaAttackTable td:nth-child(4) {
+    width: 10%;
+}
+
+#advancedNonKarmaAttackTable th:nth-child(1),
+#advancedNonKarmaAttackTable td:nth-child(1) {
+    width: 40%;
+}
+
+#advancedNonKarmaAttackTable th:nth-child(2),
+#advancedNonKarmaAttackTable td:nth-child(2) {
+    width: 6%;
+}
+
+#advancedNonKarmaAttackTable th:nth-child(3),
+#advancedNonKarmaAttackTable td:nth-child(3) {
+    width: 10%;
+    min-width: 40px;
+}
+
+#advancedNonKarmaAttackTable th:nth-child(4),
+#advancedNonKarmaAttackTable td:nth-child(4) {
+    width: 44%;
+}
+
+#basicNonKarmaAttackTable input,
+#advancedNonKarmaAttackTable input {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 4px 6px;
+    font-size: 0.75rem;
+}
+
+/* =========================================== */
 /*                   SIDEBAR                   */
 /* =========================================== */
 
@@ -499,30 +725,6 @@ h6 {
 
 .infoPanel.open .infoCaret {
     transform: rotate(90deg);
-}
-
-/* =========================================== */
-/*           TALENT MODIFIER BUTTONS           */
-/* =========================================== */
-
-.modifierButton {
-    padding: 6px 12px;
-    margin: 3px;
-    border: 1px solid #aaa;
-    border-radius: 5px;
-    cursor: pointer;
-}
-
-.modifierButton.selected {
-    background-color: #444;
-    color: white;
-    font-weight: bold;
-    box-shadow: 0 0 0 2px #222;
-}
-
-.modifierButton:disabled {
-    opacity: 0.4;
-    cursor: not-allowed;
 }
 
 /* =========================================== */
