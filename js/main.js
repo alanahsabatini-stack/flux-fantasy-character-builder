@@ -3848,7 +3848,7 @@ const advancedEffectDefinitions = [
         ]
     },
 
-    {
+    {   // Quantum Karmastry
         study: "Quantum Karmastry",
 
         advancedTier1: [
@@ -3920,8 +3920,1118 @@ const advancedEffectDefinitions = [
                 description: "After an attack, flip a coin. If tails, the enemy deals 3 damage to themselves."
             }
         ]
+    },
+
+    {   // Melee
+        study: "Melee",
+
+        advancedTier1: [
+            {
+                name: "Environment",
+                description: "Reduce enemy movement by 1 for 1 turn after you land an attack."
+            },
+            {
+                name: "Enemy Attack",
+                description: "Reduce an enemy's attack damage by 1 for 1 turn after you land an attack."
+            },
+            {
+                name: "Enemy Defense",
+                description: "Reduce an enemy's defense by 1 for 1 turn after you land an attack."
+            },
+            {
+                name: "Enemy Signature Move",
+                description: "Reduce an enemy’s Signature Move damage by 1 for 1 turn after you land an attack."
+            },
+            {
+                name: "Loot",
+                description: "After an attack, flip a coin. If heads, gain 2 Merits."
+            },
+            {
+                name: "Summon",
+                description: "Keep your weapon summoned for 1 turn and attack without using KP."
+            },
+            {
+                name: "Pushy",
+                description: "Automatically pass a push Quick Action after an attack."
+            },
+            {
+                name: "Sigil Control",
+                description: "After an attack, flip a coin. If tails, reduce PBP by 2."
+            }
+        ],
+
+        advancedTier2: [
+            {
+                name: "Environment",
+                description: "Reduce enemy movement by 2 for 1 turn after you land an attack."
+            },
+            {
+                name: "Enemy Attack",
+                description: "Reduce an enemy’s attack damage by 2 for 1 turn after you land an attack."
+            },
+            {
+                name: "Enemy Defense",
+                description: "Reduce an enemy’s defense by 2 for 1 turn after you land an attack."
+            },
+            {
+                name: "Enemy Signature Move",
+                description: "Reduce an enemy’s Signature Move damage by 2 for 1 turn after you land an attack."
+            },
+            {
+                name: "Loot",
+                description: "After an attack, flip a coin. If heads, gain 5 Merits."
+            },
+            {
+                name: "Summon",
+                description: "Keep your weapon summoned for 2 turns and attack without using KP."
+            },
+            {
+                name: "Pushy",
+                description: "Automatically pass a push Quick Action after an attack and deal 2 damage."
+            },
+            {
+                name: "Sigil Control",
+                description: "After an attack, flip a coin. If tails, reduce PBP by 4."
+            }
+        ]
+    },
+
+    {   // Projectile
+        study: "Projectile",
+        
+        advancedTier1: [
+            {
+                name: "Environment",
+                description: "Reduce enemy movement by 1 for 1 turn after you land an attack."
+            },
+            {
+                name: "Enemy Attack",
+                description: "Reduce an enemy's attack damage by 1 for 1 turn after you land an attack."
+            },
+            {
+                name: "Enemy Defense",
+                description: "Reduce an enemy's defense by 1 for 1 turn after you land an attack."
+            },
+            {
+                name: "Enemy Signature Move",
+                description: "Reduce an enemy’s Signature Move damage by 1 for 1 turn after you land an attack."
+            },
+            {
+                name: "Loot",
+                description: "After an attack, flip a coin. If heads, gain 2 Merits."
+            },
+            {
+                name: "Summon",
+                description: "Keep your weapon summoned for 1 turn and attack without using KP."
+            },
+            {
+                name: "Fire Power",
+                description: "Your attack also hits a second enemy for 5% damage."
+            },
+            {
+                name: "Sigil Control",
+                description: "After an attack, flip a coin. If tails, reduce PBP by 2."
+            }
+        ],
+
+        advancedTier2: [
+            {
+                name: "Environment",
+                description: "Reduce enemy movement by 2 for 1 turn after you land an attack."
+            },
+            {
+                name: "Enemy Attack",
+                description: "Reduce an enemy’s attack damage by 2 for 1 turn after you land an attack."
+            },
+            {
+                name: "Enemy Defense",
+                description: "Reduce an enemy’s defense by 2 for 1 turn after you land an attack."
+            },
+            {
+                name: "Enemy Signature Move",
+                description: "Reduce an enemy’s Signature Move damage by 2 for 1 turn after you land an attack."
+            },
+            {
+                name: "Loot",
+                description: "After an attack, flip a coin. If heads, gain 5 Merits."
+            },
+            {
+                name: "Summon",
+                description: "Keep your weapon summoned for 2 turns and attack without using KP."
+            },
+            {
+                name: "Fire Power",
+                description: "Your attack also hits a second enemy for 8% damage."
+            },
+            {
+                name: "Sigil Control",
+                description: "After an attack, flip a coin. If tails, reduce PBP by 4."
+            }
+        ]
+    },
+
+    {   // Animal
+        study: "Animal",
+
+        advancedTier1: [
+            {
+                name: "Environment",
+                description: "Reduce enemy movement by 1 for 1 turn after you land an attack."
+            },
+            {
+                name: "Enemy Attack",
+                description: "Reduce an enemy's attack damage by 1 for 1 turn after you land an attack."
+            },
+            {
+                name: "Enemy Defense",
+                description: "Reduce an enemy's defense by 1 for 1 turn after you land an attack."
+            },
+            {
+                name: "Enemy Signature Move",
+                description: "Reduce an enemy’s Signature Move damage by 1 for 1 turn after you land an attack."
+            },
+            {
+                name: "Loot",
+                description: "After an attack, flip a coin. If heads, gain 2 Merits."
+            },
+            {
+                name: "Summon",
+                description: "Keep your weapon summoned for 1 turn and attack without using KP."
+            },
+            {
+                name: "Intimidate",
+                description: "After an attack, automatically cause an enemy to move back 1 square."
+            },
+            {
+                name: "Sigil Control",
+                description: "After an attack, flip a coin. If tails, reduce PBP by 2."
+            }
+        ],
+
+        advancedTier2: [
+            {
+                name: "Environment",
+                description: "Reduce enemy movement by 2 for 1 turn after you land an attack."
+            },
+            {
+                name: "Enemy Attack",
+                description: "Reduce an enemy’s attack damage by 2 for 1 turn after you land an attack."
+            },
+            {
+                name: "Enemy Defense",
+                description: "Reduce an enemy’s defense by 2 for 1 turn after you land an attack."
+            },
+            {
+                name: "Enemy Signature Move",
+                description: "Reduce an enemy’s Signature Move damage by 2 for 1 turn after you land an attack."
+            },
+            {
+                name: "Loot",
+                description: "After an attack, flip a coin. If heads, gain 5 Merits."
+            },
+            {
+                name: "Summon",
+                description: "Keep your weapon summoned for 2 turns and attack without using KP."
+            },
+            {
+                name: "Intimidate",
+                description: "After an attack, automatically cause an enemy to move back 2 squares."
+            },
+            {
+                name: "Sigil Control",
+                description: "After an attack, flip a coin. If tails, reduce PBP by 4."
+            }
+        ]
+    },
+
+    {   // Body
+        study: "Body",
+
+        advancedTier1: [
+            {
+                name: "Environment",
+                description: "Reduce enemy movement by 1 for 1 turn after you land an attack."
+            },
+            {
+                name: "Enemy Attack",
+                description: "Reduce an enemy's attack damage by 1 for 1 turn after you land an attack."
+            },
+            {
+                name: "Enemy Defense",
+                description: "Reduce an enemy's defense by 1 for 1 turn after you land an attack."
+            },
+            {
+                name: "Enemy Signature Move",
+                description: "Reduce an enemy’s Signature Move damage by 1 for 1 turn after you land an attack."
+            },
+            {
+                name: "Loot",
+                description: "After an attack, flip a coin. If heads, gain 2 Merits."
+            },
+            {
+                name: "Summon",
+                description: "Keep your weapon summoned for 1 turn and attack without using KP."
+            },
+            {
+                name: "Body Understanding",
+                description: "After an attack, increase your HP by 2 (up to cap)."
+            },
+            {
+                name: "Sigil Control",
+                description: "After an attack, flip a coin. If tails, reduce PBP by 2."
+            }
+        ],
+
+        advancedTier2: [
+            {
+                name: "Environment",
+                description: "Reduce enemy movement by 2 for 1 turn after you land an attack."
+            },
+            {
+                name: "Enemy Attack",
+                description: "Reduce an enemy’s attack damage by 2 for 1 turn after you land an attack."
+            },
+            {
+                name: "Enemy Defense",
+                description: "Reduce an enemy’s defense by 2 for 1 turn after you land an attack."
+            },
+            {
+                name: "Enemy Signature Move",
+                description: "Reduce an enemy’s Signature Move damage by 2 for 1 turn after you land an attack."
+            },
+            {
+                name: "Loot",
+                description: "After an attack, flip a coin. If heads, gain 5 Merits."
+            },
+            {
+                name: "Summon",
+                description: "Keep your weapon summoned for 2 turns and attack without using KP."
+            },
+            {
+                name: "Body Understanding",
+                description: "After an attack, increase your HP by 4 (up to cap)."
+            },
+            {
+                name: "Sigil Control",
+                description: "After an attack, flip a coin. If tails, reduce PBP by 4."
+            }
+        ]
+    },
+
+    {   // Elemental
+        study: "Elemental",
+
+        advancedTier1: [
+            {
+                name: "Environment",
+                description: "Reduce enemy movement by 1 for 1 turn after you land an attack."
+            },
+            {
+                name: "Enemy Attack",
+                description: "Reduce an enemy's attack damage by 1 for 1 turn after you land an attack."
+            },
+            {
+                name: "Enemy Defense",
+                description: "Reduce an enemy's defense by 1 for 1 turn after you land an attack."
+            },
+            {
+                name: "Enemy Signature Move",
+                description: "Reduce an enemy’s Signature Move damage by 1 for 1 turn after you land an attack."
+            },
+            {
+                name: "Loot",
+                description: "After an attack, flip a coin. If heads, gain 2 Merits."
+            },
+            {
+                name: "Summon",
+                description: "Keep your weapon summoned for 1 turn and attack without using KP."
+            },
+            {
+                name: "Flashy Fighting",
+                description: "After an attack, gain +2 KP (up to cap)."
+            },
+            {
+                name: "Sigil Control",
+                description: "After an attack, flip a coin. If tails, reduce PBP by 2."
+            }
+        ],
+
+        advancedTier2: [
+            {
+                name: "Environment",
+                description: "Reduce enemy movement by 2 for 1 turn after you land an attack."
+            },
+            {
+                name: "Enemy Attack",
+                description: "Reduce an enemy’s attack damage by 2 for 1 turn after you land an attack."
+            },
+            {
+                name: "Enemy Defense",
+                description: "Reduce an enemy’s defense by 2 for 1 turn after you land an attack."
+            },
+            {
+                name: "Enemy Signature Move",
+                description: "Reduce an enemy’s Signature Move damage by 2 for 1 turn after you land an attack."
+            },
+            {
+                name: "Loot",
+                description: "After an attack, flip a coin. If heads, gain 5 Merits."
+            },
+            {
+                name: "Summon",
+                description: "Keep your weapon summoned for 2 turns and attack without using KP."
+            },
+            {
+                name: "Flashy Fighting",
+                description: "After an attack, gain +4 KP (up to cap)."
+            },
+            {
+                name: "Sigil Control",
+                description: "After an attack, flip a coin. If tails, reduce PBP by 4."
+            }
+        ]
+    },
+
+    {   // Scout
+        study: "Scout",
+
+        advancedTier1: [
+            {
+                name: "Environment",
+                description: "Reduce enemy movement by 1 for 1 turn after you land an attack."
+            },
+            {
+                name: "Enemy Attack",
+                description: "Reduce an enemy's attack damage by 1 for 1 turn after you land an attack."
+            },
+            {
+                name: "Enemy Defense",
+                description: "Reduce an enemy's defense by 1 for 1 turn after you land an attack."
+            },
+            {
+                name: "Enemy Signature Move",
+                description: "Reduce an enemy’s Signature Move damage by 1 for 1 turn after you land an attack."
+            },
+            {
+                name: "Loot",
+                description: "After an attack, flip a coin. If heads, gain 2 Merits."
+            },
+            {
+                name: "Back Up",
+                description: "After an attack, automatically call for backup that deals 2 damage to an enemy."
+            },
+            {
+                name: "Positioning",
+                description: "After each attack, teleport to a square next to an ally."
+            },
+            {
+                name: "Tech Mastery",
+                description: "After an attack, flip a coin. If tails, reduce PBP by 3."
+            }
+        ],
+
+        advancedTier2: [
+            {
+                name: "Environment",
+                description: "Reduce enemy movement by 2 for 1 turn after you land an attack."
+            },
+            {
+                name: "Enemy Attack",
+                description: "Reduce an enemy’s attack damage by 2 for 1 turn after you land an attack."
+            },
+            {
+                name: "Enemy Defense",
+                description: "Reduce an enemy’s defense by 2 for 1 turn after you land an attack."
+            },
+            {
+                name: "Enemy Signature Move",
+                description: "Reduce an enemy’s Signature Move damage by 2 for 1 turn after you land an attack."
+            },
+            {
+                name: "Loot",
+                description: "After an attack, flip a coin. If heads, gain 5 Merits."
+            },
+            {
+                name: "Back Up",
+                description: "After an attack, automatically call for backup that deals 3 damage to an enemy."
+            },
+            {
+                name: "Positioning",
+                description: "After each attack, teleport to a square next to an ally or enemy."
+            },
+            {
+                name: "Tech Mastery",
+                description: "After an attack, flip a coin. If tails, reduce PBP by 5."
+            }
+        ]
+    },
+    
+    {   // Disrupter
+        study: "Disrupter",
+
+        advancedTier1: [
+            {
+                name: "Environment",
+                description: "Reduce enemy movement by 1 for 1 turn after you land an attack."
+            },
+            {
+                name: "Enemy Attack",
+                description: "Reduce an enemy's attack damage by 1 for 1 turn after you land an attack."
+            },
+            {
+                name: "Enemy Defense",
+                description: "Reduce an enemy's defense by 1 for 1 turn after you land an attack."
+            },
+            {
+                name: "Enemy Signature Move",
+                description: "Reduce an enemy’s Signature Move damage by 1 for 1 turn after you land an attack."
+            },
+            {
+                name: "Loot",
+                description: "After an attack, flip a coin. If heads, gain 2 Merits."
+            },
+            {
+                name: "Back Up",
+                description: "After an attack, automatically call for backup that deals 2 damage to an enemy."
+            },
+            {
+                name: "Overwhelm",
+                description: "After an attack, automatically cause an enemy to move back 1 square."
+            },
+            {
+                name: "Tech Mastery",
+                description: "After an attack, flip a coin. If tails, reduce PBP by 3."
+            }
+        ],
+
+        advancedTier2: [
+            {
+                name: "Environment",
+                description: "Reduce enemy movement by 2 for 1 turn after you land an attack."
+            },
+            {
+                name: "Enemy Attack",
+                description: "Reduce an enemy’s attack damage by 2 for 1 turn after you land an attack."
+            },
+            {
+                name: "Enemy Defense",
+                description: "Reduce an enemy’s defense by 2 for 1 turn after you land an attack."
+            },
+            {
+                name: "Enemy Signature Move",
+                description: "Reduce an enemy’s Signature Move damage by 2 for 1 turn after you land an attack."
+            },
+            {
+                name: "Loot",
+                description: "After an attack, flip a coin. If heads, gain 5 Merits."
+            },
+            {
+                name: "Back Up",
+                description: "After an attack, automatically call for backup that deals 3 damage to an enemy."
+            },
+            {
+                name: "Overwhelm",
+                description: "After an attack, automatically cause an enemy to move back 1 square."
+            },
+            {
+                name: "Tech Mastery",
+                description: "After an attack, flip a coin. If tails, reduce PBP by 5."
+            }
+        ]
+    },
+
+    {   // Bodyguard
+        study: "Bodyguard",
+
+        advancedTier1: [
+            {
+                name: "Environment",
+                description: "Reduce enemy movement by 1 for 1 turn after you land an attack."
+            },
+            {
+                name: "Enemy Attack",
+                description: "Reduce an enemy's attack damage by 1 for 1 turn after you land an attack."
+            },
+            {
+                name: "Enemy Defense",
+                description: "Reduce an enemy's defense by 1 for 1 turn after you land an attack."
+            },
+            {
+                name: "Enemy Signature Move",
+                description: "Reduce an enemy’s Signature Move damage by 1 for 1 turn after you land an attack."
+            },
+            {
+                name: "Loot",
+                description: "After an attack, flip a coin. If heads, gain 2 Merits."
+            },
+            {
+                name: "Back Up",
+                description: "After an attack, automatically call for backup that deals 2 damage to an enemy."
+            },
+            {
+                name: "Damage Control",
+                description: "After an attack, increase your HP or a nearby ally's HP by 2 (up to cap)."
+            },
+            {
+                name: "Tech Mastery",
+                description: "After an attack, flip a coin. If tails, reduce PBP by 3."
+            }
+        ],
+
+        advancedTier2: [
+            {
+                name: "Environment",
+                description: "Reduce enemy movement by 2 for 1 turn after you land an attack."
+            },
+            {
+                name: "Enemy Attack",
+                description: "Reduce an enemy’s attack damage by 2 for 1 turn after you land an attack."
+            },
+            {
+                name: "Enemy Defense",
+                description: "Reduce an enemy’s defense by 2 for 1 turn after you land an attack."
+            },
+            {
+                name: "Enemy Signature Move",
+                description: "Reduce an enemy’s Signature Move damage by 2 for 1 turn after you land an attack."
+            },
+            {
+                name: "Loot",
+                description: "After an attack, flip a coin. If heads, gain 5 Merits."
+            },
+            {
+                name: "Back Up",
+                description: "After an attack, automatically call for backup that deals 3 damage to an enemy."
+            },
+            {
+                name: "Damage Control",
+                description: "After an attack, increase your HP or a nearby ally's HP by 4 (up to cap)."
+            },
+            {
+                name: "Tech Mastery",
+                description: "After an attack, flip a coin. If tails, reduce PBP by 5."
+            }
+        ]
+    },
+
+    {   // Operative
+        study: "Operative",
+
+        advancedTier1: [
+            {
+                name: "Environment",
+                description: "Reduce enemy movement by 1 for 1 turn after you land an attack."
+            },
+            {
+                name: "Enemy Attack",
+                description: "Reduce an enemy's attack damage by 1 for 1 turn after you land an attack."
+            },
+            {
+                name: "Enemy Defense",
+                description: "Reduce an enemy's defense by 1 for 1 turn after you land an attack."
+            },
+            {
+                name: "Enemy Signature Move",
+                description: "Reduce an enemy’s Signature Move damage by 1 for 1 turn after you land an attack."
+            },
+            {
+                name: "Loot",
+                description: "After an attack, flip a coin. If heads, gain 2 Merits."
+            },
+            {
+                name: "Back Up",
+                description: "After an attack, automatically call for backup that deals 2 damage to an enemy."
+            },
+            {
+                name: "Interrogate",
+                description: "Reduce Perception threshold by 25% after you land an attack."
+            },
+            {
+                name: "Tech Mastery",
+                description: "After an attack, flip a coin. If tails, reduce PBP by 3."
+            }
+        ],
+
+        advancedTier2: [
+            {
+                name: "Environment",
+                description: "Reduce enemy movement by 2 for 1 turn after you land an attack."
+            },
+            {
+                name: "Enemy Attack",
+                description: "Reduce an enemy’s attack damage by 2 for 1 turn after you land an attack."
+            },
+            {
+                name: "Enemy Defense",
+                description: "Reduce an enemy’s defense by 2 for 1 turn after you land an attack."
+            },
+            {
+                name: "Enemy Signature Move",
+                description: "Reduce an enemy’s Signature Move damage by 2 for 1 turn after you land an attack."
+            },
+            {
+                name: "Loot",
+                description: "After an attack, flip a coin. If heads, gain 5 Merits."
+            },
+            {
+                name: "Back Up",
+                description: "After an attack, automatically call for backup that deals 3 damage to an enemy."
+            },
+            {
+                name: "Interrogate",
+                description: "Reduce Perception threshold by 50% after you land an attack."
+            },
+            {
+                name: "Tech Mastery",
+                description: "After an attack, flip a coin. If tails, reduce PBP by 5."
+            }
+        ]
+    },
+
+    {   // Tinker
+        study: "Tinker",
+
+        advancedTier1: [
+            {
+                name: "Environment",
+                description: "Reduce enemy movement by 1 for 1 turn after you land an attack."
+            },
+            {
+                name: "Enemy Attack",
+                description: "Reduce an enemy's attack damage by 1 for 1 turn after you land an attack."
+            },
+            {
+                name: "Enemy Defense",
+                description: "Reduce an enemy's defense by 1 for 1 turn after you land an attack."
+            },
+            {
+                name: "Enemy Signature Move",
+                description: "Reduce an enemy’s Signature Move damage by 1 for 1 turn after you land an attack."
+            },
+            {
+                name: "Loot",
+                description: "After an attack, flip a coin. If heads, gain 2 Merits."
+            },
+            {
+                name: "Back Up",
+                description: "After an attack, automatically call for backup that deals 2 damage to an enemy."
+            },
+            {
+                name: "Electronic Control",
+                description: "Automatically control a nearby electronic device to deal 2 damage after you land an attack."
+            },
+            {
+                name: "Tech Mastery",
+                description: "After an attack, flip a coin. If tails, reduce PBP by 3."
+            }
+        ],
+
+        advancedTier2: [
+            {
+                name: "Environment",
+                description: "Reduce enemy movement by 2 for 1 turn after you land an attack."
+            },
+            {
+                name: "Enemy Attack",
+                description: "Reduce an enemy’s attack damage by 2 for 1 turn after you land an attack."
+            },
+            {
+                name: "Enemy Defense",
+                description: "Reduce an enemy’s defense by 2 for 1 turn after you land an attack."
+            },
+            {
+                name: "Enemy Signature Move",
+                description: "Reduce an enemy’s Signature Move damage by 2 for 1 turn after you land an attack."
+            },
+            {
+                name: "Loot",
+                description: "After an attack, flip a coin. If heads, gain 5 Merits."
+            },
+            {
+                name: "Back Up",
+                description: "After an attack, automatically call for backup that deals 3 damage to an enemy."
+            },
+            {
+                name: "Electronic Control",
+                description: "Automatically control a nearby electronic device to deal 3 damage after you land an attack."
+            },
+            {
+                name: "Tech Mastery",
+                description: "After an attack, flip a coin. If tails, reduce PBP by 5."
+            }
+        ]
+    },
+
+    {   // D-Type
+        study: "D-Type (Decoy)",
+
+        advancedTier1: [
+            {
+                name: "Environment",
+                description: "Reduce enemy movement by 1 for 1 turn after you land an attack."
+            },
+            {
+                name: "Enemy Attack",
+                description: "Reduce an enemy's attack damage by 1 for 1 turn after you land an attack."
+            },
+            {
+                name: "Enemy Defense",
+                description: "Reduce an enemy's defense by 1 for 1 turn after you land an attack."
+            },
+            {
+                name: "Enemy Signature Move",
+                description: "Reduce an enemy’s Signature Move damage by 1 for 1 turn after you land an attack."
+            },
+            {
+                name: "Loot",
+                description: "After an attack, flip a coin. If heads, gain 2 Merits."
+            },
+            {
+                name: "Decoy",
+                description: "Create a decoy bot that absorbs 25% of the next incoming damage."
+            },
+            {
+                name: "Karma Control",
+                description: "After an attack, flip a coin. If tails, increase KP by 5."
+            },
+            {
+                name: "Discharge",
+                description: "After an attack, discharge built-up karma to deal 4 damage to nearby enemies."
+            }
+        ],
+
+        advancedTier2: [
+            {
+                name: "Environment",
+                description: "Reduce enemy movement by 2 for 1 turn after you land an attack."
+            },
+            {
+                name: "Enemy Attack",
+                description: "Reduce an enemy’s attack damage by 2 for 1 turn after you land an attack."
+            },
+            {
+                name: "Enemy Defense",
+                description: "Reduce an enemy’s defense by 2 for 1 turn after you land an attack."
+            },
+            {
+                name: "Enemy Signature Move",
+                description: "Reduce an enemy’s Signature Move damage by 2 for 1 turn after you land an attack."
+            },
+            {
+                name: "Loot",
+                description: "After an attack, flip a coin. If heads, gain 5 Merits."
+            },
+            {
+                name: "Decoy",
+                description: "Create a decoy bot that absorbs 50% of the next incoming damage."
+            },
+            {
+                name: "Karma Control",
+                description: "After an attack, flip a coin. If tails, increase KP by 8."
+            },
+            {
+                name: "Discharge",
+                description: "After an attack, discharge built-up karma to deal 4 damage to nearby enemies."
+            }
+        ]
+    },
+
+    {   // K-Type
+        study: "K-Type (Karmastry-Assist)",
+
+        advancedTier1: [
+            {
+                name: "Environment",
+                description: "Reduce enemy movement by 1 for 1 turn after you land an attack."
+            },
+            {
+                name: "Enemy Attack",
+                description: "Reduce an enemy's attack damage by 1 for 1 turn after you land an attack."
+            },
+            {
+                name: "Enemy Defense",
+                description: "Reduce an enemy's defense by 1 for 1 turn after you land an attack."
+            },
+            {
+                name: "Enemy Signature Move",
+                description: "Reduce an enemy’s Signature Move damage by 1 for 1 turn after you land an attack."
+            },
+            {
+                name: "Loot",
+                description: "After an attack, flip a coin. If heads, gain 2 Merits."
+            },
+            {
+                name: "Karma Spark",
+                description: "Grant a nearby ally +2 KP after your attack."
+            },
+            {
+                name: "Karma Control",
+                description: "After an attack, flip a coin. If tails, increase KP by 5."
+            },
+            {
+                name: "Discharge",
+                description: "After an attack, discharge built-up karma to deal 4 damage to nearby enemies."
+            }
+        ],
+
+        advancedTier2: [
+            {
+                name: "Environment",
+                description: "Reduce enemy movement by 2 for 1 turn after you land an attack."
+            },
+            {
+                name: "Enemy Attack",
+                description: "Reduce an enemy’s attack damage by 2 for 1 turn after you land an attack."
+            },
+            {
+                name: "Enemy Defense",
+                description: "Reduce an enemy’s defense by 2 for 1 turn after you land an attack."
+            },
+            {
+                name: "Enemy Signature Move",
+                description: "Reduce an enemy’s Signature Move damage by 2 for 1 turn after you land an attack."
+            },
+            {
+                name: "Loot",
+                description: "After an attack, flip a coin. If heads, gain 5 Merits."
+            },
+            {
+                name: "Karma Spark",
+                description: "Grant a nearby ally +4 KP after your attack."
+            },
+            {
+                name: "Karma Control",
+                description: "After an attack, flip a coin. If tails, increase KP by 8."
+            },
+            {
+                name: "Discharge",
+                description: "After an attack, discharge built-up karma to deal 4 damage to nearby enemies."
+            }
+        ]
+    },
+
+    {   // M-Type
+        study: "M-Type (Medical)",
+
+        advancedTier1: [
+            {
+                name: "Environment",
+                description: "Reduce enemy movement by 1 for 1 turn after you land an attack."
+            },
+            {
+                name: "Enemy Attack",
+                description: "Reduce an enemy's attack damage by 1 for 1 turn after you land an attack."
+            },
+            {
+                name: "Enemy Defense",
+                description: "Reduce an enemy's defense by 1 for 1 turn after you land an attack."
+            },
+            {
+                name: "Enemy Signature Move",
+                description: "Reduce an enemy’s Signature Move damage by 1 for 1 turn after you land an attack."
+            },
+            {
+                name: "Loot",
+                description: "After an attack, flip a coin. If heads, gain 2 Merits."
+            },
+            {
+                name: "Medical Healing",
+                description: "Each attack heals you or a teammate for 5 HP (up to cap)."
+            },
+            {
+                name: "Karma Control",
+                description: "After an attack, flip a coin. If tails, increase KP by 5."
+            },
+            {
+                name: "Discharge",
+                description: "After an attack, discharge built-up karma to deal 4 damage to nearby enemies."
+            }
+        ],
+
+        advancedTier2: [
+            {
+                name: "Environment",
+                description: "Reduce enemy movement by 2 for 1 turn after you land an attack."
+            },
+            {
+                name: "Enemy Attack",
+                description: "Reduce an enemy’s attack damage by 2 for 1 turn after you land an attack."
+            },
+            {
+                name: "Enemy Defense",
+                description: "Reduce an enemy’s defense by 2 for 1 turn after you land an attack."
+            },
+            {
+                name: "Enemy Signature Move",
+                description: "Reduce an enemy’s Signature Move damage by 2 for 1 turn after you land an attack."
+            },
+            {
+                name: "Loot",
+                description: "After an attack, flip a coin. If heads, gain 5 Merits."
+            },
+            {
+                name: "Medical Healing",
+                description: "Each attack heals you or a teammate for 8 HP (up to cap)."
+            },
+            {
+                name: "Karma Control",
+                description: "After an attack, flip a coin. If tails, increase KP by 8."
+            },
+            {
+                name: "Discharge",
+                description: "After an attack, discharge built-up karma to deal 4 damage to nearby enemies."
+            }
+        ]
+    },
+
+    {   // H-Type
+        study: "H-Type (Heavy)",
+
+        advancedTier1: [
+            {
+                name: "Environment",
+                description: "Reduce enemy movement by 1 for 1 turn after you land an attack."
+            },
+            {
+                name: "Enemy Attack",
+                description: "Reduce an enemy's attack damage by 1 for 1 turn after you land an attack."
+            },
+            {
+                name: "Enemy Defense",
+                description: "Reduce an enemy's defense by 1 for 1 turn after you land an attack."
+            },
+            {
+                name: "Enemy Signature Move",
+                description: "Reduce an enemy’s Signature Move damage by 1 for 1 turn after you land an attack."
+            },
+            {
+                name: "Loot",
+                description: "After an attack, flip a coin. If heads, gain 2 Merits."
+            },
+            {
+                name: "Bulk Up",
+                description: "Gain +1 DEF on your next DEF roll. This effect stacks until you are attacked."
+            },
+            {
+                name: "Karma Control",
+                description: "After an attack, flip a coin. If tails, increase KP by 5."
+            },
+            {
+                name: "Discharge",
+                description: "After an attack, discharge built-up karma to deal 4 damage to nearby enemies."
+            }
+        ],
+
+        advancedTier2: [
+            {
+                name: "Environment",
+                description: "Reduce enemy movement by 2 for 1 turn after you land an attack."
+            },
+            {
+                name: "Enemy Attack",
+                description: "Reduce an enemy’s attack damage by 2 for 1 turn after you land an attack."
+            },
+            {
+                name: "Enemy Defense",
+                description: "Reduce an enemy’s defense by 2 for 1 turn after you land an attack."
+            },
+            {
+                name: "Enemy Signature Move",
+                description: "Reduce an enemy’s Signature Move damage by 2 for 1 turn after you land an attack."
+            },
+            {
+                name: "Loot",
+                description: "After an attack, flip a coin. If heads, gain 5 Merits."
+            },
+            {
+                name: "Bulk Up",
+                description: "Gain +2 DEF on your next DEF roll. This effect stacks until you are attacked."
+            },
+            {
+                name: "Karma Control",
+                description: "After an attack, flip a coin. If tails, increase KP by 8."
+            },
+            {
+                name: "Discharge",
+                description: "After an attack, discharge built-up karma to deal 4 damage to nearby enemies."
+            }
+        ]
+    },
+
+    {   // X-Type
+        study: "X-Type (Experimental)",
+
+        advancedTier1: [
+            {
+                name: "Environment",
+                description: "Reduce enemy movement by 1 for 1 turn after you land an attack."
+            },
+            {
+                name: "Enemy Attack",
+                description: "Reduce an enemy's attack damage by 1 for 1 turn after you land an attack."
+            },
+            {
+                name: "Enemy Defense",
+                description: "Reduce an enemy's defense by 1 for 1 turn after you land an attack."
+            },
+            {
+                name: "Enemy Signature Move",
+                description: "Reduce an enemy’s Signature Move damage by 1 for 1 turn after you land an attack."
+            },
+            {
+                name: "Loot",
+                description: "After an attack, flip a coin. If heads, gain 2 Merits."
+            },
+            {
+                name: "Aura",
+                description: "Reduce Perception threshold by 25% after you land an attack."
+            },
+            {
+                name: "Karma Control",
+                description: "After an attack, flip a coin. If tails, increase KP by 5."
+            },
+            {
+                name: "Discharge",
+                description: "After an attack, discharge built-up karma to deal 4 damage to nearby enemies."
+            }
+        ],
+
+        advancedTier2: [
+            {
+                name: "Environment",
+                description: "Reduce enemy movement by 2 for 1 turn after you land an attack."
+            },
+            {
+                name: "Enemy Attack",
+                description: "Reduce an enemy’s attack damage by 2 for 1 turn after you land an attack."
+            },
+            {
+                name: "Enemy Defense",
+                description: "Reduce an enemy’s defense by 2 for 1 turn after you land an attack."
+            },
+            {
+                name: "Enemy Signature Move",
+                description: "Reduce an enemy’s Signature Move damage by 2 for 1 turn after you land an attack."
+            },
+            {
+                name: "Loot",
+                description: "After an attack, flip a coin. If heads, gain 5 Merits."
+            },
+            {
+                name: "Aura",
+                description: "Reduce Perception threshold by 50% after you land an attack."
+            },
+            {
+                name: "Karma Control",
+                description: "After an attack, flip a coin. If tails, increase KP by 8."
+            },
+            {
+                name: "Discharge",
+                description: "After an attack, discharge built-up karma to deal 4 damage to nearby enemies."
+            }
+        ]
     }
-]
+];
 
 // ========================================
 // NON-KARMA ATTACK DEFINITIONS
