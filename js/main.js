@@ -3551,6 +3551,378 @@ const studyPowerDefinitions = [
     }
 ];
 
+const advancedEffectDefinitions = [
+    {   // Creative Karmastry
+        study: "Creative Karmastry",
+
+        advancedTier1: [
+            {
+                name: "Environment",
+                description: "Reduce enemy movement by 1 for 1 turn after you land an attack."
+            },
+            {
+                name: "Enemy Attack",
+                description: "Reduce an enemy’s attack damage by 1 for 1 turn after you land an attack."
+            },
+            {
+                name: "Enemy Defense",
+                description: "Reduce an enemy’s defense by 1 for 1 turn after you land an attack."
+            },
+            {
+                name: "Enemy Signature Move",
+                description: "Reduce an enemy’s Signature Move damage by 1 for 1 turn after you land an attack."
+            },
+            {
+                name: "Loot",
+                description: "After an attack, flip a coin. If heads, gain 2 Merits."
+            },
+            {
+                name: "Creative Strategy",
+                description: "Reduce Perception threshold by 25% after you land an attack."
+            },
+            {
+                name: "Creative Advantage",
+                description: "Reduce Split Attack threshold by 5 for 1 turn after you land an attack."
+            },
+            {
+                name: "Tongue Lashing",
+                description: "Automatically pass a taunt Quick Action after you land an attack."
+            }
+        ],
+
+        advancedTier2: [
+            {
+                name: "Environment",
+                description: "Reduce enemy movement by 2 for 1 turn after you land an attack."
+            },
+            {
+                name: "Enemy Attack",
+                description: "Reduce an enemy’s attack damage by 2 for 1 turn after you land an attack."
+            },
+            {
+                name: "Enemy Defense",
+                description: "Reduce an enemy’s defense by 2 for 1 turn after you land an attack."
+            },
+            {
+                name: "Enemy Signature Move",
+                description: "Reduce an enemy’s Signature Move damage by 2 for 1 turn after you land an attack."
+            },
+            {
+                name: "Loot",
+                description: "After an attack, flip a coin. If heads, gain 5 Merits."
+            },
+            {
+                name: "Creative Strategy",
+                description: "Reduce Perception threshold by 50% after you land an attack."
+            },
+            {
+                name: "Creative Advantage",
+                description: "Reduce Split Attack threshold by 8 for 1 turn after you land an attack."
+            },
+            {
+                name: "Tongue Lashing",
+                description: "Automatically pass a taunt Quick Action after you land an attack and deal 2 damage."
+            }
+        ]
+    },
+
+    {   // Clockwork Karmastry
+        study: "Clockwork Karmastry",
+
+        advancedTier1: [
+            {
+                name: "Environment",
+                description: "Reduce enemy movement by 1 for 1 turn after you land an attack."
+            },
+            {
+                name: "Enemy Attack",
+                description: "Reduce an enemy’s attack damage by 1 for 1 turn after you land an attack."
+            },
+            {
+                name: "Enemy Defense",
+                description: "Reduce an enemy’s defense by 1 for 1 turn after you land an attack."
+            },
+            {
+                name: "Enemy Signature Move",
+                description: "Reduce an enemy’s Signature Move damage by 1 for 1 turn after you land an attack."
+            },
+            {
+                name: "Loot",
+                description: "After an attack, flip a coin. If heads, gain 2 Merits."
+            },
+            {
+                name: "Clockwork Smarts",
+                description: "Increase the range of the attack you just used by 1 after you land an attack."
+            },
+            {
+                name: "Clockwork Advantage",
+                description: "Reduce Karma Surge KP cost on the next turn by 20%."
+            },
+            {
+                name: "Sneaky Feet",
+                description: "Automatically pass a trip Quick Action after you land an attack and deal 2 damage."
+            }
+        ],
+
+        advancedTier2: [
+            {
+                name: "Environment",
+                description: "Reduce enemy movement by 2 for 1 turn after you land an attack."
+            },
+            {
+                name: "Enemy Attack",
+                description: "Reduce an enemy’s attack damage by 2 for 1 turn after you land an attack."
+            },
+            {
+                name: "Enemy Defense",
+                description: "Reduce an enemy’s defense by 2 for 1 turn after you land an attack."
+            },
+            {
+                name: "Enemy Signature Move",
+                description: "Reduce an enemy’s Signature Move damage by 2 for 1 turn after you land an attack."
+            },
+            {
+                name: "Loot",
+                description: "After an attack, flip a coin. If heads, gain 5 Merits."
+            },
+            {
+                name: "Clockwork Smarts",
+                description: "Increase the range of the attack you just used by 2 after you land an attack."
+            },
+            {
+                name: "Clockwork Advantage",
+                description: "Reduce Karma Surge KP cost on the next turn by 50%."
+            },
+            {
+                name: "Sneaky Feet",
+                description: "Automatically pass a trip Quick Action after you land an attack and deal 2 damage."
+            }
+        ]
+    },
+
+    {   // Bio Karmastry
+        study: "Bio Karmastry",
+
+        advancedTier1: [
+            {
+                name: "Environment",
+                description: "Reduce enemy movement by 1 for 1 turn after you land an attack."
+            },
+            {
+                name: "Enemy Attack",
+                description: "Reduce an enemy’s attack damage by 1 for 1 turn after you land an attack."
+            },
+            {
+                name: "Enemy Defense",
+                description: "Reduce an enemy’s defense by 1 for 1 turn after you land an attack."
+            },
+            {
+                name: "Enemy Signature Move",
+                description: "Reduce an enemy’s Signature Move damage by 1 for 1 turn after you land an attack."
+            },
+            {
+                name: "Loot",
+                description: "After an attack, flip a coin. If heads, gain 2 Merits."
+            },
+            {
+                name: "Bio Knowledge",
+                description: "After an attack, flip a coin. If tails, gain 1 Med Kit."
+            },
+            {
+                name: "Fast Heal",
+                description: "After an attack, increase your HP or a nearby ally's HP by 2 (up to cap)."
+            },
+            {
+                name: "Nature Control",
+                description: "Automatically control a nearby animal or plant to deal 1 damage after you land an attack."
+            }
+        ],
+
+        advancedTier2: [
+            {
+                name: "Environment",
+                description: "Reduce enemy movement by 2 for 1 turn after you land an attack."
+            },
+            {
+                name: "Enemy Attack",
+                description: "Reduce an enemy’s attack damage by 2 for 1 turn after you land an attack."
+            },
+            {
+                name: "Enemy Defense",
+                description: "Reduce an enemy’s defense by 2 for 1 turn after you land an attack."
+            },
+            {
+                name: "Enemy Signature Move",
+                description: "Reduce an enemy’s Signature Move damage by 2 for 1 turn after you land an attack."
+            },
+            {
+                name: "Loot",
+                description: "After an attack, flip a coin. If heads, gain 5 Merits."
+            },
+            {
+                name: "Bio Knowledge",
+                description: "After an attack, flip a coin. If tails, gain 2 Med Kits."
+            },
+            {
+                name: "Fast Heal",
+                description: "After an attack, increase your HP or a nearby ally's HP by 4 (up to cap)."
+            },
+            {
+                name: "Nature Control",
+                description: "Automatically control a nearby animal or plant to deal 2 damage after you land an attack."
+            }
+        ]
+    },
+
+    {   // Machine Karmastry
+        study: "Machine Karmastry",
+
+        advancedTier1: [
+            {
+                name: "Environment",
+                description: "Reduce enemy movement by 1 for 1 turn after you land an attack."
+            },
+            {
+                name: "Enemy Attack",
+                description: "Reduce an enemy’s attack damage by 1 for 1 turn after you land an attack."
+            },
+            {
+                name: "Enemy Defense",
+                description: "Reduce an enemy’s defense by 1 for 1 turn after you land an attack."
+            },
+            {
+                name: "Enemy Signature Move",
+                description: "Reduce an enemy’s Signature Move damage by 1 for 1 turn after you land an attack."
+            },
+            {
+                name: "Loot",
+                description: "After an attack, flip a coin. If heads, gain 2 Merits."
+            },
+            {
+                name: "Brains and Brawn",
+                description: "After an attack, automatically perform a non-karma attack for half damage."
+            },
+            {
+                name: "Payback Be Gone",
+                description: "After an attack, transfer 3 PBP to a nearby Clockbot or electronic device."
+            },
+            {
+                name: "Machine Control",
+                description: "Automatically control a nearby electronic to deal 1 damage after you land an attack."
+            }
+        ],
+
+        advancedTier2: [
+            {
+                name: "Environment",
+                description: "Reduce enemy movement by 2 for 1 turn after you land an attack."
+            },
+            {
+                name: "Enemy Attack",
+                description: "Reduce an enemy’s attack damage by 2 for 1 turn after you land an attack."
+            },
+            {
+                name: "Enemy Defense",
+                description: "Reduce an enemy’s defense by 2 for 1 turn after you land an attack."
+            },
+            {
+                name: "Enemy Signature Move",
+                description: "Reduce an enemy’s Signature Move damage by 2 for 1 turn after you land an attack."
+            },
+            {
+                name: "Loot",
+                description: "After an attack, flip a coin. If heads, gain 5 Merits."
+            },
+            {
+                name: "Brains and Brawn",
+                description: "After an attack, automatically perform a non-karma attack for half damage."
+            },
+            {
+                name: "Payback Be Gone",
+                description: "After an attack, transfer 5 PBP to a nearby Clockbot or electronic device."
+            },
+            {
+                name: "Machine Control",
+                description: "Automatically control a nearby electronic to deal 2 damage after you land an attack."
+            }
+        ]
+    },
+
+    {
+        study: "Quantum Karmastry",
+
+        advancedTier1: [
+            {
+                name: "Environment",
+                description: "Reduce enemy movement by 1 for 1 turn after you land an attack."
+            },
+            {
+                name: "Enemy Attack",
+                description: "Reduce an enemy’s attack damage by 1 for 1 turn after you land an attack."
+            },
+            {
+                name: "Enemy Defense",
+                description: "Reduce an enemy’s defense by 1 for 1 turn after you land an attack."
+            },
+            {
+                name: "Enemy Signature Move",
+                description: "Reduce an enemy’s Signature Move damage by 1 for 1 turn after you land an attack."
+            },
+            {
+                name: "Loot",
+                description: "After an attack, flip a coin. If heads, gain 2 Merits."
+            },
+            {
+                name: "Teleport",
+                description: "After each attack, teleport to a square next to an enemy."
+            },
+            {
+                name: "Shove",
+                description: "Automatically pass a push Quick Action after an attack."
+            },
+            {
+                name: "Mind Control",
+                description: "After an attack, flip a coin. If tails, the enemy deals 2 damage to themselves."
+            }
+        ],
+
+        advancedTier2: [
+            {
+                name: "Environment",
+                description: "Reduce enemy movement by 2 for 1 turn after you land an attack."
+            },
+            {
+                name: "Enemy Attack",
+                description: "Reduce an enemy’s attack damage by 2 for 1 turn after you land an attack."
+            },
+            {
+                name: "Enemy Defense",
+                description: "Reduce an enemy’s defense by 2 for 1 turn after you land an attack."
+            },
+            {
+                name: "Enemy Signature Move",
+                description: "Reduce an enemy’s Signature Move damage by 2 for 1 turn after you land an attack."
+            },
+            {
+                name: "Loot",
+                description: "After an attack, flip a coin. If heads, gain 5 Merits."
+            },
+            {
+                name: "Teleport",
+                description: "After each attack, teleport to a square next to an ally or enemy."
+            },
+            {
+                name: "Shove",
+                description: "Automatically pass a push Quick Action after an attack and deal 2 damage."
+            },
+            {
+                name: "Mind Control",
+                description: "After an attack, flip a coin. If tails, the enemy deals 3 damage to themselves."
+            }
+        ]
+    }
+]
+
 // ========================================
 // NON-KARMA ATTACK DEFINITIONS
 // ========================================
