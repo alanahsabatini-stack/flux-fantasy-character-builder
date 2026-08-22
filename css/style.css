@@ -565,6 +565,107 @@ h6 {
 }
 
 /* =========================================== */
+/*             KARMA POWER TABLES              */
+/* =========================================== */
+
+#karmaPowerTables {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    min-width: 0;
+}
+
+.powerTier {
+    min-width: 0;
+}
+
+.powerTier h4 {
+    color: var(--text-primary);
+}
+
+.powerTier table {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: var(--page-background);
+    border: 1px solid var(--border);
+    font-size: 0.75rem;
+    table-layout: fixed;
+}
+
+.powerTier th,
+.powerTier td {
+    padding: 4px 6px;
+    border-bottom: 1px solid var(--border);
+    overflow-wrap: break-word;
+}
+
+.powerTier th {
+    color: var(--text-secondary);
+    background-color: var(--surface);
+    font-size: 0.6rem;
+    font-weight: 200;
+    text-align: left;
+}
+
+.powerTier td {
+    color: var(--text-primary);
+}
+
+.powerTier tbody tr:last-child th,
+.powerTier tbody tr:last-child td {
+    border-bottom: none;
+}
+
+.powerTier input,
+.powerTier textarea {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 4px 6px;
+    font-size: 0.75rem;
+}
+
+.powerTier textarea {
+    min-height: 50px;
+    resize: vertical;
+}
+
+.powerTier th:nth-child(1),
+.powerTier td:nth-child(1) {
+    width: 12%;
+}
+
+.powerTier th:nth-child(2),
+.powerTier td:nth-child(2) {
+    width: 17%;
+}
+
+.powerTier th:nth-child(3),
+.powerTier td:nth-child(3) {
+    width: 28%;
+}
+
+.powerTier th:nth-child(4),
+.powerTier td:nth-child(4) {
+    width: 5%;
+}
+
+.powerTier th:nth-child(5),
+.powerTier td:nth-child(5) {
+    width: 9%;
+}
+
+.powerTier th:nth-child(6),
+.powerTier td:nth-child(6) {
+    width: 9%;
+    min-width: 40px;
+}
+
+.powerTier th:nth-child(7),
+.powerTier td:nth-child(7) {
+    width: 20%;
+}
+
+/* =========================================== */
 /*                   SIDEBAR                   */
 /* =========================================== */
 
