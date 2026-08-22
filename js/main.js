@@ -923,7 +923,7 @@ const studyPowerDefinitions = [
                 kpCost: 15,
                 damage: 14,
                 range: "0-3",
-                effect: "Add +2 to Quick Action rolls. This ability can stack. Resets when you are attacked."
+                effect: "Pick Effect from chart"
             },
             defense: {
                 kpCost: 15,
@@ -935,13 +935,13 @@ const studyPowerDefinitions = [
                 kpCost: 19,
                 damage: 16,
                 range: "1-2",
-                effect: "Add +2 to Quick Action rolls. This ability can stack. Resets when you are attacked."
+                effect: "Same Effect as Attack"
             },
             signature: {
                 kpCost: 25,
                 damage: 18,
                 range: "0-2",
-                effect: "Add +2 to Quick Action rolls. This ability can stack. Resets when you are attacked."
+                effect: "Same Effect as Attack"
             },
             locomotion: {
                 kpCost: 7,
@@ -956,7 +956,7 @@ const studyPowerDefinitions = [
                 kpCost: 30,
                 damage: 28,
                 range: "0-3",
-                effect: "Add +5 to Quick Action rolls. This ability can stack. Resets when you are attacked."
+                effect: "Pick Effect from chart"
             },
             defense: {
                 kpCost: 30,
@@ -968,13 +968,13 @@ const studyPowerDefinitions = [
                 kpCost: 38,
                 damage: 32,
                 range: "1-2",
-                effect: "Add +5 to Quick Action rolls. This ability can stack. Resets when you are attacked."
+                effect: "Same Effect as Attack"
             },
             signature: {
                 kpCost: 50,
                 damage: 36,
                 range: "0-2",
-                effect: "Add +5 to Quick Action rolls. This ability can stack. Resets when you are attacked."
+                effect: "Same Effect as Attack"
             },
             locomotion: {
                 kpCost: 9,
@@ -1058,7 +1058,7 @@ const studyPowerDefinitions = [
                 kpCost: 15,
                 damage: 14,
                 range: "1-3",
-                effect: "After each attack, increase its range by +1. Resets after being hit."
+                effect: "Pick Effect from chart"
             },
             defense: {
                 kpCost: 15,
@@ -1070,13 +1070,13 @@ const studyPowerDefinitions = [
                 kpCost: 19,
                 damage: 16,
                 range: "1-2",
-                effect: "After each attack, increase its range by +1. Resets after being hit."
+                effect: "Same Effect as Attack"
             },
             signature: {
                 kpCost: 25,
                 damage: 20,
                 range: "0-1",
-                effect: "After each attack, increase its range by +1. Resets after being hit."
+                effect: "Same Effect as Attack"
             },
             locomotion: {
                 kpCost: 7,
@@ -1091,7 +1091,7 @@ const studyPowerDefinitions = [
                 kpCost: 30,
                 damage: 28,
                 range: "1-3",
-                effect: "After each attack, increase its range by +2. Resets after being hit."
+                effect: "Pick Effect from chart"
             },
             defense: {
                 kpCost: 30,
@@ -1103,13 +1103,13 @@ const studyPowerDefinitions = [
                 kpCost: 38,
                 damage: 32,
                 range: "1-2",
-                effect: "After each attack, increase its range by +2. Resets after being hit."
+                effect: "Same Effect as Attack"
             },
             signature: {
                 kpCost: 50,
                 damage: 40,
                 range: "0-1",
-                effect: "After each attack, increase its range by +2. Resets after being hit."
+                effect: "Same Effect as Attack"
             },
             locomotion: {
                 kpCost: 9,
@@ -1160,7 +1160,7 @@ const studyPowerDefinitions = [
                 kpCost: 10,
                 damage: 6,
                 range: "1-3",
-                effect: "Each attack restores +2 HP (up to cap)."
+                effect: "-"
             },
             defense: {
                 kpCost: 10,
@@ -1178,7 +1178,7 @@ const studyPowerDefinitions = [
                 kpCost: 20,
                 damage: 10,
                 range: "0-3",
-                effect: "Each attack restores +2 HP (up to cap)."
+                effect: "-"
             },
             locomotion: {
                 kpCost: 5,
@@ -1193,7 +1193,7 @@ const studyPowerDefinitions = [
                 kpCost: 15,
                 damage: 12,
                 range: "1-4",
-                effect: "Each attack heals you or a teammate for +5 HP (up to cap)."
+                effect: "Pick Effect from chart"
             },
             defense: {
                 kpCost: 15,
@@ -1205,13 +1205,13 @@ const studyPowerDefinitions = [
                 kpCost: 19,
                 damage: 14,
                 range: "1-3",
-                effect: "Each attack heals you or a teammate for +5 HP (up to cap)."
+                effect: "Same Effect as Attack"
             },
             signature: {
                 kpCost: 25,
                 damage: 16,
                 range: "0-4",
-                effect: "Each attack heals you or a teammate for +5 HP (up to cap)."
+                effect: "Same Effect as Attack"
             },
             locomotion: {
                 kpCost: 7,
@@ -1226,7 +1226,7 @@ const studyPowerDefinitions = [
                 kpCost: 30,
                 damage: 24,
                 range: "1-4",
-                effect: "Each attack heals you or a teammate for +8 HP (up to cap)."
+                effect: "Pick Effect from chart"
             },
             defense: {
                 kpCost: 30,
@@ -1238,13 +1238,13 @@ const studyPowerDefinitions = [
                 kpCost: 38,
                 damage: 32,
                 range: "1-3",
-                effect: "Each attack heals you or a teammate for +8 HP (up to cap)."
+                effect: "Same Effect as Attack"
             },
             signature: {
                 kpCost: 50,
                 damage: 38,
                 range: "0-4",
-                effect: "Each attack heals you or a teammate for +8 HP (up to cap)."
+                effect: "Same Effect as Attack"
             },
             locomotion: {
                 kpCost: 9,
@@ -1328,7 +1328,7 @@ const studyPowerDefinitions = [
                 kpCost: 15,
                 damage: 12,
                 range: "2-4",
-                effect: "After each attack, transfer 10 PBP to a nearby Clockbot or 5 to any nearby machine if none are present."
+                effect: "Pick Effect from chart"
             },
             defense: {
                 kpCost: 15,
@@ -1340,13 +1340,13 @@ const studyPowerDefinitions = [
                 kpCost: 19,
                 damage: 12,
                 range: "1-4",
-                effect: "After each attack, transfer 10 PBP to a nearby Clockbot or 5 to any nearby machine if none are present."
+                effect: "Same Effect as Attack"
             },
             signature: {
                 kpCost: 25,
                 damage: 16,
                 range: "0-5",
-                effect: "After each attack, transfer 10 PBP to a nearby Clockbot or 5 to any nearby machine if none are present."
+                effect: "Same Effect as Attack"
             },
             locomotion: {
                 kpCost: 7,
@@ -1361,7 +1361,7 @@ const studyPowerDefinitions = [
                 kpCost: 30,
                 damage: 24,
                 range: "2-4",
-                effect: "After each attack, transfer 20 PBP to a nearby Clockbot or 10 to any nearby machine if none are present."
+                effect: "Pick Effect from chart"
             },
             defense: {
                 kpCost: 30,
@@ -1373,13 +1373,13 @@ const studyPowerDefinitions = [
                 kpCost: 38,
                 damage: 24,
                 range: "1-4",
-                effect: "After each attack, transfer 20 PBP to a nearby Clockbot or 10 to any nearby machine if none are present."
+                effect: "Same Effect as Attack"
             },
             signature: {
                 kpCost: 50,
                 damage: 32,
                 range: "0-5",
-                effect: "After each attack, transfer 20 PBP to a nearby Clockbot or 10 to any nearby machine if none are present."
+                effect: "Same Effect as Attack"
             },
             locomotion: {
                 kpCost: 9,
@@ -1463,7 +1463,7 @@ const studyPowerDefinitions = [
                 kpCost: 15,
                 damage: 16,
                 range: "1-2",
-                effect: "After each attack, teleport to a square next to an ally."
+                effect: "Pick Effect from chart"
             },
             defense: {
                 kpCost: 15,
@@ -1475,13 +1475,13 @@ const studyPowerDefinitions = [
                 kpCost: 19,
                 damage: 16,
                 range: "1-2",
-                effect: "After each attack, teleport to a square next to an ally."
+                effect: "Same Effect as Attack"
             },
             signature: {
                 kpCost: 25,
                 damage: 20,
                 range: "0-1",
-                effect: "After each attack, teleport to a square next to an ally."
+                effect: "Same Effect as Attack"
             },
             locomotion: {
                 kpCost: 7,
@@ -1496,7 +1496,7 @@ const studyPowerDefinitions = [
                 kpCost: 30,
                 damage: 32,
                 range: "1-2",
-                effect: "After each attack, teleport to a square next to an ally or enemy."
+                effect: "Pick Effect from chart"
             },
             defense: {
                 kpCost: 30,
@@ -1508,13 +1508,13 @@ const studyPowerDefinitions = [
                 kpCost: 38,
                 damage: 32,
                 range: "1-2",
-                effect: "After each attack, teleport to a square next to an ally or enemy."
+                effect: "Same Effect as Attack"
             },
             signature: {
                 kpCost: 50,
                 damage: 40,
                 range: "0-1",
-                effect: "After each attack, teleport to a square next to an ally or enemy."
+                effect: "Same Effect as Attack"
             },
             locomotion: {
                 kpCost: 9,
@@ -1598,7 +1598,7 @@ const studyPowerDefinitions = [
                 kpCost: 10,
                 damage: 13,
                 range: "0-3",
-                effect: "Keep your weapon summoned for 1 turn, and attack without using KP."
+                effect: "Pick Effect from chart"
             },
             defense: {
                 kpCost: 10,
@@ -1610,13 +1610,13 @@ const studyPowerDefinitions = [
                 kpCost: 12,
                 damage: 14,
                 range: "0-3",
-                effect: "Keep your weapon summoned for 1 turn, and attack without using KP."
+                effect: "Same Effect as Attack"
             },
             signature: {
                 kpCost: 16,
                 damage: 15,
                 range: "1-4",
-                effect: "Keep your weapon summoned for 1 turn, and attack without using KP."
+                effect: "Same Effect as Attack"
             },
             locomotion: {
                 kpCost: 7,
@@ -1631,7 +1631,7 @@ const studyPowerDefinitions = [
                 kpCost: 15,
                 damage: 19,
                 range: "0-4",
-                effect: "Keep your weapon summoned for 2 turns, and attack without using KP."
+                effect: "Pick Effect from chart"
             },
             defense: {
                 kpCost: 15,
@@ -1643,13 +1643,13 @@ const studyPowerDefinitions = [
                 kpCost: 17,
                 damage: 20,
                 range: "0-4",
-                effect: "Keep your weapon summoned for 2 turns, and attack without using KP."
+                effect: "Same Effect as Attack"
             },
             signature: {
                 kpCost: 21,
                 damage: 21,
                 range: "1-5",
-                effect: "Keep your weapon summoned for 2 turns, and attack without using KP."
+                effect: "Same Effect as Attack"
             },
             locomotion: {
                 kpCost: 9,
@@ -1733,7 +1733,7 @@ const studyPowerDefinitions = [
                 kpCost: 10,
                 damage: 12,
                 range: "2-5",
-                effect: "Your attack also hits a second enemy for 1/2 damage."
+                effect: "Pick Effect from chart"
             },
             defense: {
                 kpCost: 10,
@@ -1745,13 +1745,13 @@ const studyPowerDefinitions = [
                 kpCost: 12,
                 damage: 13,
                 range: "3-5",
-                effect: "Your attack also hits a second enemy for 1/2 damage."
+                effect: "Same Effect as Attack"
             },
             signature: {
                 kpCost: 16,
                 damage: 15,
                 range: "1-7",
-                effect: "Your attack also hits a second enemy for 1/2 damage."
+                effect: "Same Effect as Attack"
             },
             locomotion: {
                 kpCost: 7,
@@ -1766,7 +1766,7 @@ const studyPowerDefinitions = [
                 kpCost: 15,
                 damage: 18,
                 range: "2-6",
-                effect: "Your attack also hits two enemies for 1/2 damage."
+                effect: "Pick Effect from chart"
             },
             defense: {
                 kpCost: 15,
@@ -1778,13 +1778,13 @@ const studyPowerDefinitions = [
                 kpCost: 17,
                 damage: 19,
                 range: "3-6",
-                effect: "Your attack also hits two enemies for 1/2 damage."
+                effect: "Same Effect as Attack"
             },
             signature: {
                 kpCost: 21,
                 damage: 21,
                 range: "1-8",
-                effect: "Your attack also hits two enemies for 1/2 damage."
+                effect: "Same Effect as Attack"
             },
             locomotion: {
                 kpCost: 9,
@@ -1868,7 +1868,7 @@ const studyPowerDefinitions = [
                 kpCost: 10,
                 damage: 13,
                 range: "0-4",
-                effect: "Keep your Power summoned for 1 turn, and attack without using KP."
+                effect: "Pick Effect from chart"
             },
             defense: {
                 kpCost: 10,
@@ -1880,13 +1880,13 @@ const studyPowerDefinitions = [
                 kpCost: 12,
                 damage: 13,
                 range: "3-5",
-                effect: "Keep your Power summoned for 1 turn, and attack without using KP."
+                effect: "Same Effect as Attack"
             },
             signature: {
                 kpCost: 16,
                 damage: 14,
                 range: "0-6",
-                effect: "Keep your Power summoned for 1 turn, and attack without using KP."
+                effect: "Same Effect as Attack"
             },
             locomotion: {
                 kpCost: 7,
@@ -1901,7 +1901,7 @@ const studyPowerDefinitions = [
                 kpCost: 15,
                 damage: 19,
                 range: "0-5",
-                effect: "Keep your power summoned for 2 turns, and attack without using KP."
+                effect: "Pick Effect from chart"
             },
             defense: {
                 kpCost: 15,
@@ -1913,13 +1913,13 @@ const studyPowerDefinitions = [
                 kpCost: 17,
                 damage: 19,
                 range: "2-5",
-                effect: "Keep your power summoned for 2 turns, and attack without using KP."
+                effect: "Same Effect as Attack"
             },
             signature: {
                 kpCost: 21,
                 damage: 20,
                 range: "0-7",
-                effect: "Keep your power summoned for 2 turns, and attack without using KP."
+                effect: "Same Effect as Attack"
             },
             locomotion: {
                 kpCost: 9,
@@ -1970,7 +1970,7 @@ const studyPowerDefinitions = [
                 kpCost: 5,
                 damage: 8,
                 range: "0-3",
-                effect: "Each attack heals +3 HP (up to cap)."
+                effect: "-"
             },
             defense: {
                 kpCost: 5,
@@ -1982,13 +1982,13 @@ const studyPowerDefinitions = [
                 kpCost: 7,
                 damage: 8,
                 range: "0-4",
-                effect: "Each attack heals +3 HP (up to cap)."
+                effect: "-"
             },
             signature: {
                 kpCost: 10,
                 damage: 10,
                 range: "1-3",
-                effect: "Each attack heals +3 HP (up to cap)."
+                effect: "-"
             },
             locomotion: {
                 kpCost: 5,
@@ -2003,7 +2003,7 @@ const studyPowerDefinitions = [
                 kpCost: 10,
                 damage: 13,
                 range: "0-4",
-                effect: "Add +2 to your HP. This ability can stack. Resets after the battle."
+                effect: "Pick Effect from chart"
             },
             defense: {
                 kpCost: 10,
@@ -2015,13 +2015,13 @@ const studyPowerDefinitions = [
                 kpCost: 12,
                 damage: 13,
                 range: "3-5",
-                effect: "Add +2 to your HP. This ability can stack. Resets after the battle."
+                effect: "Same Effect as Attack"
             },
             signature: {
                 kpCost: 16,
                 damage: 15,
                 range: "0-6",
-                effect: "Add +2 to your HP. This ability can stack. Resets after the battle."
+                effect: "Same Effect as Attack"
             },
             locomotion: {
                 kpCost: 7,
@@ -2036,7 +2036,7 @@ const studyPowerDefinitions = [
                 kpCost: 15,
                 damage: 19,
                 range: "0-5",
-                effect: "Add +4 to your HP. This ability can stack. Resets after the battle."
+                effect: "Pick Effect from chart"
             },
             defense: {
                 kpCost: 15,
@@ -2048,13 +2048,13 @@ const studyPowerDefinitions = [
                 kpCost: 17,
                 damage: 19,
                 range: "2-5",
-                effect: "Add +4 to your HP. This ability can stack. Resets after the battle."
+                effect: "Same Effect as Attack"
             },
             signature: {
                 kpCost: 21,
                 damage: 21,
                 range: "0-7",
-                effect: "Add +4 to your HP. This ability can stack. Resets after the battle."
+                effect: "Same Effect as Attack"
             },
             locomotion: {
                 kpCost: 9,
@@ -2138,7 +2138,7 @@ const studyPowerDefinitions = [
                 kpCost: 10,
                 damage: 15,
                 range: "0-3",
-                effect: "Gain +2 KP per attack (up to cap). Stacks but resets when hit."
+                effect: "Pick Effect from chart"
             },
             defense: {
                 kpCost: 10,
@@ -2150,13 +2150,13 @@ const studyPowerDefinitions = [
                 kpCost: 12,
                 damage: 15,
                 range: "0-4",
-                effect: "Gain +2 KP per attack (up to cap). Stacks but resets when hit."
+                effect: "Same Effect as Attack"
             },
             signature: {
                 kpCost: 16,
                 damage: 16,
                 range: "1-6",
-                effect: "Gain +2 KP per attack (up to cap). Stacks but resets when hit."
+                effect: "Same Effect as Attack"
             },
             locomotion: {
                 kpCost: 7,
@@ -2171,7 +2171,7 @@ const studyPowerDefinitions = [
                 kpCost: 15,
                 damage: 15,
                 range: "0-4",
-                effect: "Gain +4 KP per attack (up to cap). Stacks but resets when hit."
+                effect: "Pick Effect from chart"
             },
             defense: {
                 kpCost: 15,
@@ -2183,13 +2183,13 @@ const studyPowerDefinitions = [
                 kpCost: 17,
                 damage: 15,
                 range: "0-5",
-                effect: "Gain +4 KP per attack (up to cap). Stacks but resets when hit."
+                effect: "Same Effect as Attack"
             },
             signature: {
                 kpCost: 21,
                 damage: 16,
                 range: "0-6",
-                effect: "Gain +4 KP per attack (up to cap). Stacks but resets when hit."
+                effect: "Same Effect as Attack"
             },
             locomotion: {
                 kpCost: 9,
@@ -2273,7 +2273,7 @@ const studyPowerDefinitions = [
                 kpCost: 12,
                 damage: 11,
                 range: "0-3",
-                effect: "+1 damage to all attacks per attack made. Stacks each time and resets after battle."
+                effect: "Pick Effect from chart"
             },
             defense: {
                 kpCost: 12,
@@ -2285,13 +2285,13 @@ const studyPowerDefinitions = [
                 kpCost: 14,
                 damage: 12,
                 range: "1-4",
-                effect: "+1 damage to all attacks per attack made. Stacks each time and resets after battle."
+                effect: "Same Effect as Attack"
             },
             signature: {
                 kpCost: 18,
                 damage: 11,
                 range: "0-7",
-                effect: "+1 damage to all attacks per attack made. Stacks each time and resets after battle."
+                effect: "Same Effect as Attack"
             },
             locomotion: {
                 kpCost: 7,
@@ -2306,7 +2306,7 @@ const studyPowerDefinitions = [
                 kpCost: 17,
                 damage: 16,
                 range: "0-4",
-                effect: "+2 damage to all attacks per attack made. Stacks each time and resets after battle."
+                effect: "Pick Effect from chart"
             },
             defense: {
                 kpCost: 17,
@@ -2318,13 +2318,13 @@ const studyPowerDefinitions = [
                 kpCost: 19,
                 damage: 17,
                 range: "1-5",
-                effect: "+2 damage to all attacks per attack made. Stacks each time and resets after battle."
+                effect: "Same Effect as Attack"
             },
             signature: {
                 kpCost: 22,
                 damage: 16,
                 range: "0-8",
-                effect: "+2 damage to all attacks per attack made. Stacks each time and resets after battle."
+                effect: "Same Effect as Attack"
             },
             locomotion: {
                 kpCost: 9,
@@ -2408,7 +2408,7 @@ const studyPowerDefinitions = [
                 kpCost: 12,
                 damage: 12,
                 range: "1-4",
-                effect: "+1 damage to all attacks per attack made. Stacks each time and resets after battle."
+                effect: "Pick Effect from chart"
             },
             defense: {
                 kpCost: 12,
@@ -2420,13 +2420,13 @@ const studyPowerDefinitions = [
                 kpCost: 14,
                 damage: 12,
                 range: "0-5",
-                effect: "+1 damage to all attacks per attack made. Stacks each time and resets after battle."
+                effect: "Same Effect as Attack"
             },
             signature: {
                 kpCost: 18,
                 damage: 11,
                 range: "0-4",
-                effect: "+1 damage to all attacks per attack made. Stacks each time and resets after battle."
+                effect: "Same Effect as Attack"
             },
             locomotion: {
                 kpCost: 7,
@@ -2441,7 +2441,7 @@ const studyPowerDefinitions = [
                 kpCost: 17,
                 damage: 17,
                 range: "1-5",
-                effect: "+2 damage to all attacks per attack made. Stacks each time and resets after battle."
+                effect: "Pick Effect from chart"
             },
             defense: {
                 kpCost: 17,
@@ -2453,13 +2453,13 @@ const studyPowerDefinitions = [
                 kpCost: 19,
                 damage: 17,
                 range: "0-6",
-                effect: "+2 damage to all attacks per attack made. Stacks each time and resets after battle."
+                effect: "Same Effect as Attack"
             },
             signature: {
                 kpCost: 22,
                 damage: 16,
                 range: "0-5",
-                effect: "+2 damage to all attacks per attack made. Stacks each time and resets after battle."
+                effect: "Same Effect as Attack"
             },
             locomotion: {
                 kpCost: 9,
@@ -2543,7 +2543,7 @@ const studyPowerDefinitions = [
                 kpCost: 12,
                 damage: 11,
                 range: "0-3",
-                effect: "+1 damage to all attacks per attack made. Stacks each time and resets after battle."
+                effect: "Pick Effect from chart"
             },
             defense: {
                 kpCost: 12,
@@ -2555,13 +2555,13 @@ const studyPowerDefinitions = [
                 kpCost: 14,
                 damage: 11,
                 range: "0-4",
-                effect: "+1 damage to all attacks per attack made. Stacks each time and resets after battle."
+                effect: "Same Effect as Attack"
             },
             signature: {
                 kpCost: 18,
                 damage: 14,
                 range: "0-6",
-                effect: "+1 damage to all attacks per attack made. Stacks each time and resets after battle."
+                effect: "Same Effect as Attack"
             },
             locomotion: {
                 kpCost: 7,
@@ -2576,7 +2576,7 @@ const studyPowerDefinitions = [
                 kpCost: 17,
                 damage: 16,
                 range: "0-4",
-                effect: "+2 damage to all attacks per attack made. Stacks each time and resets after battle."
+                effect: "Pick Effect from chart"
             },
             defense: {
                 kpCost: 17,
@@ -2588,13 +2588,13 @@ const studyPowerDefinitions = [
                 kpCost: 19,
                 damage: 16,
                 range: "0-5",
-                effect: "+2 damage to all attacks per attack made. Stacks each time and resets after battle."
+                effect: "Same Effect as Attack"
             },
             signature: {
                 kpCost: 22,
                 damage: 19,
                 range: "0-7",
-                effect: "+2 damage to all attacks per attack made. Stacks each time and resets after battle."
+                effect: "Same Effect as Attack"
             },
             locomotion: {
                 kpCost: 9,
@@ -2678,7 +2678,7 @@ const studyPowerDefinitions = [
                 kpCost: 12,
                 damage: 12,
                 range: "0-7",
-                effect: "+1 damage to all attacks per attack made. Stacks each time and resets after battle."
+                effect: "Pick Effect from chart"
             },
             defense: {
                 kpCost: 12,
@@ -2690,13 +2690,13 @@ const studyPowerDefinitions = [
                 kpCost: 14,
                 damage: 12,
                 range: "1-4",
-                effect: "+1 damage to all attacks per attack made. Stacks each time and resets after battle."
+                effect: "Same Effect as Attack"
             },
             signature: {
                 kpCost: 18,
                 damage: 13,
                 range: "3-6",
-                effect: "+1 damage to all attacks per attack made. Stacks each time and resets after battle."
+                effect: "Same Effect as Attack"
             },
             locomotion: {
                 kpCost: 7,
@@ -2711,7 +2711,7 @@ const studyPowerDefinitions = [
                 kpCost: 17,
                 damage: 17,
                 range: "0-8",
-                effect: "+2 damage to all attacks per attack made. Stacks each time and resets after battle."
+                effect: "Pick Effect from chart"
             },
             defense: {
                 kpCost: 17,
@@ -2723,13 +2723,13 @@ const studyPowerDefinitions = [
                 kpCost: 19,
                 damage: 17,
                 range: "1-5",
-                effect: "+2 damage to all attacks per attack made. Stacks each time and resets after battle."
+                effect: "Same Effect as Attack"
             },
             signature: {
                 kpCost: 22,
                 damage: 18,
                 range: "2-6",
-                effect: "+2 damage to all attacks per attack made. Stacks each time and resets after battle."
+                effect: "Same Effect as Attack"
             },
             locomotion: {
                 kpCost: 9,
@@ -2813,7 +2813,7 @@ const studyPowerDefinitions = [
                 kpCost: 12,
                 damage: 12,
                 range: "0-6",
-                effect: "+1 damage to all attacks per attack made. Stacks each time and resets after battle."
+                effect: "Pick Effect from chart"
             },
             defense: {
                 kpCost: 12,
@@ -2825,13 +2825,13 @@ const studyPowerDefinitions = [
                 kpCost: 14,
                 damage: 14,
                 range: "1-4",
-                effect: "+1 damage to all attacks per attack made. Stacks each time and resets after battle."
+                effect: "Same Effect as Attack"
             },
             signature: {
                 kpCost: 18,
                 damage: 13,
                 range: "2-6",
-                effect: "+1 damage to all attacks per attack made. Stacks each time and resets after battle."
+                effect: "Same Effect as Attack"
             },
             locomotion: {
                 kpCost: 7,
@@ -2846,7 +2846,7 @@ const studyPowerDefinitions = [
                 kpCost: 17,
                 damage: 17,
                 range: "0-7",
-                effect: "+2 damage to all attacks per attack made. Stacks each time and resets after battle."
+                effect: "Pick Effect from chart"
             },
             defense: {
                 kpCost: 17,
@@ -2858,13 +2858,13 @@ const studyPowerDefinitions = [
                 kpCost: 19,
                 damage: 19,
                 range: "1-5",
-                effect: "+2 damage to all attacks per attack made. Stacks each time and resets after battle."
+                effect: "Same Effect as Attack"
             },
             signature: {
                 kpCost: 22,
                 damage: 18,
                 range: "1-6",
-                effect: "+2 damage to all attacks per attack made. Stacks each time and resets after battle."
+                effect: "Same Effect as Attack"
             },
             locomotion: {
                 kpCost: 9,
@@ -2948,7 +2948,7 @@ const studyPowerDefinitions = [
                 kpCost: 14,
                 damage: 14,
                 range: "1-3",
-                effect: "Create a decoy bot that absorbs 25% of the next incoming damage."
+                effect: "Pick Effect from chart"
             },
             defense: {
                 kpCost: 14,
@@ -2960,13 +2960,13 @@ const studyPowerDefinitions = [
                 kpCost: 17,
                 damage: 16,
                 range: "0-3",
-                effect: "Create a decoy bot that absorbs 25% of the next incoming damage."
+                effect: "Same Effect as Attack"
             },
             signature: {
                 kpCost: 22,
                 damage: 18,
                 range: "1-4",
-                effect: "Create a decoy bot that absorbs 25% of the next incoming damage."
+                effect: "Same Effect as Attack"
             },
             locomotion: {
                 kpCost: 7,
@@ -2981,7 +2981,7 @@ const studyPowerDefinitions = [
                 kpCost: 22,
                 damage: 21,
                 range: "1-3",
-                effect: "Create a decoy bot that absorbs 50% of the next incoming damage."
+                effect: "Pick Effect from chart"
             },
             defense: {
                 kpCost: 22,
@@ -2993,13 +2993,13 @@ const studyPowerDefinitions = [
                 kpCost: 25,
                 damage: 23,
                 range: "0-3",
-                effect: "Create a decoy bot that absorbs 50% of the next incoming damage."
+                effect: "Same Effect as Attack"
             },
             signature: {
                 kpCost: 30,
                 damage: 25,
                 range: "1-4",
-                effect: "Create a decoy bot that absorbs 50% of the next incoming damage."
+                effect: "Same Effect as Attack"
             },
             locomotion: {
                 kpCost: 9,
@@ -3083,7 +3083,7 @@ const studyPowerDefinitions = [
                 kpCost: 14,
                 damage: 18,
                 range: "1-3",
-                effect: "Reduce KP cost by 1 per attack. Resets at the end of battle."
+                effect: "Pick Effect from chart"
             },
             defense: {
                 kpCost: 14,
@@ -3095,13 +3095,13 @@ const studyPowerDefinitions = [
                 kpCost: 17,
                 damage: 16,
                 range: "0-6",
-                effect: "Reduce KP cost by 1 per attack. Resets at the end of battle."
+                effect: "Same Effect as Attack"
             },
             signature: {
                 kpCost: 22,
                 damage: 20,
                 range: "0-2",
-                effect: "Reduce KP cost by 1 per attack. Resets at the end of battle."
+                effect: "Same Effect as Attack"
             },
             locomotion: {
                 kpCost: 7,
@@ -3116,7 +3116,7 @@ const studyPowerDefinitions = [
                 kpCost: 22,
                 damage: 25,
                 range: "1-3",
-                effect: "Reduce KP cost by 2 per attack. Resets at the end of battle."
+                effect: "Pick Effect from chart"
             },
             defense: {
                 kpCost: 22,
@@ -3128,13 +3128,13 @@ const studyPowerDefinitions = [
                 kpCost: 25,
                 damage: 23,
                 range: "0-6",
-                effect: "Reduce KP cost by 2 per attack. Resets at the end of battle."
+                effect: "Same Effect as Attack"
             },
             signature: {
                 kpCost: 30,
                 damage: 27,
                 range: "0-2",
-                effect: "Reduce KP cost by 2 per attack. Resets at the end of battle."
+                effect: "Same Effect as Attack"
             },
             locomotion: {
                 kpCost: 9,
@@ -3218,7 +3218,7 @@ const studyPowerDefinitions = [
                 kpCost: 14,
                 damage: 14,
                 range: "0-3",
-                effect: "Each attack heals you or a teammate for 5 HP (up to cap)."
+                effect: "Pick Effect from chart"
             },
             defense: {
                 kpCost: 14,
@@ -3230,13 +3230,13 @@ const studyPowerDefinitions = [
                 kpCost: 17,
                 damage: 16,
                 range: "1-3",
-                effect: "Each attack heals you or a teammate for 5 HP (up to cap)."
+                effect: "Same Effect as Attack"
             },
             signature: {
                 kpCost: 22,
                 damage: 18,
                 range: "1-3",
-                effect: "Each attack heals you or a teammate for 5 HP (up to cap)."
+                effect: "Same Effect as Attack"
             },
             locomotion: {
                 kpCost: 7,
@@ -3251,7 +3251,7 @@ const studyPowerDefinitions = [
                 kpCost: 22,
                 damage: 21,
                 range: "0-3",
-                effect: "Each attack heals you or a teammate for 8 HP (up to cap)."
+                effect: "Pick Effect from chart"
             },
             defense: {
                 kpCost: 22,
@@ -3263,13 +3263,13 @@ const studyPowerDefinitions = [
                 kpCost: 25,
                 damage: 23,
                 range: "1-3",
-                effect: "Each attack heals you or a teammate for 8 HP (up to cap)."
+                effect: "Same Effect as Attack"
             },
             signature: {
                 kpCost: 30,
                 damage: 25,
                 range: "1-3",
-                effect: "Each attack heals you or a teammate for 8 HP (up to cap)."
+                effect: "Same Effect as Attack"
             },
             locomotion: {
                 kpCost: 9,
@@ -3353,7 +3353,7 @@ const studyPowerDefinitions = [
                 kpCost: 14,
                 damage: 18,
                 range: "0-2",
-                effect: "Gain +1 DEF for every attack. Stacks until you're hit, then resets."
+                effect: "Pick Effect from chart"
             },
             defense: {
                 kpCost: 14,
@@ -3365,13 +3365,13 @@ const studyPowerDefinitions = [
                 kpCost: 17,
                 damage: 18,
                 range: "1-4",
-                effect: "Gain +1 DEF for every attack. Stacks until you're hit, then resets."
+                effect: "Same Effect as Attack"
             },
             signature: {
                 kpCost: 22,
                 damage: 20,
                 range: "1-4",
-                effect: "Gain +1 DEF for every attack. Stacks until you're hit, then resets."
+                effect: "Same Effect as Attack"
             },
             locomotion: {
                 kpCost: 7,
@@ -3386,7 +3386,7 @@ const studyPowerDefinitions = [
                 kpCost: 22,
                 damage: 25,
                 range: "0-2",
-                effect: "Gain +2 DEF for every attack. Stacks until you're hit, then resets."
+                effect: "Pick Effect from chart"
             },
             defense: {
                 kpCost: 22,
@@ -3398,13 +3398,13 @@ const studyPowerDefinitions = [
                 kpCost: 25,
                 damage: 25,
                 range: "1-4",
-                effect: "Gain +2 DEF for every attack. Stacks until you're hit, then resets."
+                effect: "Same Effect as Attack"
             },
             signature: {
                 kpCost: 30,
                 damage: 27,
                 range: "1-4",
-                effect: "Gain +2 DEF for every attack. Stacks until you're hit, then resets."
+                effect: "Same Effect as Attack"
             },
             locomotion: {
                 kpCost: 9,
@@ -3488,7 +3488,7 @@ const studyPowerDefinitions = [
                 kpCost: 14,
                 damage: 16,
                 range: "1-4",
-                effect: "Each attack reduces a selected enemy's damage by 1. Stacks until you're hit, then resets."
+                effect: "Pick Effect from chart"
             },
             defense: {
                 kpCost: 14,
@@ -3500,13 +3500,13 @@ const studyPowerDefinitions = [
                 kpCost: 17,
                 damage: 18,
                 range: "0-2",
-                effect: "Each attack reduces a selected enemy's damage by 1. Stacks until you're hit, then resets."
+                effect: "Same Effect as Attack"
             },
             signature: {
                 kpCost: 22,
                 damage: 24,
                 range: "2-6",
-                effect: "Each attack reduces a selected enemy's damage by 1. Stacks until you're hit, then resets."
+                effect: "Same Effect as Attack"
             },
             locomotion: {
                 kpCost: 7,
@@ -3521,7 +3521,7 @@ const studyPowerDefinitions = [
                 kpCost: 22,
                 damage: 23,
                 range: "1-4",
-                effect: "Each attack reduces a selected enemy's damage by 2. Stacks until you're hit, then resets."
+                effect: "Pick Effect from chart"
             },
             defense: {
                 kpCost: 22,
@@ -3533,13 +3533,13 @@ const studyPowerDefinitions = [
                 kpCost: 25,
                 damage: 25,
                 range: "0-2",
-                effect: "Each attack reduces a selected enemy's damage by 2. Stacks until you're hit, then resets."
+                effect: "Same Effect as Attack"
             },
             signature: {
                 kpCost: 30,
                 damage: 31,
                 range: "2-6",
-                effect: "Each attack reduces a selected enemy's damage by 2. Stacks until you're hit, then resets."
+                effect: "Same Effect as Attack"
             },
             locomotion: {
                 kpCost: 9,
