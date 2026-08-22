@@ -666,6 +666,104 @@ h6 {
 }
 
 /* =========================================== */
+/*              ADVANCED EFFECTS               */
+/* =========================================== */
+
+.advancedEffectButton {
+    display: block;
+    margin: 12px 0 0 auto;
+}
+
+.advancedEffectButton:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.advancedEffectPanel {
+    max-height: 0;
+    overflow: hidden;
+    opacity: 0;
+    margin-top: 0;
+    padding: 0;
+    border: 0;
+    background-color: var(--page-background);
+    transition:
+        max-height 0.3s ease,
+        opacity 0.2s ease,
+        margin-top 0.3s ease,
+        padding 0.3s ease;
+}
+
+.advancedEffectPanel.open {
+    max-height: 1000px;
+    opacity: 1;
+    margin-top: 12px;
+    padding: 15px;
+    border: 1px solid var(--border);
+    border-radius: 6px;
+}
+
+.advancedEffectPanel h5 {
+    margin: 0 0 12px;
+    color: var(--text-primary);
+}
+
+.applyAdvancedEffectButton {
+    display: block;
+    margin: 15px 0 0 auto;
+}
+
+.advancedEffectTable {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+    table-layout: fixed;
+}
+
+.advancedEffectTable th,
+.advancedEffectTable td {
+    padding: 6px 8px;
+    border-bottom: 1px solid var(--border);
+    text-align: left;
+    vertical-align: middle;
+}
+
+.advancedEffectTable th {
+    font-size: 0.7rem;
+    font-weight: 200;
+    color: var(--text-secondary);
+}
+
+.advancedEffectTable td {
+    font-size: 0.75rem;
+    color: var(--text-primary);
+}
+
+.advancedEffectTable th:first-child,
+.advancedEffectTable td:first-child {
+    width: 50px;
+    text-align: center;
+}
+
+.advancedEffectTable th:nth-child(2),
+.advancedEffectTable td:nth-child(2) {
+    width: 20%;
+}
+
+.advancedEffectTable th:nth-child(3),
+.advancedEffectTable td:nth-child(3) {
+    width: auto;
+}
+
+.advancedEffectTable tr:last-child td {
+    border-bottom: none;
+}
+
+.advancedEffectTable input[type="radio"] {
+    margin: 0;
+}
+
+/* =========================================== */
 /*                   SIDEBAR                   */
 /* =========================================== */
 

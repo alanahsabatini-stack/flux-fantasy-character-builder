@@ -3,7 +3,7 @@
 // TITLE: JavaScript Main
 // PROGRAMMER: Alanah Sabatini
 // DATE: 08/08/2026
-// LATEST REVISION: 08/17/2026
+// LATEST REVISION: 08/22/2026
 // ========================================
 
 console.log("Flux Fantasy Character Builder loaded!");
@@ -186,6 +186,8 @@ const character = {
         },
 
         advancedTier1: {
+            selectedEffect: null,
+
             attack: {
                 name: "",
                 description: "",
@@ -229,6 +231,8 @@ const character = {
         },
 
         advancedTier2: {
+            selectedEffect: null,
+
             attack: {
                 name: "",
                 description: "",
@@ -352,6 +356,8 @@ const advancedTier1AttackName = document.getElementById("advancedTier1AttackName
 const advancedTier2AttackName = document.getElementById("advancedTier2AttackName");
 const advancedTier1EffectButton = document.getElementById("advancedTier1EffectButton");
 const advancedTier2EffectButton = document.getElementById("advancedTier2EffectButton");
+const advancedTier1EffectPanel = document.getElementById("advancedTier1EffectPanel");
+const advancedTier2EffectPanel = document.getElementById("advancedTier2EffectPanel");
 
 const startingItems = document.getElementById("startingItems");
 const startingMedKits = document.getElementById("startingMedKits");
@@ -5833,6 +5839,150 @@ advancedTier2AttackName.addEventListener("input", function() {
     advancedTier2EffectButton.disabled = advancedTier2AttackName.value.trim() === "";
 });
 
+advancedTier1EffectButton.addEventListener("click", function() {
+    populateAdvancedEffectList(1);
+    advancedTier1EffectPanel.classList.toggle("open");
+});
+
+advancedTier2EffectButton.addEventListener("click", function() {
+    populateAdvancedEffectList(2);
+    advancedTier2EffectPanel.classList.toggle("open");
+});
+
+function populateAdvancedEffectList(tier) {
+    const studyEffects = advancedEffectDefinitions.find(function(study) {
+        return study.study === character.study;
+    });
+
+    if (!studyEffects) {
+        return;
+    }
+
+    const effects = tier === 1
+        ? studyEffects.advancedTier1
+        : studyEffects.advancedTier2;
+
+    const listContainer = document.getElementById(
+        `advancedTier${tier}EffectLists`
+    );
+
+    listContainer.innerHTML = "";
+
+    const table = document.createElement("table");
+    table.classList.add("advancedEffectTable");
+
+    const headerRow = document.createElement("tr");
+
+    const selectHeader = document.createElement("th");
+    selectHeader.textContent = "Select";
+
+    const nameHeader = document.createElement("th");
+    nameHeader.textContent = "Effect";
+
+    const descriptionHeader = document.createElement("th");
+    descriptionHeader.textContent = "Description";
+
+    headerRow.appendChild(selectHeader);
+    headerRow.appendChild(nameHeader);
+    headerRow.appendChild(descriptionHeader);
+
+    table.appendChild(headerRow);
+
+    effects.forEach(function(effect, index) {
+        const row = document.createElement("tr");
+
+        const selectCell = document.createElement("td");
+        const radio = document.createElement("input");
+
+        radio.type = "radio";
+        radio.name = `advancedTier${tier}Effect`;
+        radio.value = index;
+
+        const selectedEffect =
+            character.powers[`advancedTier${tier}`].selectedEffect;
+
+        if (selectedEffect && selectedEffect.name === effect.name) {
+            radio.checked = true;
+        }
+
+        selectCell.appendChild(radio);
+
+        const nameCell = document.createElement("td");
+        nameCell.textContent = effect.name;
+
+        const descriptionCell = document.createElement("td");
+        descriptionCell.textContent = effect.description;
+
+        row.appendChild(selectCell);
+        row.appendChild(nameCell);
+        row.appendChild(descriptionCell);
+
+        table.appendChild(row);
+    });
+
+    listContainer.appendChild(table);
+}
+
+applyAdvancedTier1EffectButton.addEventListener("click", function() {
+    applyAdvancedEffect(1);
+});
+
+applyAdvancedTier2EffectButton.addEventListener("click", function() {
+    applyAdvancedEffect(2);
+});
+
+function applyAdvancedEffect(tier) {
+    const selectedEffect = document.querySelector(
+        `input[name="advancedTier${tier}Effect"]:checked`
+    );
+
+    if (!selectedEffect) {
+        alert("Please select an Advanced Effect.");
+        return;
+    }
+
+    const studyEffects = advancedEffectDefinitions.find(function(study) {
+        return study.study === character.study;
+    });
+
+    if (!studyEffects) {
+        return;
+    }
+
+    const effects = tier === 1
+        ? studyEffects.advancedTier1
+        : studyEffects.advancedTier2;
+
+    const effect = effects[Number(selectedEffect.value)];
+
+    const tierKey = `advancedTier${tier}`;
+
+    character.powers[tierKey].attack.effect = effect.description;
+    character.powers[tierKey].combo.effect = effect.description;
+    character.powers[tierKey].signature.effect = effect.description;
+
+    character.powers[tierKey].selectedEffect = {
+        name: effect.name,
+        description: effect.description
+    };
+
+    document.getElementById(
+        `advancedTier${tier}AttackEffect`
+    ).textContent = effect.description;
+
+    document.getElementById(
+        `advancedTier${tier}ComboEffect`
+    ).textContent = effect.description;
+
+    document.getElementById(
+        `advancedTier${tier}SignatureEffect`
+    ).textContent = effect.description;
+
+    document.getElementById(
+        `advancedTier${tier}EffectPanel`
+    ).classList.remove("open");
+}
+
 // NON-KARMA ATTACK FUNCTIONS ============
 
 function setupNonKarmaAttackInput(type, number) {
@@ -5936,6 +6086,27 @@ function basicNonKarmaAttacksAreComplete() {
 // FINALIZE FUNCTIONS
 // ========================================
 
+function advancedKarmaPowersAreComplete() {
+    const tier1Name = character.powers.advancedTier1.attack.name.trim();
+    const tier2Name = character.powers.advancedTier2.attack.name.trim();
+
+    if (
+        tier1Name !== "" &&
+        character.powers.advancedTier1.selectedEffect === null
+    ) {
+        return false;
+    }
+
+    if (
+        tier2Name !== "" &&
+        character.powers.advancedTier2.selectedEffect === null
+    ) {
+        return false;
+    }
+
+    return true;
+}
+
 function canFinalizeCharacter() {
     return getFinalizationErrors().length === 0;
 }
@@ -5973,6 +6144,10 @@ function getFinalizationErrors() {
     if (!basicNonKarmaAttacksAreComplete()) {
         errors.push("All Basic Non-Karma Attacks must have a name.");
     }
+
+    if (!advancedKarmaPowersAreComplete()) {
+        errors.push("Each named Advanced Tier must have an Advanced Effect selected.");
+    }   
     
     if (!traitsAndFlawsAreBalanced()) {
         errors.push("Trait and Flaw counts must match.");
