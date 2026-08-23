@@ -3,7 +3,7 @@
 // TITLE: JavaScript Main
 // PROGRAMMER: Alanah Sabatini
 // DATE: 08/08/2026
-// LATEST REVISION: 08/22/2026
+// LATEST REVISION: 08/23/2026
 // ========================================
 
 console.log("Flux Fantasy Character Builder loaded!");
@@ -6291,6 +6291,7 @@ function updateTraitFlawDisplay() {
         definition.textContent = trait.definition;
 
         const effect = document.createElement("span");
+        effect.classList.add("traitFlawEffect");
         effect.textContent = trait.effect;
 
         label.appendChild(name);
@@ -6338,6 +6339,7 @@ function updateTraitFlawDisplay() {
         definition.textContent = flaw.definition;
 
         const effect = document.createElement("span");
+        effect.classList.add("traitFlawEffect");
         effect.textContent = flaw.effect;
 
         label.appendChild(name);
