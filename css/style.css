@@ -469,6 +469,16 @@ h6 {
     margin-bottom: 20px;
 }
 
+#powerTheme {
+    margin: 0 0 10px;
+    width: 100%;
+}
+
+label[for="powerTheme"] {
+    font-size: 0.8rem;
+    color: var(--text-secondary);
+}
+
 #nonKarmaSection {
     display: grid;
     grid-template-columns: 2fr 3fr;

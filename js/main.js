@@ -55,6 +55,7 @@ const character = {
         fishbowls: 1,
         specialtyItems: []
     },
+    powerTheme: "",
     nonKarmaAttacks: {
         basic: [
             {
@@ -351,6 +352,8 @@ const available3 = document.getElementById("available3");
 const modifierButtons = document.querySelectorAll(".modifierButton");
 
 const resetTalentsButton = document.getElementById("resetTalents");
+
+const powerTheme = document.getElementById("powerTheme");
 
 const advancedTier1AttackName = document.getElementById("advancedTier1AttackName");
 const advancedTier2AttackName = document.getElementById("advancedTier2AttackName");
@@ -5659,6 +5662,10 @@ function calculateDerivedStats() {
 // ========================================
 // POWER FUNCTIONS
 // ========================================
+
+powerTheme.addEventListener("input", function() {
+    character.powerTheme = powerTheme.value;
+});
 
 function getPowerElement(tier, powerType, field) {
     const formattedPowerType =
