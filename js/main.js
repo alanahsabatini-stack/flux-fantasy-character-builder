@@ -3,7 +3,7 @@
 // TITLE: JavaScript Main
 // PROGRAMMER: Alanah Sabatini
 // DATE: 08/08/2026
-// LATEST REVISION: 08/23/2026
+// LATEST REVISION: 08/24/2026
 // ========================================
 
 console.log("Flux Fantasy Character Builder loaded!");
@@ -57,47 +57,20 @@ const character = {
     },
     powerTheme: "",
     nonKarmaAttacks: {
-        basic: [
-            {
-                name: "",
-                damage: 0,
-                range: "",
-                effect: ""
-            },
-            {
-                name: "",
-                damage: 0,
-                range: "",
-                effect: ""
-            },
-            {
-                name: "",
-                damage: 0,
-                range: "",
-                effect: ""
-            }
-        ],
-
-        advanced: [
-            {
-                name: "",
-                damage: 0,
-                range: "",
-                effect: ""
-            },
-            {
-                name: "",
-                damage: 0,
-                range: "",
-                effect: ""
-            },
-            {
-                name: "",
-                damage: 0,
-                range: "",
-                effect: ""
-            }
-        ]
+        basic: {
+            name: "",
+            selectedAttack: null,
+            damage: 0,
+            range: "",
+            effect: ""
+        },
+        advanced: {
+            name: "",
+            selectedAttack: null,
+            damage: 0,
+            range: "",
+            effect: ""
+        },
     },
     powers: {
         basicTier1: {
@@ -5992,21 +5965,19 @@ function applyAdvancedEffect(tier) {
 
 // NON-KARMA ATTACK FUNCTIONS ============
 
-function setupNonKarmaAttackInput(type, number) {
-    const nameInput = getNonKarmaAttackElement(type, number, "Name");
+function setupNonKarmaAttackInput(type) {
+    const nameInput = document.getElementById(
+        `${type}NonKarmaAttackName`
+    );
 
     nameInput.addEventListener("input", function() {
-        character.nonKarmaAttacks[type][number - 1].name = nameInput.value;
+        character.nonKarmaAttacks[type].name = nameInput.value;
     });
 }
 
-setupNonKarmaAttackInput("basic", 1);
-setupNonKarmaAttackInput("basic", 2);
-setupNonKarmaAttackInput("basic", 3);
+setupNonKarmaAttackInput("basic");
+setupNonKarmaAttackInput("advanced");
 
-setupNonKarmaAttackInput("advanced", 1);
-setupNonKarmaAttackInput("advanced", 2);
-setupNonKarmaAttackInput("advanced", 3);
 
 function populateNonKarmaAttacks() {
     const selectedSpecialty = nonKarmaAttackDefinitions.find(function(specialty) {
@@ -6017,67 +5988,112 @@ function populateNonKarmaAttacks() {
         return;
     }
 
-    for (let i = 0; i < 3; i++) {
-        character.nonKarmaAttacks.basic[i].damage = selectedSpecialty.basic[i].damage;
-        character.nonKarmaAttacks.basic[i].range = selectedSpecialty.basic[i].range;
-        character.nonKarmaAttacks.basic[i].effect = selectedSpecialty.basic[i].effect;
-
-        character.nonKarmaAttacks.advanced[i].damage = selectedSpecialty.advanced[i].damage;
-        character.nonKarmaAttacks.advanced[i].range = selectedSpecialty.advanced[i].range;
-        character.nonKarmaAttacks.advanced[i].effect = selectedSpecialty.advanced[i].effect;
-    }
+    populateNonKarmaAttackType("basic", selectedSpecialty.basic);
+    populateNonKarmaAttackType("advanced", selectedSpecialty.advanced);
 }
 
-function getNonKarmaAttackElement(type, number, field) {
-    return document.getElementById(
-        `${type}NonKarmaAttack${number}${field}`
+
+function populateNonKarmaAttackType(type, attacks) {
+    const select = document.getElementById(
+        `${type}NonKarmaAttackSelect`
     );
+
+    select.innerHTML = '<option value="">-- Choose Stats --</option>';
+
+    attacks.forEach(function(attack, index) {
+        const option = document.createElement("option");
+
+        option.value = index;
+        option.textContent =
+            `${attack.damage} Damage / ${attack.range} Range / ${attack.effect}`;
+
+        select.appendChild(option);
+    });
 }
 
-function displayNonKarmaAttack(type, number, attack) {
-    getNonKarmaAttackElement(type, number, "Name").value = attack.name;
-    getNonKarmaAttackElement(type, number, "Damage").textContent = attack.damage;
-    getNonKarmaAttackElement(type, number, "Range").textContent = attack.range;
-    getNonKarmaAttackElement(type, number, "Effect").textContent = attack.effect;
+function setupNonKarmaAttackSelect(type) {
+    const select = document.getElementById(
+        `${type}NonKarmaAttackSelect`
+    );
+
+    select.addEventListener("change", function() {
+        const selectedIndex = Number(select.value);
+
+        if (select.value === "") {
+            character.nonKarmaAttacks[type].selectedAttack = null;
+            character.nonKarmaAttacks[type].damage = 0;
+            character.nonKarmaAttacks[type].range = "";
+            character.nonKarmaAttacks[type].effect = "";
+            return;
+        }
+
+        const selectedSpecialty = nonKarmaAttackDefinitions.find(function(specialty) {
+            return specialty.specialty === character.specialty;
+        });
+
+        if (!selectedSpecialty) {
+            return;
+        }
+
+        const attacks = selectedSpecialty[type];
+        const selectedAttack = attacks[selectedIndex];
+
+        character.nonKarmaAttacks[type].selectedAttack = selectedIndex;
+        character.nonKarmaAttacks[type].damage = selectedAttack.damage;
+        character.nonKarmaAttacks[type].range = selectedAttack.range;
+        character.nonKarmaAttacks[type].effect = selectedAttack.effect;
+    });
 }
+
+setupNonKarmaAttackSelect("basic");
+setupNonKarmaAttackSelect("advanced");
+
 
 function displayAllNonKarmaAttacks() {
-    for (let i = 0; i < 3; i++) {
-        displayNonKarmaAttack(
-            "basic",
-            i + 1,
-            character.nonKarmaAttacks.basic[i]
-        );
+    displayNonKarmaAttack("basic");
+    displayNonKarmaAttack("advanced");
+}
 
-        displayNonKarmaAttack(
-            "advanced",
-            i + 1,
-            character.nonKarmaAttacks.advanced[i]
-        );
+
+function displayNonKarmaAttack(type) {
+    const attack = character.nonKarmaAttacks[type];
+
+    const nameInput = document.getElementById(
+        `${type}NonKarmaAttackName`
+    );
+
+    const select = document.getElementById(
+        `${type}NonKarmaAttackSelect`
+    );
+
+    nameInput.value = attack.name;
+
+    if (attack.selectedAttack === null) {
+        select.value = "";
+        return;
     }
+
+    select.value = attack.selectedAttack;
 }
 
 function resetNonKarmaAttacks() {
-    for (let i = 0; i < 3; i++) {
-        character.nonKarmaAttacks.basic[i].name = "";
-        character.nonKarmaAttacks.advanced[i].name = "";
-    }
+    character.nonKarmaAttacks.basic.name = "";
+    character.nonKarmaAttacks.basic.selectedAttack = null;
+    character.nonKarmaAttacks.basic.damage = 0;
+    character.nonKarmaAttacks.basic.range = "";
+    character.nonKarmaAttacks.basic.effect = "";
+
+    character.nonKarmaAttacks.advanced.name = "";
+    character.nonKarmaAttacks.advanced.selectedAttack = null;
+    character.nonKarmaAttacks.advanced.damage = 0;
+    character.nonKarmaAttacks.advanced.range = "";
+    character.nonKarmaAttacks.advanced.effect = "";
 }
 
-function basicKarmaPowersAreComplete() {
-    const basicTier1 = character.powers.basicTier1;
-
+function basicNonKarmaAttacksAreComplete() {
     return (
-        basicTier1.attack.name.trim() !== "" &&
-        basicTier1.attack.description.trim() !== "" &&
-        basicTier1.defense.name.trim() !== "" &&
-        basicTier1.defense.description.trim() !== "" &&
-        basicTier1.combo.name.trim() !== "" &&
-        basicTier1.combo.description.trim() !== "" &&
-        basicTier1.signature.name.trim() !== "" &&
-        basicTier1.signature.description.trim() !== "" &&
-        basicTier1.locomotion.name.trim() !== "" &&
-        basicTier1.locomotion.description.trim() !== ""
+        character.nonKarmaAttacks.basic.name.trim() !== "" &&
+        character.nonKarmaAttacks.basic.selectedAttack !== null
     );
 }
 

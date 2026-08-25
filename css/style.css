@@ -469,6 +469,10 @@ h6 {
     margin-bottom: 20px;
 }
 
+#powersSection h3 {
+    margin: 15px 0 0;
+}
+
 #powerTheme {
     margin: 0 0 10px;
     width: 100%;
@@ -479,30 +483,31 @@ label[for="powerTheme"] {
     color: var(--text-secondary);
 }
 
+#powersSection hr {
+    border-color: var(--border);
+    border-width: 1px;
+    opacity: 0.5;
+    width: 100%;
+}
+
+/* =========================================== */
+/*             NON-KARMA ATTACKS               */
+/* =========================================== */
+
 #nonKarmaSection {
-    display: grid;
-    grid-template-columns: 2fr 3fr;
-    gap: 12px;
+    margin-bottom: 20px;
 }
 
-.nonKarmaAttackTableGroup h3 {
-    margin: 0 2px 8px;
-    color: var(--text-primary);
-    font-size: 0.8rem;
-}
-
-#basicNonKarmaAttackTable,
-#advancedNonKarmaAttackTable {
+#nonKarmaAttackTable {
     width: 100%;
     border-collapse: collapse;
     background-color: var(--page-background);
     border: 1px solid var(--border);
-    font-size: 0.75rem;
     table-layout: fixed;
+    margin-top: 20px;
 }
 
-#basicNonKarmaAttackTable th,
-#advancedNonKarmaAttackTable th {
+#nonKarmaAttackTable > thead > tr > th {
     padding: 6px 8px;
     color: var(--text-secondary);
     background-color: var(--surface);
@@ -512,62 +517,39 @@ label[for="powerTheme"] {
     border-bottom: 1px solid var(--border);
 }
 
-#basicNonKarmaAttackTable td,
-#advancedNonKarmaAttackTable td {
-    padding: 6px 8px;
-    color: var(--text-primary);
+#nonKarmaAttackTable > tbody > tr > th,
+#nonKarmaAttackTable > tbody > tr > td {
+    padding: 8px;
     border-bottom: 1px solid var(--border);
+    width: 15%;
+    color: var(--text-secondary);
+    font-size: 0.7rem;
+    font-weight: 400;
+    text-align: left;
 }
 
-#basicNonKarmaAttackTable tbody tr:last-child td,
-#advancedNonKarmaAttackTable tbody tr:last-child td {
+#nonKarmaAttackTable > tbody > tr:last-child > th,
+#nonKarmaAttackTable > tbody > tr:last-child > td {
     border-bottom: none;
 }
 
-#basicNonKarmaAttackTable th:nth-child(1),
-#basicNonKarmaAttackTable td:nth-child(1) {
-    width: 60%;
+#nonKarmaAttackTable > thead > tr > th:nth-child(1),
+#nonKarmaAttackTable > tbody > tr > th {
+    width: 15%;
 }
 
-#basicNonKarmaAttackTable th:nth-child(2),
-#basicNonKarmaAttackTable td:nth-child(2) {
-    width: 10%;
+#nonKarmaAttackTable > thead > tr > th:nth-child(2),
+#nonKarmaAttackTable > tbody > tr > td:nth-child(2) {
+    width: 30%;
 }
 
-#basicNonKarmaAttackTable th:nth-child(3),
-#basicNonKarmaAttackTable td:nth-child(3) {
-    width: 20%;
-    min-width: 40px;
+#nonKarmaAttackTable > thead > tr > th:nth-child(3),
+#nonKarmaAttackTable > tbody > tr > td:nth-child(3) {
+    width: 55%;
 }
 
-#basicNonKarmaAttackTable th:nth-child(4),
-#basicNonKarmaAttackTable td:nth-child(4) {
-    width: 10%;
-}
-
-#advancedNonKarmaAttackTable th:nth-child(1),
-#advancedNonKarmaAttackTable td:nth-child(1) {
-    width: 40%;
-}
-
-#advancedNonKarmaAttackTable th:nth-child(2),
-#advancedNonKarmaAttackTable td:nth-child(2) {
-    width: 6%;
-}
-
-#advancedNonKarmaAttackTable th:nth-child(3),
-#advancedNonKarmaAttackTable td:nth-child(3) {
-    width: 10%;
-    min-width: 40px;
-}
-
-#advancedNonKarmaAttackTable th:nth-child(4),
-#advancedNonKarmaAttackTable td:nth-child(4) {
-    width: 44%;
-}
-
-#basicNonKarmaAttackTable input,
-#advancedNonKarmaAttackTable input {
+#nonKarmaAttackTable input,
+#nonKarmaAttackTable select {
     width: 100%;
     box-sizing: border-box;
     padding: 4px 6px;

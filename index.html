@@ -6,7 +6,7 @@ PROJECT: Flux Fantasy Character Builder
 TITLE: HTML Main
 PROGRAMMER: Alanah Sabatini
 DATE: 08/08/2026
-LATEST REVISION: 08/23/2026
+LATEST REVISION: 08/24/2026
 ==========================================-->
 
 <head>
@@ -443,98 +443,54 @@ LATEST REVISION: 08/23/2026
         <input type="text" id="powerTheme">
     </div>
 
+    <hr>
+
     <!-- NON-KARMA ATTACKS -->
 
     <div id="nonKarmaSection">
+        <h3>Non-Karma Attacks</h3>
 
-        <div class="nonKarmaAttackTableGroup">
-            <h3>Basic Non-Karma Attacks</h3>
+        <table id="nonKarmaAttackTable">
+        
+            <thead>
+                <tr>
+                    <th>Level</th>
+                    <th>Name</th>
+                    <th>Stats</th>
+                </tr>
+            </thead>
 
-            <table id="basicNonKarmaAttackTable">
-                <thead>
-                    <tr>
-                        <th>Attack Name</th>
-                        <th title="Damage">D</th>
-                        <th title="Range">R</th>
-                        <th title="Effect">E</th>
-                    </tr>
-                </thead>
+            <tbody>
+                <!-- BASIC -->
+                <tr>
+                    <th>Basic</th>
+                    <td>
+                        <input type="text" id="basicNonKarmaAttackName">
+                    </td>
+                    <td>
+                        <select id="basicNonKarmaAttackSelect">
+                            <option value="">-- Choose Stats--</option>
+                        </select>
+                    </td>
+                </tr>
 
-                <tbody> 
-                    <tr>
-                        <td>
-                            <input type="text" id="basicNonKarmaAttack1Name">
-                        </td>
-                        <td id="basicNonKarmaAttack1Damage">-</td>
-                        <td id="basicNonKarmaAttack1Range">-</td>
-                        <td id="basicNonKarmaAttack1Effect">-</td>
-                    </tr>
-
-                    <tr>
-                        <td>
-                            <input type="text" id="basicNonKarmaAttack2Name">
-                        </td>
-                        <td id="basicNonKarmaAttack2Damage">-</td>
-                        <td id="basicNonKarmaAttack2Range">-</td>
-                        <td id="basicNonKarmaAttack2Effect">-</td>
-                    </tr>
-
-                    <tr>
-                        <td>
-                            <input type="text" id="basicNonKarmaAttack3Name">
-                        </td>
-                        <td id="basicNonKarmaAttack3Damage">-</td>
-                        <td id="basicNonKarmaAttack3Range">-</td>
-                        <td id="basicNonKarmaAttack3Effect">-</td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
-
-        <div class="nonKarmaAttackTableGroup">
-            <h3>Advanced Non-Karma Attacks</h3>
-
-            <table id="advancedNonKarmaAttackTable">
-                <thead>
-                    <tr>
-                        <th>Attack Name</th>
-                        <th title="Damage">D</th>
-                        <th title="Range">R</th>
-                        <th>Effect</th>
-                    </tr>
-                </thead>
-
-                <tbody>
-                    <tr>
-                        <td>
-                            <input type="text" id="advancedNonKarmaAttack1Name">
-                        </td>
-                        <td id="advancedNonKarmaAttack1Damage">-</td>
-                        <td id="advancedNonKarmaAttack1Range">-</td>
-                        <td id="advancedNonKarmaAttack1Effect">-</td>
-                    </tr>
-
-                    <tr>
-                        <td>
-                           <input type="text" id="advancedNonKarmaAttack2Name">
-                        </td>
-                        <td id="advancedNonKarmaAttack2Damage">-</td>
-                        <td id="advancedNonKarmaAttack2Range">-</td>
-                        <td id="advancedNonKarmaAttack2Effect">-</td>
-                    </tr>
-
-                    <tr>
-                        <td>
-                            <input type="text" id="advancedNonKarmaAttack3Name">
-                        </td>
-                        <td id="advancedNonKarmaAttack3Damage">-</td>
-                        <td id="advancedNonKarmaAttack3Range">-</td>
-                        <td id="advancedNonKarmaAttack3Effect">-</td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
+                <!-- ADVANCED -->
+                <tr>
+                    <th>Advanced</th>
+                    <td>
+                        <input type="text" id="advancedNonKarmaAttackName">
+                    </td>
+                    <td>
+                        <select id="advancedNonKarmaAttackSelect">
+                            <option value="">-- Choose Stats --</option>
+                        </select>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
     </div>
+
+    <hr> 
 
     <!-- KARMA POWER KIT -->
 
