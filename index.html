@@ -886,6 +886,66 @@ LATEST REVISION: 08/24/2026
     </section>
 
 <!-- ************************************************************* -->
+<!--                 SKILL TREE/LEVELING SECTION                   -->
+<!-- ************************************************************* -->
+
+    <section id="skillTreeSection">
+        <h2>Skill Tree</h2>
+
+        <div id="skillTreeInfo" class="karmastryInfo">
+            <p>
+                Your Skill Tree tracks the abilities and upgrades you unlock 
+                as your character levels up. Every level-up gives you 2 Skill 
+                Tree Points to spend across any of the 4 Tracks. Some skills 
+                require other skills to be unlocked first.
+            </p>
+            <p>
+                The Karma track progresses automatically as you level up, 
+                though you can spend Skill Tree Points there to unlock Karma 
+                abilities sooner.
+            </p>
+            <p>
+                As you advance through the Skill Tree, you can unlock higher 
+                Power Tiers and Advanced Powers. Your lower-tier Powers remain 
+                available even after you unlock stronger ones.
+            </p>
+        </div>
+
+        <div id="skillTreeControls">
+
+            <p id="skillTreePointsDisplay">
+                Skill Tree Points Available:
+                <span id="skillTreePoints">0</span>
+            </p>
+
+            <button type="button" id="viewSkillTreeButton">
+                View Skill Tree
+            </button>
+        </div>
+
+        <div id="skillTreeTracks"></div>
+
+        <div id="skillTreeOverlay">
+            <div id="skillTreeModal">
+                <button
+                    type="button"
+                    id="closeSkillTreeButton"
+                    aria-label="Close Skill Tree"
+                >
+                    x
+                </button>
+
+                <img
+                    src="assets/images/flux-fantasy-skill-tree.png"
+                    alt="Flux Fantasy Skill Tree"
+                    id="skillTreeImage"
+                >
+            </div>
+        </div>
+
+    </section>
+
+<!-- ************************************************************* -->
 <!--                      CHARACTER SUMMARY                        -->
 <!-- ************************************************************* -->
 

@@ -20,6 +20,13 @@ const character = {
     height: "",
     weight: "",
     level: 1,
+    skillTreePoints: 0,
+    skillTree: {
+        vitality: [],
+        personality: [],
+        karma: [],
+        talent: []
+    },
     background: "",
     specialty: "",
     study: "",
@@ -254,6 +261,67 @@ const character = {
 };
 
 // ========================================
+// SKILL TREE
+// ========================================
+
+const skillTreeDefinitions = {
+    vitality: [
+        "Health 1",
+        "MOV Enhance",
+        "Health 2",
+        "DEF Enhance",
+        "Vitality Enhance",
+        "Health 3",
+        "Med Kit 1",
+        "Med Kit 2",
+        "Health 4",
+        "Copycat"
+    ],
+
+    personality: [
+        "Perception 1",
+        "Merits 1",
+        "Merits 2",
+        "Karma Alignment",
+        "Perception 2",
+        "Combo 1",
+        "Combo 2",
+        "Positive Force",
+        "Negative Force",
+        "Affiliation",
+        "Trait",
+        "Combo 3"
+    ],
+
+    karma: [
+        "Karma Pool 1",
+        "Karma Pool 2",
+        "Basic Attack (Tier 2)",
+        "Resist Payback 1",
+        "Advanced Attacks",
+        "Karma Pool 3",
+        "Advanced Attacks (Tier 2)",
+        "Resist Payback 2",
+        "Range"
+    ],
+
+    talent: [
+        "Talent 1",
+        "Re-roll 1",
+        "Trading Cards 1",
+        "Trading Cards 2",
+        "Re-roll 2",
+        "Talent 2",
+        "Talent 3",
+        "Talent 4",
+        "Destiny Saves",
+        "Karma Pool 4 Share",
+        "Multi-Study",
+        "Karma Surge"
+    ]
+};
+
+// ========================================
 // DOM REFERENCES & INITIALIZATION
 // ========================================
 
@@ -266,6 +334,8 @@ const characterGender = document.getElementById("characterGender");
 const characterHeight = document.getElementById("characterHeight");
 const characterWeight = document.getElementById("characterWeight");
 const characterLevel = document.getElementById("characterLevel");
+const skillTreePoints = document.getElementById("skillTreePoints");
+const skillTreeTracks = document.getElementById("skillTreeTracks");
 const characterBackground = document.getElementById("characterBackground");
 
 const summaryName = document.getElementById("summaryName");
@@ -349,6 +419,10 @@ const flawCount = document.getElementById("flawCount");
 
 const traitFlawAffiliationNote = document.getElementById("traitFlawAffiliationNote");
 const traitFlawBalanceStatus = document.getElementById("traitFlawBalanceStatus");
+
+const viewSkillTreeButton = document.getElementById("viewSkillTreeButton");
+const closeSkillTreeButton = document.getElementById("closeSkillTreeButton");
+const skillTreeOverlay = document.getElementById("skillTreeOverlay");
 
 // ========================================
 // INFO PANEL FUNCTIONS
@@ -5238,6 +5312,8 @@ characterWeight.addEventListener("input", function() {
 characterLevel.addEventListener("input", function() {
     character.level = Number(characterLevel.value);
     summaryLevel.textContent = character.level;
+
+    calculateSkillTreePoints();
 });
 
 characterBackground.addEventListener("input", function() {
@@ -5472,6 +5548,96 @@ applyAffiliationButton.addEventListener("click", function() {
         customAffiliationConfirmation.classList.remove("visible");
     }, 2000);
 });
+
+// ========================================
+// STARTING ITEMS FUNCTIONS
+// ========================================
+
+function calculateStartingItems() {
+    character.startingItems.karmaMedKits = 2;
+    character.startingItems.merits = 20;
+    character.startingItems.fishbowls = 1;
+    character.startingItems.specialtyItems = [];
+
+    if (character.specialty === "Ink Fighter") {
+        character.startingItems.specialtyItems.push("3 Ink Syringes");
+    }
+
+    else if (character.specialty === "Escape Artist") {
+        // Escape Artist choice handled by UI
+    }
+
+    else if (character.specialty === "Clockbot") {
+        character.startingItems.specialtyItems.push("1 Large Integrated Torus");
+    }
+
+    else if (character.specialty === "Special Agent") {
+        character.startingItems.specialtyItems.push("1 Security Badge");
+    }
+}
+
+function updateStartingItemsDisplay() {
+    specialtyItemDisplay.innerHTML = "";
+
+    if (character.specialty === "Ink Fighter") {
+        specialtyItemDisplay.textContent = "3 Ink Syringes";
+    }
+
+    else if (character.specialty === "Escape Artist") {
+        const largeOption = document.createElement("label");
+
+        const largeRadio = document.createElement("input");
+        largeRadio.type = "radio";
+        largeRadio.name = "escapeArtistTorus";
+        largeRadio.value = "1 Large Torus";
+
+        largeRadio.addEventListener("change", function() {
+            if (largeRadio.checked) {
+                setEscapeArtistTorusChoice(largeRadio.value);
+            }
+        });
+
+        const largeText = document.createTextNode(" 1 Large Torus");
+
+        largeOption.appendChild(largeRadio);
+        largeOption.appendChild(largeText);
+
+        const smallOption = document.createElement("label");
+
+        const smallRadio = document.createElement("input");
+        smallRadio.type = "radio";
+        smallRadio.name = "escapeArtistTorus";
+        smallRadio.value = "2 Small Toruses";
+
+        smallRadio.addEventListener("change", function() {
+            if (smallRadio.checked) {
+                setEscapeArtistTorusChoice(smallRadio.value);
+            }
+        });
+
+        const smallText = document.createTextNode(" 2 Small Toruses");
+
+        smallOption.appendChild(smallRadio);
+        smallOption.appendChild(smallText);
+
+        specialtyItemDisplay.appendChild(largeOption);
+        specialtyItemDisplay.appendChild(smallOption);
+    }
+
+    else if (character.specialty === "Clockbot") {
+        specialtyItemDisplay.textContent =
+            "1 Large Integrated Torus";
+    }
+
+    else if (character.specialty === "Special Agent") {
+        specialtyItemDisplay.textContent =
+            "1 Security Badge";
+    }
+}
+
+function setEscapeArtistTorusChoice(choice) {
+    character.startingItems.specialtyItems = [choice];
+}
 
 // ========================================
 // TALENT MODIFIER BUTTONS
@@ -6434,94 +6600,89 @@ function isAffiliationFlaw(name) {
 updateTraitFlawDisplay();
 
 // ========================================
-// STARTING ITEMS FUNCTIONS
+// SKILL TREE/LEVELING FUNCTIONS
 // ========================================
 
-function calculateStartingItems() {
-    character.startingItems.karmaMedKits = 2;
-    character.startingItems.merits = 20;
-    character.startingItems.fishbowls = 1;
-    character.startingItems.specialtyItems = [];
+function calculateSkillTreePoints() {
+    character.skillTreePoints = (character.level - 1) * 2;
 
-    if (character.specialty === "Ink Fighter") {
-        character.startingItems.specialtyItems.push("3 Ink Syringes");
+    if (character.level >= 4) {
+        character.skillTreePoints += 1;
     }
 
-    else if (character.specialty === "Escape Artist") {
-        // Escape Artist choice handled by UI
-    }
-
-    else if (character.specialty === "Clockbot") {
-        character.startingItems.specialtyItems.push("1 Large Integrated Torus");
-    }
-
-    else if (character.specialty === "Special Agent") {
-        character.startingItems.specialtyItems.push("1 Security Badge");
-    }
+    skillTreePoints.textContent = character.skillTreePoints;
 }
 
-function updateStartingItemsDisplay() {
-    specialtyItemDisplay.innerHTML = "";
+calculateSkillTreePoints();
 
-    if (character.specialty === "Ink Fighter") {
-        specialtyItemDisplay.textContent = "3 Ink Syringes";
-    }
+function displaySkillTree() {
+    skillTreeTracks.innerHTML = "";
 
-    else if (character.specialty === "Escape Artist") {
-        const largeOption = document.createElement("label");
+    const trackNames = {
+        vitality: "Vitality",
+        personality: "Personality",
+        karma: "Karma",
+        talent: "Talent"
+    };
 
-        const largeRadio = document.createElement("input");
-        largeRadio.type = "radio";
-        largeRadio.name = "escapeArtistTorus";
-        largeRadio.value = "1 Large Torus";
+    Object.keys(skillTreeDefinitions).forEach(function(track) {
+        const column = document.createElement("div");
+        column.classList.add("skillTreeTrack");
 
-        largeRadio.addEventListener("change", function() {
-            if (largeRadio.checked) {
-                setEscapeArtistTorusChoice(largeRadio.value);
-            }
+        const heading = document.createElement("h3");
+        heading.textContent = trackNames[track];
+
+        column.appendChild(heading);
+
+        skillTreeDefinitions[track].forEach(function(skill) {
+            const row = document.createElement("div");
+            row.classList.add("skillTreeSkill");
+
+            const checkbox = document.createElement("input");
+            checkbox.type = "checkbox";
+            checkbox.id = `skill-${track}-${skill}`;
+            checkbox.checked = character.skillTree[track].includes(skill);
+
+            checkbox.addEventListener("change", function() {
+                if (checkbox.checked) {
+                    character.skillTree[track].push(skill);
+                } else {
+                    character.skillTree[track] =
+                        character.skillTree[track].filter(function(selectedSkill) {
+                            return selectedSkill !== skill;
+                        });
+                }
+            });
+
+            const label = document.createElement("label");
+            label.htmlFor = checkbox.id;
+            label.textContent = skill;
+
+            row.appendChild(checkbox);
+            row.appendChild(label);
+
+            column.appendChild(row);
         });
 
-        const largeText = document.createTextNode(" 1 Large Torus");
-
-        largeOption.appendChild(largeRadio);
-        largeOption.appendChild(largeText);
-
-        const smallOption = document.createElement("label");
-
-        const smallRadio = document.createElement("input");
-        smallRadio.type = "radio";
-        smallRadio.name = "escapeArtistTorus";
-        smallRadio.value = "2 Small Toruses";
-
-        smallRadio.addEventListener("change", function() {
-            if (smallRadio.checked) {
-                setEscapeArtistTorusChoice(smallRadio.value);
-            }
-        });
-
-        const smallText = document.createTextNode(" 2 Small Toruses");
-
-        smallOption.appendChild(smallRadio);
-        smallOption.appendChild(smallText);
-
-        specialtyItemDisplay.appendChild(largeOption);
-        specialtyItemDisplay.appendChild(smallOption);
-    }
-
-    else if (character.specialty === "Clockbot") {
-        specialtyItemDisplay.textContent =
-            "1 Large Integrated Torus";
-    }
-
-    else if (character.specialty === "Special Agent") {
-        specialtyItemDisplay.textContent =
-            "1 Security Badge";
-    }
+        skillTreeTracks.appendChild(column);
+    });
 }
 
-function setEscapeArtistTorusChoice(choice) {
-    character.startingItems.specialtyItems = [choice];
-}
+displaySkillTree();
+
+viewSkillTreeButton.addEventListener("click", function() {
+    skillTreeOverlay.classList.add("open");
+});
+
+closeSkillTreeButton.addEventListener("click", function() {
+    skillTreeOverlay.classList.remove("open");
+});
+
+skillTreeOverlay.addEventListener("click", function(event) {
+    if (event.target === skillTreeOverlay) {
+        skillTreeOverlay.classList.remove("open");
+    }
+});
 
 // ========================================
 // UTILITY FUNCTIONS
