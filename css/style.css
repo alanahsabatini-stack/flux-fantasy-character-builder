@@ -772,6 +772,10 @@ label[for="powerTheme"] {
     margin-bottom: 20px;
 }
 
+#traitFlawInfo {
+    margin-bottom: 15px;
+}
+
 #traitFlawSelection {
     display: grid;
     grid-template-columns: 1fr 1fr;
