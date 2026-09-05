@@ -14,13 +14,14 @@ Completed:
 - Advanced Effect validation during character finalization
 - Character Summary
 - Basic styling and responsive table layout
+- V1.1 Powers updates
+- Skill Tree and Level Up section
+- "More Info" buttons and functionality
 
 In Progress:
-- V1.1 Powers updates
-- Non-Karma Attack updates
-- Power Theme
-- Skill Tree and Level Up functionality
+- Finalization section
+- Mobile styling
 
 Planned:
+- Save/load functionality
 - Final testing and refinement
-- Additional V1.1 mechanics

@@ -197,6 +197,7 @@ h6 {
 
 .karmastryChoice {
     margin-bottom: 20px;
+    padding-top: 15px;
 }
 
 .karmastryChoice:last-of-type {
@@ -204,6 +205,7 @@ h6 {
 }
 
 .karmastryChoice h3 {
+    display: inline-block;
     margin: 0 0 8px;
     color: var(--text-primary);
     font-size: 1rem;
@@ -623,12 +625,12 @@ label[for="powerTheme"] {
 
 .powerTier th:nth-child(1),
 .powerTier td:nth-child(1) {
-    width: 12%;
+    width: 7%;
 }
 
 .powerTier th:nth-child(2),
 .powerTier td:nth-child(2) {
-    width: 17%;
+    width: 22%;
 }
 
 .powerTier th:nth-child(3),
@@ -1005,6 +1007,79 @@ label[for="powerTheme"] {
 }
 
 /* =========================================== */
+/*                HIDDEN PANELS                */
+/* =========================================== */
+
+.expandableInfoToggle {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    vertical-align: middle;
+    padding: 2px 5px;
+    margin: 8px 0 0 6px;
+    border: 1px solid var(--text-secondary);
+    border-radius: 50%;
+    background-color: var(--surface);
+    color: var(--text-secondary);
+    font-size: 0.8rem;
+    line-height: 1;
+    cursor: pointer;
+}
+
+#specialtyInfoToggle.expandableInfoToggle,
+#studyInfoToggle.expandableInfoToggle,
+#affiliationInfoToggle.expandableInfoToggle {
+    margin: 0 0 0 6px;
+}
+
+.expandableInfoToggle:hover {
+    color: var(--brand-gold);
+    background-color: var(--brand-dark-blue);
+    border-color: var(--brand-gold);
+}
+
+.expandableInfo {
+    position: relative;
+    max-height: 0;
+    overflow: hidden;
+    opacity: 0;
+    margin-top: 0;
+    margin-bottom: 10px;
+    padding: 0 12px;
+    border-left: 2px solid transparent;
+    background-color: var(--page-background);
+    font-size: 0.8rem;
+    color: var(--text-secondary);
+    transition:
+        max-height 0.3s ease,
+        opacity 0.2s ease,
+        margin-top 0.3s ease,
+        padding 0.3s ease;
+}
+
+.expandableInfo.open {
+    max-height: 500px;
+    opacity: 1;
+    margin-top: 10px;
+    padding: 10px 12px;
+    border-left-color: var(--brand-gold);
+}
+
+.expandableInfo p {
+    margin: 6px 0;
+}
+
+#karmastrySection > h2,
+#talentSection > h2,
+#powersSection > h2,
+#traitsFlaws > h2,
+#skillTreeSection > h2,
+.karmastryChoice > h3 {
+    display: inline-block;
+    vertical-align: top;
+}
+
+/* =========================================== */
 /*                   SIDEBAR                   */
 /* =========================================== */
 
@@ -1147,55 +1222,10 @@ label[for="powerTheme"] {
     margin: 0;
     padding-left: 16px;
     font-size: 0.8rem;
+    min-height: 90px;
 }
 
 #summaryTraits li,
 #summaryFlaws li {
     margin: 2px 0;
-}
-
-/* =========================================== */
-/*                  INFO BOX                   */
-/* =========================================== */
-
-#infoBox {
-    margin-top: 20px;
-    padding: 15px;
-    background-color: var(--surface);
-    border: 1px solid var(--brand-dark-blue);
-    border-radius: 5px;
-}
-
-#infoBox h5 {
-    margin: 0 0 10px;
-}
-
-#infoBoxContent {
-    font-size: 0.7rem;
-    color: var(--text-primary)
-}
-
-#infoBoxContent p {
-    margin: 5px 0;
-}
-
-/* =========================================== */
-/*                HIDDEN PANELS                */
-/* =========================================== */
-
-.infoContent {
-    display: none;
-}
-
-.infoPanel.open .infoContent {
-    display: block;
-}
-
-.infoCaret {
-    display: inline-block;
-    transition: transform 0.2s ease;
-}
-
-.infoPanel.open .infoCaret {
-    transform: rotate(90deg);
 }

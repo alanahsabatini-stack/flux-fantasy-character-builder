@@ -117,6 +117,26 @@ LATEST REVISION: 08/24/2026
 
             <h3>Karma Specialty</h3>
 
+            <button
+                type="button"
+                class="expandableInfoToggle"
+                id="specialtyInfoToggle"
+                aria-expanded="false"
+                aria-controls="specialtyInfoPanel"
+                aria-label="More Info"
+            >
+                ?
+            </button>
+
+            <div id="specialtyInfoPanel" class="expandableInfo">
+                <p>
+                    Your Karma Specialty is the backbone of all your 
+                    decisions in the game and shapes how your character 
+                    will behave. Each Karma Specialty comes with its 
+                    own set of perks.
+                </p>
+            </div>
+
             <div class="karmastryField">
                 <label for="specialtySelect">Choose your Specialty:</label>
 
@@ -142,6 +162,27 @@ LATEST REVISION: 08/24/2026
 
             <h3>Karma Study</h3>
 
+            <button
+                type="button"
+                class="expandableInfoToggle"
+                id="studyInfoToggle"
+                aria-expanded="false"
+                aria-controls="studyInfoPanel"
+                aria-label="More Info"
+            >
+                ?
+            </button>
+
+            <div id="studyInfoPanel" class="expandableInfo">
+                <p>
+                    When you pick an Escape Artist, Ink Fighter, 
+                    Special Agent, or Clockbot as your Specialty, you 
+                    dive into a specific Study that defines your 
+                    Powers and abilities. Each Study has unique 
+                    advantages and helps shape your character’s journey.
+                </p>
+            </div>
+
             <div class="karmastryField">
                 <label for="studySelect">Choose your Study:</label>
 
@@ -163,6 +204,31 @@ LATEST REVISION: 08/24/2026
         <div class="karmastryChoice" id="affiliationChoice">
 
             <h3>Affiliation</h3>
+
+            <button
+                type="button"
+                class="expandableInfoToggle"
+                id="affiliationInfoToggle"
+                aria-expanded="false"
+                aria-controls="affiliationInfoPanel"
+                aria-label="More Info"
+            >
+                ?
+            </button>
+
+            <div id="affiliationInfoPanel" class="expandableInfo">
+                <p>
+                    Choosing an Affiliation is like picking your crew. 
+                    It’s where you learned your skills, shaped your 
+                    destiny, and earned your reputation. Affiliations 
+                    come with perks, but also some baggage.
+                </p>
+                <p>
+                    Want to create your own Affiliation? Go for it! 
+                    Choose an existing one as a baseline, and apply
+                    your own Name and Description.
+                </p>
+            </div>
 
             <div class="karmastryField">
                 <label for="affiliationSelect">Choose your Affiliation:</label>
@@ -242,6 +308,26 @@ LATEST REVISION: 08/24/2026
 
     <section id="talentSection">
         <h2>Talents</h2>
+
+    <button
+        type="button"
+        class="expandableInfoToggle"
+        id="talentsInfoToggle"
+        aria-expanded="false"
+        aria-controls="talentsInfoPanel"
+    >
+        ?
+    </button>
+
+    <div id="talentsInfoPanel" class="expandableInfo">
+        <p>
+            Your Talents define your strengths, weaknesses, and how 
+            you handle the wild situations the game throws at you. 
+            These core attributes (Aura, Stamina, Agility, Willpower, 
+            Function, and Technique) dictate everything from how 
+            smooth you talk to how hard you hit.
+        </p>
+    </div>
 
         <div id="talentControls">
 
@@ -437,6 +523,34 @@ LATEST REVISION: 08/24/2026
 
 <section id="powersSection">
     <h2>Powers</h2>
+    <button
+        type="button"
+        class="expandableInfoToggle"
+        id="powersInfoToggle"
+        aria-expanded="false"
+        aria-controls="powersInfoPanel"
+        aria-label="More Info"
+    >
+        ?
+    </button>
+
+    <div id="powersInfoPanel" class="expandableInfo">
+        <p>
+            Powers are the karma-fueled abilities and weapons that 
+            shape your combat style and versatility.
+        </p>
+        <p>
+            Your Power Theme defines the core of your abilities. 
+            All of your powers branch from or connect to this 
+            theme. It acts as a summary of what your karmastry 
+            does and is essential when using Basic Actions.
+        </p>
+        <p>
+            Flex your imagination when designing your Powers. 
+            Each Study uses the same statistical limits, but the 
+            names and abilities are up to you. 
+        </p>
+    </div>
 
     <div>
         <label for="powerTheme">Power Theme</label>
@@ -518,7 +632,7 @@ LATEST REVISION: 08/24/2026
 
                 <tbody>
                     <tr>
-                        <th>Attack</th>
+                        <th>ATK</th>
                         <td><input type="text" id="basicTier1AttackName"></td>
                         <td><textarea id="basicTier1AttackDescription"></textarea></td>
                         <td id="basicTier1AttackKP">-</td>
@@ -528,7 +642,7 @@ LATEST REVISION: 08/24/2026
                     </tr>
 
                     <tr>
-                        <th>Defense</th>
+                        <th>DEF</th>
                         <td><input type="text" id="basicTier1DefenseName"></td>
                         <td><textarea id="basicTier1DefenseDescription"></textarea></td>
                         <td id="basicTier1DefenseKP">-</td>
@@ -538,7 +652,7 @@ LATEST REVISION: 08/24/2026
                     </tr>
 
                     <tr>
-                        <th>Combo</th>
+                        <th>COM</th>
                         <td><input type="text" id="basicTier1ComboName"></td>
                         <td><textarea id="basicTier1ComboDescription"></textarea></td>
                         <td id="basicTier1ComboKP">-</td>
@@ -548,7 +662,7 @@ LATEST REVISION: 08/24/2026
                     </tr>
 
                     <tr>
-                        <th>Signature</th>
+                        <th>SIG</th>
                         <td><input type="text" id="basicTier1SignatureName"></td>
                         <td><textarea id="basicTier1SignatureDescription"></textarea></td>
                         <td id="basicTier1SignatureKP">-</td>
@@ -558,7 +672,7 @@ LATEST REVISION: 08/24/2026
                     </tr>
 
                     <tr>
-                        <th>Locomotion</th>
+                        <th>LOC</th>
                         <td><input type="text" id="basicTier1LocomotionName"></td>
                         <td><textarea id="basicTier1LocomotionDescription"></textarea></td>
                         <td id="basicTier1LocomotionKP">-</td>
@@ -588,7 +702,7 @@ LATEST REVISION: 08/24/2026
 
                 <tbody>
                     <tr>
-                        <th>Attack</th>
+                        <th>ATK</th>
                         <td><input type="text" id="basicTier2AttackName"></td>
                         <td><textarea id="basicTier2AttackDescription"></textarea></td>
                         <td id="basicTier2AttackKP">-</td>
@@ -598,7 +712,7 @@ LATEST REVISION: 08/24/2026
                     </tr>
 
                     <tr>
-                        <th>Defense</th>
+                        <th>DEF</th>
                         <td><input type="text" id="basicTier2DefenseName"></td>
                         <td><textarea id="basicTier2DefenseDescription"></textarea></td>
                         <td id="basicTier2DefenseKP">-</td>
@@ -608,7 +722,7 @@ LATEST REVISION: 08/24/2026
                     </tr>
 
                     <tr>
-                        <th>Combo</th>
+                        <th>COM</th>
                         <td><input type="text" id="basicTier2ComboName"></td>
                         <td><textarea id="basicTier2ComboDescription"></textarea></td>
                         <td id="basicTier2ComboKP">-</td>
@@ -618,7 +732,7 @@ LATEST REVISION: 08/24/2026
                     </tr>
 
                     <tr>
-                        <th>Signature</th>
+                        <th>SIG</th>
                         <td><input type="text" id="basicTier2SignatureName"></td>
                         <td><textarea id="basicTier2SignatureDescription"></textarea></td>
                         <td id="basicTier2SignatureKP">-</td>
@@ -628,7 +742,7 @@ LATEST REVISION: 08/24/2026
                     </tr>
 
                     <tr>
-                        <th>Locomotion</th>
+                        <th>LOC</th>
                         <td><input type="text" id="basicTier2LocomotionName"></td>
                         <td><textarea id="basicTier2LocomotionDescription"></textarea></td>
                         <td id="basicTier2LocomotionKP">-</td>
@@ -658,7 +772,7 @@ LATEST REVISION: 08/24/2026
 
                 <tbody>
                     <tr>
-                        <th>Attack</th>
+                        <th>ATK</th>
                         <td><input type="text" id="advancedTier1AttackName"></td>
                         <td><textarea id="advancedTier1AttackDescription"></textarea></td>
                         <td id="advancedTier1AttackKP">-</td>
@@ -671,7 +785,7 @@ LATEST REVISION: 08/24/2026
                     </tr>
 
                     <tr>
-                        <th>Defense</th>
+                        <th>DEF</th>
                         <td><input type="text" id="advancedTier1DefenseName"></td>
                         <td><textarea id="advancedTier1DefenseDescription"></textarea></td>
                         <td id="advancedTier1DefenseKP">-</td>
@@ -681,7 +795,7 @@ LATEST REVISION: 08/24/2026
                     </tr>
 
                     <tr>
-                        <th>Combo</th>
+                        <th>COM</th>
                         <td><input type="text" id="advancedTier1ComboName"></td>
                         <td><textarea id="advancedTier1ComboDescription"></textarea></td>
                         <td id="advancedTier1ComboKP">-</td>
@@ -694,7 +808,7 @@ LATEST REVISION: 08/24/2026
                     </tr>
 
                     <tr>
-                        <th>Signature</th>
+                        <th>SIG</th>
                         <td><input type="text" id="advancedTier1SignatureName"></td>
                         <td><textarea id="advancedTier1SignatureDescription"></textarea></td>
                         <td id="advancedTier1SignatureKP">-</td>
@@ -707,7 +821,7 @@ LATEST REVISION: 08/24/2026
                     </tr>
 
                     <tr>
-                        <th>Locomotion</th>
+                        <th>LOC</th>
                         <td><input type="text" id="advancedTier1LocomotionName"></td>
                         <td><textarea id="advancedTier1LocomotionDescription"></textarea></td>
                         <td id="advancedTier1LocomotionKP">-</td>
@@ -764,7 +878,7 @@ LATEST REVISION: 08/24/2026
 
                 <tbody>
                     <tr>
-                        <th>Attack</th>
+                        <th>ATK</th>
                         <td><input type="text" id="advancedTier2AttackName"></td>
                         <td><textarea id="advancedTier2AttackDescription"></textarea></td>
                         <td id="advancedTier2AttackKP">-</td>
@@ -777,7 +891,7 @@ LATEST REVISION: 08/24/2026
                     </tr>
 
                     <tr>
-                        <th>Defense</th>
+                        <th>DEF</th>
                         <td><input type="text" id="advancedTier2DefenseName"></td>
                         <td><textarea id="advancedTier2DefenseDescription"></textarea></td>
                         <td id="advancedTier2DefenseKP">-</td>
@@ -787,7 +901,7 @@ LATEST REVISION: 08/24/2026
                     </tr>
 
                     <tr>
-                        <th>Combo</th>
+                        <th>COM</th>
                         <td><input type="text" id="advancedTier2ComboName"></td>
                         <td><textarea id="advancedTier2ComboDescription"></textarea></td>
                         <td id="advancedTier2ComboKP">-</td>
@@ -800,7 +914,7 @@ LATEST REVISION: 08/24/2026
                     </tr>
 
                     <tr>
-                        <th>Signature</th>
+                        <th>SIG</th>
                         <td><input type="text" id="advancedTier2SignatureName"></td>
                         <td><textarea id="advancedTier2SignatureDescription"></textarea></td>
                         <td id="advancedTier2SignatureKP">-</td>
@@ -813,7 +927,7 @@ LATEST REVISION: 08/24/2026
                     </tr>
 
                     <tr>
-                        <th>Locomotion</th>
+                        <th>LOC</th>
                         <td><input type="text" id="advancedTier2LocomotionName"></td>
                         <td><textarea id="advancedTier2LocomotionDescription"></textarea></td>
                         <td id="advancedTier2LocomotionKP">-</td>
@@ -861,7 +975,18 @@ LATEST REVISION: 08/24/2026
     <section id="traitsFlaws">
         <h2>Traits & Flaws</h2>
 
-        <div id="traitFlawInfo" class="karmastryInfo">
+    <button
+        type="button"
+        class="expandableInfoToggle"
+        id="traitsFlawsInfoToggle"
+        aria-expanded="false"
+        aria-controls="traitFlawInfoPanel"
+        aria-label="More Info"
+    >
+        ?
+    </button>
+
+        <div id="traitFlawInfoPanel" class="expandableInfo">
             <p>
                 Traits and Flaws are key to shaping your character. They 
                 offer unique advantages but come with equally significant 
@@ -908,7 +1033,18 @@ LATEST REVISION: 08/24/2026
     <section id="skillTreeSection">
         <h2>Skill Tree</h2>
 
-        <div id="skillTreeInfo" class="karmastryInfo">
+    <button
+        type="button"
+        class="expandableInfoToggle"
+        id="skillTreeInfoToggle"
+        aria-expanded="false"
+        aria-controls="skillTreeInfoPanel"
+        aria-label="More Info"
+    >
+        ?
+    </button>
+
+        <div id="skillTreeInfoPanel" class="expandableInfo">
             <p>
                 Your Skill Tree tracks the abilities and upgrades you unlock 
                 as your character levels up. Every level-up gives you 2 Skill 
@@ -1056,14 +1192,6 @@ LATEST REVISION: 08/24/2026
                 <ul id="summaryFlaws"></ul>
             </div>
 
-        </div>
-    </section>
-
-    <section id="infoBox">
-        <h5>Info</h5>
-
-        <div id="infoBoxContent">
-            <p><i>Select something to see more information.</i></p>
         </div>
     </section>
 

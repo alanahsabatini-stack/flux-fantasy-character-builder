@@ -361,8 +361,6 @@ const summaryLocomotionName = document.getElementById("summaryLocomotionName");
 const summaryTraits = document.getElementById("summaryTraits");
 const summaryFlaws = document.getElementById("summaryFlaws");
 
-const infoBoxContent = document.getElementById("infoBoxContent");
-
 const specialtySelect = document.getElementById("specialtySelect");
 const specialtyInfo = document.getElementById("specialtyInfo");
 
@@ -424,16 +422,65 @@ const viewSkillTreeButton = document.getElementById("viewSkillTreeButton");
 const closeSkillTreeButton = document.getElementById("closeSkillTreeButton");
 const skillTreeOverlay = document.getElementById("skillTreeOverlay");
 
+const specialtyInfoToggle = document.getElementById("specialtyInfoToggle");
+const studyInfoToggle = document.getElementById("studyInfoToggle");
+const affiliationInfoToggle = document.getElementById("affiliationInfoToggle");
+const talentsInfoToggle = document.getElementById("talentsInfoToggle");
+const powersInfoToggle = document.getElementById("powersInfoToggle");
+const traitsFlawsInfoToggle = document.getElementById("traitsFlawsInfoToggle");
+const skillTreeInfoToggle = document.getElementById("skillTreeInfoToggle");
+
 // ========================================
-// INFO PANEL FUNCTIONS
+// INFO PANELS
 // ========================================
 
-const infoToggles = document.querySelectorAll(".infoToggle");
+const infoToggles = document.querySelectorAll(".expandableInfoToggle");
+const closeInfoButtons = document.querySelectorAll(".closeExpandableButton");
+
+function openInfoPanel(toggle) {
+    const panelId = toggle.getAttribute("aria-controls");
+    const panel = document.getElementById(panelId);
+
+    if (!panel) return;
+
+    panel.classList.add("open");
+    toggle.setAttribute("aria-expanded", "true");
+}
+
+function closeInfoPanel(panel) {
+    panel.classList.remove("open");
+
+    const toggle = document.querySelector(
+        `[aria-controls="${panel.id}"]`
+    );
+
+    if (toggle) {
+        toggle.setAttribute("aria-expanded", "false");
+    }
+}
 
 infoToggles.forEach(function(toggle) {
     toggle.addEventListener("click", function() {
-        const panel = toggle.parentElement;
-        panel.classList.toggle("open");
+        const panelId = toggle.getAttribute("aria-controls");
+        const panel = document.getElementById(panelId);
+
+        if (!panel) return;
+
+        if (panel.classList.contains("open")) {
+            closeInfoPanel(panel);
+        } else {
+            openInfoPanel(toggle);
+        }
+    });
+});
+
+closeInfoButtons.forEach(function(button) {
+    button.addEventListener("click", function() {
+        const panel = button.closest(".expandableInfo");
+
+        if (!panel) return;
+
+        closeInfoPanel(panel);
     });
 });
 
