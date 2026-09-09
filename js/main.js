@@ -3,7 +3,7 @@
 // TITLE: JavaScript Main
 // PROGRAMMER: Alanah Sabatini
 // DATE: 08/08/2026
-// LATEST REVISION: 08/24/2026
+// LATEST REVISION: 09/09/2026
 // ========================================
 
 console.log("Flux Fantasy Character Builder loaded!");
@@ -429,6 +429,9 @@ const talentsInfoToggle = document.getElementById("talentsInfoToggle");
 const powersInfoToggle = document.getElementById("powersInfoToggle");
 const traitsFlawsInfoToggle = document.getElementById("traitsFlawsInfoToggle");
 const skillTreeInfoToggle = document.getElementById("skillTreeInfoToggle");
+
+const finalizationStatus = document.getElementById("finalizationStatus");
+const finishCharacterButton = document.getElementById("finishCharacterButton");
 
 // ========================================
 // INFO PANELS
@@ -6267,7 +6270,6 @@ function displayAllNonKarmaAttacks() {
     displayNonKarmaAttack("advanced");
 }
 
-
 function displayNonKarmaAttack(type) {
     const attack = character.nonKarmaAttacks[type];
 
@@ -6309,97 +6311,6 @@ function basicNonKarmaAttacksAreComplete() {
         character.nonKarmaAttacks.basic.selectedAttack !== null
     );
 }
-
-function basicNonKarmaAttacksAreComplete() {
-    return (
-        character.nonKarmaAttacks.basic[0].name.trim() !== "" &&
-        character.nonKarmaAttacks.basic[1].name.trim() !== "" &&
-        character.nonKarmaAttacks.basic[2].name.trim() !== ""
-    );
-}
-
-// ========================================
-// FINALIZE FUNCTIONS
-// ========================================
-
-function advancedKarmaPowersAreComplete() {
-    const tier1Name = character.powers.advancedTier1.attack.name.trim();
-    const tier2Name = character.powers.advancedTier2.attack.name.trim();
-
-    if (
-        tier1Name !== "" &&
-        character.powers.advancedTier1.selectedEffect === null
-    ) {
-        return false;
-    }
-
-    if (
-        tier2Name !== "" &&
-        character.powers.advancedTier2.selectedEffect === null
-    ) {
-        return false;
-    }
-
-    return true;
-}
-
-function canFinalizeCharacter() {
-    return getFinalizationErrors().length === 0;
-}
-
-function getFinalizationErrors() {
-    const errors = [];
-
-    if (character.name.trim() === "") {
-        errors.push("Character Name is required.");
-    }
-
-    if (character.age.trim() === "") {
-        errors.push("Character Age is required.");
-    }
-
-    if (character.gender.trim() === "") {
-        errors.push("Character Gender is required.");
-    }
-
-    if (
-        character.specialty === "Escape Artist" &&
-        character.startingItems.specialtyItems.length === 0
-    ) {
-        errors.push("Escape Artists much choose a starting torus.");
-    }
-
-    if (character.affiliation.trim() === "") {
-        errors.push("Must select an Affiliation.");
-    }
-
-    if (!basicKarmaPowersAreComplete()) {
-        errors.push("All Basic Tier 1 Karma Powers must have a name and description.");
-    }
-
-    if (!basicNonKarmaAttacksAreComplete()) {
-        errors.push("All Basic Non-Karma Attacks must have a name.");
-    }
-
-    if (!advancedKarmaPowersAreComplete()) {
-        errors.push("Each named Advanced Tier must have an Advanced Effect selected.");
-    }   
-    
-    if (!traitsAndFlawsAreBalanced()) {
-        errors.push("Trait and Flaw counts must match.");
-    }
-
-    if (character.traits.length > 5) {
-        errors.push("You cannot have more than 5 Traits.");
-    }
-
-    if (character.flaws.length > 5) {
-        errors.push("You cannot have more than 5 Flaws.");
-    }
-
-    return errors;
-}
-
 
 // ========================================
 // TRAITS/FLAWS FUNCTIONS
@@ -6728,6 +6639,141 @@ closeSkillTreeButton.addEventListener("click", function() {
 skillTreeOverlay.addEventListener("click", function(event) {
     if (event.target === skillTreeOverlay) {
         skillTreeOverlay.classList.remove("open");
+    }
+});
+
+// ========================================
+// FINALIZE FUNCTIONS
+// ========================================
+
+function basicKarmaPowersAreComplete() {
+    const powers = character.powers.basicTier1;
+
+    return (
+        powers.attack.name.trim() !== "" &&
+        powers.attack.description.trim() !== "" &&
+        powers.defense.name.trim() !== "" &&
+        powers.defense.description.trim() !== "" &&
+        powers.combo.name.trim() !== "" &&
+        powers.combo.description.trim() !== "" &&
+        powers.signature.name.trim() !== "" &&
+        powers.signature.description.trim() !== "" &&
+        powers.locomotion.name.trim() !== "" &&
+        powers.locomotion.description.trim() !== ""
+    );
+}
+
+function advancedKarmaPowersAreComplete() {
+    const tier1Name = character.powers.advancedTier1.attack.name.trim();
+    const tier2Name = character.powers.advancedTier2.attack.name.trim();
+
+    if (
+        tier1Name !== "" &&
+        character.powers.advancedTier1.selectedEffect === null
+    ) {
+        return false;
+    }
+
+    if (
+        tier2Name !== "" &&
+        character.powers.advancedTier2.selectedEffect === null
+    ) {
+        return false;
+    }
+
+    return true;
+}
+
+function canFinalizeCharacter() {
+    return getFinalizationErrors().length === 0;
+}
+
+function getFinalizationErrors() {
+    const errors = [];
+
+    if (character.name.trim() === "") {
+        errors.push("Character Name is required.");
+    }
+
+    if (character.age.trim() === "") {
+        errors.push("Character Age is required.");
+    }
+
+    if (character.gender.trim() === "") {
+        errors.push("Character Gender is required.");
+    }
+
+    if (
+        character.specialty === "Escape Artist" &&
+        character.startingItems.specialtyItems.length === 0
+    ) {
+        errors.push("Escape Artists must choose a starting torus.");
+    }
+
+    if (character.affiliation.trim() === "") {
+        errors.push("Must select an Affiliation.");
+    }
+
+    if (!basicKarmaPowersAreComplete()) {
+        errors.push("All Basic Tier 1 Karma Powers must have a name and description.");
+    }
+
+    if (!basicNonKarmaAttacksAreComplete()) {
+        errors.push("Your Basic Non-Karma Attack must have a name and selected stats.");
+    }
+
+    if (!advancedKarmaPowersAreComplete()) {
+        errors.push("Each named Advanced Tier must have an Advanced Effect selected.");
+    }   
+    
+    if (!traitsAndFlawsAreBalanced()) {
+        errors.push("Trait and Flaw counts must match.");
+    }
+
+    if (character.traits.length > 5) {
+        errors.push("You cannot have more than 5 Traits.");
+    }
+
+    if (character.flaws.length > 5) {
+        errors.push("You cannot have more than 5 Flaws.");
+    }
+
+    return errors;
+}
+
+function displayFinalizationErrors() {
+    const errors = getFinalizationErrors();
+
+    finalizationStatus.innerHTML = "";
+
+    if (errors.length === 0) {
+        finalizationStatus.textContent = 
+            "Your character is ready to be finalized!";
+        return;
+    }
+
+    const message = document.createElement("p");
+    message.textContent =
+        "Please fix the following before finishing your character:";
+    
+    const list = document.createElement("ul");
+
+    errors.forEach(function(error) {
+        const listItem = document.createElement("li");
+        listItem.textContent = error;
+        list.appendChild(listItem);
+    });
+
+    finalizationStatus.appendChild(message);
+    finalizationStatus.appendChild(list);
+}
+
+finishCharacterButton.addEventListener("click", function() {
+    displayFinalizationErrors();
+
+    if (canFinalizeCharacter()) {
+        // placeholder for the next stage
+        console.log("Character finalized!");
     }
 });
 
