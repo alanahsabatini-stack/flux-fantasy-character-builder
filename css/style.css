@@ -1006,6 +1006,16 @@ label[for="powerTheme"] {
     border-color: var(--brand-magenta);
 }
 
+.skillTreeSkill input[type="checkbox"]:disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+}
+
+.skillTreeSkill input[type="checkbox"]:disabled + label {
+    opacity: 0.4;
+    cursor: not-allowed;
+}
+
 /* =========================================== */
 /*             FINALIZATION SECTION            */
 /* =========================================== */

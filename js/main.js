@@ -1,11 +1,3 @@
-// ========================================
-// PROJECT: Flux Fantasy Character Builder
-// TITLE: JavaScript Main
-// PROGRAMMER: Alanah Sabatini
-// DATE: 08/08/2026
-// LATEST REVISION: 09/09/2026
-// ========================================
-
 console.log("Flux Fantasy Character Builder loaded!");
 
 // ========================================
@@ -20,13 +12,6 @@ const character = {
     height: "",
     weight: "",
     level: 1,
-    skillTreePoints: 0,
-    skillTree: {
-        vitality: [],
-        personality: [],
-        karma: [],
-        talent: []
-    },
     background: "",
     specialty: "",
     study: "",
@@ -257,7 +242,16 @@ const character = {
         }
     },
     traits: [],
-    flaws: []
+    flaws: [],
+    skillTreePoints: 0,
+    skillTree: {
+        vitality: [],
+        personality: [],
+        karma: [],
+        talent: []
+    },
+    karmaAutomaticSkills: [],
+    karmaPurchasedSkills: []
 };
 
 // ========================================
@@ -5361,6 +5355,7 @@ characterWeight.addEventListener("input", function() {
 
 characterLevel.addEventListener("input", function() {
     character.level = Number(characterLevel.value);
+    calculateAutomaticKarmaSkills();
     summaryLevel.textContent = character.level;
 
     calculateSkillTreePoints();
@@ -6561,17 +6556,183 @@ updateTraitFlawDisplay();
 // SKILL TREE/LEVELING FUNCTIONS
 // ========================================
 
-function calculateSkillTreePoints() {
-    character.skillTreePoints = (character.level - 1) * 2;
+function calculateAutomaticKarmaSkills() {
+    const karmaSkills = skillTreeDefinitions.karma;
 
-    if (character.level >= 4) {
-        character.skillTreePoints += 1;
+    // Number of automatic Karma upgrades earned from leveling.
+    const automaticUpgrades = Math.min(
+        character.level - 1,
+        karmaSkills.length
+    );
+
+    character.karmaAutomaticSkills = [];
+
+    let upgradesGranted = 0;
+
+    for (let i = 0; i < karmaSkills.length; i++) {
+        const skill = karmaSkills[i];
+
+        // Purchased skills don't need to be granted automatically.
+        if (character.karmaPurchasedSkills.includes(skill)) {
+            continue;
+        }
+
+        // Grant the next unpurchased skill automatically.
+        if (upgradesGranted < automaticUpgrades) {
+            character.karmaAutomaticSkills.push(skill);
+            upgradesGranted++;
+        }
     }
-
-    skillTreePoints.textContent = character.skillTreePoints;
 }
 
-calculateSkillTreePoints();
+function calculateTotalSkillTreePoints() {
+    let points = (character.level - 1) * 2;
+
+    if (character.level >= 4) {
+        points += 1;
+    }
+
+    return points;
+}
+
+function calculateSkillTreePoints() {
+    const totalPoints = calculateTotalSkillTreePoints();
+
+    let spentPoints = 0;
+
+    Object.keys(character.skillTree).forEach(function(track) {
+        spentPoints += character.skillTree[track].length;
+    });
+
+    spentPoints += character.karmaPurchasedSkills.length;
+
+    character.skillTreePoints = totalPoints - spentPoints;
+
+    skillTreePoints.textContent = character.skillTreePoints;
+
+    updateSkillTreeAvailability();
+}
+
+function updateSkillTreeAvailability() {
+    Object.keys(skillTreeDefinitions).forEach(function(track) {
+        const skills = skillTreeDefinitions[track];
+        const selectedSkills = character.skillTree[track];
+
+        // KARMA TRACK
+        if (track === "karma") {
+            skills.forEach(function(skill, index) {
+                const checkbox = document.getElementById(
+                    `skill-${track}-${skill}`
+                );
+
+                if (!checkbox) return;
+
+                const isAutomatic =
+                    character.karmaAutomaticSkills.includes(skill);
+
+                const isPurchased =
+                    character.karmaPurchasedSkills.includes(skill);
+
+                // Automatically granted Karma skills are checked
+                // and cannot be changed by the player.
+                if (isAutomatic) {
+                    checkbox.checked = true;
+                    checkbox.disabled = true;
+                    return;
+                }
+
+                // Purchased Karma skills are checked.
+                if (isPurchased) {
+                    checkbox.checked = true;
+
+                    // Find the lowest purchased skill.
+                    const purchasedIndexes =
+                        character.karmaPurchasedSkills.map(function(purchasedSkill) {
+                            return skills.indexOf(purchasedSkill);
+                        });
+
+                    const lowestPurchasedIndex =
+                        Math.max(...purchasedIndexes);
+
+                    // Check whether automatic progression has moved
+                    // past this purchased skill.
+                    const automaticSkillBelow = character.karmaAutomaticSkills.some(
+                        function(automaticSkill) {
+                            return skills.indexOf(automaticSkill) > index;
+                        }
+                    );
+
+                    // A purchased skill can only be unchecked if it is
+                    // the lowest purchased skill and automatic progression
+                    // has not moved past it.
+                    checkbox.disabled =
+                        index !== lowestPurchasedIndex || automaticSkillBelow;
+
+                    return;
+                }
+
+                // An unchecked Karma skill requires the skill immediately
+                // above it to already be unlocked.
+                let previousSkillUnlocked = false;
+
+                if (index === 0) {
+                    previousSkillUnlocked = true;
+                } else {
+                    const previousSkill = skills[index - 1];
+
+                    previousSkillUnlocked =
+                        character.karmaAutomaticSkills.includes(previousSkill) ||
+                        character.karmaPurchasedSkills.includes(previousSkill);
+                }
+
+                checkbox.disabled =
+                    !previousSkillUnlocked ||
+                    character.skillTreePoints <= 0;
+            });
+
+            return;
+        }
+
+        // ALL OTHER TRACKS
+        let highestIndex = -1;
+
+        skills.forEach(function(skill, index) {
+            if (selectedSkills.includes(skill)) {
+                highestIndex = index;
+            }
+        });
+
+        skills.forEach(function(skill, index) {
+            const checkbox = document.getElementById(
+                `skill-${track}-${skill}`
+            );
+
+            if (!checkbox) return;
+
+            // Only the lowest selected skill can be unchecked.
+            if (checkbox.checked) {
+                checkbox.disabled = index !== highestIndex;
+                return;
+            }
+
+            // The top skill is the starting point.
+            if (index === 0) {
+                checkbox.disabled = character.skillTreePoints <= 0;
+                return;
+            }
+
+            // Every other skill requires the skill directly above it.
+            const prerequisite = skills[index - 1];
+
+            const prerequisiteMet =
+                selectedSkills.includes(prerequisite);
+
+            checkbox.disabled =
+                !prerequisiteMet ||
+                character.skillTreePoints <= 0;
+        });
+    });
+}
 
 function displaySkillTree() {
     skillTreeTracks.innerHTML = "";
@@ -6599,17 +6760,36 @@ function displaySkillTree() {
             const checkbox = document.createElement("input");
             checkbox.type = "checkbox";
             checkbox.id = `skill-${track}-${skill}`;
-            checkbox.checked = character.skillTree[track].includes(skill);
+            if (track === "karma") {
+                checkbox.checked =
+                    character.karmaAutomaticSkills.includes(skill) ||
+                    character.karmaPurchasedSkills.includes(skill);
+            } else {
+                checkbox.checked = character.skillTree[track].includes(skill);
+            }
 
             checkbox.addEventListener("change", function() {
-                if (checkbox.checked) {
-                    character.skillTree[track].push(skill);
+                if (track === "karma") {
+                    if (checkbox.checked) {
+                        character.karmaPurchasedSkills.push(skill);
+                    } else {
+                        character.karmaPurchasedSkills =
+                            character.karmaPurchasedSkills.filter(function(selectedSkill) {
+                                return selectedSkill !== skill;
+                            });
+                    }
                 } else {
-                    character.skillTree[track] =
-                        character.skillTree[track].filter(function(selectedSkill) {
-                            return selectedSkill !== skill;
-                        });
+                    if (checkbox.checked) {
+                        character.skillTree[track].push(skill);
+                    } else {
+                        character.skillTree[track] =
+                            character.skillTree[track].filter(function(selectedSkill) {
+                                return selectedSkill !== skill;
+                            });
+                    }
                 }
+
+                calculateSkillTreePoints();
             });
 
             const label = document.createElement("label");
@@ -6624,23 +6804,13 @@ function displaySkillTree() {
 
         skillTreeTracks.appendChild(column);
     });
+
+    updateSkillTreeAvailability();
 }
 
+calculateAutomaticKarmaSkills();
+calculateSkillTreePoints();
 displaySkillTree();
-
-viewSkillTreeButton.addEventListener("click", function() {
-    skillTreeOverlay.classList.add("open");
-});
-
-closeSkillTreeButton.addEventListener("click", function() {
-    skillTreeOverlay.classList.remove("open");
-});
-
-skillTreeOverlay.addEventListener("click", function(event) {
-    if (event.target === skillTreeOverlay) {
-        skillTreeOverlay.classList.remove("open");
-    }
-});
 
 // ========================================
 // FINALIZE FUNCTIONS
