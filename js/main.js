@@ -5,6 +5,7 @@ console.log("Flux Fantasy Character Builder loaded!");
 // ========================================
 
 const character = {
+    playerName: "",
     name: "",
     alias: "",
     age: "",
@@ -14,6 +15,7 @@ const character = {
     level: 1,
     background: "",
     specialty: "",
+    advantage: "",
     study: "",
     currentStudy: null,
     affiliation: "",
@@ -39,6 +41,7 @@ const character = {
         technique: 0
     },       
     hp: 10,
+    medKitPercent: 0,
     mov: 1,
     defense: 0,
     startingItems: {
@@ -5327,6 +5330,10 @@ const nonKarmaAttackDefinitions = [
 // IDENTITY FUNCTIONS
 // ========================================
 
+playerName.addEventListener("input", function() {
+    character.playerName = playerName.value;
+})
+
 characterName.addEventListener("input", function() {
     character.name = characterName.value;
     summaryName.textContent = character.name;
@@ -5413,6 +5420,8 @@ specialtySelect.addEventListener("change", function() {
 
     character.specialty = selectedSpecialty.name;
     character.karmaPool = selectedSpecialty.startingKarma;
+    character.advantage = selectedSpecialty.advantage;
+    character.medKitPercent = selectedSpecialty.medKitPercent;
     summaryKarma.textContent = character.karmaPool;
 
     calculateStartingItems();
@@ -6942,8 +6951,8 @@ finishCharacterButton.addEventListener("click", function() {
     displayFinalizationErrors();
 
     if (canFinalizeCharacter()) {
-        // placeholder for the next stage
-        console.log("Character finalized!");
+        sessionStorage.setItem("fluxCharacter", JSON.stringify(character));
+        window.open("character-sheet.html", "_blank");
     }
 });
 

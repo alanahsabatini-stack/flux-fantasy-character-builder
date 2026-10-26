@@ -153,32 +153,32 @@
                             <div class="talentGrid">
                                 <div class="statField">
                                     <label>Aura</label>
-                                    <div id="printAura" class="fieldValue"></div>
+                                    <div class="fieldValue">+<span id="printAura"></span></div>
                                 </div>
 
                                 <div class="statField">
                                     <label>Stamina</label>
-                                    <div id="printStamina" class="fieldValue"></div>
+                                    <div class="fieldValue">+<span id="printStamina"></span></div>
                                 </div>
 
                                 <div class="statField">
                                     <label>Agility</label>
-                                    <div id="printAgility" class="fieldValue"></div>
+                                    <div class="fieldValue">+<span id="printAgility"></span></div>
                                 </div>
 
                                 <div class="statField">
                                     <label>Willpower</label>
-                                    <div id="printWillpower" class="fieldValue"></div>
+                                    <div class="fieldValue">+<span id="printWillpower"></span></div>
                                 </div>
 
                                 <div class="statField">
                                     <label>Function</label>
-                                    <div id="printFunction" class="fieldValue"></div>
+                                    <div class="fieldValue">+<span id="printFunction"></span></div>
                                 </div>
 
                                 <div class="statField">
                                     <label>Technique</label>
-                                    <div id="printTechnique" class="fieldValue"></div>
+                                    <div class="fieldValue">+<span id="printTechnique"></span></div>
                                 </div>
                             </div>
 
@@ -214,7 +214,7 @@
 
                             <div class="statField">
                                 <label>Med Kit %</label>
-                                <div id="printMedkitPercent" class="fieldValue"></div>
+                                <div class="fieldValue"><span id="printMedkitPercent"></span>%</div>
                             </div>
 
                         </div>
@@ -329,5 +329,74 @@
             </button>
         </main>
     
+        <script>
+            const savedCharacter = sessionStorage.getItem("fluxCharacter");
+
+            if (savedCharacter) {
+                const character = JSON.parse(savedCharacter);
+
+                document.getElementById("printPlayerName").textContent = character.playerName;
+                document.getElementById("printCharacterName").textContent = character.name;
+                document.getElementById("printAlias").textContent = character.alias;
+                document.getElementById("printAge").textContent = character.age;
+                document.getElementById("printGender").textContent = character.gender;
+                document.getElementById("printHeight").textContent = character.height;
+                document.getElementById("printWeight").textContent = character.weight;
+                document.getElementById("printSpecialty").textContent = character.specialty;
+                document.getElementById("printStudy").textContent = character.study;
+                document.getElementById("printAffiliation").textContent = character.affiliationName;
+                document.getElementById("printAdvantages").textContent = character.advantage;
+                document.getElementById("printStartingMerits").textContent = character.startingItems.merits;
+                document.getElementById("printAura").textContent = character.talents.aura;
+                document.getElementById("printStamina").textContent = character.talents.stamina;
+                document.getElementById("printAgility").textContent = character.talents.agility;
+                document.getElementById("printWillpower").textContent = character.talents.willpower;
+                document.getElementById("printFunction").textContent = character.talents.function;
+                document.getElementById("printTechnique").textContent = character.talents.technique;
+                document.getElementById("printMOV").textContent = character.mov;
+                document.getElementById("printDefense").textContent = character.defense;
+                document.getElementById("printStartingHP").textContent = character.hp;
+                document.getElementById("printStartingMedkits").textContent = character.startingItems.karmaMedKits;
+                document.getElementById("printMedkitPercent").textContent = character.medKitPercent;
+                document.getElementById("printPowerTheme").textContent = character.powerTheme;
+                document.getElementById("printNonKarmaPower").textContent = character.nonKarmaAttacks.basic.name;
+                document.getElementById("printStartingKP").textContent = character.karmaPool;
+
+                document.getElementById("printAttackName").textContent = character.powers.basicTier1.attack.name;
+                document.getElementById("printAttackCost").textContent = character.powers.basicTier1.attack.kpCost;
+                document.getElementById("printAttackDamage").textContent = character.powers.basicTier1.attack.damage;
+                document.getElementById("printAttackRange").textContent = character.powers.basicTier1.attack.range;
+                document.getElementById("printAttackEffect").textContent = character.powers.basicTier1.attack.effect;
+                document.getElementById("printAttackDescription").textContent = character.powers.basicTier1.attack.description;
+
+                document.getElementById("printDefenseName").textContent = character.powers.basicTier1.defense.name;
+                document.getElementById("printDefenseCost").textContent = character.powers.basicTier1.defense.kpCost;
+                document.getElementById("printDefenseDamage").textContent = character.powers.basicTier1.defense.damage;
+                document.getElementById("printDefenseRange").textContent = character.powers.basicTier1.defense.range;
+                document.getElementById("printDefenseEffect").textContent = character.powers.basicTier1.defense.effect;
+                document.getElementById("printDefenseDescription").textContent = character.powers.basicTier1.defense.description;
+
+                document.getElementById("printComboName").textContent = character.powers.basicTier1.combo.name;
+                document.getElementById("printComboCost").textContent = character.powers.basicTier1.combo.kpCost;
+                document.getElementById("printComboDamage").textContent = character.powers.basicTier1.combo.damage;
+                document.getElementById("printComboRange").textContent = character.powers.basicTier1.combo.range;
+                document.getElementById("printComboEffect").textContent = character.powers.basicTier1.combo.effect;
+                document.getElementById("printComboDescription").textContent = character.powers.basicTier1.combo.description;
+
+                document.getElementById("printSignatureName").textContent = character.powers.basicTier1.signature.name;
+                document.getElementById("printSignatureCost").textContent = character.powers.basicTier1.signature.kpCost;
+                document.getElementById("printSignatureDamage").textContent = character.powers.basicTier1.signature.damage;
+                document.getElementById("printSignatureRange").textContent = character.powers.basicTier1.signature.range;
+                document.getElementById("printSignatureEffect").textContent = character.powers.basicTier1.signature.effect;
+                document.getElementById("printSignatureDescription").textContent = character.powers.basicTier1.signature.description;
+
+                document.getElementById("printLocomotionName").textContent = character.powers.basicTier1.locomotion.name;
+                document.getElementById("printLocomotionCost").textContent = character.powers.basicTier1.locomotion.kpCost;
+                document.getElementById("printLocomotionDamage").textContent = character.powers.basicTier1.locomotion.damage;
+                document.getElementById("printLocomotionRange").textContent = character.powers.basicTier1.locomotion.range;
+                document.getElementById("printLocomotionEffect").textContent = character.powers.basicTier1.locomotion.effect;
+                document.getElementById("printLocomotionDescription").textContent = character.powers.basicTier1.locomotion.description;
+            }
+        </script>
     </body>
 </html>
