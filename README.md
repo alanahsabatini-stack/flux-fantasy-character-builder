@@ -4,7 +4,7 @@ A web-based character creation and management tool for Flux Fantasy.
 
 ## Current Status
 
-The Character Creator is currently being updated to support Version 1.1 of the Flux Fantasy Character Creation Guide.
+The Character Creator is nearing the end of the early development stage.
 
 Completed:
 - Character creation form and basic validation
@@ -19,9 +19,9 @@ Completed:
 - "More Info" buttons and functionality
 
 In Progress:
-- Finalization section
-- Mobile styling
+- Printable sheet exporting
 
 Planned:
 - Save/load functionality
+- Mobile-friendly styling
 - Final testing and refinement

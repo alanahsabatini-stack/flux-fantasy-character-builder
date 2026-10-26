@@ -1,0 +1,418 @@
+/* ========== GENERAL PAGE STYLING ========== */
+
+* {
+    box-sizing: border-box;
+}
+
+:root {
+    /* Styling */
+    --page-background: #e5e5e5;
+    --print-background: white;
+    --border-light: #cccccc;
+    --border-dark: #777777;
+    --text-primary: #191919;
+    --text-secondary: #222222;
+
+    /* Flux Destiny Brand Colors */
+    --brand-dark-blue: #240F65;
+    --brand-blue: #1919F5;
+    --brand-purple: #451CC0;
+    --brand-magenta: #EA346A;
+    --brand-gold: #F8D44B;
+}
+
+body {
+    margin: 0;
+    background-color: var(--border-dark);
+    font-family: "Oxanium", sans-serif;
+    color: var(--text-primary);
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-family: "Orbitron", sans-serif;
+    color: var(--text-primary);
+}
+
+.sheetPage {
+    width: 8.5in;
+    min-height: 11in;
+    margin: 20px auto;
+    padding: 0.3in;
+    background-color: white;
+    border: 1px solid var(--border-light);
+}
+
+
+/* ========== SHEET HEADER ========== */
+
+.sheetHeader {
+    display: flex;
+    flex-direction: row;
+    align-items: top;
+    gap: 50px;
+    margin-bottom: 16px;
+    border-bottom: 3px solid var(--brand-dark-blue);
+}
+
+.logoBlock {
+    display: flex;
+    flex-direction: column;
+}
+
+#headerLogo {
+    width: 80%;
+    height: auto;
+}
+
+.sheetHeader h2 {
+    margin: 4px 0 10px;
+    font-size: 20px;
+}
+
+#disclaimerText p {
+    font-size: 0.7rem;
+    color: var(--text-secondary);
+}
+
+
+/* ========== PRINT SETTINGS ========== */
+
+@page {
+    size: Letter portrait;
+    margin: 0;
+}
+
+@media print {
+    body {
+        background: white;
+    }
+
+    .sheetPage {
+        width: 100%;
+        min-height: 0;
+        margin: 0;
+        padding: 0.3in;
+        border: none;
+        break-after: page;
+    }
+
+    .sheetPage:last-of-type {
+        break-after: auto;
+    }
+
+    #printSheetButton {
+        display: none;
+    }
+
+    .powerKitSection {
+        break-inside: avoid;
+    }
+}
+
+
+/* ========== CHARACTER IDENTITY ========== */
+
+.sectionTitle {
+    color: var(--text-secondary);
+    margin: 0 0 12px;
+    padding-bottom: 4px;
+    border-bottom: 1px solid var(--border-dark);
+    font-size: 16px;
+}
+
+.identityLayout {
+    display: grid;
+    grid-template-columns: 1fr 1.5fr 1fr;
+    gap: 14px;
+}
+
+.portraitBox {
+    min-height: 220px;
+    border: 1px solid var(--border-dark);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 12px;
+}
+
+#gearOfDestiny {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+#gearImage {
+    width: 220px;
+    height: auto;
+}
+
+.identityDetails {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.mainIdentity {
+    background-color: var(--page-background);
+    padding: 5px;
+}
+
+.field {
+    flex: 1;
+    min-width: 0;
+}
+
+.field label {
+    display: block;
+    margin-top: 5px;
+    margin-bottom: 3px;
+    font-size: 10px;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+.fieldValue {
+    background-color: white;
+    min-height: 24px;
+    padding: 4px;
+    border: 1px solid var(--border-dark);
+}
+
+.fieldRow {
+    display: flex;
+    gap: 10px;
+}
+
+.blankWritingBox {
+    min-height: 42px;
+    border: 1px solid var(--border-dark);
+}
+
+
+/* ========== TALENTS & CORE STATS ========== */
+
+.talentsSection {
+    margin-top: 18px;
+}
+
+.statTitle {
+    display: block;
+    margin-bottom: 3px;
+    font-size: 10px;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+.statsLayout {
+    display: grid;
+    grid-template-columns: 1fr 2fr 1fr;
+    gap: 14px;
+}
+
+.KAPsColumn {
+    margin-top: 0;
+    align-content: center;
+}
+
+.KAPsLayout {
+    display: grid;
+    grid-template-columns: 1fr 3fr 1fr 3fr;
+}
+
+.KAPsLayout p {
+    background-color: var(--text-secondary);
+    color: white;
+    text-align: center;
+    display: block;
+    padding: 3px;
+    margin: 0;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+#advantagesField label {
+    margin-top: 10px;
+}
+
+#printAdvantages {
+    min-height: 105px;
+    margin-bottom: 10px;
+}
+
+#meritsLayout {
+    display: flex;
+    flex-direction: row;
+}
+
+#meritSymbol {
+    background-color: var(--text-secondary);
+    color: white;
+    text-align: center;
+    display: block;
+    padding: 3px;
+    margin: 0;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+#meritsField {
+    width: 100%;
+}
+
+#talentsTitle {
+    text-align: center;
+    margin: 2px;
+}
+
+.talentGrid {
+    background-color: var(--page-background);
+    padding: 15px;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+}
+
+.MOVDEFstats {
+    display: grid;
+    padding: 5px 15px;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+}
+
+.HPcolumn {
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    gap: 8px;
+    align-content: end;
+    margin-bottom: 5px;
+}
+
+.statField {
+    min-width: 0;
+}
+
+.statField label {
+    display: block;
+    margin-bottom: 3px;
+    font-size: 10px;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+.statField .fieldValue {
+    min-height: 28px;
+    text-align: center;
+    font-weight: bold;
+}
+
+.blankStatBox {
+    min-height: 28px;
+    border: 1px solid var(--border-dark);
+}
+
+.startingStat {
+    margin: 4px 0 0;
+    font-size: 9px;
+    text-align: center;
+}
+
+
+/* ========== KARMA POOL & POWER KIT ========== */
+
+.karmaSectionTop {
+    display: grid;
+    grid-template-columns: 60% 40%;
+    gap: 10px;
+}
+
+.powerFields {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    align-content: end;
+}
+
+.karmaPool {
+    margin: 8px 10px 0 0;
+}
+
+/* #karmaPoolTitle {
+    background-color: var(--text-secondary);
+    color: white;
+    padding: 5px;
+    margin: 0;
+    font-size: 12px;
+} */
+
+.resourceLayout {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    background-color: var(--page-background);
+    border: 1px solid var(--border-light);
+    padding: 5px;
+}
+
+/* === Power Kit Table === */
+
+.powerKitSection {
+    margin-top: 15px;
+    border: 1px solid var(--border-light);
+    padding-bottom: 5px;
+}
+
+#powerKitTitle {
+    text-align: center;
+    background-color: var(--text-secondary);
+    color: white;
+    padding: 5px;
+    margin: 0;
+    font-size: 12px;
+}
+
+.powerKitGrid {
+    display: grid;
+    grid-template-columns: 
+        0.45fr
+        2.5fr
+        0.8fr
+        0.8fr
+        0.8fr
+        1.65fr
+        2.2fr;
+    column-gap: 5px;
+    row-gap: 7px;
+    align-items: stretch;
+    padding: 10px 14px 6px;
+}
+
+.powerKitHeader {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 0;
+    font-size: 10px;
+    font-weight: 700;
+    text-align: center;
+}
+
+.powerKitLabel {
+    display: flex;
+    align-items: center;
+    justify-content: right;
+    font-size: 10px;
+    font-weight: 700;
+}
+
+.powerKitCell {
+    min-width: 0;
+    min-height: 24px;
+    border: 1px solid var(--border-dark);
+    background: white;
+}
