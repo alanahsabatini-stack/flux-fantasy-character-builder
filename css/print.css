@@ -39,6 +39,9 @@ h6 {
 }
 
 .sheetPage {
+    display: flex;
+    flex-direction: column;
+    box-sizing: border-box;
     width: 8.5in;
     min-height: 11in;
     margin: 20px auto;
@@ -51,10 +54,10 @@ h6 {
 /* ========== SHEET HEADER ========== */
 
 .sheetHeader {
-    display: flex;
-    flex-direction: row;
-    align-items: top;
-    gap: 50px;
+    display: grid;
+    grid-template-columns: 1.75fr 2fr;
+    align-items: stretch;
+    gap: 10px;
     margin-bottom: 10px;
     border-bottom: 3px solid var(--brand-dark-blue);
 }
@@ -65,18 +68,37 @@ h6 {
 }
 
 #headerLogo {
-    width: 80%;
+    width: 100%;
     height: auto;
 }
 
 .sheetHeader h2 {
-    margin: 4px 0 10px;
+    margin: 0 0 10px;
     font-size: 20px;
 }
 
-#disclaimerText p {
-    font-size: 0.7rem;
+.headerBlock {
+    display: flex;
+    flex-direction: column;
+    align-items: end;
+}
+
+#printPlayerName {
+    width: 240px;
+    margin-bottom: 10px;
+}
+
+
+/* ========== FOOTER ========== */
+
+.footer {
+    margin-top: auto;
+}
+
+#disclaimerText {
+    font-size: 9px;
     color: var(--text-secondary);
+    margin-bottom: 0;
 }
 
 
@@ -88,13 +110,14 @@ h6 {
 }
 
 @media print {
+
     body {
         background: white;
     }
 
     .sheetPage {
+        height: 10.4in;
         width: 100%;
-        min-height: 0;
         margin: 0;
         padding: 0.3in;
         border: none;
@@ -103,6 +126,10 @@ h6 {
 
     .sheetPage:last-of-type {
         break-after: auto;
+    }
+
+    .footer {
+        margin-top: auto;
     }
 
     #printSheetButton {
@@ -129,6 +156,10 @@ h6 {
     display: grid;
     grid-template-columns: 1fr 1.5fr 1fr;
     gap: 14px;
+}
+
+.portraitArea p {
+    margin-top: 0;
 }
 
 .portraitBox {
@@ -290,7 +321,7 @@ h6 {
     display: grid;
     grid-template-columns: repeat(1, 1fr);
     gap: 8px;
-    align-content: end;
+    align-content: center;
     margin-bottom: 5px;
 }
 
@@ -330,28 +361,45 @@ h6 {
     display: grid;
     grid-template-columns: 60% 40%;
     gap: 10px;
+    align-content: baseline;
 }
 
 .powerFields {
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 1fr 1.75fr;
     gap: 10px;
     align-content: end;
+}
+
+#nonKarmaAttack {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+    height: 100%;
+    background-color: var(--page-background);
+    border: 1px solid var(--border-light);
+    padding: 5px;
+    padding-bottom: 14px;
+    margin: 0;
+    align-items: center;
+}
+
+.nonKarmaStats {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 3px;
+}
+
+.nonKarmaStats label {
+    font-size: 9px;
+    font-weight: 400;
 }
 
 .karmaPool {
     margin: 8px 10px 0 0;
 }
 
-/* #karmaPoolTitle {
-    background-color: var(--text-secondary);
-    color: white;
-    padding: 5px;
-    margin: 0;
-    font-size: 12px;
-} */
-
-.resourceLayout {
+.KPlayout {
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 10px;
@@ -381,7 +429,7 @@ h6 {
     display: grid;
     grid-template-columns: 
         0.2fr
-        2fr
+        1.5fr
         0.5fr
         0.5fr
         0.5fr
@@ -418,4 +466,30 @@ h6 {
     background: white;
     font-size: 11px;
     padding: 2px 5px 2px;
+}
+
+/* ========== PAGE 2 HEADER ========== */
+
+.sheet2Header {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    align-items: stretch;
+    gap: 10px;
+    margin-bottom: 10px;
+    border-bottom: 1px solid var(--brand-dark-blue);
+}
+
+.logo2Block {
+    display: flex;
+    flex-direction: column;
+}
+
+#header2Logo {
+    width: 45%;
+    height: auto;
+}
+
+.sheet2Header h2 {
+    margin: 0 0 10px;
+    font-size: 14px;
 }
