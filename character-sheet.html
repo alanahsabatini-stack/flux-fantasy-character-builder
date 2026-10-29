@@ -10,6 +10,47 @@
     </head>
     <body>
 
+        <!-- FLOATING CHARACTER SHEET CONTROLS -->
+        <aside id="sheetControls">
+            <h2>Character Sheet Controls</h2>
+
+            <div class="sheetControlGroup">
+                <label for="currentPowerTier">
+                    What Power Tier is your character currently at?
+                </label>
+
+                <select id="currentPowerTier">
+                    <option value="basicTier1" selected>Basic Tier 1</option>
+                    <option value="basicTier2">Basic Tier 2</option>
+                    <option value="advancedTier1">Advanced Tier 1</option>
+                    <option value="advancedTier2">Advanced Tier 2</option>
+                </select>
+
+                <p class="powerTierExplanation">
+                    This determines which tier appears in your Page 1 Power
+                    Kit box. If you haven't leveled up yet, or if you only have
+                    your Basic Tier 1 powers filled out, leave this at its 
+                    default.
+                </p>
+            </div>
+
+            <p class="sheetControlReminder">
+                Double-check that all the information in your Character 
+                Sheet is correct. If anything needs to be changed, return 
+                to the Character Builder, make your changes, and finalize
+                a new sheet.
+            </p>
+
+            <!-- button id="backToBuilderButton" type="button">             Still working on this
+                Return to Character Builder
+            </button -->
+
+            <button id="printSheetButton" type="button">
+                Print Character Sheet
+            </button>
+        </aside>
+
+        <!-- MAIN PRINTABLE PAGES -->
         <main id="printableCharacterSheet">
 
             <!-- Page 1 -->
@@ -255,7 +296,7 @@
                     <div class="karmaPool">
                         <div class="KPlayout">
                             <div class="statField">
-                                <label>Current Karma (KP)</label>
+                                <label>Karma (KP)</label>
                                 <div class="fieldValue blankStatBox"></div>
                                 <p class="startingStat">
                                     Starting KP: <span id="printStartingKP"></span>
@@ -700,12 +741,6 @@
                 </div>
 
             </section>
-
-
-            <button id="printSheetButton" type="button"
-                onclick="window.print()">
-                Print Character Sheet
-            </button>
         </main>
     
         <script>
@@ -924,6 +959,81 @@
                             (character.skillTree?.[track] || []).includes(skill);
                     }
                 });
+
+
+                // Update page 1 with the selected Power Tier
+                function updateCurrentPowerKit() {
+                    const tierSelector = document.getElementById("currentPowerTier");
+                    const selectedTier = tierSelector.value;
+                    const powers = character.powers[selectedTier];
+
+                    const powerTypes = [
+                        { key: "attack", label: "Attack" },
+                        { key: "defense", label: "Defense" },
+                        { key: "combo", label: "Combo" },
+                        { key: "signature", label: "Signature" },
+                        { key: "locomotion", label: "Locomotion" }
+                    ];
+
+                    const fields = [
+                        { property: "name", suffix: "Name" },
+                        { property: "kpCost", suffix: "Cost" },
+                        { property: "damage", suffix: "Damage" },
+                        { property: "range", suffix: "Range" },
+                        { property: "effect", suffix: "Effect" },
+                        { property: "description", suffix: "Description" }
+                    ];
+
+                    // Fill in the power rows
+                    powerTypes.forEach(function(type) {
+                        const power = powers[type.key];
+
+                        fields.forEach(function(field) {
+                            const element = document.getElementById(
+                                `print${type.label}${field.suffix}`
+                            );
+
+                            if (element) {
+                                element.textContent = power[field.property] ?? "";
+                            }
+                        });
+                    });
+
+                    // Update heading to the active tier
+                    const selectedLabel =
+                        tierSelector.options[tierSelector.selectedIndex].text;
+
+                    document.getElementById("powerKitTitle").textContent =
+                        `Karmastry Power Kit — ${selectedLabel}`;
+                }
+
+                document.getElementById("currentPowerTier").addEventListener(
+                    "change",
+                    updateCurrentPowerKit
+                );
+
+                updateCurrentPowerKit();
+
+
+                /* // Back to Builder button
+                document.getElementById("backToBuilderButton").addEventListener(
+                    "click",
+                    function() {
+                        if (window.opener && !window.opener.closed) {
+                            window.opener.focus();
+                        } else {
+                            window.location.href = "index.html"
+                        }
+                    }
+                ); */
+
+                // Print function
+                document.getElementById("printSheetButton").addEventListener(
+                    "click",
+                    function() {
+                        window.print();
+                    }
+                );
 
             }
         </script>
