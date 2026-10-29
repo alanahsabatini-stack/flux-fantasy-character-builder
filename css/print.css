@@ -139,6 +139,11 @@ h6 {
     .powerKitSection {
         break-inside: avoid;
     }
+
+    .page2BottomLayout,
+    #printSkillTreeSection {
+        break-inside: avoid;
+    }
 }
 
 
@@ -471,25 +476,242 @@ h6 {
 /* ========== PAGE 2 HEADER ========== */
 
 .sheet2Header {
-    display: grid;
-    grid-template-columns: 2fr 1fr;
-    align-items: stretch;
-    gap: 10px;
     margin-bottom: 10px;
     border-bottom: 1px solid var(--brand-dark-blue);
 }
 
-.logo2Block {
-    display: flex;
-    flex-direction: column;
-}
-
 #header2Logo {
-    width: 45%;
+    width: 20%;
     height: auto;
 }
 
-.sheet2Header h2 {
-    margin: 0 0 10px;
+/* ========== BACKGROUND, TRAITS & FLAWS ========== */
+
+.page2FirstRow {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr;
+    gap: 10px;
+    min-height: 95px;
+    align-items: stretch;
+}
+
+#backgroundField {
+    height: 100%;
+    min-height: 95px;
+}
+
+#printBackground {
+    min-height: 75px;
+}
+
+#traitsField,
+#flawsField {
+    flex: 1;
+    min-width: 0;
+}
+
+#traitsField ul,
+#flawsField ul {
+    min-height: 75px;
+    padding: 5px 5px 5px 15px;
+    margin: 0;
+    border: 1px solid var(--border-dark);
+}
+
+#traitsField li,
+#flawsField li {
+    font-size: 10px;
+}
+
+
+/* ========== FULL POWER KIT ========== */
+
+.page2PowerKitTitle {
+    margin-bottom: 5px;
+    text-align: center;
+}
+
+.page2PowerKitSection {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px;
+}
+
+.smallPowerKitTitle {
+    background-color: var(--text-secondary);
+    color: white;
+    padding: 5px;
+    margin: 0;
+    font-size: 11px;
+}
+
+.smallPowerKitTable {
+    border: 1px solid var(--border-dark);
+}
+
+.smallPowerKitGrid {
+    display: grid;
+    grid-template-columns: 
+        0.2fr
+        1fr
+        0.3fr
+        0.3fr
+        0.3fr
+        1.5fr;
+    column-gap: 3px;
+    row-gap: 5px;
+    align-items: stretch;
+    padding: 6px 6px 4px;
+}
+
+.smallPowerKitHeader {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 0;
+    font-size: 11px;
+    font-weight: 700;
+    text-align: center;
+}
+
+.smallPowerKitLabel {
+    display: flex;
+    align-items: center;
+    justify-content: right;
+    font-size: 10px;
+    font-weight: 700;
+}
+
+.smallPowerKitCell {
+    min-width: 0;
+    min-height: 20px;
+    border: 1px solid var(--border-dark);
+    background: white;
+    font-size: 10px;
+    padding: 2px 5px 2px;
+}
+
+.smallAdvPowerKitCell {
+    min-width: 0;
+    min-height: 40px;
+    border: 1px solid var(--border-dark);
+    background: white;
+    font-size: 9px;
+    padding: 2px 5px 2px;
+}
+
+
+/* ========== ITEMS, TRADING CARDS, SKILL TREE ========== */
+
+.page2BottomLayout {
+    display: grid;
+    grid-template-columns: 1fr 1.8fr;
+    gap: 10px;
+    margin-top: 12px;
+    height: 250px;
+    align-items: stretch;
+}
+
+.page2LeftColumn {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    min-width: 0;
+}
+
+.printSectionTitle {
+    margin: 0 0 6px;
+    padding-bottom: 3px;
+    border-bottom: 1px solid var(--border-dark);
     font-size: 14px;
+}
+
+.printItemsSection {
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+}
+
+#printSpecialItem {
+    min-height: 80px;
+}
+
+#printStartingFishbowl {
+    margin: 4px 0 0;
+    font-size: 9px;
+}
+
+.printTradingCardsSection {
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+}
+
+#tradingCardsField{
+    min-height: 100px;
+}
+
+#printSkillTreeSection {
+    padding: 6px;
+    border: 1px solid var(--border-dark);
+    min-width: 0;
+    max-height: 246px;
+}
+
+#printSkillTreeTracks {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 6px;
+}
+
+.printSkillTreeTrack {
+    min-width: 0;
+}
+
+.printSkillTreeTrack h4 {
+    margin: 0 0 4px;
+    padding-bottom: 3px;
+    border-bottom: 1px solid var(--border-light);
+    font-size: 9px;
+}
+
+.printSkillTreeTrack label {
+    display: flex;
+    align-items: flex-start;
+    gap: 3px;
+    margin-bottom: 3px;
+    font-size: 8px;
+    line-height: 1.2;
+    overflow-wrap: anywhere;
+}
+
+.printSkillTreeTrack input[type="checkbox"] {
+    appearance: none;
+    -webkit-appearance: none;
+    flex: 0 0 9px;
+    width: 9px;
+    height: 9px;
+    margin: 0;
+    border: 1px solid var(--border-dark);
+    border-radius: 1px;
+    background: white;
+    position: relative;
+}
+
+.printSkillTreeTrack input[type="checkbox"]:checked::after {
+    content: "";
+    position: absolute;
+    left: 2px;
+    top: 0;
+    width: 3px;
+    height: 5px;
+    border: solid black;
+    border-width: 0 1.5px 1.5px 0;
+    transform: rotate(45deg);
+}
+
+#disclaimerText2 {
+    font-size: 9px;
+    color: var(--text-secondary);
+    margin-bottom: 0;
 }

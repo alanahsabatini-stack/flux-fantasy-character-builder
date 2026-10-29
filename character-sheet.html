@@ -344,17 +344,363 @@
                 <div class="sheet2Header">
                     <div id="logo2Block">
                         <img id="header2Logo" src="assets/images/black-inline-logo.svg" alt="Flux Fantasy">
-                        <h2>Character Sheet</h2>
                     </div>
 
-                    <div class="headerBlock">
-                        <div class="field">
-                            <label>Player name</label>
-                            <div id="printPlayerName" class="fieldValue"></div>
+                    <div class="headerBlock"></div>
+                </div>
+
+                <div class="page2FirstRow">
+                    <div class="field" id="backgroundField">
+                        <label>Background</label>
+                        <div id="printBackground" class="fieldValue"></div>
+                    </div>
+
+                    <div class="field" id="traitsField">
+                        <label>Traits</label>
+                        <ul id="printTraits"></ul>
+                    </div>
+
+                    <div class="field" id="flawsField">
+                        <label>Flaws</label>
+                        <ul id="printFlaws"></ul>
+                    </div>
+                </div>
+
+                <h3 class="page2PowerKitTitle">Power Kit</h3>
+
+                <div class="page2PowerKitSection">
+                    <div class="smallPowerKitTable" id="basicTier1Table">
+                        <h4 class="smallPowerKitTitle">Basic: Tier 1</h4>
+
+                        <div class="smallPowerKitGrid">
+                            <!-- Column Headings -->
+                            <div class="smallPowerKitHeader"></div>
+                            <div class="smallPowerKitHeader">Power Name</div>
+                            <div class="smallPowerKitHeader">KP</div>
+                            <div class="smallPowerKitHeader">D</div>
+                            <div class="smallPowerKitHeader">R</div>
+                            <div class="smallPowerKitHeader">Effect</div>
+
+                            <!-- Attack -->
+                            <div class="smallPowerKitLabel">ATK</div>
+                            <div id="printB1AttackName" class="smallPowerKitCell"></div>
+                            <div id="printB1AttackCost" class="smallPowerKitCell"></div>
+                            <div id="printB1AttackDamage" class="smallPowerKitCell"></div>
+                            <div id="printB1AttackRange" class="smallPowerKitCell"></div>
+                            <div id="printB1AttackEffect" class="smallPowerKitCell"></div>
+
+                            <!-- Defense -->
+                            <div class="smallPowerKitLabel">DEF</div>
+                            <div id="printB1DefenseName" class="smallPowerKitCell"></div>
+                            <div id="printB1DefenseCost" class="smallPowerKitCell"></div>
+                            <div id="printB1DefenseDamage" class="smallPowerKitCell"></div>
+                            <div id="printB1DefenseRange" class="smallPowerKitCell"></div>
+                            <div id="printB1DefenseEffect" class="smallPowerKitCell"></div>
+
+                            <!-- Combo -->
+                            <div class="smallPowerKitLabel">COM</div>
+                            <div id="printB1ComboName" class="smallPowerKitCell"></div>
+                            <div id="printB1ComboCost" class="smallPowerKitCell"></div>
+                            <div id="printB1ComboDamage" class="smallPowerKitCell"></div>
+                            <div id="printB1ComboRange" class="smallPowerKitCell"></div>
+                            <div id="printB1ComboEffect" class="smallPowerKitCell"></div>
+
+                            <!-- Signature -->
+                            <div class="smallPowerKitLabel">SIG</div>
+                            <div id="printB1SignatureName" class="smallPowerKitCell"></div>
+                            <div id="printB1SignatureCost" class="smallPowerKitCell"></div>
+                            <div id="printB1SignatureDamage" class="smallPowerKitCell"></div>
+                            <div id="printB1SignatureRange" class="smallPowerKitCell"></div>
+                            <div id="printB1SignatureEffect" class="smallPowerKitCell"></div>
+
+                            <!-- Locomotion -->
+                            <div class="smallPowerKitLabel">LOC</div>
+                            <div id="printB1LocomotionName" class="smallPowerKitCell"></div>
+                            <div id="printB1LocomotionCost" class="smallPowerKitCell"></div>
+                            <div id="printB1LocomotionDamage" class="smallPowerKitCell"></div>
+                            <div id="printB1LocomotionRange" class="smallPowerKitCell"></div>
+                            <div id="printB1LocomotionEffect" class="smallPowerKitCell"></div>
+                        </div>
+                    </div>
+
+                    <div class="smallPowerKitTable" id="basicTier2Table">
+                        <h4 class="smallPowerKitTitle">Basic: Tier 2</h4>
+
+                        <div class="smallPowerKitGrid">
+                            <!-- Column Headings -->
+                            <div class="smallPowerKitHeader"></div>
+                            <div class="smallPowerKitHeader">Power Name</div>
+                            <div class="smallPowerKitHeader">KP</div>
+                            <div class="smallPowerKitHeader">D</div>
+                            <div class="smallPowerKitHeader">R</div>
+                            <div class="smallPowerKitHeader">Effect</div>
+
+                            <!-- Attack -->
+                            <div class="smallPowerKitLabel">ATK</div>
+                            <div id="printB2AttackName" class="smallPowerKitCell"></div>
+                            <div id="printB2AttackCost" class="smallPowerKitCell"></div>
+                            <div id="printB2AttackDamage" class="smallPowerKitCell"></div>
+                            <div id="printB2AttackRange" class="smallPowerKitCell"></div>
+                            <div id="printB2AttackEffect" class="smallPowerKitCell"></div>
+
+                            <!-- Defense -->
+                            <div class="smallPowerKitLabel">DEF</div>
+                            <div id="printB2DefenseName" class="smallPowerKitCell"></div>
+                            <div id="printB2DefenseCost" class="smallPowerKitCell"></div>
+                            <div id="printB2DefenseDamage" class="smallPowerKitCell"></div>
+                            <div id="printB2DefenseRange" class="smallPowerKitCell"></div>
+                            <div id="printB2DefenseEffect" class="smallPowerKitCell"></div>
+
+                            <!-- Combo -->
+                            <div class="smallPowerKitLabel">COM</div>
+                            <div id="printB2ComboName" class="smallPowerKitCell"></div>
+                            <div id="printB2ComboCost" class="smallPowerKitCell"></div>
+                            <div id="printB2ComboDamage" class="smallPowerKitCell"></div>
+                            <div id="printB2ComboRange" class="smallPowerKitCell"></div>
+                            <div id="printB2ComboEffect" class="smallPowerKitCell"></div>
+
+                            <!-- Signature -->
+                            <div class="smallPowerKitLabel">SIG</div>
+                            <div id="printB2SignatureName" class="smallPowerKitCell"></div>
+                            <div id="printB2SignatureCost" class="smallPowerKitCell"></div>
+                            <div id="printB2SignatureDamage" class="smallPowerKitCell"></div>
+                            <div id="printB2SignatureRange" class="smallPowerKitCell"></div>
+                            <div id="printB2SignatureEffect" class="smallPowerKitCell"></div>
+
+                            <!-- Locomotion -->
+                            <div class="smallPowerKitLabel">LOC</div>
+                            <div id="printB2LocomotionName" class="smallPowerKitCell"></div>
+                            <div id="printB2LocomotionCost" class="smallPowerKitCell"></div>
+                            <div id="printB2LocomotionDamage" class="smallPowerKitCell"></div>
+                            <div id="printB2LocomotionRange" class="smallPowerKitCell"></div>
+                            <div id="printB2LocomotionEffect" class="smallPowerKitCell"></div>
+                        </div>
+                    </div>
+
+                    <div class="smallPowerKitTable" id="advancedTier1Table">
+                        <h4 class="smallPowerKitTitle">Advanced: Tier 1</h4>
+
+                        <div class="smallPowerKitGrid">
+                            <!-- Column Headings -->
+                            <div class="smallPowerKitHeader"></div>
+                            <div class="smallPowerKitHeader">Power Name</div>
+                            <div class="smallPowerKitHeader">KP</div>
+                            <div class="smallPowerKitHeader">D</div>
+                            <div class="smallPowerKitHeader">R</div>
+                            <div class="smallPowerKitHeader">Effect</div>
+
+                            <!-- Attack -->
+                            <div class="smallPowerKitLabel">ATK</div>
+                            <div id="printA1AttackName" class="smallAdvPowerKitCell"></div>
+                            <div id="printA1AttackCost" class="smallAdvPowerKitCell"></div>
+                            <div id="printA1AttackDamage" class="smallAdvPowerKitCell"></div>
+                            <div id="printA1AttackRange" class="smallAdvPowerKitCell"></div>
+                            <div id="printA1AttackEffect" class="smallAdvPowerKitCell"></div>
+
+                            <!-- Defense -->
+                            <div class="smallPowerKitLabel">DEF</div>
+                            <div id="printA1DefenseName" class="smallAdvPowerKitCell"></div>
+                            <div id="printA1DefenseCost" class="smallAdvPowerKitCell"></div>
+                            <div id="printA1DefenseDamage" class="smallAdvPowerKitCell"></div>
+                            <div id="printA1DefenseRange" class="smallAdvPowerKitCell"></div>
+                            <div id="printA1DefenseEffect" class="smallAdvPowerKitCell"></div>
+
+                            <!-- Combo -->
+                            <div class="smallPowerKitLabel">COM</div>
+                            <div id="printA1ComboName" class="smallAdvPowerKitCell"></div>
+                            <div id="printA1ComboCost" class="smallAdvPowerKitCell"></div>
+                            <div id="printA1ComboDamage" class="smallAdvPowerKitCell"></div>
+                            <div id="printA1ComboRange" class="smallAdvPowerKitCell"></div>
+                            <div id="printA1ComboEffect" class="smallAdvPowerKitCell"></div>
+
+                            <!-- Signature -->
+                            <div class="smallPowerKitLabel">SIG</div>
+                            <div id="printA1SignatureName" class="smallAdvPowerKitCell"></div>
+                            <div id="printA1SignatureCost" class="smallAdvPowerKitCell"></div>
+                            <div id="printA1SignatureDamage" class="smallAdvPowerKitCell"></div>
+                            <div id="printA1SignatureRange" class="smallAdvPowerKitCell"></div>
+                            <div id="printA1SignatureEffect" class="smallAdvPowerKitCell"></div>
+
+                            <!-- Locomotion -->
+                            <div class="smallPowerKitLabel">LOC</div>
+                            <div id="printA1LocomotionName" class="smallAdvPowerKitCell"></div>
+                            <div id="printA1LocomotionCost" class="smallAdvPowerKitCell"></div>
+                            <div id="printA1LocomotionDamage" class="smallAdvPowerKitCell"></div>
+                            <div id="printA1LocomotionRange" class="smallAdvPowerKitCell"></div>
+                            <div id="printA1LocomotionEffect" class="smallAdvPowerKitCell"></div>
+                        </div>
+                    </div>
+
+                    <div class="smallPowerKitTable" id="advancedTier2Table">
+                        <h4 class="smallPowerKitTitle">Advanced: Tier 2</h4>
+
+                        <div class="smallPowerKitGrid">
+                            <!-- Column Headings -->
+                            <div class="smallPowerKitHeader"></div>
+                            <div class="smallPowerKitHeader">Power Name</div>
+                            <div class="smallPowerKitHeader">KP</div>
+                            <div class="smallPowerKitHeader">D</div>
+                            <div class="smallPowerKitHeader">R</div>
+                            <div class="smallPowerKitHeader">Effect</div>
+
+                            <!-- Attack -->
+                            <div class="smallPowerKitLabel">ATK</div>
+                            <div id="printA2AttackName" class="smallAdvPowerKitCell"></div>
+                            <div id="printA2AttackCost" class="smallAdvPowerKitCell"></div>
+                            <div id="printA2AttackDamage" class="smallAdvPowerKitCell"></div>
+                            <div id="printA2AttackRange" class="smallAdvPowerKitCell"></div>
+                            <div id="printA2AttackEffect" class="smallAdvPowerKitCell"></div>
+
+                            <!-- Defense -->
+                            <div class="smallPowerKitLabel">DEF</div>
+                            <div id="printA2DefenseName" class="smallAdvPowerKitCell"></div>
+                            <div id="printA2DefenseCost" class="smallAdvPowerKitCell"></div>
+                            <div id="printA2DefenseDamage" class="smallAdvPowerKitCell"></div>
+                            <div id="printA2DefenseRange" class="smallAdvPowerKitCell"></div>
+                            <div id="printA2DefenseEffect" class="smallAdvPowerKitCell"></div>
+
+                            <!-- Combo -->
+                            <div class="smallPowerKitLabel">COM</div>
+                            <div id="printA2ComboName" class="smallAdvPowerKitCell"></div>
+                            <div id="printA2ComboCost" class="smallAdvPowerKitCell"></div>
+                            <div id="printA2ComboDamage" class="smallAdvPowerKitCell"></div>
+                            <div id="printA2ComboRange" class="smallAdvPowerKitCell"></div>
+                            <div id="printA2ComboEffect" class="smallAdvPowerKitCell"></div>
+
+                            <!-- Signature -->
+                            <div class="smallPowerKitLabel">SIG</div>
+                            <div id="printA2SignatureName" class="smallAdvPowerKitCell"></div>
+                            <div id="printA2SignatureCost" class="smallAdvPowerKitCell"></div>
+                            <div id="printA2SignatureDamage" class="smallAdvPowerKitCell"></div>
+                            <div id="printA2SignatureRange" class="smallAdvPowerKitCell"></div>
+                            <div id="printA2SignatureEffect" class="smallAdvPowerKitCell"></div>
+
+                            <!-- Locomotion -->
+                            <div class="smallPowerKitLabel">LOC</div>
+                            <div id="printA2LocomotionName" class="smallAdvPowerKitCell"></div>
+                            <div id="printA2LocomotionCost" class="smallAdvPowerKitCell"></div>
+                            <div id="printA2LocomotionDamage" class="smallAdvPowerKitCell"></div>
+                            <div id="printA2LocomotionRange" class="smallAdvPowerKitCell"></div>
+                            <div id="printA2LocomotionEffect" class="smallAdvPowerKitCell"></div>
                         </div>
                     </div>
                 </div>
+
+                <div class="page2BottomLayout">
+
+                    <div class="page2LeftColumn">
+                        <!-- ITEMS -->
+                        <div class="printItemsSection">
+                            <div id="itemsBox" class="field">
+                                <label>Items</label>
+                                <div id="printSpecialItem" class="fieldValue"></div>
+                            </div>
+
+                            <p class="startingStat" id="printStartingFishbowl">
+                                Starting Fishbowl: 1
+                            </p>
+                        </div>
+
+                        <!-- TRADING CARDS -->
+                        <div class="printTradingCardsSection">
+
+                            <div id="printCardsBox" class="field">
+                                <label>Trading Cards In Use</label>
+                                <div class="blankWritingBox" id="tradingCardsField"></div>
+                            </div>
+
+                            <p class="startingStat" id="printMaxCards">
+                                Max Trading Cards per game: 4
+                            </p>
+                        </div>
+                    </div>
+
+                    <div id="printSkillTreeSection">
+                        <h3 class="printSectionTitle">Skill Tree</h3>
+
+                        <div id="printSkillTreeTracks">
+                        <!-- VITALITY -->
+                            <div class="printSkillTreeTrack">
+                                <h4>Vitality</h4>
+
+                                <label><input type="checkbox" data-track="vitality" data-skill="Health 1"> Health 1</label>
+                                <label><input type="checkbox" data-track="vitality" data-skill="MOV Enhance"> MOV Enhance</label>
+                                <label><input type="checkbox" data-track="vitality" data-skill="Health 2"> Health 2</label>
+                                <label><input type="checkbox" data-track="vitality" data-skill="DEF Enhance"> DEF Enhance</label>
+                                <label><input type="checkbox" data-track="vitality" data-skill="Vitality Enhance"> Vitality Enhance</label>
+                                <label><input type="checkbox" data-track="vitality" data-skill="Health 3"> Health 3</label>
+                                <label><input type="checkbox" data-track="vitality" data-skill="Med Kit 1"> Med Kit 1</label>
+                                <label><input type="checkbox" data-track="vitality" data-skill="Med Kit 2"> Med Kit 2</label>
+                                <label><input type="checkbox" data-track="vitality" data-skill="Health 4"> Health 4</label>
+                                <label><input type="checkbox" data-track="vitality" data-skill="Copycat"> Copycat</label>
+                            </div>
+
+                            <!-- PERSONALITY -->
+                            <div class="printSkillTreeTrack">
+                                <h4>Personality</h4>
+
+                                <label><input type="checkbox" data-track="personality" data-skill="Perception 1"> Perception 1</label>
+                                <label><input type="checkbox" data-track="personality" data-skill="Merits 1"> Merits 1</label>
+                                <label><input type="checkbox" data-track="personality" data-skill="Merits 2"> Merits 2</label>
+                                <label><input type="checkbox" data-track="personality" data-skill="Karma Alignment"> Karma Alignment</label>
+                                <label><input type="checkbox" data-track="personality" data-skill="Perception 2"> Perception 2</label>
+                                <label><input type="checkbox" data-track="personality" data-skill="Combo 1"> Combo 1</label>
+                                <label><input type="checkbox" data-track="personality" data-skill="Combo 2"> Combo 2</label>
+                                <label><input type="checkbox" data-track="personality" data-skill="Positive Force"> Positive Force</label>
+                                <label><input type="checkbox" data-track="personality" data-skill="Negative Force"> Negative Force</label>
+                                <label><input type="checkbox" data-track="personality" data-skill="Affiliation"> Affiliation</label>
+                                <label><input type="checkbox" data-track="personality" data-skill="Trait"> Trait</label>
+                                <label><input type="checkbox" data-track="personality" data-skill="Combo 3"> Combo 3</label>
+                            </div>
+
+                            <!-- KARMA -->
+                            <div class="printSkillTreeTrack">
+                                <h4>Karma</h4>
+
+                                <label><input type="checkbox" data-track="karma" data-skill="Karma Pool 1"> Karma Pool 1</label>
+                                <label><input type="checkbox" data-track="karma" data-skill="Karma Pool 2"> Karma Pool 2</label>
+                                <label><input type="checkbox" data-track="karma" data-skill="Basic Attack (Tier 2)"> Basic Attack (Tier 2)</label>
+                                <label><input type="checkbox" data-track="karma" data-skill="Resist Payback 1"> Resist Payback 1</label>
+                                <label><input type="checkbox" data-track="karma" data-skill="Advanced Attacks"> Advanced Attacks</label>
+                                <label><input type="checkbox" data-track="karma" data-skill="Karma Pool 3"> Karma Pool 3</label>
+                                <label><input type="checkbox" data-track="karma" data-skill="Advanced Attacks (Tier 2)"> Advanced Attacks (Tier 2)</label>
+                                <label><input type="checkbox" data-track="karma" data-skill="Resist Payback 2"> Resist Payback 2</label>
+                                <label><input type="checkbox" data-track="karma" data-skill="Range"> Range</label>
+                            </div>
+
+                            <!-- TALENT -->
+                            <div class="printSkillTreeTrack">
+                                <h4>Talent</h4>
+
+                                <label><input type="checkbox" data-track="talent" data-skill="Talent 1"> Talent 1</label>
+                                <label><input type="checkbox" data-track="talent" data-skill="Re-roll 1"> Re-roll 1</label>
+                                <label><input type="checkbox" data-track="talent" data-skill="Trading Cards 1"> Trading Cards 1</label>
+                                <label><input type="checkbox" data-track="talent" data-skill="Trading Cards 2"> Trading Cards 2</label>
+                                <label><input type="checkbox" data-track="talent" data-skill="Re-roll 2"> Re-roll 2</label>
+                                <label><input type="checkbox" data-track="talent" data-skill="Talent 2"> Talent 2</label>
+                                <label><input type="checkbox" data-track="talent" data-skill="Talent 3"> Talent 3</label>
+                                <label><input type="checkbox" data-track="talent" data-skill="Talent 4"> Talent 4</label>
+                                <label><input type="checkbox" data-track="talent" data-skill="Destiny Saves"> Destiny Saves</label>
+                                <label><input type="checkbox" data-track="talent" data-skill="Karma Pool 4 Share"> Karma Pool 4 Share</label>
+                                <label><input type="checkbox" data-track="talent" data-skill="Multi-Study"> Multi-Study</label>
+                                <label><input type="checkbox" data-track="talent" data-skill="Karma Surge"> Karma Surge</label>
+                            </div>
+                        </div> 
+                    </div>
+                </div>
+
+                <!-- PAGE 2 FOOTER -->
+                <div class="footer" id="page2Footer">
+                    <p id="disclaimerText2">
+                        The blank areas of this sheet are meant to be filled in by hand or with a PDF editor.
+                        <br>This sheet was generated by the online Flux Fantasy Character Builder.
+                        For the official Character Sheet, go to
+                        <b>charactersheet.fluxfantasy.com</b>.
+                    </p>
+                </div>
+
             </section>
+
 
             <button id="printSheetButton" type="button"
                 onclick="window.print()">
@@ -432,6 +778,153 @@
                 document.getElementById("printLocomotionRange").textContent = character.powers.basicTier1.locomotion.range;
                 document.getElementById("printLocomotionEffect").textContent = character.powers.basicTier1.locomotion.effect;
                 document.getElementById("printLocomotionDescription").textContent = character.powers.basicTier1.locomotion.description;
+
+                document.getElementById("printBackground").textContent = character.background;
+
+                document.getElementById("printB1AttackName").textContent = character.powers.basicTier1.attack.name;
+                document.getElementById("printB1AttackCost").textContent = character.powers.basicTier1.attack.kpCost;
+                document.getElementById("printB1AttackDamage").textContent = character.powers.basicTier1.attack.damage;
+                document.getElementById("printB1AttackRange").textContent = character.powers.basicTier1.attack.range;
+                document.getElementById("printB1AttackEffect").textContent = character.powers.basicTier1.attack.effect;
+                document.getElementById("printB1DefenseName").textContent = character.powers.basicTier1.defense.name;
+                document.getElementById("printB1DefenseCost").textContent = character.powers.basicTier1.defense.kpCost;
+                document.getElementById("printB1DefenseDamage").textContent = character.powers.basicTier1.defense.damage;
+                document.getElementById("printB1DefenseRange").textContent = character.powers.basicTier1.defense.range;
+                document.getElementById("printB1DefenseEffect").textContent = character.powers.basicTier1.defense.effect;
+                document.getElementById("printB1ComboName").textContent = character.powers.basicTier1.combo.name;
+                document.getElementById("printB1ComboCost").textContent = character.powers.basicTier1.combo.kpCost;
+                document.getElementById("printB1ComboDamage").textContent = character.powers.basicTier1.combo.damage;
+                document.getElementById("printB1ComboRange").textContent = character.powers.basicTier1.combo.range;
+                document.getElementById("printB1ComboEffect").textContent = character.powers.basicTier1.combo.effect;
+                document.getElementById("printB1SignatureName").textContent = character.powers.basicTier1.signature.name;
+                document.getElementById("printB1SignatureCost").textContent = character.powers.basicTier1.signature.kpCost;
+                document.getElementById("printB1SignatureDamage").textContent = character.powers.basicTier1.signature.damage;
+                document.getElementById("printB1SignatureRange").textContent = character.powers.basicTier1.signature.range;
+                document.getElementById("printB1SignatureEffect").textContent = character.powers.basicTier1.signature.effect;
+                document.getElementById("printB1LocomotionName").textContent = character.powers.basicTier1.locomotion.name;
+                document.getElementById("printB1LocomotionCost").textContent = character.powers.basicTier1.locomotion.kpCost;
+                document.getElementById("printB1LocomotionDamage").textContent = character.powers.basicTier1.locomotion.damage;
+                document.getElementById("printB1LocomotionRange").textContent = character.powers.basicTier1.locomotion.range;
+                document.getElementById("printB1LocomotionEffect").textContent = character.powers.basicTier1.locomotion.effect;
+
+                document.getElementById("printA1AttackName").textContent = character.powers.advancedTier1.attack.name;
+                document.getElementById("printA1AttackCost").textContent = character.powers.advancedTier1.attack.kpCost;
+                document.getElementById("printA1AttackDamage").textContent = character.powers.advancedTier1.attack.damage;
+                document.getElementById("printA1AttackRange").textContent = character.powers.advancedTier1.attack.range;
+                document.getElementById("printA1AttackEffect").textContent = character.powers.advancedTier1.attack.effect;
+                document.getElementById("printA1DefenseName").textContent = character.powers.advancedTier1.defense.name;
+                document.getElementById("printA1DefenseCost").textContent = character.powers.advancedTier1.defense.kpCost;
+                document.getElementById("printA1DefenseDamage").textContent = character.powers.advancedTier1.defense.damage;
+                document.getElementById("printA1DefenseRange").textContent = character.powers.advancedTier1.defense.range;
+                document.getElementById("printA1DefenseEffect").textContent = character.powers.advancedTier1.defense.effect;
+                document.getElementById("printA1ComboName").textContent = character.powers.advancedTier1.combo.name;
+                document.getElementById("printA1ComboCost").textContent = character.powers.advancedTier1.combo.kpCost;
+                document.getElementById("printA1ComboDamage").textContent = character.powers.advancedTier1.combo.damage;
+                document.getElementById("printA1ComboRange").textContent = character.powers.advancedTier1.combo.range;
+                document.getElementById("printA1ComboEffect").textContent = character.powers.advancedTier1.combo.effect;
+                document.getElementById("printA1SignatureName").textContent = character.powers.advancedTier1.signature.name;
+                document.getElementById("printA1SignatureCost").textContent = character.powers.advancedTier1.signature.kpCost;
+                document.getElementById("printA1SignatureDamage").textContent = character.powers.advancedTier1.signature.damage;
+                document.getElementById("printA1SignatureRange").textContent = character.powers.advancedTier1.signature.range;
+                document.getElementById("printA1SignatureEffect").textContent = character.powers.advancedTier1.signature.effect;
+                document.getElementById("printA1LocomotionName").textContent = character.powers.advancedTier1.locomotion.name;
+                document.getElementById("printA1LocomotionCost").textContent = character.powers.advancedTier1.locomotion.kpCost;
+                document.getElementById("printA1LocomotionDamage").textContent = character.powers.advancedTier1.locomotion.damage;
+                document.getElementById("printA1LocomotionRange").textContent = character.powers.advancedTier1.locomotion.range;
+                document.getElementById("printA1LocomotionEffect").textContent = character.powers.advancedTier1.locomotion.effect;
+
+                document.getElementById("printB2AttackName").textContent = character.powers.basicTier2.attack.name;
+                document.getElementById("printB2AttackCost").textContent = character.powers.basicTier2.attack.kpCost;
+                document.getElementById("printB2AttackDamage").textContent = character.powers.basicTier2.attack.damage;
+                document.getElementById("printB2AttackRange").textContent = character.powers.basicTier2.attack.range;
+                document.getElementById("printB2AttackEffect").textContent = character.powers.basicTier2.attack.effect;
+                document.getElementById("printB2DefenseName").textContent = character.powers.basicTier2.defense.name;
+                document.getElementById("printB2DefenseCost").textContent = character.powers.basicTier2.defense.kpCost;
+                document.getElementById("printB2DefenseDamage").textContent = character.powers.basicTier2.defense.damage;
+                document.getElementById("printB2DefenseRange").textContent = character.powers.basicTier2.defense.range;
+                document.getElementById("printB2DefenseEffect").textContent = character.powers.basicTier2.defense.effect;
+                document.getElementById("printB2ComboName").textContent = character.powers.basicTier2.combo.name;
+                document.getElementById("printB2ComboCost").textContent = character.powers.basicTier2.combo.kpCost;
+                document.getElementById("printB2ComboDamage").textContent = character.powers.basicTier2.combo.damage;
+                document.getElementById("printB2ComboRange").textContent = character.powers.basicTier2.combo.range;
+                document.getElementById("printB2ComboEffect").textContent = character.powers.basicTier2.combo.effect;
+                document.getElementById("printB2SignatureName").textContent = character.powers.basicTier2.signature.name;
+                document.getElementById("printB2SignatureCost").textContent = character.powers.basicTier2.signature.kpCost;
+                document.getElementById("printB2SignatureDamage").textContent = character.powers.basicTier2.signature.damage;
+                document.getElementById("printB2SignatureRange").textContent = character.powers.basicTier2.signature.range;
+                document.getElementById("printB2SignatureEffect").textContent = character.powers.basicTier2.signature.effect;
+                document.getElementById("printB2LocomotionName").textContent = character.powers.basicTier2.locomotion.name;
+                document.getElementById("printB2LocomotionCost").textContent = character.powers.basicTier2.locomotion.kpCost;
+                document.getElementById("printB2LocomotionDamage").textContent = character.powers.basicTier2.locomotion.damage;
+                document.getElementById("printB2LocomotionRange").textContent = character.powers.basicTier2.locomotion.range;
+                document.getElementById("printB2LocomotionEffect").textContent = character.powers.basicTier2.locomotion.effect;
+
+                document.getElementById("printA2AttackName").textContent = character.powers.advancedTier2.attack.name;
+                document.getElementById("printA2AttackCost").textContent = character.powers.advancedTier2.attack.kpCost;
+                document.getElementById("printA2AttackDamage").textContent = character.powers.advancedTier2.attack.damage;
+                document.getElementById("printA2AttackRange").textContent = character.powers.advancedTier2.attack.range;
+                document.getElementById("printA2AttackEffect").textContent = character.powers.advancedTier2.attack.effect;
+                document.getElementById("printA2DefenseName").textContent = character.powers.advancedTier2.defense.name;
+                document.getElementById("printA2DefenseCost").textContent = character.powers.advancedTier2.defense.kpCost;
+                document.getElementById("printA2DefenseDamage").textContent = character.powers.advancedTier2.defense.damage;
+                document.getElementById("printA2DefenseRange").textContent = character.powers.advancedTier2.defense.range;
+                document.getElementById("printA2DefenseEffect").textContent = character.powers.advancedTier2.defense.effect;
+                document.getElementById("printA2ComboName").textContent = character.powers.advancedTier2.combo.name;
+                document.getElementById("printA2ComboCost").textContent = character.powers.advancedTier2.combo.kpCost;
+                document.getElementById("printA2ComboDamage").textContent = character.powers.advancedTier2.combo.damage;
+                document.getElementById("printA2ComboRange").textContent = character.powers.advancedTier2.combo.range;
+                document.getElementById("printA2ComboEffect").textContent = character.powers.advancedTier2.combo.effect;
+                document.getElementById("printA2SignatureName").textContent = character.powers.advancedTier2.signature.name;
+                document.getElementById("printA2SignatureCost").textContent = character.powers.advancedTier2.signature.kpCost;
+                document.getElementById("printA2SignatureDamage").textContent = character.powers.advancedTier2.signature.damage;
+                document.getElementById("printA2SignatureRange").textContent = character.powers.advancedTier2.signature.range;
+                document.getElementById("printA2SignatureEffect").textContent = character.powers.advancedTier2.signature.effect;
+                document.getElementById("printA2LocomotionName").textContent = character.powers.advancedTier2.locomotion.name;
+                document.getElementById("printA2LocomotionCost").textContent = character.powers.advancedTier2.locomotion.kpCost;
+                document.getElementById("printA2LocomotionDamage").textContent = character.powers.advancedTier2.locomotion.damage;
+                document.getElementById("printA2LocomotionRange").textContent = character.powers.advancedTier2.locomotion.range;
+                document.getElementById("printA2LocomotionEffect").textContent = character.powers.advancedTier2.locomotion.effect;
+
+                document.getElementById("printSpecialItem").textContent = character.startingItems.specialtyItems;
+
+                // Get traits & flaws list
+                const traitsList = document.getElementById("printTraits");
+                const flawsList = document.getElementById("printFlaws");
+
+                character.traits.forEach(function(trait) {
+                    const item = document.createElement("li");
+                    item.textContent = trait;
+                    traitsList.appendChild(item);
+                });
+
+                character.flaws.forEach(function(flaw) {
+                    const item = document.createElement("li");
+                    item.textContent = flaw;
+                    flawsList.appendChild(item);
+                });
+
+
+                // Populate printed Skill Tree checkboxes
+                const printedSkillCheckboxes = document.querySelectorAll(
+                    "#printSkillTreeTracks input[type='checkbox']"
+                );
+
+                printedSkillCheckboxes.forEach(function(checkbox) {
+                    const track = checkbox.dataset.track;
+                    const skill = checkbox.dataset.skill;
+
+                    // Karma skills can be purchased or granted automatically.
+                    if (track === "karma") {
+                        checkbox.checked =
+                            (character.karmaAutomaticSkills || []).includes(skill) ||
+                            (character.karmaPurchasedSkills || []).includes(skill);
+                    } else {
+                        // Other tracks store selected skills in character.skillTree.
+                        checkbox.checked =
+                            (character.skillTree?.[track] || []).includes(skill);
+                    }
+                });
+
             }
         </script>
     </body>
