@@ -111,6 +111,11 @@ h6 {
 
 @media print {
 
+    * {
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+    }
+
     body {
         background: white;
     }
@@ -364,34 +369,33 @@ h6 {
 
 .karmaSectionTop {
     display: grid;
-    grid-template-columns: 60% 40%;
+    grid-template-columns: 75% 25%;
     gap: 10px;
     align-content: baseline;
 }
 
 .powerFields {
     display: grid;
-    grid-template-columns: 1fr 1.75fr;
+    grid-template-columns: 1fr 2fr;
     gap: 10px;
     align-content: end;
 }
 
 #nonKarmaAttack {
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 1fr 2fr;
     gap: 8px;
     height: 100%;
     background-color: var(--page-background);
     border: 1px solid var(--border-light);
-    padding: 5px;
-    padding-bottom: 14px;
+    padding: 0 5px 5px 5px;
     margin: 0;
-    align-items: center;
+    align-items: start;
 }
 
 .nonKarmaStats {
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-columns: 1fr 1fr 4fr;
     gap: 3px;
 }
 

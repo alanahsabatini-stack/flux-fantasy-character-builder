@@ -999,6 +999,27 @@
                         });
                     });
 
+
+                    // Update the Non-Karma Power
+                    const nonKarmaType = selectedTier.startsWith("advanced")
+                        ? "advanced"
+                        : "basic";
+
+                    const nonKarma = character.nonKarmaAttacks[nonKarmaType];
+
+                    document.getElementById("printNonKarmaPower").textContent =
+                        nonKarma.name || "";
+
+                    document.getElementById("printNonKarmaDamage").textContent =
+                        nonKarma.selectedAttack === null ? "" : nonKarma.damage;
+
+                    document.getElementById("printNonKarmaRange").textContent =
+                        nonKarma.selectedAttack === null ? "" : nonKarma.range;
+
+                    document.getElementById("printNonKarmaEffect").textContent =
+                        nonKarma.selectedAttack === null ? "" : nonKarma.effect;
+
+
                     // Update heading to the active tier
                     const selectedLabel =
                         tierSelector.options[tierSelector.selectedIndex].text;

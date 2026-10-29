@@ -17,11 +17,11 @@ Completed:
 - V1.1 Powers updates
 - Skill Tree and Level Up section
 - "More Info" buttons and functionality
-
-In Progress:
 - Printable sheet exporting
 
-Planned:
+In Progress:
 - Save/load functionality
+
+Planned:
 - Mobile-friendly styling
 - Final testing and refinement
