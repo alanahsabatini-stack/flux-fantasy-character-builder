@@ -1387,3 +1387,42 @@ label[for="powerTheme"] {
 #summaryFlaws li {
     margin: 2px 0;
 }
+
+
+/* =========================================== */
+/*             MOBILE WARNING                  */
+/* =========================================== */
+
+#mobileWarning {
+    display: none;
+}
+
+@media screen and (max-width: 900px) {
+
+    body > *:not(#mobileWarning) {
+        display: none !important;
+    }
+
+    #mobileWarning {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+
+        min-height: 100vh;
+        padding: 30px;
+
+        background-color: var(--page-background);
+        color: var(--text-primary);
+    }
+
+    #mobileWarning h2 {
+        color: var(--brand-gold);
+    }
+
+    #mobileWarning p {
+        color: var(--text-secondary);
+        line-height: 1.6;
+    }
+}

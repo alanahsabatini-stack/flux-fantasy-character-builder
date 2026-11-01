@@ -22,7 +22,6 @@ Completed:
 
 In Progress:
 - Save/load functionality
-- Minor fixes
 
 Planned:
 - Mobile-friendly styling
