@@ -360,6 +360,8 @@ const summaryFlaws = document.getElementById("summaryFlaws");
 
 const specialtySelect = document.getElementById("specialtySelect");
 const specialtyInfo = document.getElementById("specialtyInfo");
+const torusChoiceContainer = document.getElementById("torusChoiceContainer");
+const torusChoiceOptions = document.getElementById("torusChoiceOptions");
 
 const studySelect = document.getElementById("studySelect");
 const studyInfo = document.getElementById("studyInfo");
@@ -5642,6 +5644,9 @@ function calculateStartingItems() {
 
 function updateStartingItemsDisplay() {
     specialtyItemDisplay.innerHTML = "";
+    torusChoiceOptions.innerHTML = "";
+
+    torusChoiceContainer.hidden = character.specialty !== "Escape Artist";
 
     if (character.specialty === "Ink Fighter") {
         specialtyItemDisplay.textContent = "3 Ink Syringes";
@@ -5661,10 +5666,8 @@ function updateStartingItemsDisplay() {
             }
         });
 
-        const largeText = document.createTextNode(" 1 Large Torus");
-
         largeOption.appendChild(largeRadio);
-        largeOption.appendChild(largeText);
+        largeOption.appendChild(document.createTextNode(" 1 Large Torus"));
 
         const smallOption = document.createElement("label");
 
@@ -5679,28 +5682,25 @@ function updateStartingItemsDisplay() {
             }
         });
 
-        const smallText = document.createTextNode(" 2 Small Toruses");
-
         smallOption.appendChild(smallRadio);
-        smallOption.appendChild(smallText);
+        smallOption.appendChild(document.createTextNode(" 2 Small Toruses"));
 
-        specialtyItemDisplay.appendChild(largeOption);
-        specialtyItemDisplay.appendChild(smallOption);
+        torusChoiceOptions.appendChild(largeOption);
+        torusChoiceOptions.appendChild(smallOption);
     }
 
     else if (character.specialty === "Clockbot") {
-        specialtyItemDisplay.textContent =
-            "1 Large Integrated Torus";
+        specialtyItemDisplay.textContent = "1 Large Integrated Torus";
     }
 
     else if (character.specialty === "Special Agent") {
-        specialtyItemDisplay.textContent =
-            "1 Security Badge";
+        specialtyItemDisplay.textContent = "1 Security Badge";
     }
 }
 
 function setEscapeArtistTorusChoice(choice) {
     character.startingItems.specialtyItems = [choice];
+    specialtyItemDisplay.textContent = choice;
 }
 
 // ========================================

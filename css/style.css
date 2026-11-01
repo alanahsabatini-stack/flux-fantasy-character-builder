@@ -235,6 +235,40 @@ h6 {
     margin: 6px 0;
 }
 
+#torusChoiceContainer {
+    margin-top: 12px;
+    padding: 12px;
+    border: 1px solid var(--border);
+    border-left: 2px solid var(--brand-purple);
+    background-color: var(--page-background);
+}
+
+#torusChoiceContainer p {
+    margin: 0 0 10px;
+    color: var(--text-secondary);
+    font-size: 0.8rem;
+}
+
+#torusChoiceOptions {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+#torusChoiceOptions label {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: var(--text-primary);
+    font-size: 0.85rem;
+    cursor: pointer;
+}
+
+#torusChoiceOptions input[type="radio"] {
+    accent-color: var(--brand-purple);
+    cursor: pointer;
+}
+
 #studyEffect {
     margin: 8px 0 0;
     font-size: 0.8rem;
