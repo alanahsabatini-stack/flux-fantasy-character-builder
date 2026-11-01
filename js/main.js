@@ -390,6 +390,10 @@ const available3 = document.getElementById("available3");
 const modifierButtons = document.querySelectorAll(".modifierButton");
 
 const resetTalentsButton = document.getElementById("resetTalents");
+const talentModeOptions = document.querySelectorAll('input[name="talentMode"]');
+const randomTalentControls = document.getElementById("randomTalentControls");
+const rollTalentsButton = document.getElementById("rollTalentsButton");
+const talentRollResults = document.getElementById("talentRollResults");
 
 const powerTheme = document.getElementById("powerTheme");
 
@@ -5814,6 +5818,79 @@ function resetBaseTalents() {
 
 resetTalentsButton.addEventListener("click", function() {
     resetBaseTalents();
+});
+
+// =========== Talent Mode Selection ============
+
+talentModeOptions.forEach(function(option) {
+    option.addEventListener("change", function() {
+        resetBaseTalents();
+
+        const randomMode = option.value === "random";
+
+        randomTalentControls.hidden = !randomMode;
+        talentRollResults.textContent = "";
+
+        // Random mode starts with empty pool until the dice are rolled
+        if (randomMode) {
+            talentModifierPool[1] = 0;
+            talentModifierPool[2] = 0;
+            talentModifierPool[3] = 0;
+
+            updateModifierPoolDisplay();
+        }
+    });
+});
+
+// =========== Random Talent Rolls ============
+
+rollTalentsButton.addEventListener("click", function() {
+    resetBaseTalents();
+
+    const rolls = [];
+    const modifierCounts = {
+        1: 0,
+        2: 0,
+        3: 0
+    };
+
+    // Roll d4 six times, convert results to modifiers
+    for (let i = 0; i < 6; i++) {
+        const roll = Math.floor(Math.random() * 4) + 1;
+
+        let modifier;
+
+        if (roll <= 2) {
+            modifier = 1;
+        } else if (roll === 3) {
+            modifier = 2;
+        } else {
+            modifier = 3;
+        }
+
+        rolls.push({
+            number: i + 1,
+            roll: roll,
+            modifier: modifier
+        });
+        modifierCounts[modifier]++;
+    }
+
+    // Update available modifier pool
+    talentModifierPool[1] = modifierCounts[1];
+    talentModifierPool[2] = modifierCounts[2];
+    talentModifierPool[3] = modifierCounts[3];
+
+    updateModifierPoolDisplay();
+
+    talentRollResults.innerHTML = rolls.map(function(result) {
+        return `
+            <div class="talentRollResult">
+                <span>Roll ${result.number}</span>
+                <strong>${result.roll} → +${result.modifier} modifier</strong>
+            </div>
+        `;
+    }).join("");
 });
 
 // =========== Talent Calculations ============

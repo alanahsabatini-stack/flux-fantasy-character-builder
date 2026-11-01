@@ -17,10 +17,12 @@ Completed:
 - V1.1 Powers updates
 - Skill Tree and Level Up section
 - "More Info" buttons and functionality
+- Choice between preset modifiers and dice roll for Talent Selection
 - Printable sheet exporting
 
 In Progress:
 - Save/load functionality
+- Minor fixes
 
 Planned:
 - Mobile-friendly styling

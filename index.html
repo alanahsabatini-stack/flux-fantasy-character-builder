@@ -319,8 +319,45 @@
             Function, and Technique) dictate everything from how 
             smooth you talk to how hard you hit.
         </p>
+
+        <p>
+            You can select your Talent modifiers in one of two ways:
+            Assign a set of premade Talent modifiers, or have fate
+            decide with a random dice roll.
+        </p>
     </div>
 
+    <div id="talentModeControls">
+        <h3>Choose Your Talent Selection Method:</h3>
+
+            <label>
+                <input
+                    type="radio"
+                    name="talentMode"
+                    value="preset"
+                    checked
+                >
+                Preset Modifiers
+            </label>
+
+            <label>
+                <input
+                    type="radio"
+                    name="talentMode"
+                    value="random"
+                >
+                Random Dice Roll
+            </label>
+    </div>
+
+    <div id="randomTalentControls" hidden>
+        <button type="button" id="rollTalentsButton">
+            Roll Talents (6d4)
+        </button>
+
+        <div id="talentRollResults" aria-live="polite"></div>
+    </div>
+    
         <div id="talentControls">
 
             <div id="modifierPool">
