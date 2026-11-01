@@ -5453,7 +5453,7 @@ specialtySelect.addEventListener("change", function() {
 
     customAffiliation.classList.remove("open");
     customAffiliationButton.setAttribute("aria-expanded", "false");
-    customAffiliationButton.disabled = false;
+    updateCustomAffiliationButton();
 
     resetNonKarmaAttacks();
     populateNonKarmaAttacks();
@@ -5538,6 +5538,12 @@ function findAffiliation(name) {
     });
 }
 
+function updateCustomAffiliationButton() {
+    customAffiliationButton.disabled = affiliationSelect.value === "";
+}
+
+updateCustomAffiliationButton();
+
 customAffiliationButton.addEventListener("click", function() {
     affiliationName.value = "";
     affiliationDescription.value = "";
@@ -5550,7 +5556,7 @@ customAffiliationButton.addEventListener("click", function() {
 closeCustomAffiliationButton.addEventListener("click", function() {
     customAffiliation.classList.remove("open");
     customAffiliationButton.setAttribute("aria-expanded", "false");
-    customAffiliationButton.disabled = false;
+    updateCustomAffiliationButton();
 });
 
 affiliationSelect.addEventListener("change", function() {
@@ -5558,7 +5564,7 @@ affiliationSelect.addEventListener("change", function() {
 
     customAffiliation.classList.remove("open");
     customAffiliationButton.setAttribute("aria-expanded", "false");
-    customAffiliationButton.disabled = false;
+    updateCustomAffiliationButton();
 
     character.affiliation = selectedAffiliation.name;
     character.defense = selectedAffiliation.defenseModifier;
