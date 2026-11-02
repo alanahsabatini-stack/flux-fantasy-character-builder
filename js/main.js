@@ -436,6 +436,20 @@ const skillTreeInfoToggle = document.getElementById("skillTreeInfoToggle");
 const finalizationStatus = document.getElementById("finalizationStatus");
 const finishCharacterButton = document.getElementById("finishCharacterButton");
 
+
+// ========================================
+// SKILL TREE IMAGE OVERLAY
+// ========================================
+
+viewSkillTreeButton.addEventListener("click", function() {
+    skillTreeOverlay.classList.add("open");
+});
+
+closeSkillTreeButton.addEventListener("click", function() {
+    skillTreeOverlay.classList.remove("open");
+});
+
+
 // ========================================
 // INFO PANELS
 // ========================================
