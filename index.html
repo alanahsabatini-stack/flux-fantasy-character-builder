@@ -53,14 +53,40 @@
     <div id="pageLayout">
         <main id="mainContent">
 
-<!-- ************************************************************* -->
-<!--                      IDENTITY SECTION                         -->
-<!-- ************************************************************* -->
-
     <div>
         <label for="playerName">Player Name</label>
         <input type="text" id="playerName" maxlength="50">
     </div>
+
+    <section id="characterManagement">
+        <h2>Character Management</h2>
+
+        <div id="characterManagementControls">
+            <button type="button" id="saveCharacterButton">Save</button>
+            <button type="button" id="saveAsCharacterButton">Save As</button>
+            <button type="button" id="loadCharacterButton">Load Character</button>
+        </div>
+
+        <p id="saveStatus" role="status" aria-live="polite"></p>
+    </section>
+
+    <dialog id="loadCharacterDialog">
+        <h2>Load Character</h2>
+
+        <label for="savedCharacterSelect">Select a character:</label>
+        <select id="savedCharacterSelect">
+            <option value="">-- Select a Character --</option>
+        </select>
+
+        <div id="loadCharacterControls">
+            <button type="button" id="confirmLoadButton">Load</button>
+            <button type="button" id="cancelLoadButton">Cancel</button>
+        </div>
+    </dialog>
+
+<!-- ************************************************************* -->
+<!--                      IDENTITY SECTION                         -->
+<!-- ************************************************************* -->
 
     <section id="identitySection">
         
@@ -1150,7 +1176,7 @@
 <!-- ************************************************************* -->
     
     <section id="finalizationSection">
-        <h2>Finalization</h2>
+        <h2>Finish & Print Character Sheet</h2>
 
         <p>
             Your character is almost ready! Review your Character Summary 
@@ -1159,7 +1185,7 @@
 
         <div id="finalizationStatus"></div>
 
-        <button type="button" id="finishCharacterButton">Finish Character</button>
+        <button type="button" id="finishCharacterButton">Finish & Print</button>
     </section>
 
 <!-- ************************************************************* -->

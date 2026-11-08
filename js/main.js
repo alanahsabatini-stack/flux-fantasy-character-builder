@@ -1,6 +1,21 @@
 console.log("Flux Fantasy Character Builder loaded!");
 
 // ========================================
+// CHARACTER SAVE MANAGEMENT
+// ========================================
+
+let activeSaveId = null;
+
+const saveCharacterButton = document.getElementById("saveCharacterButton");
+const saveAsCharacterButton = document.getElementById("saveAsCharacterButton");
+const loadCharacterButton = document.getElementById("loadCharacterButton");
+const saveStatus = document.getElementById("saveStatus");
+const loadCharacterDialog = document.getElementById("loadCharacterDialog");
+const savedCharacterSelect = document.getElementById("savedCharacterSelect");
+const confirmLoadButton = document.getElementById("confirmLoadButton");
+const cancelLoadButton = document.getElementById("cancelLoadButton");
+
+// ========================================
 // CHARACTER DATA
 // ========================================
 
@@ -7043,6 +7058,336 @@ function displayFinalizationErrors() {
     finalizationStatus.appendChild(message);
     finalizationStatus.appendChild(list);
 }
+
+// ========================================
+// SAVE CHARACTER
+// ========================================
+
+function saveCurrentCharacter(createNewSave = false) {
+    // Capture interface state that isn't stored in the character object
+    const builderState = {
+        talentMode: document.querySelector('input[name="talentMode"]:checked')?.value || "preset",
+
+        talentModifierPool: {
+            ...talentModifierPool
+        }
+    };
+
+    try {
+        const saveId = createNewSave ? null : activeSaveId;
+
+        const savedCharacter = saveCharacterData(
+            character,
+            builderState,
+            saveId
+        );
+
+        //Remember which save is being edited
+        activeSaveId = savedCharacter.id;
+
+        // Display confirmation message
+        saveStatus.textContent = createNewSave
+            ? "Character saved as a new copy."
+            : "Character saved successfully.";
+
+    } catch (error) {
+        console.error("Could not save character:", error);
+
+        saveStatus.textContent = "Unable to save character. Check the console for details.";
+    }
+}
+
+// ===== Populate Saved Character List =====
+
+function populateSavedCharacterList() {
+    savedCharacterSelect.innerHTML = "";
+
+    const saves = getAllCharacterSaves();
+
+    if(saves.length === 0) {
+        const option = document.createElement("option");
+
+        option.value = "";
+        option.textContent = "No saved characters found.";
+        option.disabled = true;
+
+        savedCharacterSelect.appendChild(option);
+
+        return;
+    }
+
+    saves.forEach(function(save) {
+        const option = document.createElement("option");
+
+        option.value = save.id;
+
+        const updatedDate = new Date(save.updatedAt).toLocaleDateString();
+
+        option.textContent = `${save.name} (Last saved: ${updatedDate})`;
+
+        savedCharacterSelect.appendChild(option);
+    });
+}
+
+// ===== Restore Character Data =====
+
+function restoreCharacterData(saveRecord) {
+    // Restore character object
+    Object.keys(character).forEach(function(key) {
+        delete character[key];
+    });
+
+    Object.assign(character, saveRecord.character);
+
+    // Restore active save ID
+    activeSaveId = saveRecord.id;
+
+    // Restore identity fields
+    playerName.value = character.playerName;
+    characterName.value = character.name;
+    characterAlias.value = character.alias;
+    characterAge.value = character.age;
+    characterGender.value = character.gender;
+    characterHeight.value = character.height;
+    characterWeight.value = character.weight;
+    characterLevel.value = character.level;
+    characterBackground.value = character.background;
+
+    summaryName.textContent = character.name;
+    summaryAlias.textContent = character.alias;
+    summaryLevel.textContent = character.level;
+
+    // Restore Specialty
+    const selectedSpecialty = findSpecialty(character.specialty);
+
+    if (selectedSpecialty) {
+        specialtySelect.value = character.specialty;
+
+        summarySpecialty.textContent = character.specialty;
+        summaryKarma.textContent = character.karmaPool;
+
+        specialtyInfo.innerHTML = `
+        <p>Specialty: ${selectedSpecialty.name}</p>
+        <p>Starting Karma: ${selectedSpecialty.startingKarma}</p>
+        <p>Med Kit: ${selectedSpecialty.medKitPercent}% of HP</p>
+        <p>${selectedSpecialty.summary}</p>
+        `;
+
+        // Rebuild Study dropdown
+        studySelect.innerHTML = '<option value="">-- Select a Study --</option>';
+
+        selectedSpecialty.studies.forEach(function(study) {
+            const option = document.createElement("option");
+
+            option.value = study.name;
+            option.textContent = study.name;
+
+            studySelect.appendChild(option);
+        });
+
+        studySelect.value = character.study;
+
+        studySelect.disabled = false;
+        affiliationSelect.disabled = false;
+
+        updateAffiliationOptions();
+    }
+
+    summaryStudy.textContent = character.study;
+
+    character.currentStudy = selectedSpecialty
+        ? selectedSpecialty.studies.find(function(study) {
+            return study.name === character.study;
+        })
+        : null;
+
+    if (character.currentStudy) {
+        studyInfo.innerHTML = `
+            <p>${character.currentStudy.summary}</p>
+        `;
+
+        studyEffect.textContent =
+            `Study Effect: +${character.currentStudy.modifier} ${formatStatName(character.currentStudy.stat)}`;
+    } else {
+        studyInfo.innerHTML = "<p>Select a Study for more information.</p>";
+        studyEffect.textContent = "";
+    }
+
+    // Restore Affiliation
+    const selectedAffiliation = findAffiliation(character.affiliation);
+
+    affiliationSelect.value = selectedAffiliation
+        ? character.affiliation
+        : "";
+
+    updateCustomAffiliationButton();
+
+    affiliationName.value = character.affiliationName;
+    affiliationDescription.value = character.affiliationDescription;
+
+    summaryAffiliation.textContent = character.affiliationName || "Not Selected";
+    summaryDefense.textContent = character.defense;
+
+    if (selectedAffiliation) {
+        affiliationInfo.innerHTML = `
+            <p>Defense Modifier: +${selectedAffiliation.defenseModifier}</p>
+            <p>Trait: ${selectedAffiliation.trait}</p>
+            <p>Flaw: ${selectedAffiliation.flaw}</p>
+            <p>${selectedAffiliation.description}</p>
+        `;
+    } else {
+        affiliationInfo.textContent = character.affiliationName
+            ? "Custom Affiliation"
+            : "Select an Affiliation for more information.";
+    }
+
+    // Restore Starting Items
+    startingMedKits.value = character.startingItems.karmaMedKits;
+    startingMerits.value = character.startingItems.merits;
+    startingFishbowl.value = character.startingItems.fishbowls;
+
+    updateStartingItemsDisplay();
+
+    // Restore Escape Artist Torus selection
+    const torusRadios = document.querySelectorAll(
+        'input[name="escapeArtistTorus"]'
+    );
+
+    torusRadios.forEach(function(radio) {
+        radio.checked = character.startingItems.specialtyItems.includes(radio.value);
+    });
+
+    if (character.startingItems.specialtyItems.length > 0) {
+        specialtyItemDisplay.textContent =
+            character.startingItems.specialtyItems.join(", ");
+    }
+
+    // Restore Talent Mode
+    const savedTalentMode = saveRecord.builderState.talentMode || "preset";
+
+    talentModeOptions.forEach(function(option) {
+        option.checked = option.value === savedTalentMode;
+    });
+
+    randomTalentControls.hidden = savedTalentMode !== "random";
+
+    // Restore Talent Modifier Pool
+    if (saveRecord.builderState.talentModifierPool) {
+        Object.assign(
+            talentModifierPool,
+            saveRecord.builderState.talentModifierPool
+        );
+    }
+
+    // Restore Base Talent assignments
+    const talentNames = [
+        "aura",
+        "stamina",
+        "agility",
+        "willpower",
+        "function",
+        "technique"
+    ];
+
+    talentNames.forEach(function(talent) {
+        const modifier = character.baseTalents[talent];
+
+        // Update the displayed base Talent value
+        const displayName = talent.charAt(0).toUpperCase() + talent.slice(1);
+
+        document.getElementById(`base${displayName}`).textContent = modifier;
+
+        // Restore button highlighting
+        const talentButtonsForStat = document.querySelectorAll(
+            `.modifierButton[data-talent="${talent}"]`
+        );
+
+        talentButtonsForStat.forEach(function(button) {
+            button.classList.toggle(
+                "selected",
+                Number(button.dataset.modifier) === modifier && modifier !== 0
+            );
+        });
+    });
+
+    // Recalculate and refresh Talent displays
+    calculateTalents();
+    calculateDerivedStats();
+    updateModifierPoolDisplay();
+
+    // Restore Power Theme
+    powerTheme.value = character.powerTheme;
+
+    // Restore Powers
+    displayAllPowers();
+
+    advancedTier1EffectButton.disabled =
+        advancedTier1AttackName.value.trim() === "";
+
+    advancedTier2EffectButton.disabled =
+        advancedTier2AttackName.value.trim() === "";
+
+    // Restore Basic Tier 1 Power Names in Character Summary
+    summaryAttackName.textContent = character.powers.basicTier1.attack.name || "-";
+    summaryDefenseName.textContent = character.powers.basicTier1.defense.name || "-";
+    summaryComboName.textContent = character.powers.basicTier1.combo.name || "-";
+    summarySignatureName.textContent = character.powers.basicTier1.signature.name || "-";
+    summaryLocomotionName.textContent = character.powers.basicTier1.locomotion.name || "-";
+
+    // Restore Non-Karma Attacks
+    populateNonKarmaAttacks();
+    displayAllNonKarmaAttacks();
+
+    // Restore Traits and Flaws
+    updateTraitFlawDisplay();
+
+    // Restore Skill Tree
+    displaySkillTree();
+    calculateSkillTreePoints();
+    updateSkillTreeAvailability();
+
+    // Restore Skill Tree Point Display
+    skillTreePoints.textContent = character.skillTreePoints;
+}
+
+loadCharacterButton.addEventListener("click", function() {
+    populateSavedCharacterList();
+    loadCharacterDialog.showModal();
+});
+
+cancelLoadButton.addEventListener("click", function() {
+    loadCharacterDialog.close();
+});
+
+confirmLoadButton.addEventListener("click", function() {
+    const selectedSaveId = savedCharacterSelect.value;
+
+    if (!selectedSaveId) {
+        return;
+    }
+
+    const saveRecord = getCharacterSave(selectedSaveId);
+
+    if (!saveRecord) {
+        saveStatus.textContent = "Could not find that saved character.";
+        loadCharacterDialog.close();
+        return;
+    }
+
+    restoreCharacterData(saveRecord);
+
+    saveStatus.textContent = `Loaded "${saveRecord.name}" successfully.`;
+
+    loadCharacterDialog.close();
+});
+
+saveCharacterButton.addEventListener("click", function() {
+    saveCurrentCharacter();
+});
+
+saveAsCharacterButton.addEventListener("click", function() {
+    saveCurrentCharacter(true);
+});
 
 finishCharacterButton.addEventListener("click", function() {
     displayFinalizationErrors();

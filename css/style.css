@@ -114,6 +114,107 @@ h6 {
     color: var(--border);
 }
 
+
+/* =========================================== */
+/*              IDENTITY SECTION               */
+/* =========================================== */
+
+#characterManagement {
+    background-color: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 2px;
+    padding: 10px;
+    margin-bottom: 15px;
+}
+
+#characterManagement h2 {
+    margin-top: 0;
+    margin-bottom: 15px;
+    font-size: 0.9rem;
+    color: var(--text-primary);
+}
+
+#characterManagementControls {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+#characterManagementControls button {
+    padding: 8px 14px;
+    border: 1px solid var(--brand-purple);
+    border-radius: 4px;
+    background-color: var(--brand-dark-blue);
+    color: white;
+    font-family: inherit;
+    font-size: 0.8rem;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+#characterManagementControls button:hover {
+    background-color: var(--brand-purple);
+}
+
+#saveStatus {
+    min-height: 1em;
+    margin: 10px 0 0;
+    color: var(--text-secondary);
+    font-size: 0.8rem;
+}
+
+/* ========== LOAD CHARACTER DIALOG ========== */
+
+#loadCharacterDialog {
+    width: min(90%, 400px);
+    padding: 20px;
+    border: 1px solid var(--brand-purple);
+    border-radius: 6px;
+    background-color: var(--surface);
+    color: var(--text-primary);
+}
+
+#loadCharacterDialog::backdrop {
+    background-color: rgba(0, 0, 0, 0.7);
+}
+
+#loadCharacterDialog h2 {
+    margin-top: 0;
+}
+
+#savedCharacterSelect {
+    width: 100%;
+    margin-top: 8px;
+    padding: 8px;
+    background-color: var(--surface);
+    color: var(--text-primary);
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    font-family: inherit;
+}
+
+#loadCharacterControls {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+#loadCharacterControls button {
+    padding: 8px 14px;
+    border: 1px solid var(--brand-purple);
+    border-radius: 4px;
+    background-color: var(--brand-dark-blue);
+    color: white;
+    font-family: inherit;
+    font-size: 0.8rem;
+    cursor: pointer;
+}
+
+#loadCharacterControls button:hover {
+    background-color: var(--brand-purple);
+}
+
 /* =========================================== */
 /*              IDENTITY SECTION               */
 /* =========================================== */
