@@ -211,8 +211,17 @@ h6 {
     cursor: pointer;
 }
 
+#loadCharacterControls #cancelLoadButton {
+    border: 1px solid var(--border);
+    background-color: var(--input-background);
+}
+
 #loadCharacterControls button:hover {
     background-color: var(--brand-purple);
+}
+
+#loadCharacterControls #cancelLoadButton:hover {
+    background-color: var(--border);
 }
 
 /* =========================================== */
