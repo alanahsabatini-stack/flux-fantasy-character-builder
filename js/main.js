@@ -13,6 +13,7 @@ const saveStatus = document.getElementById("saveStatus");
 const loadCharacterDialog = document.getElementById("loadCharacterDialog");
 const savedCharacterSelect = document.getElementById("savedCharacterSelect");
 const confirmLoadButton = document.getElementById("confirmLoadButton");
+const deleteCharacterButton = document.getElementById("deleteCharacterButton");
 const cancelLoadButton = document.getElementById("cancelLoadButton");
 
 // ========================================
@@ -7357,6 +7358,41 @@ loadCharacterButton.addEventListener("click", function() {
 
 cancelLoadButton.addEventListener("click", function() {
     loadCharacterDialog.close();
+});
+
+deleteCharacterButton.addEventListener("click", function() {
+    const selectedSaveId = savedCharacterSelect.value;
+
+    if (!selectedSaveId) {
+        return;
+    }
+
+    const saveRecord = getCharacterSave(selectedSaveId);
+
+    if (!saveRecord) {
+        saveStatus.textContent = "Could not find that saved character.";
+        populateSavedCharacterList();
+        return;
+    }
+
+    const confirmDelete = window.confirm(
+        `Are you sure you want to delete "${saveRecord.name}"? This cannot be undone.`
+    );
+
+    if (!confirmDelete) {
+        return;
+    }
+
+    const wasDeleted = deleteCharacterSave(selectedSaveId);
+
+    if (wasDeleted) {
+        if (activeSaveId === selectedSaveId) {
+            activeSaveId = null;
+        }
+
+        saveStatus.textContent = `"${saveRecord.name}" was deleted.`;
+        populateSavedCharacterList();
+    }
 });
 
 confirmLoadButton.addEventListener("click", function() {
