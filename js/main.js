@@ -14,6 +14,9 @@ const loadCharacterDialog = document.getElementById("loadCharacterDialog");
 const savedCharacterSelect = document.getElementById("savedCharacterSelect");
 const confirmLoadButton = document.getElementById("confirmLoadButton");
 const deleteCharacterButton = document.getElementById("deleteCharacterButton");
+const exportCharacterButton = document.getElementById("exportCharacterButton");
+const importCharacterButton = document.getElementById("importCharacterButton");
+const importCharacterFile = document.getElementById("importCharacterFile");
 const cancelLoadButton = document.getElementById("cancelLoadButton");
 
 // ========================================
@@ -5552,9 +5555,7 @@ studySelect.addEventListener("change", function() {
     calculateTalents();
     calculateDerivedStats();
 
-    console.log("Updating powers for:", character.study);
     populatePowerDefinitions();
-    console.log(character.powers.basicTier1.attack);
     displayAllPowers();
 
     summaryStudy.textContent = character.study;
@@ -5848,8 +5849,6 @@ function resetBaseTalents() {
     document.getElementById("baseTechnique").textContent = 0;
     
     updateModifierPoolDisplay();
-
-    console.log("Base Talents Reset");
 }
 
 resetTalentsButton.addEventListener("click", function() {
@@ -7130,6 +7129,25 @@ function populateSavedCharacterList() {
     });
 }
 
+function exportCharacterJSON(saveRecord) {
+    const jsonData = JSON.stringify(saveRecord, null, 4);
+
+    const blob = new Blob([jsonData], {
+        type: "application/json"
+    });
+
+    const downloadURL = URL.createObjectURL(blob);
+
+    const downloadLink = document.createElement("a");
+
+    downloadLink.href = downloadURL;
+    downloadLink.download = `${saveRecord.name}.json`;
+
+    downloadLink.click();
+
+    URL.revokeObjectURL(downloadURL);
+}
+
 // ===== Restore Character Data =====
 
 function restoreCharacterData(saveRecord) {
@@ -7393,6 +7411,84 @@ deleteCharacterButton.addEventListener("click", function() {
         saveStatus.textContent = `"${saveRecord.name}" was deleted.`;
         populateSavedCharacterList();
     }
+});
+
+exportCharacterButton.addEventListener("click", function() {
+    const selectedSaveId = savedCharacterSelect.value;
+
+    if (!selectedSaveId) {
+        return;
+    }
+
+    const saveRecord = getCharacterSave(selectedSaveId);
+
+    if (!saveRecord) {
+        saveStatus.textContent = "Could not find that saved character.";
+        return;
+    }
+
+    exportCharacterJSON(saveRecord);
+
+    saveStatus.textContent = `"${saveRecord.name}" exported successfully.`;
+});
+
+importCharacterButton.addEventListener("click", function() {
+    importCharacterFile.click();
+});
+
+importCharacterFile.addEventListener("change", function() {
+    const selectedFile = importCharacterFile.files[0];
+
+    if (!selectedFile) {
+        return;
+    }
+
+    const reader = new FileReader();
+
+    reader.onload = function(event) {
+        try {
+            const importedData = JSON.parse(event.target.result);
+
+            if (
+                importedData.saveVersion !== SAVE_VERSION ||
+                typeof importedData.character !== "object" ||
+                importedData.character === null ||
+                typeof importedData.builderState !== "object" ||
+                importedData.builderState === null
+            ) {
+                throw new Error("Invalid character save file.");
+            }
+
+            const importedSave = saveCharacterData(
+                importedData.character,
+                importedData.builderState
+            );
+
+            populateSavedCharacterList();
+
+            const loadImportedCharacter = window.confirm(
+                `"${importedSave.name}" was successfully imported. Would you like to load it now?`
+            );
+
+            if (loadImportedCharacter) {
+                restoreCharacterData(importedSave);
+
+                saveStatus.textContent =
+                    `"${importedSave.name}" imported and loaded successfully.`;
+            } else {
+                saveStatus.textContent =
+                `"${importedSave.name}" imported successfully.`;
+            }
+
+            loadCharacterDialog.close();
+
+        } catch (error) {
+            console.error("Could not import character:", error);
+            saveStatus.textContent = "Invalid or unsupported character file.";
+        }
+    };
+
+    reader.readAsText(selectedFile);
 });
 
 confirmLoadButton.addEventListener("click", function() {

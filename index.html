@@ -9,6 +9,7 @@
 
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700&family=Oxanium:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/style.css">
+    <link rel="icon" href="assets/icons/F_favicon.svg">
 </head>
 
 <body>
@@ -81,8 +82,17 @@
         <div id="loadCharacterControls">
             <button type="button" id="confirmLoadButton">Load</button>
             <button type="button" id="deleteCharacterButton">Delete</button>
+            <button type="button" id="exportCharacterButton">Export JSON</button>
+            <button type="button" id="importCharacterButton">Import JSON</button>
             <button type="button" id="cancelLoadButton">Cancel</button>
         </div>
+
+        <input
+            type="file"
+            id="importCharacterFile"
+            accept=".json,application/json"
+            hidden
+        >
     </dialog>
 
 <!-- ************************************************************* -->
