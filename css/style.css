@@ -116,7 +116,7 @@ h6 {
 
 
 /* =========================================== */
-/*              IDENTITY SECTION               */
+/*        CHARACTER MANAGEMENT SECTION         */
 /* =========================================== */
 
 #characterManagement {
@@ -163,10 +163,8 @@ h6 {
     font-size: 0.8rem;
 }
 
-/* ========== LOAD CHARACTER DIALOG ========== */
-
-#loadCharacterDialog {
-    width: min(90%, 400px);
+.characterManagementDialog {
+    width: min(90% 400px);
     padding: 20px;
     border: 1px solid var(--brand-purple);
     border-radius: 6px;
@@ -174,17 +172,37 @@ h6 {
     color: var(--text-primary);
 }
 
-#loadCharacterDialog::backdrop {
+.characterManagementDialog::backdrop {
     background-color: rgba(0, 0, 0, 0.7);
 }
 
-#loadCharacterDialog h2 {
+.characterManagementDialog h2 {
     margin-top: 0;
+    margin-bottom: 20px;
+    color: var(--text-primary);
 }
 
-#savedCharacterSelect {
+.characterManagementDialog h3 {
+    margin-top: 0;
+    margin-bottom: 8px;
+    font-size: 0.85rem;
+    color: var(--text-primary);
+}
+
+.characterManagementDialog p {
+    font-size: 0.8rem;
+    color: var(--text-secondary);
+}
+
+.characterManagementDialog label {
+    display: block;
+    margin-bottom: 6px;
+    font-size: 0.8rem;
+    color: var(--text-primary);
+}
+
+.characterManagementDialog select {
     width: 100%;
-    margin-top: 8px;
     padding: 8px;
     background-color: var(--surface);
     color: var(--text-primary);
@@ -193,14 +211,17 @@ h6 {
     font-family: inherit;
 }
 
-#loadCharacterControls {
+#saveCharacterControls,
+#loadCharacterControls,
+#importCharacterButton,
+#cancelImportExportSection {
     display: flex;
     justify-content: flex-end;
     gap: 10px;
     margin-top: 20px;
 }
 
-#loadCharacterControls button {
+.characterManagementDialog button {
     padding: 8px 14px;
     border: 1px solid var(--brand-purple);
     border-radius: 4px;
@@ -209,19 +230,87 @@ h6 {
     font-family: inherit;
     font-size: 0.8rem;
     cursor: pointer;
+    transition: background-color 0.2s ease;
 }
 
-#loadCharacterControls #cancelLoadButton {
-    border: 1px solid var(--border);
-    background-color: var(--input-background);
-}
-
-#loadCharacterControls button:hover {
+.characterManagementDialog button:hover {
     background-color: var(--brand-purple);
 }
 
-#loadCharacterControls #cancelLoadButton:hover {
+#cancelSaveButton,
+#cancelLoadButton,
+#cancelImportExportButton {
+    background-color: var(--input-background);
+    border-color: var(--border);
+    color: var(--text-primary);
+}
+
+#cancelSaveButton:hover,
+#cancelLoadButton:hover,
+#cancelImportExportButton:hover {
     background-color: var(--border);
+}
+
+#deleteCharacterButton {
+    background-color: #782b35;
+    border-color: #a83b49;
+    color: white;
+}
+
+#deleteCharacterButton:hover {
+    background-color: #a83b49;
+}
+
+/* Import/Export Section Layout */
+
+#importDescription,
+#exportDescription {
+    font-size: 0.7rem;
+    margin: 8px 0 0 0;
+}
+
+#importCharacterSection {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+#importCharacterSection h3 {
+    margin: 0;
+}
+
+#importCharacterSection button {
+    align-self: flex-start;
+    margin: 10px 0 0 0;
+}
+
+.characterManagementDialog hr {
+    border: 1px solid var(--border);
+    margin-top: 10px;
+    margin-bottom: 20px;
+}
+
+#exportCharacterSection {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+#exportCharacterSection h3 {
+    margin: 0;
+}
+
+#exportDescription {
+    margin-bottom: 15px;
+}
+
+#exportCharacterSection select {
+    margin-top: 5px;
+}
+
+#exportCharacterSection button {
+    align-self: flex-start;
+    margin-top: 10px;
 }
 
 /* =========================================== */

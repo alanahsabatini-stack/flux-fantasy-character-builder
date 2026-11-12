@@ -64,17 +64,32 @@
 
         <div id="characterManagementControls">
             <button type="button" id="saveCharacterButton">Save</button>
-            <button type="button" id="saveAsCharacterButton">Save As</button>
-            <button type="button" id="loadCharacterButton">Load Character</button>
+            <button type="button" id="loadCharacterButton">Load</button>
+            <button type="button" id="importExportButton">Import/Export</button>
         </div>
 
         <p id="saveStatus" role="status" aria-live="polite"></p>
     </section>
 
-    <dialog id="loadCharacterDialog">
+    <dialog class="characterManagementDialog" id="saveCharacterDialog">
+        <h2>Save Character</h2>
+
+        <p id="saveCharacterPrompt"></p>
+
+        <div id="saveCharacterControls">
+            <button type="button" id="confirmSaveButton">Save</button>
+            <button type="button" id="saveAsButton">Save As</button>
+            <button type="button" id="cancelSaveButton">Cancel</button>
+        </div>
+
+        <p id="saveDialogStatus" role="status" aria-live="polite"></p>
+    </dialog>
+
+    <dialog class="characterManagementDialog" id="loadCharacterDialog">
         <h2>Load Character</h2>
 
         <label for="savedCharacterSelect">Select a character:</label>
+
         <select id="savedCharacterSelect">
             <option value="">-- Select a Character --</option>
         </select>
@@ -82,10 +97,43 @@
         <div id="loadCharacterControls">
             <button type="button" id="confirmLoadButton">Load</button>
             <button type="button" id="deleteCharacterButton">Delete</button>
-            <button type="button" id="exportCharacterButton">Export JSON</button>
-            <button type="button" id="importCharacterButton">Import JSON</button>
             <button type="button" id="cancelLoadButton">Cancel</button>
         </div>
+
+        <p id="loadDialogStatus" role="status" aria-live="polite"></p>
+    </dialog>
+
+    <dialog class="characterManagementDialog" id="importExportDialog">
+        <h2>Import/Export Character</h2>
+
+        <section id="importCharacterSection">
+            <h3>Import Character</h3>
+            <p id="importDescription">Import a previously exported JSON file.</p>
+            <button type="button" id="importCharacterButton">Import</button>
+        </section>
+
+        <hr>
+
+        <section id="exportCharacterSection">
+            <h3>Export Character</h3>
+            <p id="exportDescription">Export character as a JSON file and save to your computer.</p>
+
+            <label for="importExportCharacterSelect">
+                Select a save file to export:
+            </label>
+
+            <select id="importExportCharacterSelect">
+                <option value="">-- None Selected --</option>
+            </select>
+
+            <button type="button" id="exportCharacterButton">Export</button>
+        </section>
+
+        <section id="cancelImportExportSection">
+            <button type="button" id="cancelImportExportButton">Cancel</button>
+        </section>
+
+        <p id="importExportDialogStatus" role="status" aria-live="polite"></p>
 
         <input
             type="file"

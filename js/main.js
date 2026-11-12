@@ -7,17 +7,30 @@ console.log("Flux Fantasy Character Builder loaded!");
 let activeSaveId = null;
 
 const saveCharacterButton = document.getElementById("saveCharacterButton");
-const saveAsCharacterButton = document.getElementById("saveAsCharacterButton");
+const saveCharacterDialog = document.getElementById("saveCharacterDialog");
+const saveCharacterPrompt = document.getElementById("saveCharacterPrompt");
+const confirmSaveButton = document.getElementById("confirmSaveButton");
+const saveAsButton = document.getElementById("saveAsButton");
+const cancelSaveButton = document.getElementById("cancelSaveButton");
+const saveDialogStatus = document.getElementById("saveDialogStatus");
+
 const loadCharacterButton = document.getElementById("loadCharacterButton");
-const saveStatus = document.getElementById("saveStatus");
 const loadCharacterDialog = document.getElementById("loadCharacterDialog");
 const savedCharacterSelect = document.getElementById("savedCharacterSelect");
 const confirmLoadButton = document.getElementById("confirmLoadButton");
 const deleteCharacterButton = document.getElementById("deleteCharacterButton");
+const cancelLoadButton = document.getElementById("cancelLoadButton");
+
+const importExportButton = document.getElementById("importExportButton");
+const importExportDialog = document.getElementById("importExportDialog");
+const importExportCharacterSelect = document.getElementById("importExportCharacterSelect");
+const cancelImportExportButton = document.getElementById("cancelImportExportButton");
+const importExportDialogStatus = document.getElementById("importExportDialogStatus");
 const exportCharacterButton = document.getElementById("exportCharacterButton");
 const importCharacterButton = document.getElementById("importCharacterButton");
 const importCharacterFile = document.getElementById("importCharacterFile");
-const cancelLoadButton = document.getElementById("cancelLoadButton");
+
+const saveStatus = document.getElementById("saveStatus");
 
 // ========================================
 // CHARACTER DATA
@@ -7121,6 +7134,22 @@ function populateSavedCharacterList() {
     });
 }
 
+function populateImportExportCharacterList() {
+    const savedCharacters = getAllCharacterSaves();
+
+    importExportCharacterSelect.innerHTML =
+    '<option value="">-- None Selected --</option>';
+
+    savedCharacters.forEach(function(save) {
+        const option = document.createElement("option");
+
+        option.value = save.id;
+        option.textContent = save.name;
+
+        importExportCharacterSelect.appendChild(option);
+    });
+}
+
 function exportCharacterJSON(saveRecord) {
     const jsonData = JSON.stringify(saveRecord, null, 4);
 
@@ -7405,8 +7434,16 @@ deleteCharacterButton.addEventListener("click", function() {
     }
 });
 
+importExportButton.addEventListener("click", function() {
+    populateImportExportCharacterList();
+
+    importExportDialogStatus.textContent = "";
+
+    importExportDialog.showModal();
+});
+
 exportCharacterButton.addEventListener("click", function() {
-    const selectedSaveId = savedCharacterSelect.value;
+    const selectedSaveId = importExportCharacterSelect.value;
 
     if (!selectedSaveId) {
         return;
@@ -7415,13 +7452,16 @@ exportCharacterButton.addEventListener("click", function() {
     const saveRecord = getCharacterSave(selectedSaveId);
 
     if (!saveRecord) {
-        saveStatus.textContent = "Could not find that saved character.";
+        importExportDialogStatus.textContent = "Could not find that saved character.";
         return;
     }
 
     exportCharacterJSON(saveRecord);
 
-    saveStatus.textContent = `"${saveRecord.name}" exported successfully.`;
+    saveStatus.textContent =
+    `"${saveRecord.name}" exported successfully.`;
+
+    importExportDialog.close();
 });
 
 importCharacterButton.addEventListener("click", function() {
@@ -7472,7 +7512,7 @@ importCharacterFile.addEventListener("change", function() {
                 `"${importedSave.name}" imported successfully.`;
             }
 
-            loadCharacterDialog.close();
+            importExportDialog.close();
 
         } catch (error) {
             console.error("Could not import character:", error);
@@ -7481,6 +7521,10 @@ importCharacterFile.addEventListener("change", function() {
     };
 
     reader.readAsText(selectedFile);
+});
+
+cancelImportExportButton.addEventListener("click", function() {
+    importExportDialog.close();
 });
 
 confirmLoadButton.addEventListener("click", function() {
@@ -7506,11 +7550,28 @@ confirmLoadButton.addEventListener("click", function() {
 });
 
 saveCharacterButton.addEventListener("click", function() {
-    saveCurrentCharacter();
+    const characterName = character.name.trim() || "Untitled Character";
+
+    saveCharacterPrompt.textContent =
+        `Save character "${characterName}"?`;
+
+    saveDialogStatus.textContent = "";
+
+    saveCharacterDialog.showModal();
 });
 
-saveAsCharacterButton.addEventListener("click", function() {
+confirmSaveButton.addEventListener("click", function() {
+    saveCurrentCharacter();
+    saveCharacterDialog.close();
+});
+
+saveAsButton.addEventListener("click", function() {
     saveCurrentCharacter(true);
+    saveCharacterDialog.close();
+});
+
+cancelSaveButton.addEventListener("click", function() {
+    saveCharacterDialog.close();
 });
 
 finishCharacterButton.addEventListener("click", function() {
