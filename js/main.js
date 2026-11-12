@@ -6986,14 +6986,6 @@ function getFinalizationErrors() {
         errors.push("Character Name is required.");
     }
 
-    if (character.age.trim() === "") {
-        errors.push("Character Age is required.");
-    }
-
-    if (character.gender.trim() === "") {
-        errors.push("Character Gender is required.");
-    }
-
     if (
         character.specialty === "Escape Artist" &&
         character.startingItems.specialtyItems.length === 0
