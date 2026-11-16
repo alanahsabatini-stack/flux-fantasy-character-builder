@@ -19,6 +19,7 @@ const loadCharacterDialog = document.getElementById("loadCharacterDialog");
 const savedCharacterSelect = document.getElementById("savedCharacterSelect");
 const confirmLoadButton = document.getElementById("confirmLoadButton");
 const deleteCharacterButton = document.getElementById("deleteCharacterButton");
+const loadDialogStatus = document.getElementById("loadDialogStatus");
 const cancelLoadButton = document.getElementById("cancelLoadButton");
 
 const importExportButton = document.getElementById("importExportButton");
@@ -31,6 +32,34 @@ const importCharacterButton = document.getElementById("importCharacterButton");
 const importCharacterFile = document.getElementById("importCharacterFile");
 
 const saveStatus = document.getElementById("saveStatus");
+
+const statusTimers = new Map();
+
+function showStatusMessage(element, message, isSuccess = false) {
+    clearTimeout(statusTimers.get(element));
+
+    element.classList.remove("success", "fadeOut");
+    element.textContent = message;
+
+    if (!message || !isSuccess) return;
+
+    element.classList.add("success");
+
+    // Success message fade timer
+    const fadeTimer = setTimeout(function() {
+        element.classList.add("fadeOut");
+
+        const clearTimer = setTimeout(function() {
+            element.textContent = "";
+            element.classList.remove("success", "fadeOut");
+            statusTimers.delete(element);
+        }, 400);
+
+        statusTimers.set(element, clearTimer);
+    }, 4000);
+
+    statusTimers.set(element, fadeTimer);
+}
 
 // ========================================
 // CHARACTER DATA
@@ -7091,14 +7120,21 @@ function saveCurrentCharacter(createNewSave = false) {
         activeSaveId = savedCharacter.id;
 
         // Display confirmation message
-        saveStatus.textContent = createNewSave
-            ? "Character saved as a new copy."
-            : "Character saved successfully.";
+        showStatusMessage(
+            saveStatus,
+            createNewSave
+                ? "Character saved as a new copy."
+                : "Character saved successfully.",
+            true
+        );
 
     } catch (error) {
         console.error("Could not save character:", error);
 
-        saveStatus.textContent = "Unable to save character. Check the console for details.";
+        showStatusMessage(
+            saveStatus,
+            "Unable to save character. Check the console for details."
+        );
     }
 }
 
@@ -7409,7 +7445,7 @@ deleteCharacterButton.addEventListener("click", function() {
     const saveRecord = getCharacterSave(selectedSaveId);
 
     if (!saveRecord) {
-        saveStatus.textContent = "Could not find that saved character.";
+        showStatusMessage(saveStatus, "Could not find that saved character.");
         populateSavedCharacterList();
         return;
     }
@@ -7429,7 +7465,12 @@ deleteCharacterButton.addEventListener("click", function() {
             activeSaveId = null;
         }
 
-        saveStatus.textContent = `"${saveRecord.name}" was deleted.`;
+        showStatusMessage(
+            loadDialogStatus,
+            `"${saveRecord.name}" was deleted.`,
+            true
+        );
+
         populateSavedCharacterList();
     }
 });
@@ -7452,14 +7493,20 @@ exportCharacterButton.addEventListener("click", function() {
     const saveRecord = getCharacterSave(selectedSaveId);
 
     if (!saveRecord) {
-        importExportDialogStatus.textContent = "Could not find that saved character.";
+        showStatusMessage(
+            importExportDialogStatus,
+            "Could not find that saved character."
+        );
         return;
     }
 
     exportCharacterJSON(saveRecord);
 
-    saveStatus.textContent =
-    `"${saveRecord.name}" exported successfully.`;
+    showStatusMessage(
+        saveStatus,
+        `"${saveRecord.name}" exported successfully.`,
+        true
+    );
 
     importExportDialog.close();
 });
@@ -7505,18 +7552,27 @@ importCharacterFile.addEventListener("change", function() {
             if (loadImportedCharacter) {
                 restoreCharacterData(importedSave);
 
-                saveStatus.textContent =
-                    `"${importedSave.name}" imported and loaded successfully.`;
+                showStatusMessage(
+                    saveStatus,
+                    `"${importedSave.name}" imported and loaded successfully.`,
+                    true
+                );
             } else {
-                saveStatus.textContent =
-                `"${importedSave.name}" imported successfully.`;
+                showStatusMessage(
+                    saveStatus,
+                    `"${importedSave.name}" imported successfully.`,
+                    true
+                );
             }
 
             importExportDialog.close();
 
         } catch (error) {
             console.error("Could not import character:", error);
-            saveStatus.textContent = "Invalid or unsupported character file.";
+            showStatusMessage(
+                importExportDialogStatus,
+                "Invalid or unsupported character file."
+            );
         }
     };
 
@@ -7537,14 +7593,18 @@ confirmLoadButton.addEventListener("click", function() {
     const saveRecord = getCharacterSave(selectedSaveId);
 
     if (!saveRecord) {
-        saveStatus.textContent = "Could not find that saved character.";
+        showStatusMessage(saveStatus, "Could not find that saved character.");
         loadCharacterDialog.close();
         return;
     }
 
     restoreCharacterData(saveRecord);
 
-    saveStatus.textContent = `Loaded "${saveRecord.name}" successfully.`;
+    showStatusMessage(
+        saveStatus,
+        `Loaded "${saveRecord.name}" successfully.`,
+        true
+    );
 
     loadCharacterDialog.close();
 });

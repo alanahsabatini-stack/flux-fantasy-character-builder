@@ -20,16 +20,18 @@ Completed:
 - Choice between preset modifiers and dice roll for Talent Selection
 - Printable sheet exporting
 
+Fixes & Improvements Completed:
+- Refine save, load, delete, and import/export UI
+
 In Progress:
-- Save/load functionality
+- Fixes and improvements
 
 Fixes & Improvements Planned:
 - Change text field character limits and make print spacing more dynamic
 - If changing Specialty while other Specialty-dependent info has been filled out, ask user "Are you sure? Study, Affiliation, etc. will be erased."
 - Indicate required fields/choices visually
-- Refine save, load, delete, and import/export UI
 - Make Talent base and modifiers clearer
 - Add 3rd Talent selection method: free selection, for advanced users or homebrew
 
-Planned:
+Planned Long-Term:
 - Mobile-friendly styling

@@ -163,6 +163,28 @@ h6 {
     font-size: 0.8rem;
 }
 
+#saveStatus.success,
+#saveDialogStatus.success,
+#loadDialogStatus.success,
+#importExportDialogStatus.success {
+    color: #4ade80;
+}
+
+#saveStatus,
+#saveDialogStatus,
+#loadDialogStatus,
+#importExportDialogStatus {
+    opacity: 1;
+    transition: opacity 0.4s ease;
+}
+
+#saveStatus.fadeOut,
+#saveDialogStatus.fadeOut,
+#loadDialogStatus.fadeOut,
+#importExportDialogStatus.fadeOut {
+    opacity: 0;
+}
+
 .characterManagementDialog {
     width: min(90% 400px);
     padding: 20px;
