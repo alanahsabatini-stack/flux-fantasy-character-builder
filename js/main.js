@@ -6670,12 +6670,18 @@ function updateTraitFlawDisplay() {
         traitFlawAffiliationNote.textContent = "";
     }
 
+    traitFlawBalanceStatus.classList.remove("error", "success");
+
     if (traitsAndFlawsAreBalanced()) {
         traitFlawBalanceStatus.textContent =
             "Traits and Flaws are balanced.";
+
+        traitFlawBalanceStatus.classList.add("success");
     } else {
         traitFlawBalanceStatus.textContent =
-            "Trait and Flaw counts must match before the character can be finalized."
+            "Trait and Flaw counts must match before the character can be finalized.";
+
+        traitFlawBalanceStatus.classList.add("error");
     }
 }
 
@@ -7017,6 +7023,12 @@ function advancedKarmaPowersAreComplete() {
     return true;
 }
 
+function talentsAreComplete() {
+    return Object.values(character.baseTalents).every(function(modifier) {
+        return modifier !== 0;
+    });
+}
+
 function canFinalizeCharacter() {
     return getFinalizationErrors().length === 0;
 }
@@ -7028,6 +7040,10 @@ function getFinalizationErrors() {
         errors.push("Character Name is required.");
     }
 
+    if (character.specialty.trim() === "") {
+        errors.push("Must select a Specialty.")
+    }
+
     if (
         character.specialty === "Escape Artist" &&
         character.startingItems.specialtyItems.length === 0
@@ -7035,8 +7051,16 @@ function getFinalizationErrors() {
         errors.push("Escape Artists must choose a starting torus.");
     }
 
+    if (character.study.trim() === "") {
+        errors.push("Must select a Study.")
+    }
+
     if (character.affiliation.trim() === "") {
         errors.push("Must select an Affiliation.");
+    }
+
+    if (!talentsAreComplete()) {
+        errors.push("All six Talents must have a base modifier selected.")
     }
 
     if (!basicKarmaPowersAreComplete()) {

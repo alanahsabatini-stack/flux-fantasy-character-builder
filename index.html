@@ -46,6 +46,8 @@
         <span class="navDivider">|</span>
         <a href="https://fluxdestiny.gumroad.com/l/fluxfantasy" target="_blank" rel="noopener noreferrer">Get the Core Rulebook</a>
         <span class="navDivider">|</span>
+        <a href="https://fluxdestiny.gumroad.com/l/ff_character_creator_guide" target="_blank" rel="noopener noreferrer">FREE Character Creation Guide</a>
+        <span class="navDivider">|</span>
         <a href="https://fluxdestiny.miraheze.org/wiki/Flux_Fantasy_TTRPG" target="_blank" rel="noopener noreferrer">Wiki</a>
         <span class="navDivider">|</span>
         <a href="https://fluxdestiny.gumroad.com/" target="_blank" rel="noopener noreferrer">Original Character Journal</a>
@@ -53,6 +55,11 @@
 
     <div id="pageLayout">
         <main id="mainContent">
+
+    <p id="requiredFieldsNote">
+        <span class="required" aria-hidden="true"></span>
+        indicates a required field.
+    </p>
 
     <div>
         <label for="playerName">Player Name</label>
@@ -153,7 +160,7 @@
         
         <div id="identityFields">
             <div>
-                <label for="characterName">Character Name</label>
+                <label for="characterName" class="required">Character Name</label>
                 <input type="text" id="characterName" maxlength="25">
             </div>
 
@@ -229,7 +236,7 @@
             </div>
 
             <div class="karmastryField">
-                <label for="specialtySelect">Choose your Specialty:</label>
+                <label for="specialtySelect" class="required">Choose your Specialty:</label>
 
                 <select id="specialtySelect">
                     <option value="">-- Select a Specialty --</option>
@@ -245,7 +252,7 @@
             </div>
 
             <div id="torusChoiceContainer" hidden>
-                <p>Choose your starting Torus configuration:</p>
+                <p class="required">Choose your starting Torus configuration:</p>
                 <div id="torusChoiceOptions"></div>
             </div>
 
@@ -280,7 +287,7 @@
             </div>
 
             <div class="karmastryField">
-                <label for="studySelect">Choose your Study:</label>
+                <label for="studySelect" class="required">Choose your Study:</label>
 
                 <select id="studySelect" disabled>
                     <option value="">-- Select a Study --</option>
@@ -327,7 +334,7 @@
             </div>
 
             <div class="karmastryField">
-                <label for="affiliationSelect">Choose your Affiliation:</label>
+                <label for="affiliationSelect" class="required">Choose your Affiliation:</label>
 
                 <select id="affiliationSelect" disabled>
                     <option value="">-- Select an Affiliation --</option>
@@ -403,7 +410,7 @@
 <!-- ************************************************************* -->
 
     <section id="talentSection">
-        <h2>Talents</h2>
+        <h2 class="required">Talents</h2>
 
     <button
         type="button"
@@ -686,7 +693,7 @@
     </div>
 
     <div>
-        <label for="powerTheme">Power Theme</label>
+        <label for="powerTheme" class="required">Power Theme</label>
         <input type="text" id="powerTheme" maxlength="25">
     </div>
 
@@ -710,12 +717,12 @@
             <tbody>
                 <!-- BASIC -->
                 <tr>
-                    <th>Basic</th>
+                    <th class="required">Basic</th>
                     <td>
-                        <input type="text" id="basicNonKarmaAttackName" maxlength="15">
+                        <input type="text" id="basicNonKarmaAttackName" class="requiredField" maxlength="15">
                     </td>
                     <td>
-                        <select id="basicNonKarmaAttackSelect">
+                        <select id="basicNonKarmaAttackSelect" class="requiredField">
                             <option value="">-- Choose Stats --</option>
                         </select>
                     </td>
@@ -765,9 +772,9 @@
 
                 <tbody>
                     <tr>
-                        <th>ATK</th>
-                        <td><input type="text" id="basicTier1AttackName" maxlength="15"></td>
-                        <td><textarea id="basicTier1AttackDescription" maxlength="80"></textarea></td>
+                        <th class="required">ATK</th>
+                        <td><input type="text" id="basicTier1AttackName" class="requiredField" maxlength="15"></td>
+                        <td><textarea id="basicTier1AttackDescription" class="requiredField" maxlength="80"></textarea></td>
                         <td id="basicTier1AttackKP">-</td>
                         <td id="basicTier1AttackDamage">-</td>
                         <td id="basicTier1AttackRange">-</td>
@@ -775,9 +782,9 @@
                     </tr>
 
                     <tr>
-                        <th>DEF</th>
-                        <td><input type="text" id="basicTier1DefenseName" maxlength="15"></td>
-                        <td><textarea id="basicTier1DefenseDescription" maxlength="80"></textarea></td>
+                        <th class="required">DEF</th>
+                        <td><input type="text" id="basicTier1DefenseName" class="requiredField" maxlength="15"></td>
+                        <td><textarea id="basicTier1DefenseDescription" class="requiredField" maxlength="80"></textarea></td>
                         <td id="basicTier1DefenseKP">-</td>
                         <td id="basicTier1DefenseDamage">-</td>
                         <td id="basicTier1DefenseRange">-</td>
@@ -785,9 +792,9 @@
                     </tr>
 
                     <tr>
-                        <th>COM</th>
-                        <td><input type="text" id="basicTier1ComboName" maxlength="15"></td>
-                        <td><textarea id="basicTier1ComboDescription" maxlength="80"></textarea></td>
+                        <th class="required">COM</th>
+                        <td><input type="text" id="basicTier1ComboName" class="requiredField" maxlength="15"></td>
+                        <td><textarea id="basicTier1ComboDescription" class="requiredField" maxlength="80"></textarea></td>
                         <td id="basicTier1ComboKP">-</td>
                         <td id="basicTier1ComboDamage">-</td>
                         <td id="basicTier1ComboRange">-</td>
@@ -795,9 +802,9 @@
                     </tr>
 
                     <tr>
-                        <th>SIG</th>
-                        <td><input type="text" id="basicTier1SignatureName" maxlength="15"></td>
-                        <td><textarea id="basicTier1SignatureDescription" maxlength="80"></textarea></td>
+                        <th class="required">SIG</th>
+                        <td><input type="text" id="basicTier1SignatureName" class="requiredField" maxlength="15"></td>
+                        <td><textarea id="basicTier1SignatureDescription" class="requiredField" maxlength="80"></textarea></td>
                         <td id="basicTier1SignatureKP">-</td>
                         <td id="basicTier1SignatureDamage">-</td>
                         <td id="basicTier1SignatureRange">-</td>
@@ -805,9 +812,9 @@
                     </tr>
 
                     <tr>
-                        <th>LOC</th>
-                        <td><input type="text" id="basicTier1LocomotionName" maxlength="15"></td>
-                        <td><textarea id="basicTier1LocomotionDescription" maxlength="80"></textarea></td>
+                        <th class="required">LOC</th>
+                        <td><input type="text" id="basicTier1LocomotionName" class="requiredField" maxlength="15"></td>
+                        <td><textarea id="basicTier1LocomotionDescription" class="requiredField" maxlength="80"></textarea></td>
                         <td id="basicTier1LocomotionKP">-</td>
                         <td id="basicTier1LocomotionDamage">-</td>
                         <td id="basicTier1LocomotionRange">-</td>
