@@ -5496,7 +5496,27 @@ function updateAffiliationOptions() {
     });
 }
 
+let previousSpecialty = specialtySelect.value;
+
 specialtySelect.addEventListener("change", function() {
+    if (character.study || character.affiliation || 
+        character.traits.length > 0 || character.flaws.length > 0 ||
+        Object.values(character.powers).some(function(tier) {
+            return Object.values(tier).some(function(power) {
+                return power && (power.name || power.description);
+            });
+        })) {
+
+        const confirmed = window.confirm(
+            "Changing your Specialty will erase your Study, Affiliation, Powers, and Traits & Flaws. Are you sure you want to do this?"
+        );
+
+        if (!confirmed) {
+            specialtySelect.value = previousSpecialty;
+            return;
+        }
+    }
+
     const selectedSpecialty = findSpecialty(specialtySelect.value);
 
     character.specialty = selectedSpecialty.name;
@@ -5569,6 +5589,7 @@ specialtySelect.addEventListener("change", function() {
     studySelect.disabled = false;
     affiliationSelect.disabled = false;
     updateAffiliationOptions();
+    previousSpecialty = specialtySelect.value;
 });
 
 // ========================================
