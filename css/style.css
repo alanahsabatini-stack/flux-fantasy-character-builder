@@ -633,10 +633,10 @@ h6 {
 }
 
 #talentModeControls {
-    display: grid;
-    grid-template-columns: repeat(2, max-content);
+    display: flex;
     align-items: center;
-    gap: 12px 20px;
+    flex-wrap: wrap;
+    gap: 12px 24px;
     margin-bottom: 20px;
     padding: 12px;
     border: 1px solid var(--border);
@@ -645,7 +645,7 @@ h6 {
 }
 
 #talentModeControls h3 {
-    grid-column: 1 / -1;
+    width: 100%;
     margin: 0;
     font-size: 0.9rem;
     color: var(--text-secondary);
@@ -715,6 +715,22 @@ h6 {
     color: var(--brand-gold);
 }
 
+#freeSelectionNotice {
+    margin: 0 0 20px;
+    padding: 12px 15px;
+    border: 1px solid var(--border);
+    border-left: 4px solid var(--brand-purple);
+    border-radius: 4px;
+    background-color: var(--page-background);
+    color: var(--text-secondary);
+    font-size: 0.85rem;
+    line-height: 1.5;
+}
+
+#freeSelectionNotice strong {
+    color: var(--brand-gold);
+}
+
 #talentControls {
     display: flex;
     align-items: center;
@@ -726,6 +742,10 @@ h6 {
     display: flex;
     align-items: center;
     gap: 15px;
+}
+
+#modifierPool[hidden] {
+    display: none;
 }
 
 #modifierPool h3 {

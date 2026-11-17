@@ -451,6 +451,8 @@ const available2 = document.getElementById("available2");
 const available3 = document.getElementById("available3");
 
 const modifierButtons = document.querySelectorAll(".modifierButton");
+const modifierPool = document.getElementById("modifierPool");
+const freeSelectionNotice = document.getElementById("freeSelectionNotice");
 
 const resetTalentsButton = document.getElementById("resetTalents");
 const talentModeOptions = document.querySelectorAll('input[name="talentMode"]');
@@ -5806,28 +5808,37 @@ modifierButtons.forEach(function(button) {
         const talent = button.dataset.talent;
         const modifier = Number(button.dataset.modifier);
         const currentModifier = character.baseTalents[talent];
+        const freeMode = document.querySelector(
+            'input[name="talentMode"]:checked'
+        ).value === "free";
 
         // Clicking the currently selected modifier removes it
         if (currentModifier === modifier) {
             character.baseTalents[talent] = 0;
-            talentModifierPool[modifier]++;
+
+            if (!freeMode) {
+                talentModifierPool[modifier]++;
+            }
         }
 
         // Clicking a different modifier changes the assignment
         else {
-            // Make sure the new modifier is still available
-            if (talentModifierPool[modifier] === 0) {
+            // Check modifier availability unless using Free Selection
+            if (!freeMode && talentModifierPool[modifier] === 0) {
                 return;
             }
 
             // Return the old modifier to the pool
-            if (currentModifier !== 0) {
+            if (!freeMode && currentModifier !== 0) {
                 talentModifierPool[currentModifier]++;
             }
 
-            //Assign the new modifier
+            // Assign the new modifier
             character.baseTalents[talent] = modifier;
-            talentModifierPool[modifier]--;
+
+            if (!freeMode) {
+                talentModifierPool[modifier]--;
+            }
         }
 
         // Calculate final Talent values
@@ -5868,10 +5879,15 @@ function updateModifierPoolDisplay() {
 }
 
 function updateModifierButtons() {
+    const freeMode = document.querySelector(
+        'input[name="talentMode"]:checked'
+    ).value === "free";
+
     modifierButtons.forEach(function(button) {
         const modifier = Number(button.dataset.modifier);
 
         if (
+            !freeMode &&
             talentModifierPool[modifier] === 0 &&
             !button.classList.contains("selected")
         ) {
@@ -5895,9 +5911,23 @@ function resetBaseTalents() {
     calculateTalents();
     calculateDerivedStats();
 
-    talentModifierPool[1] = 1;
-    talentModifierPool[2] = 3;
-    talentModifierPool[3] = 2;
+    const selectedMode = document.querySelector(
+        'input[name="talentMode"]:checked'
+    ).value;
+
+    if (selectedMode === "random") {
+        talentModifierPool[1] = 0;
+        talentModifierPool[2] = 0;
+        talentModifierPool[3] = 0;
+    } else if (selectedMode === "free") {
+        talentModifierPool[1] = 0;
+        talentModifierPool[2] = 0;
+        talentModifierPool[3] = 0;
+    } else {
+        talentModifierPool[1] = 1;
+        talentModifierPool[2] = 3;
+        talentModifierPool[3] = 2;
+    }
 
     modifierButtons.forEach(function(button) {
         button.classList.remove("selected");
@@ -5925,6 +5955,10 @@ talentModeOptions.forEach(function(option) {
         resetBaseTalents();
 
         const randomMode = option.value === "random";
+        const freeMode = option.value === "free";
+
+        modifierPool.hidden = freeMode;
+        freeSelectionNotice.hidden = !freeMode;
 
         randomTalentControls.hidden = !randomMode;
         talentRollResults.textContent = "";
@@ -7391,6 +7425,8 @@ function restoreCharacterData(saveRecord) {
     });
 
     randomTalentControls.hidden = savedTalentMode !== "random";
+    modifierPool.hidden = savedTalentMode === "free";
+    freeSelectionNotice.hidden = savedTalentMode !== "free";
 
     // Restore Talent Modifier Pool
     if (saveRecord.builderState.talentModifierPool) {

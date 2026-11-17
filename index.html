@@ -432,9 +432,9 @@
         </p>
 
         <p>
-            You can select your Talent modifiers in one of two ways:
-            Assign a set of premade Talent modifiers, or have fate
-            decide with a random dice roll.
+            You can select your Talent modifiers in one of three ways:
+            Assign a set of premade Talent modifiers, have fate decide
+            with a random dice roll, or choose your own modifiers.
         </p>
     </div>
 
@@ -459,7 +459,22 @@
                 >
                 Random Dice Roll
             </label>
+
+            <label>
+                <input
+                    type="radio"
+                    name="talentMode"
+                    value="free"
+                >
+                Free Selection
+            </label>
     </div>
+    <p id="freeSelectionNotice" hidden>
+        <strong>Free Selection is intended for advanced users, homebrew
+        character creation, and existing characters.</strong>
+        This option bypasses the standard Talent modifier restrictions
+        and may result in an unbalanced character.
+    </p>
 
     <div id="randomTalentControls" hidden>
         <button type="button" id="rollTalentsButton">
