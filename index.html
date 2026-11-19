@@ -525,6 +525,7 @@
                 </div>
 
                 <p>Base: <span id="baseAura">0</span></p>
+                <p class="studyTalentBonus" id="studyBonusAura" hidden></p>
             </div>
 
             <!-- Stamina -->
@@ -553,6 +554,7 @@
                 </div>
 
                 <p>Base: <span id="baseStamina">0</span></p>
+                <p class="studyTalentBonus" id="studyBonusStamina" hidden></p>
             </div>
 
             <!-- Agility -->
@@ -581,6 +583,7 @@
                 </div>
 
                 <p>Base: <span id="baseAgility">0</span></p>
+                <p class="studyTalentBonus" id="studyBonusAgility" hidden></p>
             </div>
 
             <!-- Willpower -->
@@ -609,6 +612,7 @@
                 </div>
 
                 <p>Base: <span id="baseWillpower">0</span></p>
+                <p class="studyTalentBonus" id="studyBonusWillpower" hidden></p>
             </div>
 
             <!-- Function -->
@@ -637,6 +641,7 @@
                 </div>
 
                 <p>Base: <span id="baseFunction">0</span></p>
+                <p class="studyTalentBonus" id="studyBonusFunction" hidden></p>
             </div>
 
             <!-- Technique -->
@@ -665,6 +670,7 @@
                 </div>
 
                 <p>Base: <span id="baseTechnique">0</span></p>
+                <p class="studyTalentBonus" id="studyBonusTechnique" hidden></p>
             </div>
 
         </div>
@@ -770,7 +776,7 @@
         <!-- BASIC TIER 1 -->
 
         <section class="powerTier" id="basicTier1Section">
-            <h4>Basic — Tier 1</h4>
+            <h4 class="required">Basic — Tier 1</h4>
 
             <table id="basicTier1Table">
                 <thead>
@@ -787,7 +793,7 @@
 
                 <tbody>
                     <tr>
-                        <th class="required">ATK</th>
+                        <th>ATK</th>
                         <td><input type="text" id="basicTier1AttackName" class="requiredField" maxlength="15"></td>
                         <td><textarea id="basicTier1AttackDescription" class="requiredField" maxlength="80"></textarea></td>
                         <td id="basicTier1AttackKP">-</td>
@@ -797,7 +803,7 @@
                     </tr>
 
                     <tr>
-                        <th class="required">DEF</th>
+                        <th>DEF</th>
                         <td><input type="text" id="basicTier1DefenseName" class="requiredField" maxlength="15"></td>
                         <td><textarea id="basicTier1DefenseDescription" class="requiredField" maxlength="80"></textarea></td>
                         <td id="basicTier1DefenseKP">-</td>
@@ -807,7 +813,7 @@
                     </tr>
 
                     <tr>
-                        <th class="required">COM</th>
+                        <th>COM</th>
                         <td><input type="text" id="basicTier1ComboName" class="requiredField" maxlength="15"></td>
                         <td><textarea id="basicTier1ComboDescription" class="requiredField" maxlength="80"></textarea></td>
                         <td id="basicTier1ComboKP">-</td>
@@ -817,7 +823,7 @@
                     </tr>
 
                     <tr>
-                        <th class="required">SIG</th>
+                        <th>SIG</th>
                         <td><input type="text" id="basicTier1SignatureName" class="requiredField" maxlength="15"></td>
                         <td><textarea id="basicTier1SignatureDescription" class="requiredField" maxlength="80"></textarea></td>
                         <td id="basicTier1SignatureKP">-</td>
@@ -827,7 +833,7 @@
                     </tr>
 
                     <tr>
-                        <th class="required">LOC</th>
+                        <th>LOC</th>
                         <td><input type="text" id="basicTier1LocomotionName" class="requiredField" maxlength="15"></td>
                         <td><textarea id="basicTier1LocomotionDescription" class="requiredField" maxlength="80"></textarea></td>
                         <td id="basicTier1LocomotionKP">-</td>

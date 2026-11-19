@@ -446,6 +446,13 @@ const talentWillpower = document.getElementById("talentWillpower");
 const talentFunction = document.getElementById("talentFunction");
 const talentTechnique = document.getElementById("talentTechnique");
 
+const studyBonusAura = document.getElementById("studyBonusAura");
+const studyBonusStamina = document.getElementById("studyBonusStamina");
+const studyBonusAgility = document.getElementById("studyBonusAgility");
+const studyBonusWillpower = document.getElementById("studyBonusWillpower");
+const studyBonusFunction = document.getElementById("studyBonusFunction");
+const studyBonusTechnique = document.getElementById("studyBonusTechnique");
+
 const available1 = document.getElementById("available1");
 const available2 = document.getElementById("available2");
 const available3 = document.getElementById("available3");
@@ -6048,7 +6055,35 @@ function calculateTalents() {
         character.talents[character.currentStudy.stat] += character.currentStudy.modifier;
     }
 
+    updateStudyTalentBonus();
     updateTalentSummary();
+}
+
+function updateStudyTalentBonus() {
+    const bonusDisplays = {
+        aura: studyBonusAura,
+        stamina: studyBonusStamina,
+        agility: studyBonusAgility,
+        willpower: studyBonusWillpower,
+        function: studyBonusFunction,
+        technique: studyBonusTechnique
+    };
+
+    Object.keys(bonusDisplays).forEach(function(stat) {
+        const display = bonusDisplays[stat];
+
+        if (
+            character.currentStudy !== null &&
+            character.currentStudy.stat === stat
+        ) {
+            display.textContent =
+                `+${character.currentStudy.modifier} from your chosen Study`;
+            display.hidden = false;
+        } else {
+            display.textContent = "";
+            display.hidden = true;
+        }
+    });
 }
 
 // ========== Derived Stat Calculations ==========

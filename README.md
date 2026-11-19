@@ -25,13 +25,13 @@ Fixes & Improvements Completed:
 - Indicate required fields/choices visually
 - If changing Specialty while other Specialty-dependent info has been filled out, ask user to confirm
 - Add 3rd Talent selection method: free selection, for advanced users or homebrew
+- Improve Talent modifier clarity
 
 In Progress:
 - Fixes and improvements
 
 Fixes & Improvements Planned:
 - Change text field character limits and make print spacing more dynamic
-- Make Talent base and modifiers clearer
 
 Planned Long-Term:
 - Mobile-friendly styling

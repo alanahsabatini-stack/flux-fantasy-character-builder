@@ -807,6 +807,13 @@ h6 {
     color: var(--text-secondary);
 }
 
+.studyTalentBonus {
+    margin: 3px 0 0;
+    font-size: 0.65rem;
+    color: var(--text-primary) !important;
+    font-style: italic;
+}
+
 .modifierButtons {
     display: flex;
     gap: 12px;
