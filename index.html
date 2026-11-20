@@ -846,285 +846,304 @@
         </section>
 
         <section class="powerTier" id="basicTier2Section">
-            <h4>Basic — Tier 2</h4>
+            <details class="powerTierDetails">
+                <summary>
+                    <h4>Basic — Tier 2</h4>
+                </summary>
 
-            <table id="basicTier2Table">
-                <thead>
-                    <tr>
-                        <th>Power</th>
-                        <th>Name</th>
-                        <th>Description</th>
-                        <th>KP</th>
-                        <th>Damage</th>
-                        <th>Range</th>
-                        <th>Effect</th>
-                    </tr>
-                </thead>
+                <span class="powerTierUnlockNote">
+                    Unlock this tier through the Skill Tree as your character levels up.
+                </span>
+                <table id="basicTier2Table" class="powerTierTable">
+                    <thead>
+                        <tr>
+                            <th>Power</th>
+                            <th>Name</th>
+                            <th>Description</th>
+                            <th>KP</th>
+                            <th>Damage</th>
+                            <th>Range</th>
+                            <th>Effect</th>
+                        </tr>
+                    </thead>
 
-                <tbody>
-                    <tr>
-                        <th>ATK</th>
-                        <td><input type="text" id="basicTier2AttackName" maxlength="15"></td>
-                        <td><textarea id="basicTier2AttackDescription" maxlength="80"></textarea></td>
-                        <td id="basicTier2AttackKP">-</td>
-                        <td id="basicTier2AttackDamage">-</td>
-                        <td id="basicTier2AttackRange">-</td>
-                        <td id="basicTier2AttackEffect">-</td>
-                    </tr>
+                    <tbody>
+                        <tr>
+                            <th>ATK</th>
+                            <td><input type="text" id="basicTier2AttackName" maxlength="15"></td>
+                            <td><textarea id="basicTier2AttackDescription" maxlength="80"></textarea></td>
+                            <td id="basicTier2AttackKP">-</td>
+                            <td id="basicTier2AttackDamage">-</td>
+                            <td id="basicTier2AttackRange">-</td>
+                            <td id="basicTier2AttackEffect">-</td>
+                        </tr>
 
-                    <tr>
-                        <th>DEF</th>
-                        <td><input type="text" id="basicTier2DefenseName" maxlength="15"></td>
-                        <td><textarea id="basicTier2DefenseDescription" maxlength="80"></textarea></td>
-                        <td id="basicTier2DefenseKP">-</td>
-                        <td id="basicTier2DefenseDamage">-</td>
-                        <td id="basicTier2DefenseRange">-</td>
-                        <td id="basicTier2DefenseEffect">-</td>
-                    </tr>
+                        <tr>
+                            <th>DEF</th>
+                            <td><input type="text" id="basicTier2DefenseName" maxlength="15"></td>
+                            <td><textarea id="basicTier2DefenseDescription" maxlength="80"></textarea></td>
+                            <td id="basicTier2DefenseKP">-</td>
+                            <td id="basicTier2DefenseDamage">-</td>
+                            <td id="basicTier2DefenseRange">-</td>
+                            <td id="basicTier2DefenseEffect">-</td>
+                        </tr>
 
-                    <tr>
-                        <th>COM</th>
-                        <td><input type="text" id="basicTier2ComboName" maxlength="15"></td>
-                        <td><textarea id="basicTier2ComboDescription" maxlength="80"></textarea></td>
-                        <td id="basicTier2ComboKP">-</td>
-                        <td id="basicTier2ComboDamage">-</td>
-                        <td id="basicTier2ComboRange">-</td>
-                        <td id="basicTier2ComboEffect">-</td>
-                    </tr>
+                        <tr>
+                            <th>COM</th>
+                            <td><input type="text" id="basicTier2ComboName" maxlength="15"></td>
+                            <td><textarea id="basicTier2ComboDescription" maxlength="80"></textarea></td>
+                            <td id="basicTier2ComboKP">-</td>
+                            <td id="basicTier2ComboDamage">-</td>
+                            <td id="basicTier2ComboRange">-</td>
+                            <td id="basicTier2ComboEffect">-</td>
+                        </tr>
 
-                    <tr>
-                        <th>SIG</th>
-                        <td><input type="text" id="basicTier2SignatureName" maxlength="15"></td>
-                        <td><textarea id="basicTier2SignatureDescription" maxlength="80"></textarea></td>
-                        <td id="basicTier2SignatureKP">-</td>
-                        <td id="basicTier2SignatureDamage">-</td>
-                        <td id="basicTier2SignatureRange">-</td>
-                        <td id="basicTier2SignatureEffect">-</td>
-                    </tr>
+                        <tr>
+                            <th>SIG</th>
+                            <td><input type="text" id="basicTier2SignatureName" maxlength="15"></td>
+                            <td><textarea id="basicTier2SignatureDescription" maxlength="80"></textarea></td>
+                            <td id="basicTier2SignatureKP">-</td>
+                            <td id="basicTier2SignatureDamage">-</td>
+                            <td id="basicTier2SignatureRange">-</td>
+                            <td id="basicTier2SignatureEffect">-</td>
+                        </tr>
 
-                    <tr>
-                        <th>LOC</th>
-                        <td><input type="text" id="basicTier2LocomotionName" maxlength="15"></td>
-                        <td><textarea id="basicTier2LocomotionDescription" maxlength="80"></textarea></td>
-                        <td id="basicTier2LocomotionKP">-</td>
-                        <td id="basicTier2LocomotionDamage">-</td>
-                        <td id="basicTier2LocomotionRange">-</td>
-                        <td id="basicTier2LocomotionEffect">-</td>
-                    </tr>
-                </tbody>
-            </table>
+                        <tr>
+                            <th>LOC</th>
+                            <td><input type="text" id="basicTier2LocomotionName" maxlength="15"></td>
+                            <td><textarea id="basicTier2LocomotionDescription" maxlength="80"></textarea></td>
+                            <td id="basicTier2LocomotionKP">-</td>
+                            <td id="basicTier2LocomotionDamage">-</td>
+                            <td id="basicTier2LocomotionRange">-</td>
+                            <td id="basicTier2LocomotionEffect">-</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </details>
         </section>
 
         <section class="powerTier" id="advancedTier1Section">
-            <h4>Advanced — Tier 1</h4>
+            <details class="powerTierDetails">
+                <summary>
+                    <h4>Advanced — Tier 1</h4>
+                </summary>
 
-            <table id="advancedTier1Table">
-                <thead>
-                    <tr>
-                        <th>Power</th>
-                        <th>Name</th>
-                        <th>Description</th>
-                        <th>KP</th>
-                        <th>Damage</th>
-                        <th>Range</th>
-                        <th>Effect</th>
-                    </tr>
-                </thead>
+                <span class="powerTierUnlockNote">
+                    Unlock this tier through the Skill Tree as your character levels up.
+                </span>
+                <table id="advancedTier1Table" class="powerTierTable">
+                    <thead>
+                        <tr>
+                            <th>Power</th>
+                            <th>Name</th>
+                            <th>Description</th>
+                            <th>KP</th>
+                            <th>Damage</th>
+                            <th>Range</th>
+                            <th>Effect</th>
+                        </tr>
+                    </thead>
 
-                <tbody>
-                    <tr>
-                        <th>ATK</th>
-                        <td><input type="text" id="advancedTier1AttackName" maxlength="15"></td>
-                        <td><textarea id="advancedTier1AttackDescription" maxlength="80"></textarea></td>
-                        <td id="advancedTier1AttackKP">-</td>
-                        <td id="advancedTier1AttackDamage">-</td>
-                        <td id="advancedTier1AttackRange">-</td>
-                        <td
-                            id="advancedTier1AttackEffect"
-                            class="advancedEffectDisplay"
-                        >-</td>
-                    </tr>
+                    <tbody>
+                        <tr>
+                            <th>ATK</th>
+                            <td><input type="text" id="advancedTier1AttackName" maxlength="15"></td>
+                            <td><textarea id="advancedTier1AttackDescription" maxlength="80"></textarea></td>
+                            <td id="advancedTier1AttackKP">-</td>
+                            <td id="advancedTier1AttackDamage">-</td>
+                            <td id="advancedTier1AttackRange">-</td>
+                            <td
+                                id="advancedTier1AttackEffect"
+                                class="advancedEffectDisplay"
+                            >-</td>
+                        </tr>
 
-                    <tr>
-                        <th>DEF</th>
-                        <td><input type="text" id="advancedTier1DefenseName" maxlength="15"></td>
-                        <td><textarea id="advancedTier1DefenseDescription" maxlength="80"></textarea></td>
-                        <td id="advancedTier1DefenseKP">-</td>
-                        <td id="advancedTier1DefenseDamage">-</td>
-                        <td id="advancedTier1DefenseRange">-</td>
-                        <td id="advancedTier1DefenseEffect">-</td>
-                    </tr>
+                        <tr>
+                            <th>DEF</th>
+                            <td><input type="text" id="advancedTier1DefenseName" maxlength="15"></td>
+                            <td><textarea id="advancedTier1DefenseDescription" maxlength="80"></textarea></td>
+                            <td id="advancedTier1DefenseKP">-</td>
+                            <td id="advancedTier1DefenseDamage">-</td>
+                            <td id="advancedTier1DefenseRange">-</td>
+                            <td id="advancedTier1DefenseEffect">-</td>
+                        </tr>
 
-                    <tr>
-                        <th>COM</th>
-                        <td><input type="text" id="advancedTier1ComboName" maxlength="15"></td>
-                        <td><textarea id="advancedTier1ComboDescription" maxlength="80"></textarea></td>
-                        <td id="advancedTier1ComboKP">-</td>
-                        <td id="advancedTier1ComboDamage">-</td>
-                        <td id="advancedTier1ComboRange">-</td>
-                        <td
-                            id="advancedTier1ComboEffect"
-                            class="advancedEffectDisplay"
-                        >-</td>
-                    </tr>
+                        <tr>
+                            <th>COM</th>
+                            <td><input type="text" id="advancedTier1ComboName" maxlength="15"></td>
+                            <td><textarea id="advancedTier1ComboDescription" maxlength="80"></textarea></td>
+                            <td id="advancedTier1ComboKP">-</td>
+                            <td id="advancedTier1ComboDamage">-</td>
+                            <td id="advancedTier1ComboRange">-</td>
+                            <td
+                                id="advancedTier1ComboEffect"
+                                class="advancedEffectDisplay"
+                            >-</td>
+                        </tr>
 
-                    <tr>
-                        <th>SIG</th>
-                        <td><input type="text" id="advancedTier1SignatureName" maxlength="15"></td>
-                        <td><textarea id="advancedTier1SignatureDescription" maxlength="80"></textarea></td>
-                        <td id="advancedTier1SignatureKP">-</td>
-                        <td id="advancedTier1SignatureDamage">-</td>
-                        <td id="advancedTier1SignatureRange">-</td>
-                        <td
-                            id="advancedTier1SignatureEffect"
-                            class="advancedEffectDisplay"
-                        >-</td>
-                    </tr>
+                        <tr>
+                            <th>SIG</th>
+                            <td><input type="text" id="advancedTier1SignatureName" maxlength="15"></td>
+                            <td><textarea id="advancedTier1SignatureDescription" maxlength="80"></textarea></td>
+                            <td id="advancedTier1SignatureKP">-</td>
+                            <td id="advancedTier1SignatureDamage">-</td>
+                            <td id="advancedTier1SignatureRange">-</td>
+                            <td
+                                id="advancedTier1SignatureEffect"
+                                class="advancedEffectDisplay"
+                            >-</td>
+                        </tr>
 
-                    <tr>
-                        <th>LOC</th>
-                        <td><input type="text" id="advancedTier1LocomotionName" maxlength="15"></td>
-                        <td><textarea id="advancedTier1LocomotionDescription" maxlength="80"></textarea></td>
-                        <td id="advancedTier1LocomotionKP">-</td>
-                        <td id="advancedTier1LocomotionDamage">-</td>
-                        <td id="advancedTier1LocomotionRange">-</td>
-                        <td id="advancedTier1LocomotionEffect">-</td>
-                    </tr>
-                </tbody>
-            </table>
-            
-            <button 
-                type="button" 
-                class="advancedEffectButton"
-                id="advancedTier1EffectButton"
-                disabled
-            >
-                Choose Tier 1 Effect
-            </button>
-
-            <div
-                class="advancedEffectPanel"
-                id="advancedTier1EffectPanel"
-            >
-                <h5>Choose an Advanced Tier 1 Effect</h5>       
+                        <tr>
+                            <th>LOC</th>
+                            <td><input type="text" id="advancedTier1LocomotionName" maxlength="15"></td>
+                            <td><textarea id="advancedTier1LocomotionDescription" maxlength="80"></textarea></td>
+                            <td id="advancedTier1LocomotionKP">-</td>
+                            <td id="advancedTier1LocomotionDamage">-</td>
+                            <td id="advancedTier1LocomotionRange">-</td>
+                            <td id="advancedTier1LocomotionEffect">-</td>
+                        </tr>
+                    </tbody>
+                </table>
                 
-                <div id="advancedTier1EffectLists"></div>
-
-                <button
-                    type="button"
-                    class="applyAdvancedEffectButton"
-                    id="applyAdvancedTier1EffectButton"
+                <button 
+                    type="button" 
+                    class="advancedEffectButton"
+                    id="advancedTier1EffectButton"
+                    disabled
                 >
-                    Apply Effect
+                    Choose Tier 1 Effect
                 </button>
-            </div>
 
+                <div
+                    class="advancedEffectPanel"
+                    id="advancedTier1EffectPanel"
+                >
+                    <h5>Choose an Advanced Tier 1 Effect</h5>       
+                    
+                    <div id="advancedTier1EffectLists"></div>
+
+                    <button
+                        type="button"
+                        class="applyAdvancedEffectButton"
+                        id="applyAdvancedTier1EffectButton"
+                    >
+                        Apply Effect
+                    </button>
+                </div>
+            </details>
         </section>
 
         <section class="powerTier" id="advancedTier2Section">
-            <h4>Advanced — Tier 2</h4>
+            <details class="powerTierDetails">
+                <summary>
+                    <h4>Advanced — Tier 2</h4>
+                </summary>
 
-            <table id="advancedTier2Table">
-                <thead>
-                    <tr>
-                        <th>Power</th>
-                        <th>Name</th>
-                        <th>Description</th>
-                        <th>KP</th>
-                        <th>Damage</th>
-                        <th>Range</th>
-                        <th>Effect</th>
-                    </tr>
-                </thead>
+                <span class="powerTierUnlockNote">
+                    Unlock this tier through the Skill Tree as your character levels up.
+                </span>
+                <table id="advancedTier2Table" class="powerTierTable">
+                    <thead>
+                        <tr>
+                            <th>Power</th>
+                            <th>Name</th>
+                            <th>Description</th>
+                            <th>KP</th>
+                            <th>Damage</th>
+                            <th>Range</th>
+                            <th>Effect</th>
+                        </tr>
+                    </thead>
 
-                <tbody>
-                    <tr>
-                        <th>ATK</th>
-                        <td><input type="text" id="advancedTier2AttackName" maxlength="15"></td>
-                        <td><textarea id="advancedTier2AttackDescription" maxlength="80"></textarea></td>
-                        <td id="advancedTier2AttackKP">-</td>
-                        <td id="advancedTier2AttackDamage">-</td>
-                        <td id="advancedTier2AttackRange">-</td>
-                        <td
-                            id="advancedTier2AttackEffect"
-                            class="advancedEffectDisplay"
-                        >-</td>
-                    </tr>
+                    <tbody>
+                        <tr>
+                            <th>ATK</th>
+                            <td><input type="text" id="advancedTier2AttackName" maxlength="15"></td>
+                            <td><textarea id="advancedTier2AttackDescription" maxlength="80"></textarea></td>
+                            <td id="advancedTier2AttackKP">-</td>
+                            <td id="advancedTier2AttackDamage">-</td>
+                            <td id="advancedTier2AttackRange">-</td>
+                            <td
+                                id="advancedTier2AttackEffect"
+                                class="advancedEffectDisplay"
+                            >-</td>
+                        </tr>
 
-                    <tr>
-                        <th>DEF</th>
-                        <td><input type="text" id="advancedTier2DefenseName" maxlength="15"></td>
-                        <td><textarea id="advancedTier2DefenseDescription" maxlength="80"></textarea></td>
-                        <td id="advancedTier2DefenseKP">-</td>
-                        <td id="advancedTier2DefenseDamage">-</td>
-                        <td id="advancedTier2DefenseRange">-</td>
-                        <td id="advancedTier2DefenseEffect">-</td>
-                    </tr>
+                        <tr>
+                            <th>DEF</th>
+                            <td><input type="text" id="advancedTier2DefenseName" maxlength="15"></td>
+                            <td><textarea id="advancedTier2DefenseDescription" maxlength="80"></textarea></td>
+                            <td id="advancedTier2DefenseKP">-</td>
+                            <td id="advancedTier2DefenseDamage">-</td>
+                            <td id="advancedTier2DefenseRange">-</td>
+                            <td id="advancedTier2DefenseEffect">-</td>
+                        </tr>
 
-                    <tr>
-                        <th>COM</th>
-                        <td><input type="text" id="advancedTier2ComboName" maxlength="15"></td>
-                        <td><textarea id="advancedTier2ComboDescription" maxlength="80"></textarea></td>
-                        <td id="advancedTier2ComboKP">-</td>
-                        <td id="advancedTier2ComboDamage">-</td>
-                        <td id="advancedTier2ComboRange">-</td>
-                        <td
-                            id="advancedTier2ComboEffect"
-                            class="advancedEffectDisplay"
-                        >-</td>
-                    </tr>
+                        <tr>
+                            <th>COM</th>
+                            <td><input type="text" id="advancedTier2ComboName" maxlength="15"></td>
+                            <td><textarea id="advancedTier2ComboDescription" maxlength="80"></textarea></td>
+                            <td id="advancedTier2ComboKP">-</td>
+                            <td id="advancedTier2ComboDamage">-</td>
+                            <td id="advancedTier2ComboRange">-</td>
+                            <td
+                                id="advancedTier2ComboEffect"
+                                class="advancedEffectDisplay"
+                            >-</td>
+                        </tr>
 
-                    <tr>
-                        <th>SIG</th>
-                        <td><input type="text" id="advancedTier2SignatureName" maxlength="15"></td>
-                        <td><textarea id="advancedTier2SignatureDescription" maxlength="80"></textarea></td>
-                        <td id="advancedTier2SignatureKP">-</td>
-                        <td id="advancedTier2SignatureDamage">-</td>
-                        <td id="advancedTier2SignatureRange">-</td>
-                        <td
-                            id="advancedTier2SignatureEffect"
-                            class="advancedEffectDisplay"
-                        >-</td>
-                    </tr>
+                        <tr>
+                            <th>SIG</th>
+                            <td><input type="text" id="advancedTier2SignatureName" maxlength="15"></td>
+                            <td><textarea id="advancedTier2SignatureDescription" maxlength="80"></textarea></td>
+                            <td id="advancedTier2SignatureKP">-</td>
+                            <td id="advancedTier2SignatureDamage">-</td>
+                            <td id="advancedTier2SignatureRange">-</td>
+                            <td
+                                id="advancedTier2SignatureEffect"
+                                class="advancedEffectDisplay"
+                            >-</td>
+                        </tr>
 
-                    <tr>
-                        <th>LOC</th>
-                        <td><input type="text" id="advancedTier2LocomotionName" maxlength="15"></td>
-                        <td><textarea id="advancedTier2LocomotionDescription" maxlength="80"></textarea></td>
-                        <td id="advancedTier2LocomotionKP">-</td>
-                        <td id="advancedTier2LocomotionDamage">-</td>
-                        <td id="advancedTier2LocomotionRange">-</td>
-                        <td id="advancedTier2LocomotionEffect">-</td>
-                    </tr>
-                </tbody>
-            </table>
+                        <tr>
+                            <th>LOC</th>
+                            <td><input type="text" id="advancedTier2LocomotionName" maxlength="15"></td>
+                            <td><textarea id="advancedTier2LocomotionDescription" maxlength="80"></textarea></td>
+                            <td id="advancedTier2LocomotionKP">-</td>
+                            <td id="advancedTier2LocomotionDamage">-</td>
+                            <td id="advancedTier2LocomotionRange">-</td>
+                            <td id="advancedTier2LocomotionEffect">-</td>
+                        </tr>
+                    </tbody>
+                </table>
 
-            <button 
-                type="button" 
-                class="advancedEffectButton"
-                id="advancedTier2EffectButton"
-                disabled
-            >
-                Choose Tier 2 Effect
-            </button>
-
-            <div
-                class="advancedEffectPanel"
-                id="advancedTier2EffectPanel"
-            >
-                <h5>Choose an Advanced Tier 2 Effect</h5>
-
-                <div id="advancedTier2EffectLists"></div>
-
-                <button
-                    type="button"
-                    class="applyAdvancedEffectButton"
-                    id="applyAdvancedTier2EffectButton"
+                <button 
+                    type="button" 
+                    class="advancedEffectButton"
+                    id="advancedTier2EffectButton"
+                    disabled
                 >
-                    Apply Effect
+                    Choose Tier 2 Effect
                 </button>
-            </div>
 
+                <div
+                    class="advancedEffectPanel"
+                    id="advancedTier2EffectPanel"
+                >
+                    <h5>Choose an Advanced Tier 2 Effect</h5>
+
+                    <div id="advancedTier2EffectLists"></div>
+
+                    <button
+                        type="button"
+                        class="applyAdvancedEffectButton"
+                        id="applyAdvancedTier2EffectButton"
+                    >
+                        Apply Effect
+                    </button>
+                </div>
+            </details>
         </section>
     </div>
 </section>

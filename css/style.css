@@ -962,6 +962,76 @@ label[for="powerTheme"] {
     color: var(--text-primary);
 }
 
+.powerTierDetails {
+    border: 1px solid var(--border);
+    padding: 12px 16px;
+    background-color: var(--surface);
+}
+
+.powerTierDetails > summary {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    column-gap: 8px;
+    cursor: pointer;
+    list-style: none;
+}
+
+/* Hide the browser's default caret */
+.powerTierDetails > summary::-webkit-details-marker {
+    display: none;
+}
+
+.powerTierDetails > summary::marker {
+    content: "";
+}
+
+/* Custom caret */
+.powerTierDetails > summary::before {
+    content: "";
+    grid-column: 1;
+    grid-row: 1;
+    align-self: center;
+    border-top: 5px solid transparent;
+    border-bottom: 5px solid transparent;
+    border-left: 8px solid var(--brand-gold);
+    transition: transform 0.2s ease;
+}
+
+/* Rotate caret when expanded */
+.powerTierDetails[open] > summary::before {
+    transform: rotate(90deg);
+}
+
+.powerTierDetails > summary h4 {
+    grid-column: 2;
+    grid-row: 1;
+    margin: 0;
+    color: var(--text-primary);
+}
+
+/* Unlock message */
+.powerTierUnlockNote {
+    grid-column: 2;
+    grid-row: 2;
+    color: var(--text-secondary);
+    font-size: 0.75rem;
+    margin-top: 4px;
+}
+
+.powerTierDetails[open] {
+    border: none;
+    margin: 0;
+    padding: 0;
+}
+
+.powerTierDetails[open] > summary {
+    margin-bottom: 12px;
+}
+
+.powerTierTable {
+    margin-top: 8px;
+}
+
 .powerTier table {
     width: 100%;
     border-collapse: collapse;

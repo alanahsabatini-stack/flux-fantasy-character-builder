@@ -27,13 +27,13 @@ Fixes & Improvements Completed:
 - Add 3rd Talent selection method: free selection, for advanced users or homebrew
 - Improve Talent modifier clarity
 - Fix occasional text overflow in Character Summary
+- Hide higher power tiers under dropdowns
 
 In Progress:
 - Fixes and improvements
 
 Fixes & Improvements Planned:
 - Change text field character limits and make print spacing more dynamic
-- Hide higher power tiers under dropdowns
 
 Planned Long-Term:
 - Mobile-friendly styling
