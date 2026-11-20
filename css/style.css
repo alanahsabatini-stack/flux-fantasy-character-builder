@@ -1558,8 +1558,12 @@ label[for="powerTheme"] {
 
 #summaryBasics {
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
     column-gap: 15px;
+}
+
+#summaryBasics > div {
+    min-width: 0;
 }
 
 #summaryBasics p {
@@ -1575,7 +1579,8 @@ label[for="powerTheme"] {
 
 #summaryBasics p > span:not(.summaryLabel) {
     color: var(--text-primary);
-    white-space: nowrap;
+    white-space: normal;
+    overflow-wrap: anywhere;
 }
 
 #summaryStats {

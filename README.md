@@ -26,12 +26,14 @@ Fixes & Improvements Completed:
 - If changing Specialty while other Specialty-dependent info has been filled out, ask user to confirm
 - Add 3rd Talent selection method: free selection, for advanced users or homebrew
 - Improve Talent modifier clarity
+- Fix occasional text overflow in Character Summary
 
 In Progress:
 - Fixes and improvements
 
 Fixes & Improvements Planned:
 - Change text field character limits and make print spacing more dynamic
+- Hide higher power tiers under dropdowns
 
 Planned Long-Term:
 - Mobile-friendly styling
