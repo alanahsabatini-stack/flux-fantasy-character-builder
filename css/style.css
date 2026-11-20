@@ -1578,6 +1578,27 @@ label[for="powerTheme"] {
     margin: 6px 0;
 }
 
+#nonKarmaAttackTable > tbody > tr:last-child > th {
+    vertical-align: middle;
+}
+
+.advancedLevelLabel {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+}
+
+#advancedNonKarmaInfoToggle {
+    width: 12px;
+    height: 12px;
+    min-width: 12px;
+    flex-shrink: 0;
+    padding: 0;
+    margin: 0;
+    font-size: 0.6rem;
+    line-height: 1.5;
+}
+
 #karmastrySection > h2,
 #talentSection > h2,
 #powersSection > h2,

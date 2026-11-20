@@ -751,10 +751,26 @@
 
                 <!-- ADVANCED -->
                 <tr>
-                    <th>Advanced</th>
+                    <th>
+                        <span class="advancedLevelLabel">
+                            Advanced
+                            <button
+                                type="button"
+                                class="expandableInfoToggle"
+                                id="advancedNonKarmaInfoToggle"
+                                aria-expanded="false"
+                                aria-controls="advancedNonKarmaInfoPanel"
+                                aria-label="More Info"
+                            >
+                                ?
+                            </button>
+                        </span>
+                    </th>
+
                     <td>
                         <input type="text" id="advancedNonKarmaAttackName" maxlength="15">
                     </td>
+
                     <td>
                         <select id="advancedNonKarmaAttackSelect">
                             <option value="">-- Choose Stats --</option>
@@ -763,6 +779,16 @@
                 </tr>
             </tbody>
         </table>
+
+        <div
+            id="advancedNonKarmaInfoPanel"
+            class="expandableInfo"
+        >
+            <p>
+                Unlock the Advanced tier through the Skill Tree as your
+                character levels up.
+            </p>
+        </div>
     </div>
 
     <hr> 
