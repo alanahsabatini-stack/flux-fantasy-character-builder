@@ -7187,7 +7187,7 @@ function displayFinalizationErrors() {
 
     if (errors.length === 0) {
         finalizationStatus.textContent = 
-            "Your character is ready to be finalized!";
+            "";
         return;
     }
 
@@ -7232,6 +7232,7 @@ function saveCurrentCharacter(createNewSave = false) {
 
         //Remember which save is being edited
         activeSaveId = savedCharacter.id;
+        return true;
 
         // Display confirmation message
         showStatusMessage(
@@ -7249,6 +7250,8 @@ function saveCurrentCharacter(createNewSave = false) {
             saveStatus,
             "Unable to save character. Check the console for details."
         );
+
+        return false;
     }
 }
 
@@ -7754,6 +7757,14 @@ finishCharacterButton.addEventListener("click", function() {
     displayFinalizationErrors();
 
     if (canFinalizeCharacter()) {
+        const saveSuccessful = saveCurrentCharacter();
+
+        if (!saveSuccessful) {
+            finalizationStatus.textContent =
+                "Your character could not be saved due to an unexpected error. " +
+                "You can still print your character sheet, but your progress may not be saved.";
+        }
+
         sessionStorage.setItem("fluxCharacter", JSON.stringify(character));
         window.open("character-sheet.html", "_blank");
     }
