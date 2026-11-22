@@ -39,15 +39,19 @@ h6 {
 }
 
 .sheetPage {
+    position: relative;
     display: flex;
     flex-direction: column;
     box-sizing: border-box;
     width: 8.5in;
+    height: 11in;
     min-height: 11in;
+    max-height: 11in;
     margin: 20px auto;
     padding: 0.3in;
     background-color: white;
     border: 1px solid var(--border-light);
+    overflow: hidden;
 }
 
 
@@ -121,11 +125,14 @@ h6 {
     }
 
     .sheetPage {
-        height: 10.4in;
+        height: 11in;
+        min-height: 11in;
+        max-height: 11in;
         width: 100%;
         margin: 0;
         padding: 0.3in;
         border: none;
+        overflow: hidden;
         break-after: page;
     }
 
@@ -134,7 +141,11 @@ h6 {
     }
 
     .footer {
-        margin-top: auto;
+        position: absolute;
+        bottom: 0.3in;
+        left: 0.3in;
+        right: 0.3in;
+        margin-top: 0;
     }
 
     #printSheetButton {
@@ -196,12 +207,14 @@ h6 {
 .identityDetails {
     display: flex;
     flex-direction: column;
-    gap: 10px;
+    gap: 5px;
+    min-width: 0;
 }
 
 .mainIdentity {
     background-color: var(--page-background);
     padding: 5px;
+    min-width: 0;
 }
 
 .field {
@@ -224,6 +237,22 @@ h6 {
     padding: 4px;
     border: 1px solid var(--border-dark);
     font-size: 11px;
+}
+
+#printCharacterName,
+#printAlias,
+#printAffiliation,
+#printPowerTheme,
+#printNonKarmaPower {
+    display: block;
+    width: 100%;
+    min-width: 0;
+    max-width: 100%;
+    height: 24px;
+    box-sizing: border-box;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 .fieldRow {
@@ -283,7 +312,7 @@ h6 {
 }
 
 #printAdvantages {
-    min-height: 105px;
+    min-height: 96px;
     margin-bottom: 10px;
 }
 
@@ -314,7 +343,7 @@ h6 {
 
 .talentGrid {
     background-color: var(--page-background);
-    padding: 15px;
+    padding: 10px;
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     gap: 10px;
@@ -348,7 +377,7 @@ h6 {
 }
 
 .statField .fieldValue {
-    min-height: 28px;
+    min-height: 24px;
     text-align: center;
     font-weight: bold;
 }
@@ -372,6 +401,7 @@ h6 {
     grid-template-columns: 75% 25%;
     gap: 10px;
     align-content: baseline;
+    margin-top: 0;
 }
 
 .powerFields {
@@ -446,7 +476,7 @@ h6 {
         2.5fr;
     column-gap: 5px;
     row-gap: 7px;
-    align-items: stretch;
+    align-items: center;
     padding: 8px 8px 6px;
 }
 
@@ -470,11 +500,28 @@ h6 {
 
 .powerKitCell {
     min-width: 0;
-    min-height: 24px;
+    min-height: 0;
+    width: 100%;
+    height: 24px;
+    max-height: 24px;
+    box-sizing: border-box;
     border: 1px solid var(--border-dark);
     background: white;
     font-size: 11px;
-    padding: 2px 5px 2px;
+    padding: 2px 5px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.powerKitCell[id$="Description"],
+.powerKitCell[id$="Effect"] {
+    height: 44px;
+    max-height: 44px;
+    min-height: 0;
+    white-space: normal;
+    overflow-wrap: anywhere;
+    overflow: hidden;
 }
 
 /* ========== PAGE 2 HEADER ========== */
@@ -506,7 +553,13 @@ h6 {
 }
 
 #printBackground {
+    height: 75px;
     min-height: 75px;
+    max-height: 75px;
+    box-sizing: border-box;
+    white-space: normal;
+    overflow-wrap: anywhere;
+    overflow: hidden;
 }
 
 #traitsField,
@@ -594,6 +647,11 @@ h6 {
     background: white;
     font-size: 10px;
     padding: 2px 5px 2px;
+}
+
+.smallPowerKitCell[id$="Name"] {
+    white-space: nowrap;
+    overflow: hidden;
 }
 
 .smallAdvPowerKitCell {

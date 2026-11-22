@@ -161,12 +161,12 @@
         <div id="identityFields">
             <div>
                 <label for="characterName" class="required">Character Name</label>
-                <input type="text" id="characterName" maxlength="25">
+                <input type="text" id="characterName" maxlength="80">
             </div>
 
             <div>
                 <label for="characterAlias">Alias</label>
-                <input type="text" id="characterAlias" maxlength="25">
+                <input type="text" id="characterAlias" maxlength="50">
             </div>
 
             <div>
@@ -196,7 +196,7 @@
 
             <div id="backgroundField">
                 <label for="characterBackground">Background</label>
-                <textarea id="characterBackground" maxlength="300"></textarea>
+                <textarea id="characterBackground" maxlength="1000"></textarea>
             </div>
         </div>
     </section>
@@ -382,7 +382,7 @@
 
             <div class="karmastryField">
                 <label for="affiliationName">Custom Affiliation Name:</label>
-                <input type="text" id="affiliationName" maxlength="25">
+                <input type="text" id="affiliationName" maxlength="50">
             </div>
 
             <div class="karmastryField">
@@ -715,7 +715,7 @@
 
     <div>
         <label for="powerTheme" class="required">Power Theme</label>
-        <input type="text" id="powerTheme" maxlength="25">
+        <input type="text" id="powerTheme" maxlength="50">
     </div>
 
     <hr>
@@ -740,7 +740,7 @@
                 <tr>
                     <th class="required">Basic</th>
                     <td>
-                        <input type="text" id="basicNonKarmaAttackName" class="requiredField" maxlength="15">
+                        <input type="text" id="basicNonKarmaAttackName" class="requiredField" maxlength="30">
                     </td>
                     <td>
                         <select id="basicNonKarmaAttackSelect" class="requiredField">
@@ -768,7 +768,7 @@
                     </th>
 
                     <td>
-                        <input type="text" id="advancedNonKarmaAttackName" maxlength="15">
+                        <input type="text" id="advancedNonKarmaAttackName" maxlength="30">
                     </td>
 
                     <td>
@@ -820,8 +820,8 @@
                 <tbody>
                     <tr>
                         <th>ATK</th>
-                        <td><input type="text" id="basicTier1AttackName" class="requiredField" maxlength="15"></td>
-                        <td><textarea id="basicTier1AttackDescription" class="requiredField" maxlength="80"></textarea></td>
+                        <td><input type="text" id="basicTier1AttackName" class="requiredField" maxlength="30"></td>
+                        <td><textarea id="basicTier1AttackDescription" class="requiredField" maxlength="250"></textarea></td>
                         <td id="basicTier1AttackKP">-</td>
                         <td id="basicTier1AttackDamage">-</td>
                         <td id="basicTier1AttackRange">-</td>
@@ -830,8 +830,8 @@
 
                     <tr>
                         <th>DEF</th>
-                        <td><input type="text" id="basicTier1DefenseName" class="requiredField" maxlength="15"></td>
-                        <td><textarea id="basicTier1DefenseDescription" class="requiredField" maxlength="80"></textarea></td>
+                        <td><input type="text" id="basicTier1DefenseName" class="requiredField" maxlength="30"></td>
+                        <td><textarea id="basicTier1DefenseDescription" class="requiredField" maxlength="250"></textarea></td>
                         <td id="basicTier1DefenseKP">-</td>
                         <td id="basicTier1DefenseDamage">-</td>
                         <td id="basicTier1DefenseRange">-</td>
@@ -840,8 +840,8 @@
 
                     <tr>
                         <th>COM</th>
-                        <td><input type="text" id="basicTier1ComboName" class="requiredField" maxlength="15"></td>
-                        <td><textarea id="basicTier1ComboDescription" class="requiredField" maxlength="80"></textarea></td>
+                        <td><input type="text" id="basicTier1ComboName" class="requiredField" maxlength="30"></td>
+                        <td><textarea id="basicTier1ComboDescription" class="requiredField" maxlength="250"></textarea></td>
                         <td id="basicTier1ComboKP">-</td>
                         <td id="basicTier1ComboDamage">-</td>
                         <td id="basicTier1ComboRange">-</td>
@@ -850,8 +850,8 @@
 
                     <tr>
                         <th>SIG</th>
-                        <td><input type="text" id="basicTier1SignatureName" class="requiredField" maxlength="15"></td>
-                        <td><textarea id="basicTier1SignatureDescription" class="requiredField" maxlength="80"></textarea></td>
+                        <td><input type="text" id="basicTier1SignatureName" class="requiredField" maxlength="30"></td>
+                        <td><textarea id="basicTier1SignatureDescription" class="requiredField" maxlength="250"></textarea></td>
                         <td id="basicTier1SignatureKP">-</td>
                         <td id="basicTier1SignatureDamage">-</td>
                         <td id="basicTier1SignatureRange">-</td>
@@ -860,8 +860,8 @@
 
                     <tr>
                         <th>LOC</th>
-                        <td><input type="text" id="basicTier1LocomotionName" class="requiredField" maxlength="15"></td>
-                        <td><textarea id="basicTier1LocomotionDescription" class="requiredField" maxlength="80"></textarea></td>
+                        <td><input type="text" id="basicTier1LocomotionName" class="requiredField" maxlength="30"></td>
+                        <td><textarea id="basicTier1LocomotionDescription" class="requiredField" maxlength="250"></textarea></td>
                         <td id="basicTier1LocomotionKP">-</td>
                         <td id="basicTier1LocomotionDamage">-</td>
                         <td id="basicTier1LocomotionRange">-</td>
@@ -896,8 +896,8 @@
                     <tbody>
                         <tr>
                             <th>ATK</th>
-                            <td><input type="text" id="basicTier2AttackName" maxlength="15"></td>
-                            <td><textarea id="basicTier2AttackDescription" maxlength="80"></textarea></td>
+                            <td><input type="text" id="basicTier2AttackName" maxlength="30"></td>
+                            <td><textarea id="basicTier2AttackDescription" maxlength="250"></textarea></td>
                             <td id="basicTier2AttackKP">-</td>
                             <td id="basicTier2AttackDamage">-</td>
                             <td id="basicTier2AttackRange">-</td>
@@ -906,8 +906,8 @@
 
                         <tr>
                             <th>DEF</th>
-                            <td><input type="text" id="basicTier2DefenseName" maxlength="15"></td>
-                            <td><textarea id="basicTier2DefenseDescription" maxlength="80"></textarea></td>
+                            <td><input type="text" id="basicTier2DefenseName" maxlength="30"></td>
+                            <td><textarea id="basicTier2DefenseDescription" maxlength="250"></textarea></td>
                             <td id="basicTier2DefenseKP">-</td>
                             <td id="basicTier2DefenseDamage">-</td>
                             <td id="basicTier2DefenseRange">-</td>
@@ -916,8 +916,8 @@
 
                         <tr>
                             <th>COM</th>
-                            <td><input type="text" id="basicTier2ComboName" maxlength="15"></td>
-                            <td><textarea id="basicTier2ComboDescription" maxlength="80"></textarea></td>
+                            <td><input type="text" id="basicTier2ComboName" maxlength="30"></td>
+                            <td><textarea id="basicTier2ComboDescription" maxlength="250"></textarea></td>
                             <td id="basicTier2ComboKP">-</td>
                             <td id="basicTier2ComboDamage">-</td>
                             <td id="basicTier2ComboRange">-</td>
@@ -926,8 +926,8 @@
 
                         <tr>
                             <th>SIG</th>
-                            <td><input type="text" id="basicTier2SignatureName" maxlength="15"></td>
-                            <td><textarea id="basicTier2SignatureDescription" maxlength="80"></textarea></td>
+                            <td><input type="text" id="basicTier2SignatureName" maxlength="30"></td>
+                            <td><textarea id="basicTier2SignatureDescription" maxlength="250"></textarea></td>
                             <td id="basicTier2SignatureKP">-</td>
                             <td id="basicTier2SignatureDamage">-</td>
                             <td id="basicTier2SignatureRange">-</td>
@@ -936,8 +936,8 @@
 
                         <tr>
                             <th>LOC</th>
-                            <td><input type="text" id="basicTier2LocomotionName" maxlength="15"></td>
-                            <td><textarea id="basicTier2LocomotionDescription" maxlength="80"></textarea></td>
+                            <td><input type="text" id="basicTier2LocomotionName" maxlength="30"></td>
+                            <td><textarea id="basicTier2LocomotionDescription" maxlength="250"></textarea></td>
                             <td id="basicTier2LocomotionKP">-</td>
                             <td id="basicTier2LocomotionDamage">-</td>
                             <td id="basicTier2LocomotionRange">-</td>
@@ -973,8 +973,8 @@
                     <tbody>
                         <tr>
                             <th>ATK</th>
-                            <td><input type="text" id="advancedTier1AttackName" maxlength="15"></td>
-                            <td><textarea id="advancedTier1AttackDescription" maxlength="80"></textarea></td>
+                            <td><input type="text" id="advancedTier1AttackName" maxlength="30"></td>
+                            <td><textarea id="advancedTier1AttackDescription" maxlength="250"></textarea></td>
                             <td id="advancedTier1AttackKP">-</td>
                             <td id="advancedTier1AttackDamage">-</td>
                             <td id="advancedTier1AttackRange">-</td>
@@ -986,8 +986,8 @@
 
                         <tr>
                             <th>DEF</th>
-                            <td><input type="text" id="advancedTier1DefenseName" maxlength="15"></td>
-                            <td><textarea id="advancedTier1DefenseDescription" maxlength="80"></textarea></td>
+                            <td><input type="text" id="advancedTier1DefenseName" maxlength="30"></td>
+                            <td><textarea id="advancedTier1DefenseDescription" maxlength="250"></textarea></td>
                             <td id="advancedTier1DefenseKP">-</td>
                             <td id="advancedTier1DefenseDamage">-</td>
                             <td id="advancedTier1DefenseRange">-</td>
@@ -996,8 +996,8 @@
 
                         <tr>
                             <th>COM</th>
-                            <td><input type="text" id="advancedTier1ComboName" maxlength="15"></td>
-                            <td><textarea id="advancedTier1ComboDescription" maxlength="80"></textarea></td>
+                            <td><input type="text" id="advancedTier1ComboName" maxlength="30"></td>
+                            <td><textarea id="advancedTier1ComboDescription" maxlength="250"></textarea></td>
                             <td id="advancedTier1ComboKP">-</td>
                             <td id="advancedTier1ComboDamage">-</td>
                             <td id="advancedTier1ComboRange">-</td>
@@ -1009,8 +1009,8 @@
 
                         <tr>
                             <th>SIG</th>
-                            <td><input type="text" id="advancedTier1SignatureName" maxlength="15"></td>
-                            <td><textarea id="advancedTier1SignatureDescription" maxlength="80"></textarea></td>
+                            <td><input type="text" id="advancedTier1SignatureName" maxlength="30"></td>
+                            <td><textarea id="advancedTier1SignatureDescription" maxlength="250"></textarea></td>
                             <td id="advancedTier1SignatureKP">-</td>
                             <td id="advancedTier1SignatureDamage">-</td>
                             <td id="advancedTier1SignatureRange">-</td>
@@ -1022,8 +1022,8 @@
 
                         <tr>
                             <th>LOC</th>
-                            <td><input type="text" id="advancedTier1LocomotionName" maxlength="15"></td>
-                            <td><textarea id="advancedTier1LocomotionDescription" maxlength="80"></textarea></td>
+                            <td><input type="text" id="advancedTier1LocomotionName" maxlength="30"></td>
+                            <td><textarea id="advancedTier1LocomotionDescription" maxlength="250"></textarea></td>
                             <td id="advancedTier1LocomotionKP">-</td>
                             <td id="advancedTier1LocomotionDamage">-</td>
                             <td id="advancedTier1LocomotionRange">-</td>
@@ -1085,8 +1085,8 @@
                     <tbody>
                         <tr>
                             <th>ATK</th>
-                            <td><input type="text" id="advancedTier2AttackName" maxlength="15"></td>
-                            <td><textarea id="advancedTier2AttackDescription" maxlength="80"></textarea></td>
+                            <td><input type="text" id="advancedTier2AttackName" maxlength="30"></td>
+                            <td><textarea id="advancedTier2AttackDescription" maxlength="250"></textarea></td>
                             <td id="advancedTier2AttackKP">-</td>
                             <td id="advancedTier2AttackDamage">-</td>
                             <td id="advancedTier2AttackRange">-</td>
@@ -1098,8 +1098,8 @@
 
                         <tr>
                             <th>DEF</th>
-                            <td><input type="text" id="advancedTier2DefenseName" maxlength="15"></td>
-                            <td><textarea id="advancedTier2DefenseDescription" maxlength="80"></textarea></td>
+                            <td><input type="text" id="advancedTier2DefenseName" maxlength="30"></td>
+                            <td><textarea id="advancedTier2DefenseDescription" maxlength="250"></textarea></td>
                             <td id="advancedTier2DefenseKP">-</td>
                             <td id="advancedTier2DefenseDamage">-</td>
                             <td id="advancedTier2DefenseRange">-</td>
@@ -1108,8 +1108,8 @@
 
                         <tr>
                             <th>COM</th>
-                            <td><input type="text" id="advancedTier2ComboName" maxlength="15"></td>
-                            <td><textarea id="advancedTier2ComboDescription" maxlength="80"></textarea></td>
+                            <td><input type="text" id="advancedTier2ComboName" maxlength="30"></td>
+                            <td><textarea id="advancedTier2ComboDescription" maxlength="250"></textarea></td>
                             <td id="advancedTier2ComboKP">-</td>
                             <td id="advancedTier2ComboDamage">-</td>
                             <td id="advancedTier2ComboRange">-</td>
@@ -1121,8 +1121,8 @@
 
                         <tr>
                             <th>SIG</th>
-                            <td><input type="text" id="advancedTier2SignatureName" maxlength="15"></td>
-                            <td><textarea id="advancedTier2SignatureDescription" maxlength="80"></textarea></td>
+                            <td><input type="text" id="advancedTier2SignatureName" maxlength="30"></td>
+                            <td><textarea id="advancedTier2SignatureDescription" maxlength="250"></textarea></td>
                             <td id="advancedTier2SignatureKP">-</td>
                             <td id="advancedTier2SignatureDamage">-</td>
                             <td id="advancedTier2SignatureRange">-</td>
@@ -1134,8 +1134,8 @@
 
                         <tr>
                             <th>LOC</th>
-                            <td><input type="text" id="advancedTier2LocomotionName" maxlength="15"></td>
-                            <td><textarea id="advancedTier2LocomotionDescription" maxlength="80"></textarea></td>
+                            <td><input type="text" id="advancedTier2LocomotionName" maxlength="30"></td>
+                            <td><textarea id="advancedTier2LocomotionDescription" maxlength="250"></textarea></td>
                             <td id="advancedTier2LocomotionKP">-</td>
                             <td id="advancedTier2LocomotionDamage">-</td>
                             <td id="advancedTier2LocomotionRange">-</td>

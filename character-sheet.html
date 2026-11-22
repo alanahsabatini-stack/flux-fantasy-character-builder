@@ -817,6 +817,8 @@
 
                 document.getElementById("printBackground").textContent = character.background;
 
+                fitPowerKitCells();
+
                 document.getElementById("printB1AttackName").textContent = character.powers.basicTier1.attack.name;
                 document.getElementById("printB1AttackCost").textContent = character.powers.basicTier1.attack.kpCost;
                 document.getElementById("printB1AttackDamage").textContent = character.powers.basicTier1.attack.damage;
@@ -963,6 +965,67 @@
 
 
                 // Update page 1 with the selected Power Tier
+
+                // Fit all Power Kit cells within their fixed dimensions
+                function fitPowerKitCells() {
+                    const powerCells = document.querySelectorAll(
+                        '.smallPowerKitCell[id$="Name"], ' +
+                        '.powerKitCell[id$="Name"], ' +
+                        '.powerKitCell[id$="Effect"], ' +
+                        '.powerKitCell[id$="Description"], ' +
+                        '#printBackground'
+                    );
+
+                    powerCells.forEach(function(element) {
+                        // Preserve the complete text before making any adjustments
+                        const originalText = element.textContent;
+
+                        if (!originalText.trim()) return;
+
+                        // Reset the font size in case a different tier was previously selected
+                        element.style.fontSize = "";
+
+                        let fontSize = parseFloat(
+                            window.getComputedStyle(element).fontSize
+                        );
+
+                        const minFontSize = 8;
+
+                        // Check whether the text exceeds either dimension
+                        function textOverflows() {
+                            return (
+                                element.scrollWidth > element.clientWidth ||
+                                element.scrollHeight > element.clientHeight
+                            );
+                        }
+
+                        // Gradually reduce the font size until the text fits
+                        while (textOverflows() && fontSize > minFontSize) {
+                            fontSize = Math.max(minFontSize, fontSize - 0.25);
+                            element.style.fontSize = `${fontSize}px`;
+                        }
+
+                        // If the text still doesn't fit, shorten it and add ellipsis
+                        if (textOverflows()) {
+                            let shortenedText = originalText.trimEnd();
+
+                            element.textContent = shortenedText + "…";
+
+                            while (textOverflows() && shortenedText.length > 0) {
+                                const lastSpace = shortenedText.lastIndexOf(" ");
+
+                                // Remove a whole word when possible
+                                // Otherwise, remove one character
+                                shortenedText = lastSpace > 0
+                                    ? shortenedText.slice(0, lastSpace)
+                                    : shortenedText.slice(0, -1);
+
+                                element.textContent = shortenedText.trimEnd() + "…";
+                            }
+                        }
+                    });
+                }
+
                 function updateCurrentPowerKit() {
                     const tierSelector = document.getElementById("currentPowerTier");
                     const selectedTier = tierSelector.value;
@@ -1011,6 +1074,14 @@
                     document.getElementById("printNonKarmaPower").textContent =
                         nonKarma.name || "";
 
+                        const nonKarmaPowerElement =
+                            document.getElementById("printNonKarmaPower");
+
+                        // Reset to the original CSS font size before fitting new text
+                        nonKarmaPowerElement.style.fontSize = "";
+
+                        fitText(nonKarmaPowerElement);
+
                     document.getElementById("printNonKarmaDamage").textContent =
                         nonKarma.selectedAttack === null ? "" : nonKarma.damage;
 
@@ -1027,6 +1098,9 @@
 
                     document.getElementById("powerKitTitle").textContent =
                         `Karmastry Power Kit — ${selectedLabel}`;
+
+                    // Fit the newly populated Power Kit fields
+                    fitPowerKitCells();
                 }
 
                 document.getElementById("currentPowerTier").addEventListener(
@@ -1036,6 +1110,29 @@
 
                 updateCurrentPowerKit();
 
+                // Automatically reduce text size when it exceeds its container
+                function fitText(element, minFontSize = 8) {
+                    if (!element) return;
+
+                    // Get the element's original font size from CSS.
+                    const styles = window.getComputedStyle(element);
+                    let fontSize = parseFloat(styles.fontSize);
+
+                    // Reduce the font size until the text fits or reaches its minimum.
+                    while (
+                        element.scrollWidth > element.clientWidth &&
+                        fontSize > minFontSize
+                    ) {
+                        fontSize -= 0.25;
+                        element.style.fontSize = `${fontSize}px`;
+                    }
+                }
+
+                // Apply text fitting
+                fitText(document.getElementById("printCharacterName"));
+                fitText(document.getElementById("printAlias"));
+                fitText(document.getElementById("printAffiliation"));
+                fitText(document.getElementById("printPowerTheme"));
 
                 /* // Back to Builder button
                 document.getElementById("backToBuilderButton").addEventListener(

@@ -4,36 +4,35 @@ A web-based character creation and management tool for Flux Fantasy.
 
 ## Current Status
 
-The Character Creator is nearing the end of the early development stage.
+**Beta Release**
 
-Completed:
+The Flux Fantasy Character Creator has entered beta. Core character creation, validation, character management, leveling, and printable character sheet functionality have been implemented.
+
+The application is functional and undergoing continued testing, refinement, and bug fixes ahead of a full release.
+
+**Completed Features:**
 - Character creation form and basic validation
 - Karma Specialty and Study selection
 - Karma Power tables
 - Advanced Karma Power Effect selection
 - Advanced Effect validation during character finalization
 - Character Summary
-- Basic styling and responsive table layout
+- Responsive styling and table layouts
 - V1.1 Powers updates
 - Skill Tree and Level Up section
 - "More Info" buttons and functionality
-- Choice between preset modifiers and dice roll for Talent Selection
-- Printable sheet exporting
+- Multiple methods for Talent Selection
+- Printable two-page character sheet exporting
+- Save, load, delete, and import/export functionality
+- Required field and choice indicators
+- Specialty-change confirmation
+- Character Summary text overflow handling
+- Collapsible higher power tiers
+- Improved Talent modifier clarity
 
-Fixes & Improvements Completed:
-- Refine save, load, delete, and import/export UI
-- Indicate required fields/choices visually
-- If changing Specialty while other Specialty-dependent info has been filled out, ask user to confirm
-- Add 3rd Talent selection method: free selection, for advanced users or homebrew
-- Improve Talent modifier clarity
-- Fix occasional text overflow in Character Summary
-- Hide higher power tiers under dropdowns
+**In Progress:**
+- Continued testing and bug fixes
+- Minor UI and usability refinements
 
-In Progress:
-- Fixes and improvements
-
-Fixes & Improvements Planned:
-- Change text field character limits and make print spacing more dynamic
-
-Planned Long-Term:
+**Planned Long-Term Improvements:**
 - Mobile-friendly styling
