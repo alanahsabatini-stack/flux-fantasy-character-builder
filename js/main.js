@@ -476,12 +476,6 @@ const advancedTier2EffectButton = document.getElementById("advancedTier2EffectBu
 const advancedTier1EffectPanel = document.getElementById("advancedTier1EffectPanel");
 const advancedTier2EffectPanel = document.getElementById("advancedTier2EffectPanel");
 
-const startingItems = document.getElementById("startingItems");
-const startingMedKits = document.getElementById("startingMedKits");
-const startingMerits = document.getElementById("startingMerits");
-const startingFishbowl = document.getElementById("startingFishbowl");
-const specialtyItemDisplay = document.getElementById("specialtyItemDisplay");
-
 const traitList = document.getElementById("traitList");
 const flawList = document.getElementById("flawList");
 
@@ -5535,7 +5529,7 @@ specialtySelect.addEventListener("change", function() {
     summaryKarma.textContent = character.karmaPool;
 
     calculateStartingItems();
-    updateStartingItemsDisplay();
+    updateTorusChoiceOptions();
 
     character.study = "";
     character.currentStudy = null;
@@ -5745,17 +5739,12 @@ function calculateStartingItems() {
     }
 }
 
-function updateStartingItemsDisplay() {
-    specialtyItemDisplay.innerHTML = "";
+function updateTorusChoiceOptions() {
     torusChoiceOptions.innerHTML = "";
 
     torusChoiceContainer.hidden = character.specialty !== "Escape Artist";
 
-    if (character.specialty === "Ink Fighter") {
-        specialtyItemDisplay.textContent = "3 Ink Syringes";
-    }
-
-    else if (character.specialty === "Escape Artist") {
+    if (character.specialty === "Escape Artist") {
         const largeOption = document.createElement("label");
 
         const largeRadio = document.createElement("input");
@@ -5791,19 +5780,10 @@ function updateStartingItemsDisplay() {
         torusChoiceOptions.appendChild(largeOption);
         torusChoiceOptions.appendChild(smallOption);
     }
-
-    else if (character.specialty === "Clockbot") {
-        specialtyItemDisplay.textContent = "1 Large Integrated Torus";
-    }
-
-    else if (character.specialty === "Special Agent") {
-        specialtyItemDisplay.textContent = "1 Security Badge";
-    }
 }
 
 function setEscapeArtistTorusChoice(choice) {
     character.startingItems.specialtyItems = [choice];
-    specialtyItemDisplay.textContent = choice;
 }
 
 // ========================================
@@ -7434,14 +7414,9 @@ function restoreCharacterData(saveRecord) {
             : "Select an Affiliation for more information.";
     }
 
-    // Restore Starting Items
-    startingMedKits.value = character.startingItems.karmaMedKits;
-    startingMerits.value = character.startingItems.merits;
-    startingFishbowl.value = character.startingItems.fishbowls;
-
-    updateStartingItemsDisplay();
-
     // Restore Escape Artist Torus selection
+    updateTorusChoiceOptions();
+
     const torusRadios = document.querySelectorAll(
         'input[name="escapeArtistTorus"]'
     );
@@ -7449,11 +7424,6 @@ function restoreCharacterData(saveRecord) {
     torusRadios.forEach(function(radio) {
         radio.checked = character.startingItems.specialtyItems.includes(radio.value);
     });
-
-    if (character.startingItems.specialtyItems.length > 0) {
-        specialtyItemDisplay.textContent =
-            character.startingItems.specialtyItems.join(", ");
-    }
 
     // Restore Talent Mode
     const savedTalentMode = saveRecord.builderState.talentMode || "preset";
