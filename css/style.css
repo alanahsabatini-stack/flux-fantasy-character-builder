@@ -1515,6 +1515,31 @@ label[for="powerTheme"] {
     font-weight: normal;
 }
 
+#finishButtonContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#finishCharacterButton {
+    padding: 8px 14px;
+    border: 1px solid var(--brand-purple);
+    border-radius: 4px;
+    background-color: var(--brand-dark-blue);
+    color: white;
+    font-family: inherit;
+    font-size: 0.9rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+#finishCharacterButton:hover {
+    border-color: var(--brand-dark-blue);
+    background-color: var(--brand-gold);
+    color: black;
+}
+
 /* =========================================== */
 /*                HIDDEN PANELS                */
 /* =========================================== */
