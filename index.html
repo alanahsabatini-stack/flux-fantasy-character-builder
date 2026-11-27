@@ -75,7 +75,7 @@
             <button type="button" id="importExportButton">Import/Export</button>
         </div>
 
-        <p id="saveStatus" role="status" aria-live="polite"></p>
+        <p id="saveStatus" role="status" aria-live="polite" hidden></p>
     </section>
 
     <dialog class="characterManagementDialog" id="saveCharacterDialog">
@@ -502,7 +502,20 @@
             <!-- Aura -->
 
             <div class="talent">
-                <h4>Aura</h4>
+                <span class="talentLabel">
+                    Aura
+                    <button
+                        type="button"
+                        class="expandableInfoToggle"
+                        id="auraInfoToggle"
+                        data-talent="aura"
+                        aria-expanded="false"
+                        aria-controls="individualTalentInfoPanel"
+                        aria-label="More Info"
+                    >
+                        ?
+                    </button>
+                </span>
 
                 <div class="modifierButtons">
                     <button
@@ -531,7 +544,20 @@
             <!-- Stamina -->
 
             <div class="talent">
-                <h4>Stamina</h4>
+                <span class="talentLabel">
+                    Stamina
+                    <button
+                        type="button"
+                        class="expandableInfoToggle"
+                        id="staminaInfoToggle"
+                        data-talent="stamina"
+                        aria-expanded="false"
+                        aria-controls="individualTalentInfoPanel"
+                        aria-label="More Info"
+                    >
+                        ?
+                    </button>
+                </span>
 
                 <div class="modifierButtons">
                     <button
@@ -560,7 +586,20 @@
             <!-- Agility -->
             
             <div class="talent">
-                <h4>Agility</h4>
+                <span class="talentLabel">
+                    Agility
+                    <button
+                        type="button"
+                        class="expandableInfoToggle"
+                        id="agilityInfoToggle"
+                        data-talent="agility"
+                        aria-expanded="false"
+                        aria-controls="individualTalentInfoPanel"
+                        aria-label="More Info"
+                    >
+                        ?
+                    </button>
+                </span>
 
                 <div class="modifierButtons">
                     <button
@@ -589,7 +628,20 @@
             <!-- Willpower -->
 
             <div class="talent">
-                <h4>Willpower</h4>
+                <span class="talentLabel">
+                    Willpower
+                    <button
+                        type="button"
+                        class="expandableInfoToggle"
+                        id="willpowerInfoToggle"
+                        data-talent="willpower"
+                        aria-expanded="false"
+                        aria-controls="individualTalentInfoPanel"
+                        aria-label="More Info"
+                    >
+                        ?
+                    </button>
+                </span>
 
                 <div class="modifierButtons">
                     <button
@@ -618,7 +670,20 @@
             <!-- Function -->
 
             <div class="talent">
-                <h4>Function</h4>
+                <span class="talentLabel">
+                    Function
+                    <button
+                        type="button"
+                        class="expandableInfoToggle"
+                        id="functionInfoToggle"
+                        data-talent="function"
+                        aria-expanded="false"
+                        aria-controls="individualTalentInfoPanel"
+                        aria-label="More Info"
+                    >
+                        ?
+                    </button>
+                </span>
 
                 <div class="modifierButtons">
                     <button
@@ -647,7 +712,20 @@
             <!-- Technique -->
 
             <div class="talent">
-                <h4>Technique</h4>
+                <span class="talentLabel">
+                    Technique
+                    <button
+                        type="button"
+                        class="expandableInfoToggle"
+                        id="techniqueInfoToggle"
+                        data-talent="technique"
+                        aria-expanded="false"
+                        aria-controls="individualTalentInfoPanel"
+                        aria-label="More Info"
+                    >
+                        ?
+                    </button>
+                </span>
 
                 <div class="modifierButtons">
                     <button
@@ -673,6 +751,13 @@
                 <p class="studyTalentBonus" id="studyBonusTechnique" hidden></p>
             </div>
 
+        </div>
+
+        <div
+            id="individualTalentInfoPanel"
+            class="expandableInfo"
+        >
+            <p id="individualTalentInfoMessage"></p>
         </div>
 
     </section>

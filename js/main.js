@@ -40,6 +40,7 @@ function showStatusMessage(element, message, isSuccess = false) {
 
     element.classList.remove("success", "fadeOut");
     element.textContent = message;
+    element.hidden = !message;
 
     if (!message || !isSuccess) return;
 
@@ -51,6 +52,7 @@ function showStatusMessage(element, message, isSuccess = false) {
 
         const clearTimer = setTimeout(function() {
             element.textContent = "";
+            element.hidden = true;
             element.classList.remove("success", "fadeOut");
             statusTimers.delete(element);
         }, 400);
@@ -534,17 +536,42 @@ function openInfoPanel(toggle) {
 function closeInfoPanel(panel) {
     panel.classList.remove("open");
 
-    const toggle = document.querySelector(
+    const toggles = document.querySelectorAll(
         `[aria-controls="${panel.id}"]`
     );
 
-    if (toggle) {
+    toggles.forEach(function(toggle) {
         toggle.setAttribute("aria-expanded", "false");
-    }
+    });
 }
 
 infoToggles.forEach(function(toggle) {
     toggle.addEventListener("click", function() {
+
+        // Individual Talent buttons
+        if (toggle.dataset.talent) {
+
+            const panel = document.getElementById(
+                "individualTalentInfoPanel"
+            );
+
+            if (!panel) return;
+
+            if (
+                panel.classList.contains("open") &&
+                activeTalent === toggle.dataset.talent
+            ) {
+                closeInfoPanel(panel);
+                activeTalent = null;
+                return;
+            }
+
+            showTalentInfo(toggle);
+
+            return;
+        }
+
+        // Existing functionality for all other info buttons
         const panelId = toggle.getAttribute("aria-controls");
         const panel = document.getElementById(panelId);
 
@@ -6076,6 +6103,55 @@ function calculateDerivedStats() {
     summaryDefense.textContent = character.defense;
 }
 
+
+// ========== Individual Talent Info Panel ==========
+
+const talentInformation = {
+    aura: {
+        name: "Aura",
+        description: "Your Aura is more than just charisma; it's your presence, persuasive power, and the sheet force of personality that can bend situations in your favor. Whether rallying allies, intimidating foes, or charming your way through Fortuna's challenges, your Aura is your first tool in any social scenario."
+    },
+    stamina: {
+        name: "Stamina",
+        description: "In a world where danger lurks around every corner, your physical resilience can mean the difference between success and failure. Stamina isn’t just about enduring blows; it’s about sustaining your efforts through long treks across hazardous terrains, resisting the weariness of prolonged exertion, and bouncing back from setbacks."
+    },
+    agility: {
+        name: "Agility",
+        description: "Speed and control are everything in Flux Fantasy. Whether you're sneaking past security guards or making a quick getaway, Agility determines how fast and fluid you move. It’s also key for the precise execution of karmastry and sigils."
+    },
+    technique: {
+        name: "Technique",
+        description: "The brainpower behind the operation. Whether you're hacking a system, outsmarting an enemy, or fine-tuning a karma-powered gadget, Technique is all about strategy, problem-solving, and tech mastery. If there’s a way to break, build, or outthink something, you’ll find it."
+    },
+    willpower: {
+        name: "Willpower",
+        description: "Your raw karmic strength. Willpower measures how well you control karma and unleash your subclass abilities. The stronger your Willpower, the more you can bend reality to your advantage, whether that means pulling off insane karmastry feats or resisting the universe’s pushback when things go sideways."
+    },
+    function: {
+        name: "Function",
+        description: "This Talent governs Function, Perception, and Cooldown, affecting your health, senses, and ability to recover lost KP. A high Function score means sharper reflexes, better endurance, and faster karma recovery when you need it most."
+    }
+}
+
+let activeTalent = null;
+
+function showTalentInfo(toggle) {
+    const talentName = toggle.dataset.talent;
+    const talent = talentInformation[talentName];
+    const panel = document.getElementById("individualTalentInfoPanel");
+    const message = document.getElementById("individualTalentInfoMessage");
+
+    if (!talent || !panel || !message) return;
+
+    message.textContent = `${talent.name}: ${talent.description}`;
+
+    panel.classList.add("open");
+
+    toggle.setAttribute("aria-expanded", "true");
+
+    activeTalent = talentName;
+}
+
 // ========================================
 // POWER FUNCTIONS
 // ========================================
@@ -7212,7 +7288,6 @@ function saveCurrentCharacter(createNewSave = false) {
 
         //Remember which save is being edited
         activeSaveId = savedCharacter.id;
-        return true;
 
         // Display confirmation message
         showStatusMessage(
@@ -7222,6 +7297,7 @@ function saveCurrentCharacter(createNewSave = false) {
                 : "Character saved successfully.",
             true
         );
+        return true;
 
     } catch (error) {
         console.error("Could not save character:", error);
